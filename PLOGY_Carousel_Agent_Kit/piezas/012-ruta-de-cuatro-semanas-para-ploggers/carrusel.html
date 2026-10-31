@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 012 · Ruta de cuatro semanas</title>
+<!-- Fuente editable. 8 láminas de 1080x1350.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=8
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7,8 -Prefix slide-0
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit).
+     Pieza educativa: no parte de una noticia. La ruta es una propuesta de criterio de Plogy; no hay programa, curso ni cohorte.
+     El ejemplo de la lámina 05 es hipotético y la tabla de la 07 es una plantilla vacía: ninguna cifra es de nadie. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486;
+  --gradient:linear-gradient(90deg,#f75946 0%,#e1556a 50%,#9c5aa7 100%);
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px}
+.light{background:var(--paper);color:var(--ink)}
+.surface{background:var(--surface);color:var(--ink)}
+.dark{background:var(--ink);color:var(--paper)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:6}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;z-index:6}
+.light .count,.surface .count{color:var(--muted)} .dark .count,.photo8 .count{color:#e6dfd8}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:6}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.25}
+.dots i.on{opacity:1;background:var(--orange)}
+
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance;position:relative;z-index:3}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.55)}
+.support{position:relative;z-index:3;font-size:40px;line-height:1.38;margin-top:32px;max-width:880px}
+.light .support,.surface .support{color:var(--muted)} .dark .support{color:#e6dfd8}
+.eyebrow{position:relative;z-index:3;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:30px}
+.light .eyebrow,.surface .eyebrow{color:var(--orangeText)} .dark .eyebrow{color:var(--orange)}
+.top{position:relative;z-index:3}
+.pill{position:relative;z-index:3;display:inline-block;background:var(--orange);color:var(--ink);font:700 30px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:16px 26px;border-radius:999px}
+
+/* riel de semanas (lám. 04 a 07) */
+.rail{position:absolute;left:96px;top:196px;width:888px;height:64px;display:flex;justify-content:space-between;z-index:3}
+.rail::before{content:"";position:absolute;left:32px;right:32px;top:30px;height:4px;background:var(--border);z-index:0}
+.dark .rail::before{background:#4a413a}
+.rail i{position:relative;z-index:1;width:64px;height:64px;border-radius:50%;font:700 32px/58px var(--display);font-style:normal;text-align:center;border:3px solid var(--border);color:var(--muted);background:var(--paper)}
+.surface .rail i{background:var(--surface)}
+.dark .rail i{background:var(--ink);border-color:#4a413a;color:#cfc6bd}
+.rail i.on{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.rail i.done{background:var(--ink);border-color:var(--ink);color:#fff}
+.dark .rail i.done{background:#3a312b;border-color:#3a312b;color:#fff}
+.wk{padding-top:96px}
+.wk .top{margin-top:186px}
+.wk h2{font-size:80px}
+.erow{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.erow .eyebrow{margin-bottom:0}
+
+/* banda de entregable (lám. 04 a 07) */
+.deliv{position:absolute;left:96px;right:96px;bottom:128px;z-index:4;border-radius:36px;padding:30px 38px 32px}
+.deliv small{display:block;font:700 28px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+.deliv b{display:block;font:700 38px/1.18 var(--display);letter-spacing:-.02em}
+.light .deliv,.surface .deliv{background:var(--ink);color:#fff}
+.light .deliv small,.surface .deliv small{color:var(--orange)}
+.dark .deliv{background:var(--orange);color:var(--ink)}
+.dark .deliv small{color:var(--ink)}
+
+/* 01 · portada */
+.s1 .top{margin-top:170px}
+.s1 h1{font-size:104px}
+.s1 .support{max-width:820px}
+.tl{position:absolute;left:96px;right:96px;top:1030px;display:grid;grid-template-columns:repeat(4,1fr);z-index:3}
+.tl::before{content:"";position:absolute;left:36px;right:0;top:34px;height:6px;background:var(--gradient);opacity:.9;border-radius:3px}
+.tl div{position:relative}
+.tl i{display:block;width:72px;height:72px;border-radius:50%;background:var(--paper);border:5px solid var(--border);position:relative;z-index:1}
+.tl div:first-child i{background:var(--orange);border-color:var(--orange)}
+.tl b{display:block;margin-top:20px;font:700 34px/1.1 var(--display);letter-spacing:-.02em}
+.tl span{display:block;margin-top:6px;font:400 33px/1.2 var(--body);color:var(--muted)}
+
+/* 02 · tutorial contra proceso real */
+.s2 .top{margin-top:190px}
+.s2 h2{font-size:84px}
+.vs{position:relative;z-index:3;margin-top:70px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.vs div{border-radius:32px;padding:34px 32px 38px}
+.vs .a{background:var(--paper);border:2px solid var(--border)}
+.vs .b{background:var(--ink);color:#fff}
+.vs h3{font:700 32px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;margin-bottom:26px}
+.vs .a h3{color:var(--muted)} .vs .b h3{color:var(--orange)}
+.vs p{font:400 38px/1.25 var(--body);margin-top:20px}
+.vs .a p{color:var(--muted)} .vs .b p{color:#f1e9e2}
+
+/* 03 · la ruta */
+.s3 .top{margin-top:150px}
+.s3 h2{font-size:88px}
+.steps3{position:relative;z-index:3;margin-top:84px}
+.steps3::before{content:"";position:absolute;left:39px;top:60px;bottom:60px;width:6px;background:linear-gradient(180deg,#f75946,#e1556a 55%,#9c5aa7);border-radius:3px}
+.st{position:relative;display:flex;gap:34px;align-items:flex-start;margin-bottom:66px}
+.st:last-child{margin-bottom:0}
+.st i{flex:none;width:84px;height:84px;border-radius:50%;background:var(--ink);border:5px solid var(--orange);font:700 44px/74px var(--display);font-style:normal;text-align:center;color:var(--orange);position:relative;z-index:1}
+.st small{display:block;font:700 30px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-top:4px}
+.st b{display:block;margin-top:12px;font:700 44px/1.12 var(--display);letter-spacing:-.025em}
+
+/* 04 · semana 1 */
+.s4 .chk{position:relative;z-index:3;margin-top:44px}
+.s4 .chk h3,.lbl{font:700 30px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--orangeText);margin-bottom:20px}
+.s4 .chk p{position:relative;padding-left:60px;font:400 38px/1.25 var(--body);margin-bottom:16px}
+.s4 .chk p::before{content:"";position:absolute;left:4px;top:7px;width:30px;height:30px;border-radius:9px;border:4px solid var(--orange)}
+.chips{position:relative;z-index:3;display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.chips span{border:2px solid var(--border);border-radius:999px;padding:14px 26px;font:700 33px/1 var(--display);letter-spacing:-.01em}
+
+/* 05 · semana 2 */
+.map{position:relative;z-index:3;margin-top:34px;border-radius:30px;background:var(--paper);border:2px solid var(--border);overflow:hidden}
+.map .r{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 26px;height:68px;border-top:2px solid #e3dad1;font:400 34px/1.1 var(--body)}
+.map .r:first-child{border-top:0}
+.map .r em{flex:none;font:700 28px/1 var(--display);font-style:normal;letter-spacing:.02em;padding:11px 18px;border-radius:999px}
+.map .t1{background:var(--orange);color:var(--ink)}
+.map .t2{background:#f3d9cb;color:var(--orangeText)}
+.map .t3{background:var(--ink);color:#fff}
+
+/* 06 · semana 3 */
+.s6 .flow6{position:relative;z-index:3;margin-top:44px;display:flex;align-items:center;gap:12px}
+.s6 .flow6 div{flex:1;text-wrap:balance;border:2px solid #4a413a;border-radius:24px;padding:26px 16px;font:700 33px/1.12 var(--display);letter-spacing:-.02em;text-align:center}
+.s6 .flow6 div.on{flex:1.7;background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.s6 .flow6 span{font:700 40px/1 var(--display);color:var(--orange)}
+.rules{position:relative;z-index:3;margin-top:36px}
+.rules p{position:relative;padding-left:58px;font:400 38px/1.25 var(--body);color:#e6dfd8;margin-bottom:16px}
+.rules p::before{content:"";position:absolute;left:4px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--orange)}
+
+/* 07 · semana 4 */
+.cmp7{position:relative;z-index:3;margin-top:40px;border-radius:30px;overflow:hidden;border:2px solid var(--border);background:var(--paper)}
+.cmp7 .row{display:grid;grid-template-columns:1.4fr 1fr 1fr;align-items:center;border-top:2px solid #e3dad1}
+.cmp7 .row:first-child{border-top:0;background:var(--ink);color:#fff}
+.cmp7 .row div{padding:20px 24px;font:700 33px/1.1 var(--display);letter-spacing:-.01em;color:#8f8378}
+.cmp7 .row div:first-child{font:400 33px/1.2 var(--body);color:var(--muted)}
+.cmp7 .row:first-child div{font:700 28px/1 var(--display);color:#fff;letter-spacing:.08em;text-transform:uppercase}
+.cmp7 .row:first-child div:last-child{color:var(--orange)}
+.dec7{position:relative;z-index:3;margin-top:20px;font:400 34px/1.3 var(--body);color:var(--muted)}
+.dec7 b{color:var(--ink);font-family:var(--display)}
+
+/* 08 · CTA variante 19 (recurso, vidrio con símbolo sobre foto de cámara) */
+.s8{background:var(--ink);color:#fff;padding:0}
+.s8 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.s8 .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.88) 0%,rgba(23,19,16,.5) 28%,rgba(23,19,16,0) 48%,rgba(23,19,16,.15) 62%,rgba(23,19,16,.82) 100%)}
+.s8 .h{position:absolute;left:96px;right:96px;top:215px;z-index:3;font:700 100px/1.04 var(--display);letter-spacing:-.035em;text-wrap:balance}
+.s8 .hl{text-shadow:0 0 34px rgba(255,91,0,.55)}
+.s8 .glass{position:absolute;z-index:4;left:96px;top:960px;width:888px;border-radius:64px;color:#fff;display:flex;align-items:center;gap:22px;padding:26px 44px 28px 30px;
+  background:linear-gradient(125deg,rgba(255,255,255,.24),rgba(255,255,255,.06)),rgba(23,19,16,.52);
+  border:1.5px solid rgba(255,255,255,.42);backdrop-filter:blur(22px) saturate(125%);-webkit-backdrop-filter:blur(22px) saturate(125%);
+  box-shadow:0 18px 50px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.5)}
+.s8 .glass img{width:116px;flex:none;margin:-14px -8px -14px -20px}
+.s8 .glass b{display:block;font:700 62px/1.05 var(--display);letter-spacing:-.03em}
+.s8 .glass span.m{display:block;margin-top:8px;font:400 34px/1.3 var(--body);color:#eee6df;text-wrap:balance}
+.kw{color:var(--orange)}
+</style>
+</head>
+<body>
+
+<!-- 01 · Tensión: la pregunta y la ruta en el horizonte -->
+<section class="slide light s1" data-n="1">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">01/08</div>
+  <div class="top">
+    <p class="eyebrow">Ruta · Automatización</p>
+    <h1>¿Cómo se aprende a automatizar <span class="hl">de verdad?</span></h1>
+    <p class="support">Una ruta propuesta de cuatro semanas, con un entregable cada una.</p>
+  </div>
+  <div class="tl">
+    <div><i></i><b>Semana 1</b><span>Medir</span></div>
+    <div><i></i><b>Semana 2</b><span>Mapear</span></div>
+    <div><i></i><b>Semana 3</b><span>Construir</span></div>
+    <div><i></i><b>Semana 4</b><span>Comparar</span></div>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Problema: tutorial contra proceso real -->
+<section class="slide surface s2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">02/08</div>
+  <div class="top">
+    <h2>Un tutorial enseña la herramienta. <span class="hl">Un proceso real enseña a decidir.</span></h2>
+    <div class="vs">
+      <div class="a"><h3>Tutorial</h3><p>Un ejemplo limpio.</p><p>Sin casos raros.</p><p>Nadie espera el resultado.</p></div>
+      <div class="b"><h3>Proceso real</h3><p>Casos con excepciones.</p><p>Alguien lo usa.</p><p>Hay un resultado que medir.</p></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · La ruta completa: cuatro semanas, cuatro entregables -->
+<section class="slide dark s3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">03/08</div>
+  <div class="top">
+    <h2>Cuatro semanas. <span class="hl">Cuatro entregables.</span></h2>
+    <div class="steps3">
+      <div class="st"><i>1</i><p><small>Elegir y medir</small><b>Una hoja con tu proceso medido</b></p></div>
+      <div class="st"><i>2</i><p><small>Mapear</small><b>Un mapa con una decisión por paso</b></p></div>
+      <div class="st"><i>3</i><p><small>Construir</small><b>Una versión mínima que funciona</b></p></div>
+      <div class="st"><i>4</i><p><small>Probar y comparar</small><b>Una tabla comparada y una decisión</b></p></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Semana 1 -->
+<section class="slide light wk s4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">04/08</div>
+  <div class="rail"><i class="on">1</i><i>2</i><i>3</i><i>4</i></div>
+  <div class="top">
+    <p class="eyebrow">Semana 1 · Elegir y medir</p>
+    <h2>Elige un proceso y mide <span class="hl">cómo se hace hoy.</span></h2>
+    <div class="chk">
+      <h3>Elígelo si</h3>
+      <p>Se repite varias veces por semana.</p>
+      <p>Empieza y termina de forma clara.</p>
+      <p>Puedes ver casos reales.</p>
+    </div>
+    <div class="chips"><h3 class="lbl" style="width:100%;margin:0 0 6px">Mide</h3><span>Minutos por caso</span><span>Casos corregidos</span></div>
+  </div>
+  <div class="deliv"><small>Entregable</small><b>Una hoja con el proceso, qué es “bien hecho” y la medición de unos 10 casos reales.</b></div>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · Semana 2 -->
+<section class="slide surface wk s5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/08</div>
+  <div class="rail"><i class="done">1</i><i class="on">2</i><i>3</i><i>4</i></div>
+  <div class="top">
+    <div class="erow"><p class="eyebrow">Semana 2 · Mapear</p><span class="pill">Ejemplo hipotético</span></div>
+    <h2>Mapea los pasos y decide <span class="hl">cuáles automatizar.</span></h2>
+    <div class="map">
+      <div class="r"><span>Llega la solicitud por correo</span><em class="t1">Automatizar</em></div>
+      <div class="r"><span>Copiar los datos a una hoja</span><em class="t1">Automatizar</em></div>
+      <div class="r"><span>Revisar si falta algo</span><em class="t2">IA + revisión</em></div>
+      <div class="r"><span>Redactar la respuesta</span><em class="t2">IA + revisión</em></div>
+      <div class="r"><span>Resolver un caso especial</span><em class="t3">Manual</em></div>
+    </div>
+  </div>
+  <div class="deliv"><small>Entregable</small><b>Un mapa de pasos con cada paso marcado: automatizar, asistir o dejar manual.</b></div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 06 · Semana 3 -->
+<section class="slide dark wk s6" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">06/08</div>
+  <div class="rail"><i class="done">1</i><i class="done">2</i><i class="on">3</i><i>4</i></div>
+  <div class="top">
+    <p class="eyebrow">Semana 3 · Construir</p>
+    <h2>Construye la versión <span class="hl">más pequeña que funcione.</span></h2>
+    <div class="flow6">
+      <div>Un caso real</div><span>→</span><div class="on">Bajo código o asistente de IA</div><span>→</span><div>Resultado revisado</div>
+    </div>
+    <div class="rules">
+      <p>Un solo tipo de caso.</p>
+      <p>De punta a punta, aunque sea feo.</p>
+      <p>Una persona revisa cada resultado.</p>
+    </div>
+  </div>
+  <div class="deliv"><small>Entregable</small><b>Una versión mínima que procesa un caso real de punta a punta.</b></div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 07 · Semana 4 -->
+<section class="slide light wk s7" data-n="7">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">07/08</div>
+  <div class="rail"><i class="done">1</i><i class="done">2</i><i class="done">3</i><i class="on">4</i></div>
+  <div class="top">
+    <p class="eyebrow">Semana 4 · Probar y comparar</p>
+    <h2>Prueba con casos reales y <span class="hl">compara con lo medido.</span></h2>
+    <div class="cmp7">
+      <div class="row"><div></div><div>Semana 1</div><div>Semana 4</div></div>
+      <div class="row"><div>Minutos por caso</div><div>tu dato</div><div>tu dato</div></div>
+      <div class="row"><div>Casos a corregir</div><div>tu dato</div><div>tu dato</div></div>
+    </div>
+    <p class="dec7">Mide igual que en la semana 1 y suma el tiempo de revisar. Decisión: <b>seguir, ajustar o dejarlo.</b></p>
+  </div>
+  <div class="deliv"><small>Entregable</small><b>La tabla comparada y una decisión escrita.</b></div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 08 · CTA (variante 19: vidrio con símbolo sobre foto de cámara, recurso con palabra clave RUTA) -->
+<section class="slide s8" data-n="8">
+  <img class="bg" src="assets/08-cta-camara.jpg" alt="Una cámara sobre un trípode en un cuarto naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">08/08</div>
+  <h2 class="h">Cuatro semanas. <span class="hl">Un proceso real.</span></h2>
+  <div class="glass"><img src="../../brandkit/assets/plogy-symbol.svg" alt=""><div><b>Comenta <span class="kw">RUTA</span></b><span class="m">y te mandamos la guía y la lista de comprobación semanal.</span></div></div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

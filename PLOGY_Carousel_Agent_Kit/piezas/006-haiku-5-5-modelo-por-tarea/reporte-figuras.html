@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Figuras del reporte · pieza 006</title>
+<!-- Figuras 1600x900 para reporte.md. Se exportan a assets/reporte/ con render-slides.ps1 (-Param f -Width 1600 -Height 900).
+     Cifras de modelos, precios y pruebas: Anthropic (anuncio del 7 de octubre de 2026, ficha del modelo y tabla de modelos de su documentación), consultados el 2026-10-20.
+     Matriz, prueba de 20 casos y plantilla: criterio de Plogy. El ejemplo hipotético tiene cifras inventadas y la figura lo dice. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--orange:#ff5b00;--orangeText:#b43d00;--muted:#625951;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:#888;font-family:var(--body);color:var(--ink)}
+.fig{position:relative;width:1600px;height:900px;overflow:hidden;padding:72px 80px;display:none}
+body:not(.single) .fig{display:block;margin-bottom:20px;zoom:.5}
+body.single .fig{display:block}
+.light{background:#fff}.surface{background:var(--surface)}.dark{background:var(--ink);color:#fff}
+.logo{position:absolute;right:80px;top:64px;width:190px}
+.src{position:absolute;left:80px;bottom:40px;right:80px;font:500 22px/1.3 var(--body);color:var(--muted)}
+.dark .src{color:#bdb2a8}
+.eyebrow{font:700 24px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText)}
+.dark .eyebrow{color:var(--orange)}
+h2{font:700 60px/1.05 var(--display);letter-spacing:-.035em;margin-top:16px;max-width:1180px}
+.hl{color:var(--orange)}
+.tag{display:inline-block;background:var(--orange);color:var(--ink);font:700 24px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border-radius:999px}
+/* portada */
+.hero h1{font:700 118px/.98 var(--display);letter-spacing:-.045em;margin-top:34px;max-width:1300px;position:relative}
+.hero .glow{position:absolute;right:-620px;top:-260px;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ff5b00 0%,#d63a52 38%,#6a3dd1 68%,rgba(23,19,16,0) 72%);opacity:.9}
+.hero .meta{position:absolute;left:80px;bottom:56px;font:500 28px/1.3 var(--body);color:#d9cfc6}
+.hero .logo{left:80px;right:auto}
+.hero .eyebrow{margin-top:120px;position:relative}
+/* tablas generales */
+table{border-collapse:separate;border-spacing:0;background:#fff;border:2px solid var(--border);border-radius:24px;overflow:hidden;width:100%}
+th,td{text-align:left;padding:16px 22px;border-bottom:2px solid #eee6df;vertical-align:middle}
+tr:last-child td{border-bottom:0}
+th{background:var(--ink);color:#fff;font:700 22px/1.1 var(--display);letter-spacing:.06em;text-transform:uppercase}
+/* ficha de modelos */
+.t1{margin-top:34px;font:500 26px/1.25 var(--body)}
+.t1 td:first-child{font:700 38px/1 var(--display);letter-spacing:-.025em}
+.t1 td:first-child small{display:block;margin-top:6px;font:700 22px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--orangeText)}
+.t1 td.n{font:700 36px/1 var(--display);letter-spacing:-.03em}
+.t1 tr.on td{background:#fff3ea}
+.t1 td.d{color:var(--muted);font-size:25px}
+.note{margin-top:22px;font:500 25px/1.4 var(--body);color:var(--muted);max-width:1440px}
+/* brecha */
+.gb{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:40px}
+.gb .t{font:700 36px/1.1 var(--display);letter-spacing:-.02em}
+.gb .t small{display:block;margin-top:6px;font:500 24px/1.2 var(--body);color:var(--muted);letter-spacing:0}
+.br{display:flex;align-items:center;gap:16px;margin-top:20px}
+.br .n{flex:none;width:170px;font:700 26px/1 var(--display);color:var(--muted)}
+.br .tr{flex:1;height:66px;position:relative;background:#f1ebe5;border-radius:14px}
+.br .fill{height:100%;border-radius:14px}
+.br .v{position:absolute;top:50%;transform:translateY(-50%);right:18px;font:700 36px/1 var(--display);letter-spacing:-.02em}
+.br.s .fill{background:var(--ink)} .br.s .v{color:#fff}
+.br.h .fill{background:var(--orange)} .br.h .v{color:var(--ink)}
+.gp{margin-top:18px;margin-left:186px;font:700 32px/1 var(--display);color:var(--orangeText);letter-spacing:-.01em}
+.warn{margin-top:46px;display:flex;gap:18px;align-items:flex-start;background:var(--surface);border-radius:22px;padding:22px 28px;font:500 27px/1.4 var(--body);max-width:1440px}
+.warn b{color:var(--orangeText)}
+/* matriz */
+.t2{margin-top:24px;font:500 24px/1.28 var(--body);table-layout:fixed}
+.t2 th,.t2 td{padding:11px 20px}
+.t2 th:nth-child(1){width:33%}.t2 th:nth-child(2){width:20%}.t2 th:nth-child(3){width:25%}
+.t2 td:first-child b{display:block;font:700 31px/1.05 var(--display);letter-spacing:-.025em}
+.t2 td:first-child span{display:block;margin-top:4px;color:var(--muted);font-size:23px}
+.t2 td.m{font:700 27px/1.15 var(--display);letter-spacing:-.02em;color:var(--orangeText)}
+.t2 td.m .d{display:flex;align-items:flex-end;gap:7px;margin-bottom:8px}
+.t2 td.m .d i{display:block;border-radius:50%;border:3px solid #b9aca0}
+.t2 td.m .d i:nth-child(1){width:16px;height:16px}.t2 td.m .d i:nth-child(2){width:23px;height:23px}.t2 td.m .d i:nth-child(3){width:32px;height:32px}
+.t2 td.m .d i.on{background:var(--orange);border-color:var(--orange)}
+/* prueba */
+.flow{display:flex;gap:18px;margin-top:40px;align-items:stretch}
+.st{flex:1;border-radius:24px;padding:28px 26px;background:#fff;border:2px solid var(--border)}
+.st i{display:block;font:700 62px/1 var(--display);font-style:normal;color:var(--orange)}
+.st b{display:block;margin-top:12px;font:700 32px/1.12 var(--display);letter-spacing:-.02em}
+.st span{display:block;margin-top:12px;font:500 24px/1.35 var(--body);color:var(--muted)}
+.dark .st{background:#221b17;border-color:#3b332d}.dark .st span{color:#d8cfc6}
+.band{margin-top:28px;border-radius:22px;padding:22px 30px;background:var(--orange);color:var(--ink);font:700 30px/1.25 var(--display);letter-spacing:-.02em}
+.band small{display:block;margin-top:6px;font:500 24px/1.3 var(--body);letter-spacing:0}
+/* ejemplo */
+.t3{margin-top:30px;font:500 26px/1.2 var(--body)}
+.t3 td:first-child{font:700 30px/1.1 var(--display);letter-spacing:-.02em}
+.t3 td.c{text-align:center;font:700 34px/1 var(--display);letter-spacing:-.02em;white-space:nowrap}
+.t3 th.c{text-align:center}
+.t3 td.k{color:#8a8078;font:500 22px/1.1 var(--body);letter-spacing:0}
+.t3 td.ok{color:var(--orangeText)}
+.t3 td.fail{color:#8a8078}
+.t3 td.dec{font:700 28px/1.15 var(--display);letter-spacing:-.02em;color:var(--orangeText)}
+.leg{margin-top:20px;font:500 25px/1.4 var(--body);color:var(--muted)}
+/* plantilla */
+.tp{margin-top:28px;font:500 22px/1.2 var(--body)}
+.tp th{padding:14px 12px;font-size:19px}
+.tp td{height:64px;padding:8px 12px;color:#b4a99f;border-right:2px solid #eee6df}
+.tp td:first-child{color:var(--muted);font-weight:700;width:70px}
+.tp th:not(:last-child){border-right:1px solid #3b332d}
+.tp td:last-child{border-right:0}
+.tp td.c{text-align:center}
+.tot{margin-top:18px;font:700 28px/1.2 var(--display);letter-spacing:-.02em}
+.tot span{color:var(--orangeText)}
+</style>
+</head>
+<body>
+
+<!-- 1. Portada -->
+<section class="fig dark hero" data-f="portada">
+  <div class="glow"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow">Reporte de Plogy · Modelos de IA</div>
+  <h1>Un modelo por tarea.<br><span class="hl">Decide con 20 casos.</span></h1>
+  <div class="meta">Claude Haiku 5.5 y cómo asignar modelo a cada tarea · versión 2026-10-20 · borrador</div>
+</section>
+
+<!-- 2. Ficha: los tres tamaños de Anthropic -->
+<section class="fig surface" data-f="ficha">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Qué pasó</div>
+  <h2>Haiku 5.5 es el modelo <span class="hl">más chico y más rápido</span> de Anthropic</h2>
+  <table class="t1">
+    <tr><th>Modelo</th><th>Entrada</th><th>Salida</th><th>Latencia</th><th>Cómo lo describe Anthropic</th></tr>
+    <tr class="on"><td>Haiku 5.5<small>Lanzado el 7 de octubre de 2026</small></td><td class="n">$0,10</td><td class="n">$0,50</td><td class="d">La más rápida</td><td class="d">Tareas de alto volumen y baja latencia: clasificación, extracción y enrutamiento</td></tr>
+    <tr><td>Sonnet 5.5<small>Lanzado el 28 de septiembre</small></td><td class="n">$2</td><td class="n">$10</td><td class="d">Rápida</td><td class="d">La mejor combinación de velocidad e inteligencia</td></tr>
+    <tr><td>Opus 5.5<small>Lanzado el 22 de septiembre</small></td><td class="n">$4</td><td class="n">$20</td><td class="d">Moderada</td><td class="d">Programación agéntica de larga duración y trabajo de conocimiento</td></tr>
+  </table>
+  <div class="note">Precio por millón de tokens. Los tres tienen contexto de 1 millón de tokens y salida máxima de 128.000. El precio de Haiku 5.5 vale para prompts de hasta 100.000 tokens; por encima cuesta $0,50 de entrada y $2,50 de salida.</div>
+  <div class="src">Fuente: Anthropic, anuncio de Haiku 5.5, tabla de modelos y ficha del modelo en su documentación, consultados el 2026-10-20. Anthropic vende estos modelos.</div>
+</section>
+
+<!-- 3. La brecha según la tarea -->
+<section class="fig light" data-f="brecha">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Lo que mide Anthropic</div>
+  <h2>La brecha <span class="hl">cambia según la tarea</span></h2>
+  <div class="gb">
+    <div>
+      <div class="t">Código agéntico<small>Terminal-Bench 4.0</small></div>
+      <div class="br s"><div class="n">Sonnet 5.5</div><div class="tr"><div class="fill" style="width:70.6%"></div><span class="v" style="right:auto;left:calc(70.6% - 130px)">70,6%</span></div></div>
+      <div class="br h"><div class="n">Haiku 5.5</div><div class="tr"><div class="fill" style="width:39.2%"></div><span class="v" style="right:auto;left:calc(39.2% - 130px)">39,2%</span></div></div>
+      <div class="gp">31,4 puntos de diferencia</div>
+    </div>
+    <div>
+      <div class="t">Uso de computador<small>OSWorld 2.1, subconjunto sin conexión</small></div>
+      <div class="br s"><div class="n">Sonnet 5.5</div><div class="tr"><div class="fill" style="width:83.9%"></div><span class="v" style="right:auto;left:calc(83.9% - 130px)">83,9%</span></div></div>
+      <div class="br h"><div class="n">Haiku 5.5</div><div class="tr"><div class="fill" style="width:72.4%"></div><span class="v" style="right:auto;left:calc(72.4% - 130px)">72,4%</span></div></div>
+      <div class="gp">11,5 puntos de diferencia</div>
+    </div>
+  </div>
+  <div class="warn"><span><b>Cómo leerlo.</b> Son pruebas de Anthropic, corridas por Anthropic, y no incluyen tus tareas. Anthropic dice que Sonnet 5.5 y Opus 5.5 siguen siendo mejores para tareas de código agéntico como las de Terminal-Bench 4.0. Lo que sí enseñan: la diferencia entre modelos no es una sola cifra.</span></div>
+  <div class="src">Fuente: Anthropic, anuncio de Haiku 5.5 (7 de octubre de 2026), consultado el 2026-10-20. Sonnet 5.5 aparece como referencia. Sin verificación independiente.</div>
+</section>
+
+<!-- 4. Matriz tarea a modelo -->
+<section class="fig surface" data-f="matriz">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Criterio de Plogy</div>
+  <h2>La matriz: <span class="hl">de la tarea al modelo</span></h2>
+  <table class="t2">
+    <tr><th>Tipo de tarea</th><th>Empieza con</th><th>Sube de nivel si</th><th>Bien hecho significa</th></tr>
+    <tr><td><b>Clasificar y enrutar</b><span>Etiquetar un correo, asignar un ticket</span></td><td class="m"><div class="d"><i class="on"></i><i></i><i></i></div>Pequeño</td><td>Falla en los casos ambiguos, aun con más esfuerzo</td><td>La etiqueta coincide con la que pondría tu equipo</td></tr>
+    <tr><td><b>Extraer y resumir</b><span>Datos de una factura, resumen de una llamada</span></td><td class="m"><div class="d"><i class="on"></i><i></i><i></i></div>Pequeño</td><td>Se equivoca en cifras u omite datos</td><td>Campos correctos y nada inventado</td></tr>
+    <tr><td><b>Consultar y responder</b><span>Estado de un pedido, atención al cliente</span></td><td class="m"><div class="d"><i class="on"></i><i class="on"></i><i></i></div>Pequeño o intermedio</td><td>Responde sin el dato real o consulta el dato equivocado</td><td>Respuesta correcta, con el dato de tu sistema</td></tr>
+    <tr><td><b>Razonar y decidir</b><span>Un caso con muchas reglas, un agente con varios pasos</span></td><td class="m"><div class="d"><i></i><i class="on"></i><i class="on"></i></div>Intermedio o grande</td><td>Falla con el esfuerzo alto: pasa al siguiente tamaño</td><td>Decisión correcta y explicada, con revisión humana</td></tr>
+  </table>
+  <div class="src">Criterio de Plogy. Es un punto de partida que se prueba, no un veredicto. No lo hemos aplicado a un cliente. Pequeño, intermedio y grande: por ejemplo Haiku 5.5, Sonnet 5.5 y Opus 5.5.</div>
+</section>
+
+<!-- 5. La prueba de 20 casos -->
+<section class="fig dark" data-f="prueba">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow">Criterio de Plogy</div>
+  <h2>La prueba de <span class="hl">20 casos reales</span>, por tarea</h2>
+  <div class="flow">
+    <div class="st"><i>1</i><b>Reúne 20 casos</b><span>Reales, de tus propios registros. Incluye los 3 más raros.</span></div>
+    <div class="st"><i>2</i><b>Define el umbral</b><span>Qué cuenta como bien hecho y cuántos aciertos aceptas, antes de correr nada.</span></div>
+    <div class="st"><i>3</i><b>Corre el modelo pequeño</b><span>Cuenta los aciertos y anota qué falló y por qué.</span></div>
+    <div class="st"><i>4</i><b>Sube solo si no llega</b><span>Primero el esfuerzo del mismo modelo. Después el siguiente tamaño. Repite los 20.</span></div>
+  </div>
+  <div class="band">Repite la prueba cuando salga un modelo nuevo o cambies el prompt.<small>Anthropic aconseja algo parecido en su guía para equilibrar costo e inteligencia: repetir las pruebas en cada lanzamiento.</small></div>
+  <div class="src">Criterio de Plogy. Veinte es una referencia práctica, no una regla estadística. El consejo de repetir las pruebas en cada lanzamiento es de Anthropic (documentación, consultada el 2026-10-20).</div>
+</section>
+
+<!-- 6. Ejemplo hipotético -->
+<section class="fig light" data-f="ejemplo">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Una pyme imaginaria</div>
+  <h2>Tres tareas, <span class="hl">tres decisiones distintas</span></h2>
+  <table class="t3">
+    <tr><th>Tarea</th><th class="c">Umbral</th><th class="c">Pequeño</th><th class="c">Pequeño, esfuerzo alto</th><th class="c">Intermedio</th><th>Decisión</th></tr>
+    <tr><td>Clasificar correos de soporte</td><td class="c">19 de 20</td><td class="c ok">19</td><td class="c k">sin probar</td><td class="c k">sin probar</td><td class="dec">Pequeño</td></tr>
+    <tr><td>Extraer totales de facturas</td><td class="c">20 de 20</td><td class="c fail">19</td><td class="c ok">20</td><td class="c k">sin probar</td><td class="dec">Pequeño, esfuerzo alto</td></tr>
+    <tr><td>Responder el estado de un pedido</td><td class="c">19 de 20</td><td class="c fail">15</td><td class="c fail">17</td><td class="c ok">19</td><td class="dec">Intermedio</td></tr>
+  </table>
+  <div class="leg">Sin probar quiere decir que no hizo falta. El umbral se fijó antes de correr la prueba.</div>
+  <div style="margin-top:22px"><span class="tag">Ejemplo hipotético · cifras inventadas</span></div>
+  <div class="src">Cifras inventadas por Plogy para mostrar el método. No son de ningún cliente ni de ninguna prueba real.</div>
+</section>
+
+<!-- 7. Plantilla -->
+<section class="fig surface" data-f="plantilla">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">La plantilla</div>
+  <h2>Una fila por caso, <span class="hl">una columna por modelo</span></h2>
+  <table class="tp">
+    <tr><th>Caso</th><th>Común o raro</th><th>Qué entró</th><th>Respuesta esperada</th><th>Pequeño</th><th>Esfuerzo alto</th><th>Intermedio</th><th>Qué falló</th></tr>
+    <tr><td>1</td><td>común</td><td>texto del caso</td><td>lo que debía salir</td><td class="c">sí / no</td><td class="c">sí / no</td><td class="c">sí / no</td><td>nota breve</td></tr>
+    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>…</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>20</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <div class="tot">Umbral: <span>___ de 20</span> · Aciertos del pequeño: <span>___</span> · con esfuerzo alto: <span>___</span> · intermedio: <span>___</span></div>
+  <div class="src">Criterio de Plogy. Se llena una columna a la vez, de izquierda a derecha, y solo hasta que un modelo llegue al umbral.</div>
+</section>
+
+<script>
+var q=new URLSearchParams(location.search).get('f');
+if(q){document.body.classList.add('single');document.querySelectorAll('.fig').forEach(function(e){if(e.dataset.f!==q)e.style.display='none';});}
+</script>
+</body>
+</html>

@@ -1,0 +1,1489 @@
+me: plogy-content-narrative-language-system
+version: 1.0
+purpose: Definir cómo debe sonar, avanzar y sostener la atención una pieza de contenido de Plogy en formato carrusel o reel, sin sustituir la clasificación, investigación o estrategia semanal.
+scope:
+
+• carruseles
+• reels
+• scripts
+• libretos
+• adaptación narrativa de ideas ya aprobadas
+• lenguaje
+• nivel de tecnicismo
+• progresión narrativa
+• intención visual/editorial por bloque
+• caption final con SEO
+excludes:
+• investigación web
+• selección de tendencias
+• clasificación editorial primaria
+• estrategia de canales
+• calendarización semanal
+• diseño gráfico final
+• edición de video final
+requires_context_when_available:
+• plogy-content-classifier
+• plogy-weekly-content-orchestrator
+• research packet de la pieza
+
+────────
+
+PLOGY CONTENT NARRATIVE & LANGUAGE SYSTEM
+
+1. FUNCIÓN
+
+Este skill gobierna cómo se expresa una pieza de contenido de Plogy.
+
+Su responsabilidad no es decidir qué tema publicar ni investigar si un dato es cierto.
+
+Su responsabilidad comienza cuando ya existe, idealmente:
+
+• una idea;
+• una temática;
+• una referencia;
+• un libreto preliminar;
+• una clasificación;
+• una investigación;
+• una intención narrativa.
+
+Este skill transforma ese material en una pieza cuya:
+
+• voz sea reconocible como Plogy;
+• complejidad sea adecuada para la audiencia;
+• narrativa mantenga interés;
+• información sea comprensible;
+• progresión obligue a querer continuar;
+• forma visual o audiovisual acompañe el significado;
+• conclusión deje una idea clara;
+• caption quede listo para publicar.
+
+────────
+
+2. PRINCIPIO RECTOR
+
+> La claridad no significa simplificar la idea hasta volverla obvia.
+
+Plogy debe poder explicar conceptos complejos sin sonar:
+
+• académico;
+• corporativo;
+• condescendiente;
+• excesivamente técnico;
+• genérico;
+• superficial.
+
+La pieza debe lograr simultáneamente:
+
+CLARITY
++
+TENSION
++
+PROGRESSION
++
+PAYOFF
+
+No basta con que una pieza se entienda.
+
+Debe generar suficiente curiosidad para que la persona:
+
+• pase al siguiente slide;
+• continúe viendo el reel;
+• quiera conocer la consecuencia;
+• espere la resolución de la idea.
+
+────────
+
+3. UNIDAD NARRATIVA
+
+CARRUSEL
+
+La unidad narrativa NO es cada slide individual.
+
+La unidad narrativa es:
+
+> el carrusel completo.
+
+Cada slide cumple una función dentro de una secuencia.
+
+Un slide no debe intentar:
+
+• abrir;
+• explicar;
+• resolver;
+• contextualizar;
+• concluir
+
+todo al mismo tiempo.
+
+La pregunta obligatoria para cada slide es:
+
+> ¿Qué hace este slide para que el siguiente sea necesario?
+
+────────
+
+REEL
+
+La unidad narrativa NO es cada frase.
+
+La unidad narrativa es:
+
+> la experiencia completa de visualización.
+
+Cada segmento debe producir al menos una de estas cosas:
+
+• abrir una tensión;
+• aumentar una tensión;
+• aportar una pieza de contexto;
+• cambiar la interpretación;
+• demostrar;
+• revelar;
+• resolver;
+• abrir una nueva implicación.
+
+La pregunta obligatoria para cada bloque es:
+
+> ¿Por qué la persona debería quedarse cinco segundos más?
+
+────────
+
+4. VOZ BASE DE PLOGY
+
+Plogy debe sonar:
+
+• joven;
+• preciso;
+• curioso;
+• builder;
+• directo;
+• ambicioso;
+• anti humo;
+• cercano;
+• inteligente sin intentar demostrarlo;
+• técnico cuando hace falta;
+• simple cuando puede serlo;
+• inconforme con respuestas genéricas.
+
+No debe sonar:
+
+• institucional;
+• burocrático;
+• académico;
+• solemne;
+• vendedor agresivo;
+• gurú;
+• motivacional vacío;
+• cuenta genérica de noticias de IA;
+• manual de software;
+• consultora corporativa.
+
+────────
+
+5. PRINCIPIO DE LENGUAJE
+
+CRISTIANO POR DEFECTO
+
+La primera formulación debe privilegiar comprensión.
+
+Si una frase puede expresarse con palabras cotidianas sin perder precisión:
+
+usar la versión cotidiana.
+
+No reemplazar lenguaje claro por jerga para sonar experto.
+
+────────
+
+PRECISIÓN CUANDO IMPORTA
+
+No simplificar hasta perder significado.
+
+Cuando un término técnico sea la palabra correcta:
+
+se puede usar.
+
+Ejemplos:
+
+• agent;
+• workflow;
+• API;
+• prompt;
+• context window;
+• RAG;
+• inference;
+• automation;
+• model;
+• token;
+• fine-tuning.
+
+Pero el término debe ganarse su lugar.
+
+────────
+
+6. ANGLICISMOS
+
+Los anglicismos están permitidos.
+
+No existe una regla de “traducir todo”.
+
+Se permite mantener un término en inglés cuando:
+
+1. es el término que realmente utiliza la industria;
+2. traducirlo empeora la claridad;
+3. la audiencia probablemente lo encontrará fuera de la pieza;
+4. tiene valor conceptual;
+5. sirve para introducir vocabulario útil.
+
+Pero se debe evitar usar anglicismos únicamente para sonar actualizado.
+
+────────
+
+REGLA DE INTRODUCCIÓN
+
+Cuando un término pueda generar fricción:
+
+usar uno de estos mecanismos.
+
+A. DEFINICIÓN BREVE
+
+> Un agent: un sistema que no solo responde, sino que puede decidir qué acción ejecutar.
+
+B. ALEGORÍA
+
+> Piensa en un workflow como una línea de ensamblaje digital.
+
+C. CONTEXTO
+
+> Cuando decimos RAG, hablamos de darle al modelo acceso a información específica antes de responder.
+
+D. EJEMPLO
+
+> Un API es lo que permite que tu CRM le pase información a otro sistema sin que alguien copie y pegue datos.
+
+No interrumpir el ritmo con definiciones de diccionario.
+
+────────
+
+7. DENSIDAD TÉCNICA
+
+La tecnicidad no depende solamente del tema.
+
+Depende principalmente de:
+
+• pilar;
+• audiencia;
+• función narrativa;
+• conocimiento necesario para entender la idea.
+
+Usar tres niveles.
+
+T1 — BAJA FRICCIÓN
+
+Características:
+
+• lenguaje cotidiano;
+• cero prerequisitos;
+• conceptos técnicos traducidos;
+• ejemplos concretos;
+• analogías cuando ayuden.
+
+Usar cuando:
+
+• la idea es Filosofía;
+• la pieza busca abrir una categoría;
+• el concepto técnico no es el protagonista;
+• la audiencia es amplia;
+• el objetivo principal es comprensión.
+
+────────
+
+T2 — TÉCNICO EXPLICADO
+
+Características:
+
+• términos técnicos permitidos;
+• definición por contexto;
+• vocabulario real de builders;
+• conceptos aplicados a negocios;
+• detalle suficiente para aprender algo real.
+
+Este es el nivel por defecto para buena parte de Knowledge.
+
+────────
+
+T3 — NATIVO / BUILDER
+
+Características:
+
+• mayor densidad técnica;
+• menos explicación de conceptos básicos;
+• arquitectura;
+• decisiones de implementación;
+• trade-offs;
+• integraciones;
+• procesos;
+• límites.
+
+Usar solamente cuando el valor de la pieza depende de esa profundidad.
+
+Nunca elevar tecnicidad solo para impresionar.
+
+────────
+
+8. DENSIDAD POR PILAR
+
+FILOSOFÍA
+
+Objetivo lingüístico:
+
+> hacer pensar.
+
+Priorizar:
+
+• tensiones;
+• contradicciones;
+• principios;
+• analogías;
+• frases memorables;
+• consecuencias.
+
+Nivel técnico habitual:
+
+T1 o T2.
+
+No convertir una pieza filosófica en clase técnica.
+
+Una pieza de Filosofía debería dejar algo parecido a:
+
+> Nunca lo había pensado así.
+
+o:
+
+> Yo también creo eso, pero no sabía cómo decirlo.
+
+────────
+
+CONOCIMIENTO
+
+Objetivo lingüístico:
+
+> hacer entender.
+
+Priorizar:
+
+• precisión;
+• contexto;
+• ejemplos;
+• mecanismos;
+• decisiones;
+• pasos;
+• trade-offs;
+• aplicación.
+
+Nivel técnico habitual:
+
+T2.
+
+Puede subir a T3 cuando sea necesario.
+
+No reducir Knowledge a:
+
+• listas de tips;
+• definiciones;
+• resúmenes de herramientas;
+• tutoriales sin criterio.
+
+La pieza debe transmitir:
+
+> ahora entiendo cómo pensar sobre esto.
+
+No solamente:
+
+> aprendí dónde hacer clic.
+
+────────
+
+DOCUMENTAL
+
+Objetivo lingüístico:
+
+> hacer sentir que está ocurriendo.
+
+Priorizar:
+
+• hechos;
+• decisiones;
+• momentos;
+• tensión real;
+• dudas;
+• errores;
+• aprendizajes;
+• consecuencias.
+
+Nivel técnico:
+
+el que la historia requiera.
+
+No sobreexplicar lo que la imagen, video o situación ya demuestra.
+
+Documental debe sentirse observado, no fabricado.
+
+────────
+
+9. AUDIENCIAS
+
+NEGOCIOS
+
+Asumir:
+
+• poco tiempo;
+• conocimiento variable de IA;
+• alta sensibilidad a resultados;
+• interés en claridad;
+• baja tolerancia a jerga gratuita.
+
+Traducir tecnología a:
+
+• tiempo;
+• dinero;
+• capacidad;
+• riesgo;
+• proceso;
+• resultado;
+• velocidad;
+• calidad;
+• foco.
+
+No infantilizar.
+
+No asumir que “negocio” significa “no técnico”.
+
+────────
+
+PLOGGERS
+
+Asumir:
+
+• curiosidad;
+• mayor disposición a aprender términos;
+• interés por cómo se construye;
+• interés por habilidades transferibles;
+• deseo de mejorar capacidad práctica.
+
+Puede aumentarse la densidad técnica.
+
+Pero la claridad sigue siendo obligatoria.
+
+────────
+
+AMBOS
+
+Construir una capa común:
+
+> problema → capacidad → implementación → consecuencia.
+
+Evitar escribir una mitad para cada audiencia.
+
+La misma idea debe poder ser leída desde ambos lados.
+
+────────
+
+10. PROGRESIÓN NARRATIVA
+
+Toda pieza debe tener una curva.
+
+No existe una única fórmula obligatoria, pero debe haber progresión perceptible.
+
+Arquitectura recomendada:
+
+TENSION
+→
+COMPLICATION
+→
+REFRAME
+→
+DEVELOPMENT
+→
+PROOF / EXAMPLE
+→
+PAYOFF
+→
+IMPLICATION
+
+Puede comprimirse o expandirse.
+
+────────
+
+11. HOOK
+
+El hook no existe para resumir la pieza.
+
+Existe para abrir una deuda narrativa.
+
+Debe generar al menos una de estas preguntas:
+
+• ¿por qué?
+• ¿cómo?
+• ¿qué pasó?
+• ¿qué estoy entendiendo mal?
+• ¿cuál es la consecuencia?
+• ¿qué viene después?
+• ¿cómo lo resolverían?
+
+Evitar hooks que ya entregan todo.
+
+Evitar:
+
+• “5 herramientas para…”
+• “Te explicamos…”
+• “¿Sabías que…?”
+• “La inteligencia artificial está cambiando el mundo.”
+• “Hoy te contamos…”
+
+Preferir:
+
+• contradicción;
+• observación inesperada;
+• consecuencia;
+• problema;
+• dato con implicación;
+• idea contraintuitiva;
+• escena.
+
+────────
+
+12. OPEN LOOPS
+
+Una pieza puede mantener atención dejando preguntas abiertas.
+
+Pero:
+
+> open loop no significa clickbait.
+
+Debe existir resolución real.
+
+Ejemplo:
+
+Slide 1:
+
+> Automatizamos el proceso equivocado.
+
+Slide 2:
+
+> Y funcionó perfectamente.
+
+Slide 3:
+
+> Ese fue exactamente el problema.
+
+La secuencia crea tensión sin mentir.
+
+────────
+
+13. REGLA DE RECOMPENSA
+
+Cada avance debe recompensar el anterior.
+
+Si S1 abre una pregunta:
+
+S2 debe añadir valor.
+
+No puede simplemente reformular el hook.
+
+Si el primer bloque de un reel promete una revelación:
+
+la pieza debe llegar a ella.
+
+No retener información artificialmente.
+
+────────
+
+14. CARRUSELES — ARQUITECTURA
+
+No imponer siempre el mismo número de slides.
+
+El número debe responder a la idea.
+
+Como referencia:
+
+7–10 slides suele permitir desarrollar una tesis con buen ritmo.
+
+────────
+
+FUNCIÓN POSIBLE POR SLIDE
+
+S1:
+tensión / vacío / contradicción.
+
+S2:
+recompensa inicial / complicación.
+
+S3:
+contexto esencial.
+
+S4:
+reframe o giro.
+
+S5:
+mecanismo / explicación.
+
+S6:
+ejemplo / evidencia / aplicación.
+
+S7:
+consecuencia.
+
+S8:
+síntesis.
+
+S9:
+implicación.
+
+S10:
+cierre / CTA cuando corresponda.
+
+No usar esta estructura de manera mecánica.
+
+────────
+
+15. CARRUSELES — REGLA DE UNA IDEA
+
+Cada slide debe tener una idea dominante.
+
+Si necesita:
+
+• “además”;
+• “también”;
+• “por otro lado”;
+• tres párrafos;
+
+probablemente contiene más de una función.
+
+Dividir.
+
+────────
+
+16. CARRUSELES — LECTURA RÁPIDA
+
+El texto debe poder leerse de forma natural en pocos segundos.
+
+Preferir:
+
+• frases breves;
+• estructuras concretas;
+• verbos activos;
+• palabras específicas;
+• espacio para respirar.
+
+No confundir profundidad con cantidad de palabras.
+
+────────
+
+17. REELS — ARQUITECTURA
+
+El reel debe escribirse por bloques narrativos, no por párrafos.
+
+Ejemplo de estructura:
+
+0–3s:
+tensión.
+
+3–8s:
+contexto mínimo.
+
+8–18s:
+desarrollo.
+
+18–30s:
+giro / mecanismo.
+
+30–45s:
+ejemplo / prueba.
+
+45–60s:
+payoff / implicación.
+
+La duración real puede variar.
+
+No rellenar tiempo.
+
+────────
+
+18. REELS — ORALIDAD
+
+El texto debe poder decirse.
+
+No escribir como artículo.
+
+Preferir:
+
+• respiraciones naturales;
+• frases que una persona diría;
+• variación de longitud;
+• énfasis;
+• pequeñas pausas;
+• cambios de ritmo.
+
+Leer mentalmente el libreto como voz.
+
+Si suena escrito:
+
+reescribir.
+
+────────
+
+19. INTENCIÓN VISUAL Y EDITORIAL
+
+Este skill NO diseña la pieza.
+
+Sí debe señalar qué función visual debería acompañar cada momento.
+
+La nota visual debe describir intención.
+
+No debe imponer estética final salvo que exista un sistema visual específico conectado.
+
+────────
+
+CATEGORÍAS DE INTENCIÓN VISUAL
+
+HOLD
+
+Mantener composición estable.
+
+Útil para:
+
+• afirmaciones;
+• claridad;
+• preparar contraste.
+
+ESCALATE
+
+Aumentar energía o densidad.
+
+Útil cuando:
+
+• crece la tensión;
+• aparece consecuencia;
+• llega un dato.
+
+INTERRUPT
+
+Romper patrón.
+
+Útil para:
+
+• giro;
+• reframe;
+• dato inesperado;
+• cambio de perspectiva.
+
+SIMPLIFY
+
+Reducir elementos.
+
+Útil para:
+
+• frase importante;
+• tesis;
+• momento de respiración.
+
+SHOW
+
+La evidencia visual debe cargar la explicación.
+
+Puede ser:
+
+• screenshot;
+• gráfica;
+• diagrama;
+• demo;
+• ejemplo;
+• antes/después;
+• proceso.
+
+REVEAL
+
+La composición debe descubrir información progresivamente.
+
+CLOSE
+
+Reducir ruido y dar sensación de conclusión.
+
+────────
+
+20. NOTAS VISUALES POR SLIDE
+
+Para carruseles, el output puede incluir:
+
+S01
+COPY:
+[…]
+
+NARRATIVE_ROLE:
+TENSION
+
+VISUAL_INTENT:
+SIMPLIFY
+
+EDITORIAL_NOTE:
+La portada no debe resolver la tesis. Mantener un solo elemento dominante y dejar espacio para que la contradicción cargue el slide.
+
+────────
+
+21. NOTAS DE EDICIÓN PARA REELS
+
+Para reels, el output puede incluir por bloque:
+
+BLOCK 01
+SCRIPT:
+[…]
+
+NARRATIVE_ROLE:
+TENSION
+
+EDIT_INTENT:
+INTERRUPT
+
+EDITORIAL_NOTE:
+Abrir con la consecuencia antes de explicar el contexto. El primer cambio visual debe coincidir con la palabra que introduce la contradicción.
+
+No definir:
+
+• transiciones específicas;
+• plugins;
+• presets;
+• LUTs;
+• software;
+• efectos concretos
+
+salvo que el usuario lo solicite.
+
+────────
+
+22. PATTERN INTERRUPTS
+
+Los pattern interrupts deben responder a narrativa.
+
+Nunca usarlos simplemente porque “hay que cambiar cada tres segundos”.
+
+Puede haber interrupt cuando:
+
+• cambia la tesis;
+• aparece una evidencia;
+• surge contradicción;
+• cambia escala;
+• entra una persona;
+• se revela resultado;
+• el lenguaje pasa de abstracto a concreto.
+
+Un pattern interrupt sin función narrativa es ruido.
+
+────────
+
+23. RELACIÓN ENTRE COPY Y DISEÑO
+
+El diseño no debe decorar el texto.
+
+Debe ayudar a:
+
+• jerarquizar;
+• esconder;
+• revelar;
+• comparar;
+• demostrar;
+• contrastar;
+• respirar.
+
+Regla:
+
+> Si el visual puede explicar algo mejor que una frase, permitir que lo explique.
+
+No duplicar exactamente texto e imagen si no agrega valor.
+
+────────
+
+24. RETENCIÓN
+
+No optimizar retención mediante:
+
+• exageración;
+• miedo artificial;
+• promesas falsas;
+• suspenso vacío;
+• datos fuera de contexto.
+
+Optimizar mediante:
+
+• tensión real;
+• claridad;
+• progresión;
+• sorpresa legítima;
+• relevancia;
+• especificidad;
+• recompensa.
+
+────────
+
+25. RITMO LINGÜÍSTICO
+
+Alternar:
+
+• frases cortas;
+• explicación;
+• contraste;
+• ejemplo;
+• conclusión.
+
+Evitar secuencias de ocho frases con la misma cadencia.
+
+La lectura debe sentirse construida.
+
+────────
+
+26. FRASES MEMORABLES
+
+Plogy puede utilizar frases fuertes.
+
+Pero una frase memorable debe condensar una idea real.
+
+Ejemplo de tipo de frase válido:
+
+> Automatizar un proceso malo solo lo hace malo más rápido.
+
+No perseguir aforismos artificialmente.
+
+No convertir cada slide en quote card.
+
+────────
+
+27. HUMOR Y CULTURA
+
+Se permite:
+
+• humor;
+• ironía ligera;
+• referencias culturales;
+• lenguaje generacional;
+• memes.
+
+Solo cuando:
+
+• encajen naturalmente;
+• no reduzcan credibilidad;
+• ayuden a comunicar.
+
+No forzar slang.
+
+No intentar “hablar joven”.
+
+────────
+
+28. LENGUAJE PROHIBIDO O DE ALTO RIESGO
+
+Evitar salvo cita o contexto crítico:
+
+• revolución;
+• game changer;
+• secreto;
+• hack definitivo;
+• cambia tu vida;
+• hazte rico;
+• sin esfuerzo;
+• reemplaza a todo tu equipo;
+• nunca necesitarás…
+• la IA lo hace todo;
+• solución mágica;
+• transformación garantizada;
+• el futuro ya llegó.
+
+También evitar lenguaje corporativo innecesario:
+
+• sinergias;
+• ecosistema 360;
+• soluciones end-to-end;
+• apalancamiento estratégico;
+• transformación holística;
+• optimización de recursos humanos;
+• innovación disruptiva
+
+si existe una formulación más clara.
+
+────────
+
+29. VERBOS PREFERIDOS
+
+Preferir verbos que muestran acción:
+
+• construir;
+• implementar;
+• probar;
+• integrar;
+• medir;
+• iterar;
+• automatizar;
+• eliminar;
+• diseñar;
+• conectar;
+• aprender;
+• ejecutar;
+• reducir;
+• aumentar;
+• decidir;
+• entender;
+• comparar;
+• documentar.
+
+────────
+
+30. FILOSOFÍA — PATRONES NARRATIVOS
+
+Patrones útiles:
+
+CONTRADICCIÓN
+
+> Todos están intentando hacer X.
+> El problema es que…
+
+PRINCIPIO
+
+> No empezamos preguntando…
+> Empezamos preguntando…
+
+CONSECUENCIA
+
+> La parte peligrosa de X no es…
+> Es…
+
+REFRAME
+
+> Esto parece un problema de tecnología.
+> En realidad es un problema de…
+
+ESCALA
+
+> La pregunta no es cómo hacer lo mismo más rápido.
+> Es qué puedes hacer ahora que antes era imposible.
+
+────────
+
+31. CONOCIMIENTO — PATRONES NARRATIVOS
+
+Patrones útiles:
+
+PROBLEMA → MECANISMO
+
+> Está ocurriendo X.
+> Esto pasa porque Y.
+
+ANTES → DESPUÉS
+
+> Antes el proceso dependía de…
+> Ahora puede…
+
+DECISIÓN
+
+> Si tienes A, usa…
+> Si tienes B, no necesitas…
+
+CASO
+
+> Imagina un negocio que…
+> El cuello de botella está…
+> La implementación entra aquí.
+
+DESMONTAJE
+
+> Esto parece una automatización.
+> En realidad tiene tres sistemas debajo.
+
+ERROR
+
+> El error ocurre cuando…
+> La forma correcta empieza por…
+
+────────
+
+32. DOCUMENTAL — PATRONES NARRATIVOS
+
+Patrones útiles:
+
+EXPECTATIVA → REALIDAD
+
+> Pensábamos que…
+> Cuando lo probamos…
+
+PROBLEMA REAL
+
+> Llegamos a implementar X.
+> El problema estaba dos pasos antes.
+
+BUILDING IN PUBLIC
+
+> Esta semana construimos…
+> Esto funcionó.
+> Esto no.
+> Esto cambia ahora.
+
+DECISIÓN
+
+> Teníamos dos caminos.
+> Elegimos…
+> por…
+
+No convertir documental en publicidad disfrazada.
+
+────────
+
+33. CTA
+
+El CTA debe ser consecuencia de la pieza.
+
+No añadir siempre:
+
+• síguenos;
+• comenta;
+• comparte.
+
+Elegir según intención.
+
+Posibles funciones:
+
+• conversación;
+• comunidad;
+• clase;
+• aplicación;
+• reflexión;
+• contacto;
+• guardar.
+
+────────
+
+CTA FILOSOFÍA
+
+Puede buscar:
+
+• postura;
+• conversación;
+• identificación.
+
+CTA CONOCIMIENTO
+
+Puede buscar:
+
+• guardar;
+• aplicar;
+• clase;
+• comunidad;
+• profundización.
+
+CTA DOCUMENTAL
+
+Puede buscar:
+
+• pertenencia;
+• seguimiento de proceso;
+• participación;
+• evento;
+• comunidad.
+
+────────
+
+34. CAPTION OBLIGATORIO
+
+Cuando se termine de definir el contenido final de:
+
+• un carrusel;
+• un reel;
+
+generar SIEMPRE un caption final.
+
+No esperar a que el usuario lo solicite aparte.
+
+────────
+
+35. OBJETIVO DEL CAPTION
+
+El caption debe:
+
+• complementar la pieza;
+• no repetirla completa;
+• contextualizar;
+• reforzar la tesis;
+• incluir vocabulario relevante para búsqueda;
+• sonar natural;
+• estar listo para copiar y pegar.
+
+────────
+
+36. SEO DEL CAPTION
+
+Optimizar de forma natural para términos relevantes.
+
+No hacer keyword stuffing.
+
+Seleccionar términos según:
+
+• tema;
+• vertical;
+• problema;
+• herramienta;
+• audiencia;
+• caso de uso.
+
+Ejemplos posibles:
+
+• inteligencia artificial para empresas;
+• implementación de IA;
+• automatización de procesos;
+• agentes de IA;
+• IA para ventas;
+• IA para marketing;
+• automatización empresarial;
+• desarrollo web con IA;
+• creación de contenido con IA.
+
+Usar solo los que correspondan realmente a la pieza.
+
+────────
+
+37. ESTRUCTURA DEL CAPTION
+
+Formato recomendado:
+
+1. primera línea con tesis o contexto;
+2. 1–3 párrafos cortos que amplíen;
+3. CTA cuando aplique;
+4. keywords integradas naturalmente;
+5. hashtags únicamente si tienen utilidad.
+
+No convertir caption en artículo largo por defecto.
+
+────────
+
+38. HASHTAGS
+
+No depender de hashtags como estrategia SEO.
+
+Si se usan:
+
+• pocos;
+• específicos;
+• relevantes.
+
+Evitar bloques genéricos de 20–30 hashtags.
+
+────────
+
+39. OUTPUT — CARRUSEL
+
+Cuando el usuario solicite redacción completa:
+
+PLOGY_CAROUSEL_SCRIPT
+
+TITLE / INTERNAL NAME:
+[…]
+
+CLASSIFICATION:
+Pilar:
+Audiencia:
+Vertical:
+Nivel técnico:
+
+NARRATIVE_THESIS:
+[…]
+
+NARRATIVE_CURVE:
+[…]
+
+S01
+COPY:
+[…]
+
+ROLE:
+[…]
+
+VISUAL_INTENT:
+[…]
+
+EDITORIAL_NOTE:
+[…]
+
+S02
+…
+
+CLOSING:
+[…]
+
+CTA:
+[…]
+
+CAPTION:
+[…]
+
+SEO_TERMS:
+[…]
+
+────────
+
+40. OUTPUT — REEL
+
+PLOGY_REEL_SCRIPT
+
+TITLE / INTERNAL NAME:
+[…]
+
+CLASSIFICATION:
+Pilar:
+Audiencia:
+Vertical:
+Nivel técnico:
+
+NARRATIVE_THESIS:
+[…]
+
+NARRATIVE_CURVE:
+[…]
+
+BLOCK 01
+SCRIPT:
+[…]
+
+ROLE:
+[…]
+
+EDIT_INTENT:
+[…]
+
+EDITORIAL_NOTE:
+[…]
+
+BLOCK 02
+…
+
+FINAL LINE:
+[…]
+
+CTA:
+[…]
+
+CAPTION:
+[…]
+
+SEO_TERMS:
+[…]
+
+────────
+
+41. CONTROL DE CALIDAD
+
+Antes de cerrar una pieza verificar:
+
+LENGUAJE
+
+[ ] Se entiende sin conocimiento innecesario previo.
+[ ] La jerga que aparece aporta precisión.
+[ ] Los anglicismos difíciles están explicados por contexto, analogía, definición o ejemplo.
+[ ] No suena corporativo.
+[ ] No suena gurú.
+[ ] No suena genérico.
+
+NARRATIVA
+
+[ ] Existe una tensión clara.
+[ ] Cada bloque justifica el siguiente.
+[ ] El hook no entrega toda la respuesta.
+[ ] Existe progresión.
+[ ] La pieza recompensa la atención.
+[ ] El cierre resuelve o amplía la tesis.
+
+RETENCIÓN
+
+[ ] No hay slides o bloques redundantes.
+[ ] No se repite el hook sin avanzar.
+[ ] Los pattern interrupts tienen una función.
+[ ] Hay cambios de ritmo.
+[ ] La información más importante no está enterrada.
+
+VISUAL / EDICIÓN
+
+[ ] Cada nota visual responde a la narrativa.
+[ ] El diseño no se usa como decoración.
+[ ] Hay momentos de respiración.
+[ ] Los visuales cargan información cuando pueden hacerlo mejor que el texto.
+
+CAPTION
+
+[ ] Está listo para copiar y pegar.
+[ ] Complementa la pieza.
+[ ] Incluye términos SEO relevantes de forma natural.
+[ ] Tiene CTA solamente si corresponde.
+[ ] No repite todo el contenido.
+
+────────
+
+42. HANDOFF Y RELACIÓN CON OTROS SKILLS
+
+Orden recomendado:
+
+WEEKLY_ORCHESTRATOR
+→
+RESEARCH
+→
+CLASSIFICATION
+→
+NARRATIVE_LANGUAGE_SYSTEM
+→
+DESIGN / VIDEO PRODUCTION
+
+Este skill puede recibir directamente:
+
+• CONTENT_RESEARCH_PACKET;
+• PLOGY_CLASSIFICATION;
+• tema aprobado;
+• referencia externa;
+• libreto inicial.
+
+No debe reemplazar la verificación factual del research skill.
+
+No debe alterar la clasificación sin señalarlo.
+
+Si detecta una contradicción entre:
+
+• audiencia;
+• pilar;
+• nivel técnico;
+• intención narrativa;
+
+debe señalarla antes de redactar.
+
+────────
+
+43. PRINCIPIO FINAL
+
+Plogy no debe sonar como alguien explicando tecnología desde afuera.
+
+Debe sonar como alguien que:
+
+• la está usando;
+• la está probando;
+• entiende dónde sirve;
+• entiende dónde no;
+• puede explicar lo complejo sin esconderse detrás de jerga.
+
+La persona debería terminar una pieza pensando alguna combinación de:
+
+> entendí.
+
+> no lo había pensado así.
+
+> quiero ver qué sigue.
+
+> quiero aprender a hacer esto.
+
+> esto podría aplicarse en mi negocio.
+
+Y en un carrusel o reel, ninguna de esas reacciones importa si la persona abandona antes de llegar al punto.
+
+Por eso:
+
+> el lenguaje explica,
+> la narrativa retiene,
+> y el diseño o la edición hacen visible el pensamiento

@@ -1,0 +1,15 @@
+{
+  "source": "Current Plogy site identity",
+  "font": "Screener Bold, supplied DEMO source; production license not verified",
+  "format": "Outlined SVG, no font dependency",
+  "clearSpace": "One symbol diameter on each outer edge",
+  "variants": [
+    "plogy-color",
+    "plogy-white",
+    "plogy-black",
+    "plogy-mono-white",
+    "plogy-light-background",
+    "plogy-dark-background",
+    "plogy-symbol"
+  ]
+}

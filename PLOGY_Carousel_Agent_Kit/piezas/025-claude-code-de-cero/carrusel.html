@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 025 · Claude Code de cero</title>
+<!-- Fuente editable. 10 láminas de 1080x1350, estética normal de Plogy. Adaptación de una referencia de otra cuenta ("How to master Claude Code").
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=10
+     Exportar: render-slides.ps1 -Param s -Keys 1..9 -Prefix slide-0 y -Keys 10 -Prefix slide-
+     Datos: documentación oficial de Claude Code (code.claude.com/docs): common-workflows, permission-modes, memory, skills, mcp. Ver brief.md.
+     Ventanas, terminales, el CLAUDE.md y la skill de ejemplo son maquetas propias rotuladas "Ilustración".
+     Logos de la lámina 7: Simple Icons (CC0), con el color de cada marca. Fotos: biblioteca de CTAs (16, 23 y 21).
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486; --line:#e6ddd5; --term:#1d1814; --termBar:#2b241f;
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --mono:Consolas,'Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px;color:var(--ink)}
+.light{background:var(--paper)} .surface{background:var(--surface)} .dark{background:var(--ink);color:#fff} .orange{background:var(--orange)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:6}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;color:var(--muted);z-index:6}
+.dark .count{color:#e6dfd8} .orange .count{color:var(--ink)}
+h1,h2{position:relative;z-index:3;font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.04;text-wrap:balance}
+h2{font-size:84px}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.5)}
+.orange .hl{color:#fff}
+.eyebrow{font:700 28px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--orangeText);margin-bottom:24px}
+.dark .eyebrow{color:var(--orange)} .orange .eyebrow{color:var(--ink)}
+.top{position:relative;z-index:3;margin-top:110px}
+.lead{position:relative;z-index:3;font:400 33px/1.35 var(--body);color:var(--muted);margin-top:22px;max-width:880px}
+.lead b{color:var(--ink)}
+.dark .lead{color:#d8cfc6} .dark .lead b{color:#fff}
+.how{position:absolute;left:96px;right:96px;bottom:90px;z-index:3;border-top:2px solid var(--line);padding-top:20px;font:400 27px/1.35 var(--body);color:var(--muted)}
+.how b{color:var(--ink)}
+.how code{font:600 .92em/1 var(--mono);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 8px}
+.surface .how code{background:var(--paper)}
+.dark .how{border-color:#3a322c;color:#cfc6bd} .dark .how b{color:#fff} .dark .how code{background:#2b241f;color:#ffb48a}
+.tag{display:inline-block;font:700 16px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:7px 10px;border:1.5px solid currentColor}
+
+/* ventana genérica (maqueta) */
+.win{position:relative;border-radius:22px;overflow:hidden;background:var(--paper);border:2px solid var(--line);box-shadow:0 22px 50px rgba(23,19,16,.14)}
+.win .bar{display:flex;align-items:center;gap:8px;padding:13px 18px;background:var(--surface);border-bottom:1.5px solid var(--line);font:500 19px/1 var(--mono);color:var(--muted)}
+.win .bar i{width:12px;height:12px;border-radius:50%;background:#d6ccc3;display:block}
+.win .bar i:first-child{background:var(--orange)}
+.win .bar span{margin-left:8px}
+.win .bar .tag{margin-left:auto;color:var(--muted)}
+.win.d{background:var(--term);border-color:#3a322c;color:#e6dfd8}
+.win.d .bar{background:var(--termBar);border-color:#3a322c;color:#a99d92}
+.win.d .bar i{background:#5d524a} .win.d .bar i:first-child{background:var(--orange)}
+.win.d .bar .tag{color:#a99d92}
+.mono{font-family:var(--mono)}
+.c{color:#7d7066} .o{color:var(--orange)} .w{color:#fff} .g{color:#ffb48a}
+
+/* 01 · portada */
+.p1 h1{font-size:96px;margin-top:110px}
+.p1 .lead{margin-top:24px}
+.p1 .photo{position:absolute;left:0;right:0;top:600px;bottom:0;z-index:1}
+.p1 .photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
+.p1 .photo::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,0) 30%)}
+.p1 .win{position:absolute;left:96px;right:96px;bottom:110px;z-index:3;transform:rotate(-1.2deg)}
+.p1 pre{padding:24px 28px;font:500 26px/1.55 var(--mono);white-space:pre-wrap}
+.p1 .status{padding:12px 28px 18px;font:600 22px/1 var(--mono);color:#a99d92;border-top:1.5px solid #3a322c}
+.p1 .status b{color:var(--orange)}
+
+/* 02 · chat vs code */
+.two{position:relative;z-index:3;margin-top:42px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.two h3{font:700 22px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.two .cc h3{color:var(--orangeText)}
+.two .win{height:500px}
+.bub{display:flex;flex-direction:column;gap:12px;padding:20px}
+.bub p{max-width:84%;border-radius:20px;padding:13px 16px;font:400 22px/1.3 var(--body)}
+.bub .u{align-self:flex-end;background:var(--ink);color:#fff;border-bottom-right-radius:6px}
+.bub .a{background:var(--surface);color:var(--ink);border-bottom-left-radius:6px}
+.bub .x{align-self:flex-end;background:#fff3ea;color:var(--orangeText);border:1.5px dashed var(--orange);font-style:italic}
+.files{padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.files div{display:flex;align-items:center;gap:12px;border-radius:14px;background:#262019;padding:14px 14px;font:500 21px/1.1 var(--mono)}
+.files svg{width:24px;height:24px;flex:none;stroke:#a99d92;fill:none;stroke-width:1.8}
+.files em{margin-left:auto;font:700 16px/1 var(--display);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:#a99d92}
+.files .new{background:rgba(255,91,0,.15);border:1.5px solid var(--orange)}
+.files .new svg{stroke:var(--orange)} .files .new em{color:var(--orange)}
+.files .run{background:none;padding:6px 4px 0;color:#ffb48a;font-size:20px}
+.cap2{margin-top:14px;font:600 26px/1.25 var(--display);letter-spacing:-.01em}
+.two .ch .cap2{color:var(--muted)}
+
+/* 03 · dónde vive */
+.surfs{position:relative;z-index:3;margin-top:46px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.surfs .s b{display:block;margin-top:16px;font:700 38px/1.1 var(--display);letter-spacing:-.02em}
+.surfs .s span{display:block;margin-top:6px;font:400 25px/1.3 var(--body);color:var(--muted)}
+.surfs .win{height:250px}
+.mini{padding:16px 18px;display:flex;flex-direction:column;gap:9px}
+.mini i{display:block;height:13px;border-radius:7px;background:#e6ddd5}
+.win.d .mini i{background:#3a322c}
+.mini i.o{background:var(--orange)} .mini i.k{background:var(--ink)}
+.mini .row{display:flex;gap:10px;align-items:center}
+.app{display:grid;grid-template-columns:110px 1fr;height:calc(100% - 46px)}
+.app .side{background:var(--surface);border-right:1.5px solid var(--line);padding:14px;display:flex;flex-direction:column;gap:9px}
+.app .side i{display:block;height:12px;border-radius:6px;background:#d6ccc3}
+.app .main{padding:16px;display:flex;flex-direction:column;gap:10px;justify-content:flex-end}
+.app .main p{align-self:flex-end;background:var(--ink);color:#fff;border-radius:14px;padding:8px 12px;font:400 17px/1 var(--body)}
+.app .main i{display:block;height:12px;border-radius:6px;background:#e6ddd5}
+.url{margin:0 0 0 8px;flex:1;background:var(--paper);border-radius:999px;padding:7px 14px;font:500 17px/1 var(--mono);color:var(--ink)}
+.ed{display:grid;grid-template-columns:1fr 150px;height:calc(100% - 46px)}
+.ed .code{padding:14px 16px;display:flex;flex-direction:column;gap:9px}
+.ed .code i{display:block;height:11px;border-radius:6px}
+.ed .panel{background:#fff3ea;border-left:2px solid var(--orange);padding:12px;display:flex;flex-direction:column;gap:8px}
+.ed .panel b{font:700 15px/1 var(--display);letter-spacing:.08em;color:var(--orangeText);margin:0}
+.ed .panel i{display:block;height:10px;border-radius:5px;background:#f7c9a8}
+
+/* 04 · flujo */
+.tl{position:relative;z-index:3;margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr)}
+.tl::before{content:"";position:absolute;left:12%;right:12%;top:38px;height:4px;background:repeating-linear-gradient(90deg,var(--orange) 0 14px,transparent 14px 24px)}
+.tl div{position:relative;text-align:center}
+.tl i{display:flex;align-items:center;justify-content:center;margin:0 auto;width:80px;height:80px;border-radius:50%;background:var(--paper);border:3px solid var(--orange);font:700 36px/1 var(--display);font-style:normal;color:var(--orange)}
+.tl .on i{background:var(--orange);color:var(--paper)}
+.tl b{display:block;margin-top:14px;font:700 28px/1.1 var(--display)}
+.tl span{display:block;margin-top:6px;font:400 21px/1.25 var(--body);color:var(--muted);padding:0 6px}
+.p4 .win{margin-top:40px}
+.plan{padding:22px 26px;font:500 25px/1.55 var(--mono);white-space:pre-wrap}
+.ask{display:flex;gap:12px;padding:0 26px 22px}
+.ask em{font:700 23px/1 var(--display);font-style:normal;border-radius:12px;padding:14px 18px}
+.ask .y{background:var(--orange);color:var(--ink)} .ask .n{border:2px solid #5d524a;color:#e6dfd8}
+.p4 .status{padding:12px 26px 16px;font:600 21px/1 var(--mono);color:#a99d92;border-top:1.5px solid #3a322c}
+.p4 .status b{color:var(--orange)}
+
+/* 05 · CLAUDE.md */
+.p5 .win{margin-top:34px}
+.md{display:grid;grid-template-columns:54px 1fr;padding:16px 0;font:500 24px/1.6 var(--mono)}
+.md .ln{color:#b8aca1;text-align:right;padding-right:16px}
+.md .tx{color:var(--ink);white-space:pre}
+.md .h{color:var(--orangeText);font-weight:700}
+.md .mk{background:#fff3ea}
+.pp{position:relative;z-index:3;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pp div{border-radius:20px;background:var(--paper);border:2px solid var(--line);padding:18px 20px}
+.pp div.hot{border-color:var(--orange)}
+.pp code{display:block;font:700 25px/1.2 var(--mono)}
+.pp span{display:block;margin-top:8px;font:400 22px/1.3 var(--body);color:var(--muted)}
+
+/* 06 · skills */
+.sk{position:relative;z-index:3;margin-top:40px;display:grid;grid-template-columns:350px 1fr;gap:22px;align-items:start}
+.tree{border-radius:24px;background:#211b17;border:2px solid #3a322c;padding:22px 20px;font:500 23px/1 var(--mono)}
+.tree div{display:flex;align-items:center;gap:10px;padding:9px 0;color:#cfc6bd}
+.tree svg{width:26px;height:26px;flex:none;fill:none;stroke:#a99d92;stroke-width:1.8}
+.tree .l1{padding-left:26px} .tree .l2{padding-left:52px} .tree .l3{padding-left:78px}
+.tree .hot{color:#fff;background:rgba(255,91,0,.16);border:1.5px solid var(--orange);border-radius:12px;padding:9px 10px;margin-left:68px}
+.tree .hot svg{stroke:var(--orange)}
+.p6 .win pre{padding:20px 22px;font:500 21px/1.55 var(--mono);white-space:pre-wrap;color:#e6dfd8}
+.p6 .where{position:relative;z-index:3;margin-top:22px;font:400 27px/1.35 var(--body);color:#cfc6bd}
+.p6 .where code{font:600 25px/1 var(--mono);color:#ffb48a}
+
+/* 07 · MCP */
+.hub{position:relative;z-index:3;margin-top:14px;height:590px}
+.hub .n b{white-space:nowrap}
+.hub svg.lines{position:absolute;inset:0;width:100%;height:100%}
+.hub .core{position:absolute;left:50%;top:290px;width:210px;height:210px;margin:-105px 0 0 -105px;border-radius:50%;background:var(--ink);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 0 12px rgba(255,91,0,.15),0 0 0 24px rgba(255,91,0,.07)}
+.hub .core b{font:700 34px/1.05 var(--display);letter-spacing:-.02em}
+.hub .core span{margin-top:8px;font:700 18px/1 var(--display);letter-spacing:.14em;color:var(--orange)}
+.hub .n{position:absolute;width:150px;text-align:center;transform:translate(-50%,-50%)}
+.hub .n div{width:112px;height:112px;margin:0 auto;border-radius:30px;background:var(--paper);border:2px solid var(--line);box-shadow:0 14px 30px rgba(23,19,16,.12);display:flex;align-items:center;justify-content:center}
+.hub .n img{width:56px;height:56px}
+.hub .n b{display:block;margin-top:10px;font:700 22px/1.1 var(--display)}
+.p7 .cmd{position:relative;z-index:3;margin-top:0;border-radius:20px;background:var(--term);color:#e6dfd8;padding:16px 22px;font:500 21px/1.5 var(--mono);white-space:pre-wrap}
+
+/* 08 · permisos */
+.seg{position:relative;z-index:3;margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);border-radius:999px;background:var(--paper);border:2px solid var(--line);padding:8px}
+.seg div{text-align:center;border-radius:999px;padding:20px 8px;font:700 28px/1 var(--display)}
+.seg .on{background:var(--ink);color:#fff;box-shadow:0 8px 20px rgba(23,19,16,.25)}
+.segd{position:relative;z-index:3;margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.segd p{font:400 23px/1.3 var(--body);color:var(--muted);text-align:center;padding:0 6px}
+.segd p b{display:block;font:700 20px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--orangeText);margin-bottom:8px}
+.p8 .win{margin-top:34px}
+.p8 pre{padding:20px 24px;font:500 24px/1.5 var(--mono);white-space:pre-wrap}
+.hold{margin:0 20px 20px;border-radius:18px;border:2px solid var(--orange);background:rgba(255,91,0,.1);padding:18px 20px}
+.hold b{display:block;font:700 26px/1.2 var(--display);color:#fff}
+.hold span{display:block;margin-top:6px;font:400 22px/1.35 var(--body);color:#cfc6bd}
+.hold .btns{display:flex;gap:10px;margin-top:14px}
+.hold .btns em{font:700 22px/1 var(--display);font-style:normal;padding:12px 16px;border-radius:10px}
+.hold .y{background:var(--orange);color:var(--ink)} .hold .n{border:2px solid #5d524a;color:#e6dfd8}
+
+/* 09 · criterio */
+.p9 .eyebrow{margin-top:150px}
+.p9 h2{font-size:94px}
+.p9 .lead{margin-top:34px;font:500 38px/1.3 var(--display);letter-spacing:-.01em;color:var(--ink)}
+.p9 .band{position:absolute;left:0;right:0;bottom:0;height:430px;z-index:1}
+.p9 .band img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block}
+.p9 .band::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--orange) 0%,rgba(255,91,0,0) 35%)}
+.p9 .chip{position:absolute;right:96px;bottom:70px;z-index:3;font:700 30px/1 var(--display);background:var(--ink);color:#fff;border-radius:999px;padding:18px 26px}
+
+/* 10 · CTA vidrio + foto */
+.p10{background:#120d0a;color:#fff}
+.p10 .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.p10 .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,13,10,.15) 0%,rgba(18,13,10,.05) 40%,rgba(18,13,10,.7) 100%)}
+.glass{position:absolute;left:96px;right:96px;top:600px;z-index:4;border-radius:44px;padding:50px 56px;text-align:center;
+  background:rgba(30,22,17,.42);border:1.5px solid rgba(255,255,255,.3);
+  -webkit-backdrop-filter:blur(26px) saturate(140%);backdrop-filter:blur(26px) saturate(140%);
+  box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.25)}
+.glass .sym{width:74px;height:74px;display:block;margin:0 auto 22px}
+.glass .ey{font:700 26px/1 var(--display);letter-spacing:.2em;text-transform:uppercase;color:#ffb48a}
+.glass h2{margin-top:22px;font-size:58px;color:#fff}
+.glass small{display:block;margin-top:28px;font:700 46px/1 var(--display)}
+.glass strong{display:block;margin-top:6px;font:700 140px/1 var(--display);letter-spacing:-.04em;color:var(--orange);text-shadow:0 0 50px rgba(255,91,0,.5)}
+.glass p{margin-top:22px;font:500 34px/1.3 var(--display);color:#fff}
+.glass p span{display:block;margin-top:14px;font:400 27px/1.4 var(--body);color:#e6dfd8}
+.p7 .how{bottom:70px}
+
+/* barra de autor: la pieza sale en Plogy y en la cuenta personal */
+.autor{position:absolute;left:96px;bottom:24px;z-index:20;display:flex;align-items:center;gap:12px;border-radius:999px;background:rgba(255,255,255,.94);padding:7px 20px 7px 7px;box-shadow:0 8px 22px rgba(23,19,16,.16),0 0 0 1px rgba(23,19,16,.06)}
+.autor img{width:46px;height:46px;border-radius:50%;display:block}
+.autor b{font:700 22px/1 'Space Grotesk','Helvetica Neue',Arial,sans-serif;color:#171310;white-space:nowrap}
+.autor span{font:500 21px/1 Consolas,'Courier New',monospace;color:#625951;white-space:nowrap}
+.autor i{width:5px;height:5px;border-radius:50%;background:#ff5b00;display:block}
+.how{bottom:112px}
+.p7 .how{bottom:96px}
+.p9 .chip{bottom:104px}
+.p1 .win{bottom:118px}
+</style>
+</head>
+<body>
+
+<!-- 01 · Portada -->
+<section class="slide light p1" data-n="1">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">01/10</div>
+  <h1>Claude Code, de cero a <span class="hl">usarlo en tu negocio.</span></h1>
+  <p class="lead">Lo que necesitas saber, en 8 láminas. <b>Sin ser programador.</b></p>
+  <div class="photo"><img src="assets/01-ascii.jpg" alt="Una persona dibujada con caracteres de texto en naranja"></div>
+  <div class="win d">
+    <div class="bar"><i></i><i></i><i></i><span>reportes-octubre</span><span class="tag">Ilustración</span></div>
+    <pre><span class="c">$</span> <span class="w">claude</span>
+<span class="o">&gt;</span> <span class="w">junta las ventas de octubre de estos 3 archivos
+  y arma un resumen de una página</span>
+<span class="g">● Leo ventas-norte.xlsx, ventas-sur.xlsx, tienda.csv</span>
+<span class="g">● Propongo un plan antes de escribir nada</span></pre>
+    <div class="status"><b>⏸ plan mode on</b></div>
+  </div>
+</section>
+
+<!-- 02 · Qué es -->
+<section class="slide surface p2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">02/10</div>
+  <div class="top">
+    <div class="eyebrow">Qué es</div>
+    <h2>Un chat te responde. <span class="hl">Claude Code hace el trabajo.</span></h2>
+    <div class="two">
+      <div class="ch"><h3>En un chat</h3>
+        <div class="win"><div class="bar"><i></i><i></i><i></i><span>chat</span><span class="tag">Ilustración</span></div>
+          <div class="bub">
+            <p class="u">¿Me resumes las ventas de octubre?</p>
+            <p class="a">Claro. Pégame los datos aquí.</p>
+            <p class="x">pega 3 archivos, uno por uno</p>
+            <p class="a">Listo. Cópialo a tu documento.</p>
+          </div></div>
+        <p class="cap2">Tú haces de puente.</p></div>
+      <div class="cc"><h3>En Claude Code</h3>
+        <div class="win d"><div class="bar"><i></i><i></i><i></i><span>reportes-octubre/</span></div>
+          <div class="files">
+            <div><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>ventas-norte.xlsx<em>Leído</em></div>
+            <div><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>ventas-sur.xlsx<em>Leído</em></div>
+            <div><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>tienda.csv<em>Leído</em></div>
+            <div class="new"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 12v6"/><path d="M9 15h6"/></svg>resumen.md<em>Creado</em></div>
+            <div class="run">$ ejecuta y revisa los totales</div>
+          </div></div>
+        <p class="cap2">Trabaja sobre tus archivos.</p></div>
+    </div>
+  </div>
+  <p class="how"><b>No es solo para código:</b> funciona en cualquier carpeta. Notas, documentos, reportes.</p>
+</section>
+
+<!-- 03 · Dónde vive -->
+<section class="slide light p3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">03/10</div>
+  <div class="top">
+    <div class="eyebrow">Dónde vive</div>
+    <h2>Donde ya trabajas.</h2>
+    <div class="surfs">
+      <div class="s"><div class="win d"><div class="bar"><i></i><i></i><i></i><span>terminal</span></div>
+        <div class="mini mono" style="font:500 21px/1.5 var(--mono);color:#f4efe9;gap:4px"><span><span class="c">$</span> claude</span><span><span class="o">&gt;</span> ordena estas facturas</span><span class="g">● Leo 24 archivos</span><span class="g">● Propongo un plan</span></div></div>
+        <b>Terminal</b><span>La versión original.</span></div>
+      <div class="s"><div class="win"><div class="bar"><i></i><i></i><i></i><span>Claude</span></div>
+        <div class="app"><div class="side"><i></i><i style="width:70%"></i><i style="width:85%"></i><i style="width:60%"></i></div><div class="main"><i style="width:80%"></i><i style="width:60%"></i><p>arma el reporte</p></div></div></div>
+        <b>App de escritorio</b><span>Mac y Windows.</span></div>
+      <div class="s"><div class="win"><div class="bar"><i></i><i></i><i></i><span class="url">claude.ai/code</span></div>
+        <div class="mini"><div class="row"><i class="k" style="width:40%"></i></div><i style="width:90%"></i><i style="width:75%"></i><i class="o" style="width:35%"></i><i style="width:82%"></i></div></div>
+        <b>Web</b><span>Desde el navegador.</span></div>
+      <div class="s"><div class="win"><div class="bar"><i></i><i></i><i></i><span>VS Code</span></div>
+        <div class="ed"><div class="code"><i style="width:60%;background:#c9bdb1"></i><i style="width:85%;background:#f7c9a8"></i><i style="width:45%;background:#c9bdb1"></i><i style="width:70%;background:#e6ddd5"></i><i style="width:55%;background:#f7c9a8"></i></div><div class="panel"><b>CLAUDE</b><i></i><i style="width:70%"></i><i style="width:85%"></i></div></div></div>
+        <b>Tu editor</b><span>VS Code y JetBrains.</span></div>
+    </div>
+  </div>
+  <p class="how"><b>Para empezar en la terminal:</b> entra a la carpeta de tu proyecto y escribe <code>claude</code>.</p>
+</section>
+
+<!-- 04 · El flujo -->
+<section class="slide light p4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">04/10</div>
+  <div class="top">
+    <div class="eyebrow">El flujo</div>
+    <h2>Primero el plan, <span class="hl">después las manos.</span></h2>
+    <div class="tl">
+      <div class="on"><i>1</i><b>Modo plan</b><span>Lee y propone, sin tocar nada.</span></div>
+      <div><i>2</i><b>Corrige</b><span>Es el momento barato.</span></div>
+      <div><i>3</i><b>Aprueba</b><span>Claude lo ejecuta.</span></div>
+      <div><i>4</i><b>Revisa</b><span>Antes de usarlo.</span></div>
+    </div>
+    <div class="win d">
+      <div class="bar"><i></i><i></i><i></i><span>reportes-octubre</span><span class="tag">Ilustración</span></div>
+      <div class="plan"><span class="w">Plan propuesto</span>
+<span class="o">1.</span> Leer los 3 archivos de ventas
+<span class="o">2.</span> Unificar columnas y monedas
+<span class="o">3.</span> Escribir resumen.md, de una página
+<span class="c">No edito nada hasta que apruebes.</span></div>
+      <div class="ask"><em class="y">Sí, ejecutar</em><em class="n">Cambiar algo</em></div>
+      <div class="status"><b>⏸ plan mode on</b>  ·  Shift+Tab para cambiar de modo</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · CLAUDE.md -->
+<section class="slide surface p5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/10</div>
+  <div class="top">
+    <div class="eyebrow">Memoria · CLAUDE.md</div>
+    <h2>Lo que Claude debe saber <span class="hl">siempre.</span></h2>
+    <div class="win">
+      <div class="bar"><i></i><i></i><i></i><span>CLAUDE.md</span><span class="tag">Ilustración</span></div>
+      <div class="md">
+        <span class="ln">1</span><span class="tx h"># Reportes de ventas</span>
+        <span class="ln">2</span><span class="tx">Tienda con 2 sedes y venta online.</span>
+        <span class="ln">3</span><span class="tx"> </span>
+        <span class="ln">4</span><span class="tx h">## Cómo trabajamos</span>
+        <span class="ln">5</span><span class="tx">- Cifras en pesos, sin decimales.</span>
+        <span class="ln">6</span><span class="tx">- Un reporte = una página.</span>
+        <span class="ln">7</span><span class="tx"> </span>
+        <span class="ln">8</span><span class="tx h">## Nunca</span>
+        <span class="ln mk">9</span><span class="tx mk">- Enviar nada a clientes sin aprobación.</span>
+      </div>
+    </div>
+    <div class="pp">
+      <div class="hot"><code>./CLAUDE.md</code><span>Del proyecto. Lo comparte tu equipo.</span></div>
+      <div><code>~/.claude/CLAUDE.md</code><span>Solo tuyo, en todos tus proyectos.</span></div>
+    </div>
+  </div>
+  <p class="how"><b>Atajo:</b> escribe <code>/init</code> y Claude arma un primer CLAUDE.md por ti.</p>
+</section>
+
+<!-- 06 · Skills -->
+<section class="slide dark p6" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">06/10</div>
+  <div class="top">
+    <div class="eyebrow">Skills</div>
+    <h2>Lo que repites, <span class="hl">vuélvelo skill.</span></h2>
+    <p class="lead">Claude la carga sola cuando hace falta, o la llamas con <b>/nombre</b>.</p>
+    <div class="sk">
+      <div class="tree">
+        <div><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>mi-negocio/</div>
+        <div class="l1"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>.claude/</div>
+        <div class="l2"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>skills/</div>
+        <div class="l3"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>reporte-lunes/</div>
+        <div class="hot"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>SKILL.md</div>
+      </div>
+      <div class="win d"><div class="bar"><i></i><i></i><i></i><span>SKILL.md</span><span class="tag">Ilustración</span></div>
+<pre><span class="c">---</span>
+<span class="g">description:</span> Arma el reporte de ventas del lunes. Usar cuando pidan "el reporte de la semana".
+<span class="c">---</span>
+<span class="o">1.</span> Lee las ventas de la semana.
+<span class="o">2.</span> Compara con la anterior.
+<span class="o">3.</span> Resume en una página.</pre></div>
+    </div>
+    <p class="where">Para las tuyas, en todos tus proyectos: <code>~/.claude/skills/</code></p>
+  </div>
+  <p class="how"><b>Así lo hacemos:</b> nuestros carruseles salen de 8 skills, una por oficio.</p>
+</section>
+
+<!-- 07 · MCP -->
+<section class="slide light p7" data-n="7">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">07/10</div>
+  <div class="top">
+    <div class="eyebrow">Conectores · MCP</div>
+    <h2>Conéctalo a <span class="hl">tus herramientas.</span></h2>
+    <div class="hub">
+      <svg class="lines" viewBox="0 0 888 610" fill="none" stroke="#ff5b00" stroke-width="3" stroke-dasharray="10 9">
+        <path d="M444 290 L120 90"/><path d="M444 290 L444 60"/><path d="M444 290 L768 90"/>
+        <path d="M444 290 L120 460"/><path d="M444 290 L444 495"/><path d="M444 290 L768 460"/>
+      </svg>
+      <div class="core"><b>Claude<br>Code</b><span>MCP</span></div>
+      <div class="n" style="left:120px;top:90px"><div><img src="assets/logos/notion.svg" alt=""></div><b>Notion</b></div>
+      <div class="n" style="left:444px;top:60px"><div><img src="assets/logos/googledrive.svg" alt=""></div><b>Drive</b></div>
+      <div class="n" style="left:768px;top:90px"><div><img src="assets/logos/gmail.svg" alt=""></div><b>Gmail</b></div>
+      <div class="n" style="left:120px;top:460px"><div><img src="assets/logos/github.svg" alt=""></div><b>GitHub</b></div>
+      <div class="n" style="left:444px;top:495px"><div><img src="assets/logos/postgresql.svg" alt=""></div><b>Tu base de datos</b></div>
+      <div class="n" style="left:768px;top:460px"><div><img src="assets/logos/slack.svg" alt=""></div><b>Slack</b></div>
+    </div>
+    <div class="cmd"><span class="c"># ejemplo de la documentación</span>
+<span class="o">claude mcp add</span> --transport http notion https://mcp.notion.com/mcp</div>
+  </div>
+  <p class="how"><b>Nuestro criterio:</b> conecta solo lo que la tarea necesita. Cada conector es una llave más.</p>
+</section>
+
+<!-- 08 · Permisos -->
+<section class="slide surface p8" data-n="8">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">08/10</div>
+  <div class="top">
+    <div class="eyebrow">Permisos</div>
+    <h2>Tú decides <span class="hl">cuánto suelta.</span></h2>
+    <div class="seg"><div>Manual</div><div>Accept edits</div><div class="on">Plan</div></div>
+    <div class="segd">
+      <p><b>Pregunta</b>Solo lee sin preguntar.</p>
+      <p><b>Edita</b>Crea y edita archivos sin preguntar.</p>
+      <p><b>Propone</b>No edita hasta que apruebes.</p>
+    </div>
+    <div class="win d">
+      <div class="bar"><i></i><i></i><i></i><span>blast-radius</span><span class="tag">Ilustración</span></div>
+      <pre><span class="w">Claude quiere ejecutar:</span> <span style="color:#ff8f7d">rm -rf ./reportes</span></pre>
+      <div class="hold"><b>Para lo riesgoso, un Mod.</b><span>blast-radius retiene el comando, te muestra qué borraría y te pregunta.</span><div class="btns"><em class="y">Cancelar</em><em class="n">Seguir</em></div></div>
+    </div>
+  </div>
+  <p class="how">Los modos se cambian con <code>Shift+Tab</code>. blast-radius es un Mod de ejemplo que se instala aparte.</p>
+</section>
+
+<!-- 09 · Criterio de Plogy -->
+<section class="slide orange p9" data-n="9">
+  <img class="logo" src="../../brandkit/assets/plogy-black.svg" alt="Plogy">
+  <div class="count">09/10</div>
+  <div class="eyebrow">Nuestro criterio</div>
+  <h2>La herramienta se aprende en una tarde. <span class="hl">Saber qué encargarle, no.</span></h2>
+  <p class="lead">Lo que separa a quien la domina es escribir un buen encargo y revisar lo que vuelve.</p>
+  <div class="band"><img src="assets/09-manos.jpg" alt="Dos manos hechas de puntos de luz que casi se tocan"></div>
+  <div class="chip">Eso se entrena.</div>
+</section>
+
+<!-- 10 · CTA -->
+<section class="slide p10" data-n="10">
+  <img class="photo" src="assets/10-silueta.jpg" alt="Una silueta frente a una pantalla que brilla en naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="glass">
+    <img class="sym" src="../../brandkit/assets/plogy-symbol.svg" alt="">
+    <div class="ey">¿Quieres empezar hoy?</div>
+    <small>Comenta</small>
+    <strong>CLAUDE</strong>
+    <p>y te mandamos nuestra guía de primeros pasos.<span>Instalarlo, tu primer encargo con plan y cómo ponerle frenos.</span></p>
+  </div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d+)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+<script>
+document.querySelectorAll('.slide').forEach(function(el){var a=document.createElement('div');a.className='autor';a.innerHTML='<img src="assets/av-autor.png" alt=""><b>JuanFra Martínez</b><i></i><span>@juanframartz</span>';el.appendChild(a);});
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cuatro semanas, un proceso real: ruta para aprender a automatizar</title>
+<!-- Generado automáticamente desde el .md del mismo nombre con piezas/_visor/md_to_html.py. Edita el .md, no este archivo. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--muted:#625951;--orange:#ff5b00;--orangeText:#b43d00;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root{--ink:#f4efe9;--paper:#171310;--muted:#bdb2a8;--surface:#211b17;--border:#3a322c;--orangeText:#ff8a4d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 var(--body)}
+main{max-width:820px;margin:0 auto;padding:40px 24px 96px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.025em;line-height:1.15}
+h1{font-size:40px;margin:0 0 24px}
+h2{font-size:28px;margin:48px 0 12px;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:21px;margin:32px 0 8px}
+p,li{max-width:70ch}
+a{color:var(--orangeText);word-break:break-word}
+code{font:14px ui-monospace,Consolas,monospace;background:var(--surface);padding:2px 6px;border-radius:6px;word-break:break-word}
+pre{background:var(--surface);padding:16px;border-radius:12px;overflow:auto}
+pre code{background:none;padding:0}
+blockquote{margin:18px 0;padding:6px 0 6px 20px;border-left:6px solid var(--orange);color:var(--ink)}
+blockquote p{margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:18px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;min-width:120px}
+th{background:var(--surface);font-family:var(--display)}
+ul,ol{padding-left:24px}
+li{margin:6px 0}
+li.check{list-style:none;margin-left:-24px}
+li.check input{margin-right:10px}
+figure{margin:28px 0}
+figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border)}
+figcaption{margin-top:8px;font-size:14px;line-height:1.4;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--border);margin:32px 0}
+.tag{display:inline-block;background:var(--orange);color:#171310;font:700 13px var(--display);letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:18px}
+</style></head>
+<body><main>
+<h1>Cuatro semanas, un proceso real: ruta para aprender a automatizar</h1>
+<figure><img src="assets/reporte/fig-portada.png" alt="Portada de la guía: Cuatro semanas. Un proceso real." loading="lazy"><figcaption>Portada de la guía. Figura elaborada por Plogy.</figcaption></figure>
+<p>Guía de Plogy · Pieza 012 · Palabra clave del carrusel: RUTA</p>
+<ul><li>Estado: BORRADOR para revisión humana. No publicado.</li><li>URL prevista: <code>/guias/ruta-de-cuatro-semanas</code> (por confirmar cuando se configure la web)</li><li>Fecha de la versión: 2026-10-20</li><li>Última actualización: 2026-10-20 (versión inicial)</li><li>Pilar: Conocimiento (secundario: Filosofía) · Audiencia: Ploggers · Vertical: IA y automatizaciones</li><li>Tipo: guía educativa. No parte de una noticia.</li><li>Autor y revisor: pendiente de asignar</li></ul>
+<h2>Resumen</h2>
+<ol><li>Se aprende a automatizar haciéndolo con un proceso real, no viendo herramientas sueltas. Esta guía propone una ruta de cuatro semanas.</li><li>Cada semana tiene una tarea y un entregable: una hoja con la medición de hoy, un mapa de pasos con una decisión por paso, una versión mínima que funciona y una tabla comparada con una decisión.</li><li>Lo que mides en la semana 1 es lo que te permite juzgar el resultado en la semana 4.</li><li>Al final hay una lista de comprobación para cerrar cada semana.</li></ol>
+<p><strong>Qué es y qué no es.</strong> Es una propuesta de criterio de Plogy. No es un programa, un curso ni una cohorte, y todavía no se ha aplicado con personas ni con clientes. Puedes adaptarla a tu ritmo: la ruta fija entregables, no horas.</p>
+<h2>1. La idea</h2>
+<p>Un tutorial enseña una herramienta con un ejemplo limpio: sin casos raros, sin personas que lo usen, sin nadie que espere el resultado. Un proceso real obliga a decidir: qué se automatiza, qué no, cómo sabes que funcionó. Por eso la ruta parte de un proceso real y se organiza alrededor de lo que entregas cada semana.</p>
+<figure><img src="assets/reporte/fig-ruta.png" alt="Cuatro semanas, cuatro entregables: elegir y medir, mapear, construir, probar y comparar" loading="lazy"><figcaption>La ruta de cuatro semanas. Propuesta de criterio de Plogy.</figcaption></figure>
+<table><thead><tr><th>Semana</th><th>Tarea</th><th>Entregable</th></tr></thead><tbody><tr><td>1</td><td>Elegir un proceso y medir cómo se hace hoy</td><td>Una hoja con el proceso, qué es "bien hecho" y la medición de unos 10 casos reales</td></tr><tr><td>2</td><td>Mapear los pasos y decidir cuáles automatizar</td><td>Un mapa de pasos con cada paso marcado: automatizar, asistir con IA o manual</td></tr><tr><td>3</td><td>Construir una versión mínima</td><td>Una versión que procesa un caso real de punta a punta</td></tr><tr><td>4</td><td>Probar con casos reales y comparar</td><td>Una tabla comparada con lo medido y una decisión escrita</td></tr></tbody></table>
+<h2>2. Semana 1: elegir y medir</h2>
+<p><strong>Tarea.</strong> Elige un proceso, define cuándo un caso está bien hecho y mide cómo se hace hoy.</p>
+<figure><img src="assets/reporte/fig-elegir.png" alt="Qué proceso conviene elegir y cuándo dejarlo para después" loading="lazy"><figcaption>Criterios para elegir el proceso. Criterio de Plogy.</figcaption></figure>
+<ol><li><strong>Elige un proceso.</strong> Conviene que se repita varias veces por semana, que empiece y termine de forma clara, que tengas casos reales a mano y que, si falla, el daño sea pequeño y se pueda corregir.</li><li><strong>Déjalo para después</strong> si cambia por completo cada vez, si maneja datos personales o sensibles que no puedes compartir con una herramienta, o si nadie puede decir qué es "bien hecho".</li><li><strong>Define "bien hecho".</strong> Escribe en una o dos frases cuándo un caso está listo. Sin esa definición no se puede contar lo que hubo que corregir.</li><li><strong>Mide unos 10 casos reales.</strong> Por cada caso anota quién lo hizo, cuántos minutos tardó, si hubo que corregirlo y cuántos minutos costó la corrección. La cifra de 10 es una referencia práctica, no una regla estadística.</li><li><strong>Guarda la hoja con fecha</strong> y anota cómo mediste, para repetir el método en la semana 4.</li></ol>
+<p><strong>Entregable.</strong> Una hoja con el proceso, la definición de "bien hecho" y la medición de unos 10 casos reales.</p>
+<p><strong>Cómo sabes que terminaste.</strong> Puedes decir, con datos tuyos, cuántos minutos tarda hoy un caso y cuántos casos hubo que corregir.</p>
+<h2>3. Semana 2: mapear y decidir</h2>
+<p><strong>Tarea.</strong> Escribe los pasos tal como ocurren hoy, no como deberían ocurrir, y decide qué hacer con cada uno.</p>
+<figure><img src="assets/reporte/fig-mapa.png" alt="Un paso, una decisión: ejemplo hipotético de mapa con cinco pasos y tres decisiones" loading="lazy"><figcaption>Mapa de pasos de un proceso inventado. Ejemplo hipotético.</figcaption></figure>
+<ol><li><strong>Lista los pasos</strong> en orden, con el nombre que les da quien hace el trabajo.</li><li><strong>Pregúntale a cada paso</strong> si es repetitivo, si tiene reglas claras y qué pasa si sale mal.</li><li><strong>Marca una decisión por paso.</strong> Regla propuesta: automatizar los pasos repetitivos con reglas claras; IA con revisión en los pasos de texto donde una persona confirma el resultado; manual en los que piden juicio o tienen un riesgo que no quieres delegar.</li><li><strong>Anota por qué</strong> dejaste cada paso manual. Es información útil, no un fracaso.</li><li><strong>Elige el tramo que vas a construir:</strong> el más corto de pasos seguidos que quite trabajo.</li></ol>
+<p><strong>Ejemplo hipotético.</strong> Un proceso inventado de responder solicitudes de información: llegar por correo (automatizar), copiar los datos a una hoja (automatizar), revisar si falta algo (IA con revisión), redactar la respuesta (IA con revisión) y resolver un caso especial (manual). No es de ningún cliente.</p>
+<p><strong>Entregable.</strong> Un mapa de pasos con cada paso marcado: automatizar, asistir con IA o manual.</p>
+<h2>4. Semana 3: construir la versión mínima</h2>
+<p><strong>Tarea.</strong> Construye la versión más pequeña que funcione, de la entrada a la salida, con una herramienta de bajo código o un asistente de IA.</p>
+<figure><img src="assets/reporte/fig-minima.png" alt="Un caso real entra a una herramienta de bajo código o asistente de IA, produce un resultado y una persona lo revisa" loading="lazy"><figcaption>La versión mínima. Criterio de Plogy.</figcaption></figure>
+<ul><li><strong>Bajo código</strong> significa armar el flujo con bloques y reglas, sin programarlo todo. <strong>Asistente de IA</strong> significa darle instrucciones y ejemplos y revisar lo que devuelve. Esta guía no recomienda una marca: usa la que ya puedas manejar con tus datos y tus permisos.</li><li><strong>Un solo tipo de caso.</strong> Los casos raros se quedan fuera por ahora.</li><li><strong>De punta a punta, aunque sea feo.</strong> Una versión fea que funciona completa enseña más que una versión pulida a medias.</li><li><strong>Una persona revisa cada resultado.</strong> Si pruebas con datos de otras personas o de un negocio, comprueba antes que puedes usarlos con esa herramienta.</li><li><strong>Guarda las instrucciones o la configuración</strong> que usaste, para poder repetirlo.</li></ul>
+<p><strong>Entregable.</strong> Una versión mínima que procesa un caso real de punta a punta.</p>
+<p><strong>Si no funciona con el primer caso,</strong> simplifica: menos pasos, un caso más sencillo, instrucciones más claras.</p>
+<h2>5. Semana 4: probar y comparar</h2>
+<p><strong>Tarea.</strong> Prueba con casos reales nuevos y compara con lo que mediste en la semana 1.</p>
+<figure><img src="assets/reporte/fig-comparar.png" alt="Tabla vacía de semana 1 contra semana 4 y tres decisiones posibles: seguir, ajustar o dejarlo" loading="lazy"><figcaption>Plantilla de comparación, sin cifras. Criterio de Plogy.</figcaption></figure>
+<ol><li><strong>Usa casos reales distintos</strong> de los que usaste para construir.</li><li><strong>Mide igual que en la semana 1:</strong> los mismos números, la misma definición de "bien hecho". Suma el tiempo de revisar el resultado.</li><li><strong>Llena la tabla comparada</strong> (abajo).</li><li><strong>Decide por escrito:</strong> seguir si mejora y se sostiene con casos nuevos; ajustar si mejora poco o falla en casos concretos (vuelve al mapa); dejarlo si no mejora o empeora. Dejarlo también es un resultado útil.</li><li><strong>Anota aparte</strong> cuánto tiempo te costó construirlo. No está en la tabla y también cuenta al decidir.</li></ol>
+<p>Tabla comparada, para copiar a una hoja de cálculo:</p>
+<table><thead><tr><th></th><th>Semana 1</th><th>Semana 4</th></tr></thead><tbody><tr><td>Minutos por caso (con revisión)</td><td></td><td></td></tr><tr><td>Casos que hubo que corregir</td><td></td><td></td></tr><tr><td>Casos probados</td><td></td><td></td></tr></tbody></table>
+<p><strong>Entregable.</strong> La tabla comparada y una decisión escrita.</p>
+<h2>6. Qué haría Plogy primero</h2>
+<p>Es criterio de Plogy, no un hecho de fuentes externas. Antes de tocar una herramienta mediría un solo proceso y dejaría la medición escrita. Después mapearía, construiría lo mínimo y volvería a medir igual. Esta ruta todavía no se ha aplicado con personas ni con clientes de Plogy.</p>
+<figure><img src="assets/08-cta-camara.jpg" alt="Una cámara sobre un trípode en un cuarto naranja" loading="lazy"><figcaption>Imagen de la biblioteca de referencia de Plogy. Derechos por verificar antes de publicar.</figcaption></figure>
+<h2>7. Lista de comprobación semanal</h2>
+<figure><img src="assets/reporte/fig-lista.png" alt="Lista de comprobación: qué debe estar hecho al cerrar cada semana" loading="lazy"><figcaption>Lista de comprobación semanal. Criterio de Plogy.</figcaption></figure>
+<p>Al cerrar la <strong>semana 1</strong>:</p>
+<ul><li class="check"><input type="checkbox" disabled> Elegí un proceso con inicio y fin claros.</li><li class="check"><input type="checkbox" disabled> Escribí qué es "bien hecho".</li><li class="check"><input type="checkbox" disabled> Medí unos 10 casos reales.</li><li class="check"><input type="checkbox" disabled> Guardé la hoja con fecha.</li></ul>
+<p>Al cerrar la <strong>semana 2</strong>:</p>
+<ul><li class="check"><input type="checkbox" disabled> Listé los pasos como ocurren hoy.</li><li class="check"><input type="checkbox" disabled> Marqué cada paso: automatizar, asistir con IA o manual.</li><li class="check"><input type="checkbox" disabled> Anoté por qué dejé pasos manuales.</li><li class="check"><input type="checkbox" disabled> Elegí el tramo que construiré.</li></ul>
+<p>Al cerrar la <strong>semana 3</strong>:</p>
+<ul><li class="check"><input type="checkbox" disabled> Elegí una herramienta.</li><li class="check"><input type="checkbox" disabled> Definí un solo tipo de caso.</li><li class="check"><input type="checkbox" disabled> La versión procesa un caso real de punta a punta.</li><li class="check"><input type="checkbox" disabled> Una persona revisó el resultado.</li></ul>
+<p>Al cerrar la <strong>semana 4</strong>:</p>
+<ul><li class="check"><input type="checkbox" disabled> Probé con casos reales nuevos.</li><li class="check"><input type="checkbox" disabled> Medí igual que en la semana 1.</li><li class="check"><input type="checkbox" disabled> Llené la tabla comparada.</li><li class="check"><input type="checkbox" disabled> Escribí la decisión: seguir, ajustar o dejarlo.</li></ul>
+<p>Una casilla sin marcar al cierre de la semana es una señal para ajustar, no un fracaso.</p>
+<h2>8. Lo que esta guía no cubre</h2>
+<ul><li><strong>Cuánto tiempo dedicar por semana.</strong> Depende de cada persona y de su proceso. La ruta fija entregables, no horas.</li><li><strong>Qué herramienta elegir.</strong> No compara ni recomienda marcas.</li><li><strong>Protección de datos en detalle.</strong> Solo avisa de revisar qué datos puedes usar con una herramienta.</li><li><strong>Qué pasa después de la semana 4:</strong> mantenimiento, costo de operar y escalar la versión mínima.</li><li><strong>El tamaño de muestra estadístico.</strong> Los 10 casos son una referencia práctica.</li><li><strong>Resultados.</strong> Ninguna cifra de esta guía es de una persona, un cliente ni una fuente: el ejemplo del mapa es inventado y la tabla de comparación está vacía. No se garantiza ningún resultado.</li></ul>
+<h2>9. Fuentes</h2>
+<p>No hay fuentes externas. El contenido es criterio de Plogy. Una revisión humana puede añadir referencias de mejora de procesos o de aprendizaje basado en proyectos si lo considera útil. Pendiente.</p>
+<h2>10. Siguiente paso</h2>
+<p>Sigue a Plogy para ver cómo se implementa la IA en negocios y cómo se aprende a construirla.</p>
+<h2>Historial de cambios</h2>
+<ul><li>2026-10-20: versión inicial en borrador, con portada, seis figuras, una foto de la biblioteca y la lista de comprobación. Las figuras se generan desde <code>reporte-figuras.html</code>.</li></ul>
+</main></body></html>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Figuras de la guía · pieza 010</title>
+<!-- Figuras 1600x900 para reporte.md. Se exportan a assets/reporte/ con render-slides.ps1 (-Param f -Width 1600 -Height 900).
+     Claves: portada, campos, pantalla, ejemplo, plantilla, examen.
+     Pieza educativa: ninguna cifra viene de una fuente externa. El ejemplo de la clínica es inventado y la figura lo dice. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--orange:#ff5b00;--orangeText:#b43d00;--muted:#625951;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:#888;font-family:var(--body);color:var(--ink)}
+.fig{position:relative;width:1600px;height:900px;overflow:hidden;padding:72px 80px;display:none}
+body:not(.single) .fig{display:block;margin-bottom:20px;zoom:.5}
+body.single .fig{display:block}
+.light{background:#fff}.surface{background:var(--surface)}.dark{background:var(--ink);color:#fff}
+.logo{position:absolute;right:80px;top:64px;width:190px}
+.src{position:absolute;left:80px;bottom:40px;right:80px;font:500 22px/1.3 var(--body);color:var(--muted)}
+.dark .src{color:#bdb2a8}
+.eyebrow{font:700 24px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText)}
+.dark .eyebrow{color:var(--orange)}
+h2{font:700 60px/1.05 var(--display);letter-spacing:-.035em;margin-top:16px;max-width:1180px;text-wrap:balance}
+.hl{color:var(--orange)}
+.pill{display:inline-block;background:var(--orange);color:var(--ink);font:700 24px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:14px 24px;border-radius:999px}
+/* portada */
+.hero h1{font:700 118px/.98 var(--display);letter-spacing:-.045em;margin-top:34px;max-width:1300px;position:relative}
+.hero .glow{position:absolute;right:-620px;top:-260px;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ff5b00 0%,#d63a52 38%,#6a3dd1 68%,rgba(23,19,16,0) 72%);opacity:.9}
+.hero .meta{position:absolute;left:80px;bottom:56px;font:500 28px/1.3 var(--body);color:#d9cfc6}
+.hero .logo{left:80px;right:auto}
+.hero .eyebrow{margin-top:120px;position:relative}
+/* campos */
+.six{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.cell{border-radius:24px;background:#fff;border:2px solid var(--border);padding:24px 28px;display:grid;grid-template-columns:54px 1fr;column-gap:16px}
+.cell i{font:700 50px/1 var(--display);font-style:normal;color:var(--orange)}
+.cell b{display:block;font:700 34px/1.1 var(--display);letter-spacing:-.02em}
+.cell span{display:block;margin-top:8px;font:500 25px/1.3 var(--body);color:var(--muted)}
+.cell em{display:block;margin-top:10px;font:700 22px/1.3 var(--body);font-style:normal;color:var(--orangeText)}
+/* pantalla */
+.scr{display:flex;gap:40px;margin-top:30px;align-items:flex-start}
+.win{width:860px;border-radius:24px;overflow:hidden;border:2px solid var(--border);background:#fff;flex:none}
+.chrome{height:52px;background:#e9e3dd;display:flex;align-items:center;gap:10px;padding:0 20px}
+.chrome i{width:14px;height:14px;border-radius:50%;background:#b5aaa0}
+.chrome span{margin-left:14px;flex:1;height:30px;border-radius:15px;background:#fff;font:400 22px/30px var(--body);color:var(--muted);padding:0 18px}
+.wh{padding:18px 28px 20px;background:var(--surface)}
+.tag{display:flex;align-items:center;gap:12px;font:700 24px/1 var(--display);color:var(--orangeText)}
+.n{flex:none;width:36px;height:36px;border-radius:50%;background:var(--orange);color:var(--ink);font:700 22px/36px var(--display);text-align:center}
+.wh .big{font:700 44px/1.1 var(--display);letter-spacing:-.03em;margin:8px 0 14px}
+.wh .sub{font:400 26px/1.2 var(--body);color:var(--muted);margin-top:8px}
+.wh .btn{display:flex;align-items:center;gap:16px;margin-top:16px}
+.wh .btn em{font-style:normal;background:var(--orange);color:var(--ink);font:700 26px/1 var(--display);padding:16px 26px;border-radius:999px}
+.wp{padding:16px 28px 18px}
+.wp .cards{display:flex;gap:14px;margin-top:10px}
+.wp .cards div{flex:1;height:78px;border-radius:14px;border:2px solid #e3dad1;padding:14px}
+.wp .cards i{display:block;height:9px;border-radius:5px;background:#d9d0c7;margin-bottom:9px}
+.wp .cards i:first-child{width:60%;background:var(--ink)}
+.wf{background:var(--ink);color:#fff;padding:12px 28px;font:400 24px/1.3 var(--body);display:flex;gap:14px;align-items:center}
+.wf .n{width:32px;height:32px;line-height:32px;font-size:20px;margin-right:-6px}
+.leg{flex:1;display:flex;flex-direction:column;gap:12px}
+.leg div{display:grid;grid-template-columns:44px 1fr;column-gap:14px;align-items:start;background:#fff;border:2px solid var(--border);border-radius:18px;padding:12px 18px}
+.leg .n{display:block;margin:0;color:var(--ink);width:40px;height:40px;line-height:40px;font-size:24px}
+.leg b{display:block;font:700 28px/1.1 var(--display);letter-spacing:-.01em}
+.leg span{display:block;margin-top:3px;font:500 22px/1.25 var(--body);color:var(--muted)}
+/* ejemplo */
+.ex{display:flex;gap:36px;margin-top:30px;align-items:stretch}
+.bef{width:480px;flex:none;border-radius:26px;background:var(--ink);color:#fff;padding:34px 34px}
+.bef small,.aft small{display:block;font:700 24px/1 var(--display);letter-spacing:.12em;text-transform:uppercase}
+.bef small{color:var(--orange)}
+.bef .bubble{margin-top:20px;background:#fff;color:var(--ink);border-radius:26px 26px 26px 6px;padding:20px 24px;font:500 34px/1.2 var(--body)}
+.bef p{margin-top:24px;font:500 26px/1.35 var(--body);color:#d8cfc6}
+.aft{flex:1;border-radius:26px;background:#fff;border:2px solid var(--border);padding:26px 34px 14px}
+.aft small{color:var(--orangeText);margin-bottom:6px}
+.aft .row{display:grid;grid-template-columns:272px 1fr;align-items:baseline;padding:13px 0;border-top:2px solid #eee6df}
+.aft .row:first-of-type{border-top:0}
+.aft .row b{font:700 26px/1.2 var(--display);color:var(--orangeText)}
+.aft .row span{font:500 30px/1.2 var(--body);text-wrap:balance}
+/* plantilla */
+.doc{margin-top:34px;background:#fff;border:2px solid var(--border);border-radius:24px;padding:30px 44px;display:grid;grid-template-columns:1fr 1fr;column-gap:46px}
+.doc .f{padding:22px 0;border-top:2px solid #eee6df}
+.doc .f:nth-child(-n+2){border-top:0}
+.doc .f b{display:block;font:700 32px/1.1 var(--display);color:var(--orangeText);letter-spacing:.01em}
+.doc .f span{display:block;margin-top:10px;font:500 28px/1.3 var(--body);color:var(--ink)}
+.doc .f span i{font-style:normal;color:var(--muted)}
+/* examen */
+.chk{margin-top:34px;display:flex;flex-direction:column;gap:16px}
+.chk div{display:grid;grid-template-columns:330px 1fr;align-items:center;border:2px solid #4a413a;border-radius:20px;padding:22px 30px}
+.chk b{font:700 26px/1.1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--orange)}
+.chk span{font:500 34px/1.2 var(--body);color:#fff}
+.chk div.main{background:var(--orange);border-color:var(--orange)}
+.chk div.main b,.chk div.main span{color:var(--ink)}
+.chk div.main span{font:700 42px/1.15 var(--display);letter-spacing:-.02em}
+</style>
+</head>
+<body>
+
+<!-- 1. Portada -->
+<section class="fig dark hero" data-f="portada">
+  <div class="glow"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow">Guía de Plogy · Web</div>
+  <h1>Primero el brief.<br><span class="hl">Después la web.</span></h1>
+  <div class="meta">Cómo pedir una web con seis campos · versión 2026-10-20 · borrador</div>
+</section>
+
+<!-- 2. Los seis campos -->
+<section class="fig surface" data-f="campos">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">El brief</div>
+  <h2>Seis campos. Cada uno cierra <span class="hl">una adivinanza.</span></h2>
+  <div class="six">
+    <div class="cell"><i>1</i><p><b>Objetivo</b><span>¿Qué debe lograr la web para el negocio?</span><em>Sin él, nadie sabe qué es un éxito.</em></p></div>
+    <div class="cell"><i>2</i><p><b>Audiencia</b><span>¿Quién entra y qué quiere resolver?</span><em>Sin ella, se escribe para nadie.</em></p></div>
+    <div class="cell"><i>3</i><p><b>Oferta</b><span>¿Qué ofreces, dicho en una frase?</span><em>Sin ella, la web decora y no vende.</em></p></div>
+    <div class="cell"><i>4</i><p><b>Prueba</b><span>¿Qué evidencia real tiene el negocio?</span><em>Sin ella, todo suena a promesa.</em></p></div>
+    <div class="cell"><i>5</i><p><b>Acción principal</b><span>¿Qué debe hacer quien entra?</span><em>Sin ella, hay diez botones y ninguno manda.</em></p></div>
+    <div class="cell"><i>6</i><p><b>Restricciones</b><span>¿Qué plazo, presupuesto y límites hay?</span><em>Sin ellas, aparecen tarde y cuestan más.</em></p></div>
+  </div>
+  <div class="src">Criterio de Plogy. Método propuesto, no una norma ni un estudio.</div>
+</section>
+
+<!-- 3. En la pantalla -->
+<section class="fig light" data-f="pantalla">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Del brief a la pantalla</div>
+  <h2>Cada campo deja <span class="hl">huella en la web.</span></h2>
+  <div class="scr">
+    <div class="win">
+      <div class="chrome"><i></i><i></i><i></i><span>tunegocio.com</span></div>
+      <div class="wh">
+        <div class="tag"><span class="n">3</span>Oferta</div>
+        <div class="big">Lo que ofreces, en una frase.</div>
+        <div class="tag"><span class="n">2</span>Audiencia</div>
+        <div class="sub">Con las palabras de quien entra.</div>
+        <div class="btn"><em>Agendar ahora</em><div class="tag"><span class="n">5</span>Acción principal</div></div>
+      </div>
+      <div class="wp">
+        <div class="tag"><span class="n">4</span>Prueba</div>
+        <div class="cards"><div><i></i><i></i></div><div><i></i><i></i></div><div><i></i><i></i></div></div>
+      </div>
+      <div class="wf"><span class="n">1</span><span class="n">6</span><span><b>Objetivo y restricciones</b> no se ven: se notan en lo que sobra y en lo que falta.</span></div>
+    </div>
+    <div class="leg">
+      <div><span class="n">1</span><p><b>Objetivo</b><span>Decide qué entra y qué se queda fuera.</span></p></div>
+      <div><span class="n">2</span><p><b>Audiencia</b><span>Se nota en las palabras y en el orden.</span></p></div>
+      <div><span class="n">3</span><p><b>Oferta</b><span>Es el titular: lo primero que se lee.</span></p></div>
+      <div><span class="n">4</span><p><b>Prueba</b><span>Reseñas, trabajos y garantías a la vista.</span></p></div>
+      <div><span class="n">5</span><p><b>Acción principal</b><span>El botón que más se ve en toda la página.</span></p></div>
+      <div><span class="n">6</span><p><b>Restricciones</b><span>Plazo, presupuesto, tono y lo que se evita.</span></p></div>
+    </div>
+  </div>
+  <div class="src">Esquema ilustrativo de Plogy, no una web real. Criterio de Plogy.</div>
+</section>
+
+<!-- 4. Ejemplo hipotético -->
+<section class="fig surface" data-f="ejemplo">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <span class="pill">Ejemplo hipotético</span>
+  <h2>El mismo pedido, <span class="hl">antes y después.</span></h2>
+  <div class="ex">
+    <div class="bef">
+      <small>Antes</small>
+      <div class="bubble">“Hazme una web bonita para mi clínica.”</div>
+      <p>Quien la recibe decide por su cuenta para quién es, qué destacar y qué botón poner.</p>
+    </div>
+    <div class="aft">
+      <small>Después · brief de seis campos</small>
+      <div class="row"><b>1 Objetivo</b><span>Más citas de primera consulta</span></div>
+      <div class="row"><b>2 Audiencia</b><span>Dueños de mascotas del barrio, que buscan desde el celular</span></div>
+      <div class="row"><b>3 Oferta</b><span>Consulta y vacunas, con cita el mismo día</span></div>
+      <div class="row"><b>4 Prueba</b><span>Reseñas reales y fotos propias de la clínica</span></div>
+      <div class="row"><b>5 Acción principal</b><span>Agendar por WhatsApp</span></div>
+      <div class="row"><b>6 Restricciones</b><span>Lista en cuatro semanas. Sin tienda en línea.</span></div>
+    </div>
+  </div>
+  <div class="src">Ejemplo hipotético: clínica inventada para mostrar el método. Ningún dato es de un cliente ni de una fuente.</div>
+</section>
+
+<!-- 5. Plantilla -->
+<section class="fig light" data-f="plantilla">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Plantilla</div>
+  <h2>Copia esto y <span class="hl">responde cada línea.</span></h2>
+  <div class="doc">
+    <div class="f"><b>1. Objetivo</b><span>Esta web debe lograr <i>[resultado para el negocio]</i>.</span></div>
+    <div class="f"><b>4. Prueba</b><span>Lo que podemos mostrar: <i>[reseñas, trabajos, garantías reales]</i>.</span></div>
+    <div class="f"><b>2. Audiencia</b><span>Quien entra es <i>[quién]</i> y busca <i>[qué quiere resolver]</i>.</span></div>
+    <div class="f"><b>5. Acción principal</b><span>Quien entra debe <i>[una sola acción]</i>.</span></div>
+    <div class="f"><b>3. Oferta</b><span>Ofrecemos <i>[qué]</i> a <i>[quién]</i>, con <i>[diferencia real]</i>.</span></div>
+    <div class="f"><b>6. Restricciones</b><span>Plazo <i>[fecha]</i>. Presupuesto <i>[rango]</i>. Evitar <i>[qué no]</i>.</span></div>
+  </div>
+  <div class="src">Criterio de Plogy. Una frase por campo. Si un campo queda vacío, anótalo como tarea pendiente.</div>
+</section>
+
+<!-- 6. El examen -->
+<section class="fig dark" data-f="examen">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow">Después de publicar</div>
+  <h2>El brief también es <span class="hl">el examen.</span></h2>
+  <div class="chk">
+    <div><b>Oferta</b><span>¿Se entiende qué ofreces de un vistazo?</span></div>
+    <div><b>Audiencia</b><span>¿Habla con las palabras de quien entra?</span></div>
+    <div><b>Prueba</b><span>¿La evidencia está a la vista?</span></div>
+    <div><b>Restricciones</b><span>¿Se respetaron plazo, presupuesto y límites?</span></div>
+    <div class="main"><b>Acción principal</b><span>¿Cuántas personas hicieron la acción?</span></div>
+  </div>
+  <div class="src">Criterio de Plogy. La cuenta de la acción depende de cómo se registre (botón, mensajes, formularios). Esta guía no explica la medición técnica.</div>
+</section>
+
+<script>
+var q=new URLSearchParams(location.search).get('f');
+if(q){document.body.classList.add('single');document.querySelectorAll('.fig').forEach(function(e){if(e.dataset.f!==q)e.style.display='none';});}
+</script>
+</body>
+</html>

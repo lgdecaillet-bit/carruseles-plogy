@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Figuras de la guía · pieza 005</title>
+<!-- Figuras 1600x900 para reporte.md. Se exportan a assets/reporte/ con render-slides.ps1 (-Param f -Width 1600 -Height 900).
+     Pieza educativa: ninguna cifra viene de una fuente externa. Las del ejemplo son inventadas y la figura lo dice. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--orange:#ff5b00;--orangeText:#b43d00;--muted:#625951;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:#888;font-family:var(--body);color:var(--ink)}
+.fig{position:relative;width:1600px;height:900px;overflow:hidden;padding:72px 80px;display:none}
+body:not(.single) .fig{display:block;margin-bottom:20px;zoom:.5}
+body.single .fig{display:block}
+.light{background:#fff}.surface{background:var(--surface)}.dark{background:var(--ink);color:#fff}
+.logo{position:absolute;right:80px;top:64px;width:190px}
+.src{position:absolute;left:80px;bottom:44px;right:80px;font:500 22px/1.3 var(--body);color:var(--muted)}
+.dark .src{color:#bdb2a8}
+.eyebrow{font:700 24px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText)}
+.dark .eyebrow{color:var(--orange)}
+h2{font:700 64px/1.05 var(--display);letter-spacing:-.035em;margin-top:18px;max-width:1180px}
+.hl{color:var(--orange)}
+/* portada */
+.hero h1{font:700 118px/.98 var(--display);letter-spacing:-.045em;margin-top:34px;max-width:1300px;position:relative}
+.hero .glow{position:absolute;right:-620px;top:-260px;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ff5b00 0%,#d63a52 38%,#6a3dd1 68%,rgba(23,19,16,0) 72%);opacity:.9}
+.hero .meta{position:absolute;left:80px;bottom:56px;font:500 28px/1.3 var(--body);color:#d9cfc6}
+.hero .logo{left:80px;right:auto}
+.hero .eyebrow{margin-top:120px;position:relative}
+/* ciclo */
+.cycle{display:flex;align-items:stretch;gap:22px;margin-top:70px}
+.step{flex:1;border-radius:26px;padding:34px 30px;background:#fff;border:2px solid var(--border)}
+.step.on{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.step b{display:block;font:700 34px/1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--orangeText)}
+.step.on b{color:var(--ink)}
+.step span{display:block;margin-top:18px;font:700 44px/1.1 var(--display);letter-spacing:-.025em}
+.step small{display:block;margin-top:14px;font:500 26px/1.35 var(--body);color:var(--muted)}
+.step.on small{color:var(--ink)}
+.cycle .arr{align-self:center;font:700 56px/1 var(--display);color:var(--orange)}
+.note{margin-top:40px;font:500 30px/1.4 var(--body);color:var(--muted);max-width:1300px}
+/* cuatro números */
+.four{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.num{border-radius:26px;padding:26px 32px;background:#fff;border:2px solid var(--border);display:grid;grid-template-columns:60px 1fr;column-gap:20px}
+.num i{font:700 56px/1 var(--display);font-style:normal;color:var(--orange)}
+.num b{display:block;font:700 38px/1.1 var(--display);letter-spacing:-.02em}
+.num span{display:block;margin-top:8px;font:500 25px/1.3 var(--body);color:var(--muted)}
+.num em{display:block;margin-top:10px;font:700 23px/1.3 var(--body);font-style:normal;color:var(--orangeText)}
+/* errores */
+.errs{display:flex;gap:28px;margin-top:56px}
+.err{flex:1;border-radius:26px;padding:36px 32px;background:#222;border:2px solid #3b332d}
+.err i{display:block;font:700 90px/1 var(--display);font-style:normal;color:var(--orange)}
+.err b{display:block;margin-top:14px;font:700 40px/1.1 var(--display);letter-spacing:-.02em}
+.err span{display:block;margin-top:14px;font:500 27px/1.35 var(--body);color:#d8cfc6}
+/* ejemplo */
+.ex{display:flex;gap:40px;margin-top:40px;align-items:stretch}
+table.t{border-collapse:separate;border-spacing:0;flex:1.5;font:500 30px/1.2 var(--body);background:#fff;border:2px solid var(--border);border-radius:26px;overflow:hidden}
+.t th,.t td{padding:18px 26px;text-align:left;border-bottom:2px solid #eee6df}
+.t th{background:var(--ink);color:#fff;font:700 26px/1 var(--display);letter-spacing:.06em;text-transform:uppercase}
+.t th:last-child{color:var(--orange)}
+.t td:first-child{color:var(--muted)}
+.t td:nth-child(2){font:700 36px/1 var(--display)}
+.t td:nth-child(3){font:700 36px/1 var(--display);color:var(--orangeText)}
+.t tr:last-child td{border-bottom:0}
+.sum{flex:1;border-radius:26px;background:var(--ink);color:#fff;padding:38px 36px;display:flex;flex-direction:column;justify-content:center}
+.sum small{font:700 24px/1.2 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--orange)}
+.sum b{display:block;margin-top:16px;font:700 84px/1 var(--display);letter-spacing:-.04em;color:var(--orange)}
+.sum span{display:block;margin-top:14px;font:500 27px/1.35 var(--body);color:#d8cfc6}
+.tag{display:inline-block;margin-top:26px;background:var(--orange);color:var(--ink);font:700 24px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border-radius:999px}
+/* plantilla */
+table.tp{border-collapse:separate;border-spacing:0;margin-top:34px;width:100%;font:500 26px/1.2 var(--body);background:#fff;border:2px solid var(--border);border-radius:22px;overflow:hidden}
+.tp th,.tp td{padding:16px 18px;text-align:left;border-bottom:2px solid #eee6df;border-right:2px solid #eee6df}
+.tp th{background:var(--ink);color:#fff;font:700 22px/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase}
+.tp td{height:62px;color:#b4a99f}
+.tp td:first-child{color:var(--muted);font-weight:700}
+.tp tr:last-child td{border-bottom:0}
+.tp th:last-child,.tp td:last-child{border-right:0}
+</style>
+</head>
+<body>
+
+<!-- 1. Portada -->
+<section class="fig dark hero" data-f="portada">
+  <div class="glow"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow">Guía de Plogy · Automatización</div>
+  <h1>Mide hoy.<br><span class="hl">Compara después.</span></h1>
+  <div class="meta">Cómo medir un proceso antes de automatizarlo · versión 2026-10-20 · borrador</div>
+</section>
+
+<!-- 2. Ciclo de la línea base -->
+<section class="fig surface" data-f="ciclo">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">La idea</div>
+  <h2>La línea base es <span class="hl">cómo trabajas hoy, medido</span></h2>
+  <div class="cycle">
+    <div class="step on"><b>1</b><span>Medir hoy</span><small>Casos reales de una semana normal, antes de tocar nada.</small></div>
+    <div class="arr">→</div>
+    <div class="step"><b>2</b><span>Automatizar</span><small>Construir y poner en marcha el cambio.</small></div>
+    <div class="arr">→</div>
+    <div class="step on"><b>3</b><span>Medir igual</span><small>Los mismos números, con el mismo método.</small></div>
+    <div class="arr">→</div>
+    <div class="step"><b>4</b><span>Comparar</span><small>La diferencia es el resultado, no la sensación.</small></div>
+  </div>
+  <div class="src">Criterio de Plogy. Sin fuente externa: no se afirma ninguna cifra de terceros.</div>
+</section>
+
+<!-- 3. Cuatro números -->
+<section class="fig light" data-f="numeros">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Qué medir</div>
+  <h2>Cuatro números <span class="hl">por proceso</span></h2>
+  <div class="four">
+    <div class="num"><i>1</i><p><b>Tiempo por caso</b><span>Cuánto tarda una persona en sacar uno adelante.</span><em>Cómo: cronometra o pide el registro de 10 a 20 casos reales.</em></p></div>
+    <div class="num"><i>2</i><p><b>Reproceso</b><span>Cuántos casos hay que corregir o repetir.</span><em>Cómo: cuenta los casos devueltos sobre el total.</em></p></div>
+    <div class="num"><i>3</i><p><b>Volumen</b><span>Cuántos casos entran por semana.</span><em>Cómo: toma el registro de entradas de varias semanas.</em></p></div>
+    <div class="num"><i>4</i><p><b>Costo</b><span>Horas del proceso por el costo de la hora.</span><em>Cómo: tiempo por caso × volumen × costo de la hora.</em></p></div>
+  </div>
+  <div class="src">Criterio de Plogy. El tamaño de muestra es una referencia práctica, no una regla estadística.</div>
+</section>
+
+<!-- 4. Errores -->
+<section class="fig dark" data-f="errores">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow">Qué evitar</div>
+  <h2>Tres errores <span class="hl">al medir</span></h2>
+  <div class="errs">
+    <div class="err"><i>1</i><b>Medir tu mejor día</b><span>Una semana normal tiene picos y atascos. Si mides solo lo que sale bien, la comparación engaña.</span></div>
+    <div class="err"><i>2</i><b>Contar solo lo que hace la IA</b><span>El tiempo de revisar y corregir su resultado también es tiempo del proceso.</span></div>
+    <div class="err"><i>3</i><b>Olvidar el reproceso</b><span>Un caso mal hecho vuelve y cuesta otra vez. Sin contarlo, la comparación engaña.</span></div>
+  </div>
+  <div class="src">Criterio de Plogy.</div>
+</section>
+
+<!-- 5. Ejemplo hipotético -->
+<section class="fig light" data-f="ejemplo">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Responder cotizaciones</div>
+  <h2>Con línea base, <span class="hl">el ahorro se calcula</span></h2>
+  <div class="ex">
+    <table class="t">
+      <tr><th></th><th>Antes</th><th>Después</th></tr>
+      <tr><td>Tiempo por caso</td><td>25 min</td><td>8 min</td></tr>
+      <tr><td>Casos a corregir</td><td>1 de 5</td><td>1 de 10</td></tr>
+      <tr><td>Casos por semana</td><td>40</td><td>40</td></tr>
+    </table>
+    <div class="sum"><small>Ahorro por semana</small><b>11 h 20 min</b><span>(25 − 8) min × 40 casos = 680 min. En “Después” cuenta el tiempo de revisar.</span></div>
+  </div>
+  <span class="tag">Ejemplo hipotético · cifras inventadas</span>
+  <div class="src">Cuenta de Plogy con cifras inventadas para mostrar el método. No son de ningún cliente.</div>
+</section>
+
+<!-- 6. Plantilla -->
+<section class="fig surface" data-f="plantilla">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">La plantilla</div>
+  <h2>Una fila por caso, <span class="hl">una semana normal</span></h2>
+  <table class="tp">
+    <tr><th>Caso</th><th>Fecha</th><th>Quién lo hizo</th><th>Minutos del caso</th><th>¿Hubo que corregir?</th><th>Minutos de corrección</th></tr>
+    <tr><td>1</td><td>dd/mm</td><td>nombre</td><td>0</td><td>sí / no</td><td>0</td></tr>
+    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>…</td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <div class="src">Criterio de Plogy. Al final: promedio de minutos, porcentaje de casos corregidos, casos por semana y costo con el valor de la hora.</div>
+</section>
+
+<script>
+var q=new URLSearchParams(location.search).get('f');
+if(q){document.body.classList.add('single');document.querySelectorAll('.fig').forEach(function(e){if(e.dataset.f!==q)e.style.display='none';});}
+</script>
+</body>
+</html>

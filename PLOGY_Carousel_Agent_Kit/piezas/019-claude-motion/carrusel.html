@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 019 · Claude Motion</title>
+<!-- Fuente editable. 7 láminas de 1080x1350, fondo blanco y estética normal de Plogy.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=7
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7 -Prefix slide-0
+     Fuentes: anuncio de Anthropic (claude.com/resources/articles/dashboards-and-motion, 8 oct 2026)
+     y guía de soporte "Get started with Claude Motion". Ver brief.md.
+     Maquetas de reproductor y editor: ilustraciones propias, rotuladas.
+     CTA: variante 28 de la biblioteca (foto en banda sobre crema y botón Ink), adaptada a la clase: Comenta MOTION.
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486; --line:#e6ddd5;
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --mono:Consolas,'Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px;color:var(--ink)}
+.light{background:var(--paper)} .surface{background:var(--surface)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;color:var(--muted);z-index:5}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:5;color:var(--ink)}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.2}
+.dots i.on{opacity:1;background:var(--orange)}
+h1,h2{position:relative;z-index:3;font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance}
+.hl{color:var(--orange)}
+.support{position:relative;z-index:3;font:400 38px/1.35 var(--body);color:var(--muted);margin-top:24px;max-width:880px}
+.support b{color:var(--ink)}
+.eyebrow{font:700 28px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--orangeText);margin-bottom:28px}
+.pill{display:inline-block;background:var(--orange);color:var(--ink);font:700 30px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:18px 30px;border-radius:999px}
+.top{position:relative;z-index:3;margin-top:110px}
+.src{position:absolute;left:96px;right:96px;bottom:124px;z-index:3;font:400 27px/1.35 var(--body);color:var(--muted)}
+.tag{display:inline-block;font:700 20px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:#cfc6bd;border:1.5px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 12px}
+
+/* reproductor (maqueta) */
+.player{position:relative;border-radius:28px;overflow:hidden;background:var(--ink);box-shadow:0 30px 70px rgba(23,19,16,.28)}
+.player .frame{position:relative;height:330px;padding:34px 38px;background:radial-gradient(circle at 80% 20%,rgba(255,91,0,.25),transparent 55%),#1f1915}
+.player .frame small{display:block;font:700 20px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:#a99d92}
+.player .frame b{display:block;margin-top:10px;font:700 46px/1 var(--display);letter-spacing:-.03em;color:#fff}
+.player .frame b u{text-decoration:none;color:var(--orange)}
+.player .bars{position:absolute;left:38px;right:38px;bottom:30px;height:150px;display:flex;align-items:flex-end;gap:16px}
+.player .bars i{flex:1;border-radius:10px 10px 4px 4px;background:#4a413a}
+.player .bars i.o{background:var(--orange);box-shadow:0 0 30px rgba(255,91,0,.5)}
+.player .bars i.g{background:linear-gradient(to top,#4a413a 55%,rgba(74,65,58,.15));}
+.player .tag{position:absolute;right:30px;top:30px}
+.player .ctl{display:flex;align-items:center;gap:20px;padding:20px 28px;background:var(--ink)}
+.player .pl{width:46px;height:46px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center}
+.player .pl::after{content:"";border-left:16px solid var(--ink);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.player .pg{flex:1;height:8px;border-radius:4px;background:#3a322c;position:relative}
+.player .pg i{position:absolute;left:0;top:0;bottom:0;width:40%;border-radius:4px;background:var(--orange)}
+.player .pg i::after{content:"";position:absolute;right:-9px;top:-6px;width:20px;height:20px;border-radius:50%;background:#fff}
+.player .tm{font:500 24px/1 var(--mono);color:#cfc6bd}
+
+/* 01 · portada */
+.p1 .pill{position:absolute;left:96px;top:196px;z-index:4}
+.p1 .photo{position:absolute;z-index:2;left:110px;top:296px;width:380px;height:470px;border:14px solid #fff;border-radius:6px;box-shadow:0 26px 60px rgba(23,19,16,.25);transform:rotate(-5deg);overflow:hidden}
+.p1 .photo img{width:100%;height:100%;object-fit:cover;object-position:30% 30%;display:block}
+.p1 .player{position:absolute;z-index:3;left:400px;top:380px;width:600px;transform:rotate(2deg)}
+.p1 .player .frame{height:280px}
+.p1 .player .bars{height:120px}
+.p1 .bottom{position:absolute;z-index:4;left:96px;right:96px;bottom:150px}
+.p1 h1{font-size:78px}
+.p1 .support{margin-top:22px;font-size:38px}
+
+/* 02 · qué es */
+.p2 h2{font-size:76px}
+.p2 .top{margin-top:100px}
+.steps{position:relative;z-index:3;margin-top:36px;display:flex;flex-direction:column;gap:0}
+.step{display:grid;grid-template-columns:84px 1fr;gap:26px;align-items:center;background:var(--paper);border:2px solid var(--border);border-radius:30px;padding:20px 30px}
+.step i{width:84px;height:84px;border-radius:24px;background:var(--surface);display:flex;align-items:center;justify-content:center;font:700 48px/1 var(--display);font-style:normal;color:var(--orange)}
+.step.o{background:var(--ink);border-color:var(--ink);color:#fff}
+.step.o i{background:var(--orange);color:var(--ink)}
+.step b{display:block;font:700 44px/1.08 var(--display);letter-spacing:-.025em}
+.step span{display:block;margin-top:8px;font:400 31px/1.3 var(--body);color:var(--muted)}
+.step.o span{color:#d8cfc6}
+.arrow{height:34px;display:flex;justify-content:center}
+.arrow svg{width:36px;height:40px}
+
+/* 03 · no es un generador de video */
+.p3 h2{font-size:92px}
+.vs{position:relative;z-index:3;margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.vs > div{border-radius:34px;padding:32px 32px 34px;min-height:430px;display:flex;flex-direction:column}
+.vs .no{background:var(--surface);border:2px dashed var(--border)}
+.vs .yes{background:var(--orange)}
+.vs small{font:700 24px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.vs .yes small{color:var(--ink);opacity:.7}
+.vs b{display:block;margin-top:16px;font:700 46px/1.05 var(--display);letter-spacing:-.03em}
+.vs ul{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:14px}
+.vs li{font:500 31px/1.25 var(--body);padding-left:42px;position:relative}
+.vs .no li{color:var(--muted)}
+.vs li::before{position:absolute;left:0;top:-1px;font:700 32px/1 var(--display)}
+.vs .no li::before{content:"×";color:var(--border)}
+.vs .yes li::before{content:"✓";color:var(--ink)}
+.p3 .after{position:relative;z-index:3;margin-top:30px;font:400 34px/1.35 var(--body);color:var(--muted)}
+.p3 .after b{color:var(--ink)}
+
+/* 04 · editor */
+.p4 h2{font-size:86px}
+.p4 .support{font-size:34px;margin-top:18px}
+.ed{position:relative;z-index:3;margin-top:34px;border-radius:30px;background:var(--paper);border:2px solid var(--border);overflow:hidden}
+.ed .hd{display:flex;align-items:center;gap:14px;padding:18px 24px;border-bottom:2px solid var(--line)}
+.ed .hd b{font:700 26px/1 var(--display);letter-spacing:-.01em}
+.ed .hd span{margin-left:auto;background:var(--orange);color:var(--ink);font:700 22px/1 var(--display);padding:12px 18px;border-radius:12px}
+.ed .hd .tag{margin-left:0;color:var(--muted);border-color:var(--border);background:none;font-size:18px;padding:7px 10px}
+.tl{padding:22px 24px 10px}
+.tl .ruler{display:flex;justify-content:space-between;font:500 20px/1 var(--mono);color:var(--muted);margin-bottom:10px}
+.tl .row{position:relative;display:grid;grid-template-columns:8fr 14fr 8fr;gap:8px}
+.tl .sc{border-radius:14px;padding:16px 16px;background:var(--surface);border:2px solid var(--line)}
+.tl .sc b{display:block;font:700 26px/1 var(--display)}
+.tl .sc small{display:block;margin-top:8px;font:500 21px/1 var(--mono);color:var(--muted)}
+.tl .sc.on{background:#fff3ea;border-color:var(--orange)}
+.tl .sc.on small{color:var(--orangeText)}
+.tl .ph{position:absolute;top:4px;bottom:-8px;left:70.5%;width:4px;background:var(--orange);border-radius:2px}
+.tl .ph::before{content:"";position:absolute;top:-10px;left:-8px;width:20px;height:20px;border-radius:50%;background:var(--orange)}
+.chat{padding:14px 24px 24px;display:flex;flex-direction:column;gap:12px}
+.bub{max-width:80%;border-radius:22px;padding:16px 22px;font:400 28px/1.3 var(--body)}
+.bub.me{align-self:flex-end;background:var(--ink);color:#fff;border-bottom-right-radius:6px}
+.bub.cl{align-self:flex-start;background:var(--surface);color:var(--ink);border-bottom-left-radius:6px}
+.p4 .more{position:relative;z-index:3;margin-top:24px;font:400 30px/1.35 var(--body);color:var(--muted)}
+.p4 .more code{font:600 29px/1 var(--mono);color:var(--ink);background:var(--surface);padding:4px 10px;border-radius:8px}
+
+/* 05 · usos */
+.p5 h2{font-size:86px}
+.uses{position:relative;z-index:3;margin-top:40px;display:flex;flex-direction:column;gap:18px}
+.use{display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:center;background:var(--paper);border:2px solid var(--border);border-radius:32px;padding:24px 30px}
+.use .th{height:110px;border-radius:18px;background:var(--ink);position:relative;overflow:hidden}
+.use .th i{position:absolute;bottom:16px;width:18px;border-radius:5px 5px 2px 2px;background:#4a413a}
+.use .th i.o{background:var(--orange)}
+.use .th em{position:absolute;left:14px;top:14px;font:700 22px/1 var(--display);font-style:normal;color:#fff}
+.use .th s{position:absolute;left:14px;right:14px;height:10px;border-radius:5px;background:#4a413a;text-decoration:none}
+.use b{display:block;font:700 42px/1.08 var(--display);letter-spacing:-.025em}
+.use span{display:block;margin-top:8px;font:400 30px/1.3 var(--body);color:var(--muted)}
+
+/* 06 · antes de pedirlo (naranja) */
+.p6{background:var(--orange)}
+.p6 .count{color:var(--ink)}
+.p6 .dots i{opacity:.3} .p6 .dots i.on{background:var(--ink);opacity:1}
+.p6 h2{font-size:96px}
+.checks{position:relative;z-index:3;margin-top:40px;display:flex;flex-direction:column;gap:16px}
+.chk{display:grid;grid-template-columns:70px 1fr;gap:24px;align-items:center;border-radius:30px;background:var(--ink);color:#fff;padding:24px 30px}
+.chk i{font:700 58px/1 var(--display);font-style:normal;color:var(--orange)}
+.chk b{display:block;font:700 40px/1.1 var(--display);letter-spacing:-.02em}
+.chk span{display:block;margin-top:6px;font:500 29px/1.3 var(--body);color:#e6dfd8}
+.chk.crit{background:var(--paper);color:var(--ink)}
+.chk.crit span{color:var(--muted)}
+.p6 .src{color:var(--ink)}
+
+/* 07 · CTA variante 28 adaptada */
+.p7{background:var(--surface);padding:0}
+.p7 .photo{position:absolute;left:0;top:0;width:1080px;height:644px;object-fit:cover}
+.p7 .shade{position:absolute;left:0;right:0;top:0;height:360px;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.92) 0%,rgba(23,19,16,.7) 45%,rgba(23,19,16,0))}
+.p7 h2{position:absolute;left:96px;right:96px;top:700px;font-size:84px}
+.p7 .btn{position:absolute;z-index:4;left:96px;width:888px;top:1010px;background:var(--ink);color:#fff;border-radius:44px;padding:30px 44px}
+.p7 .btn b{display:block;font:700 62px/1.05 var(--display);letter-spacing:-.03em}
+.p7 .btn b u{text-decoration:none;color:var(--orange)}
+.p7 .btn span{display:block;margin-top:8px;font:400 34px/1.3 var(--body);color:#eee6df}
+</style>
+</head>
+<body>
+
+<!-- 01 · Portada -->
+<section class="slide light p1" data-n="1">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">01/07</div>
+  <span class="pill">Claude Motion</span>
+  <div class="photo"><img src="assets/01-pintor.jpg" alt="Un hombre de traje pinta con pincel sobre la pantalla de un computador antiguo"></div>
+  <div class="player">
+    <div class="frame"><small>Resultados del trimestre</small><b>Ventas <u>+18%</u></b><span class="tag">Ilustración</span>
+      <div class="bars"><i style="height:38%"></i><i style="height:52%"></i><i style="height:46%"></i><i style="height:64%"></i><i class="o" style="height:92%"></i><i class="g" style="height:30%"></i></div></div>
+    <div class="ctl"><span class="pl"></span><span class="pg"><i></i></span><span class="tm">0:12 / 0:30</span></div>
+  </div>
+  <div class="bottom">
+    <h1>Tu reporte, convertido en un <span class="hl">video de 30 segundos.</span></h1>
+    <p class="support">Sin editor de video y sin grabar nada.</p>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Qué es -->
+<section class="slide surface p2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">02/07</div>
+  <div class="top">
+    <div class="eyebrow">Qué es</div>
+    <h2>Claude Motion convierte tu contenido en <span class="hl">animaciones cortas.</span></h2>
+    <div class="steps">
+      <div class="step"><i>1</i><div><b>Le das tu material</b><span>Un reporte, datos o imágenes.</span></div></div>
+      <div class="arrow"><svg viewBox="0 0 36 40"><path d="M18 4 V30 M6 20 L18 34 L30 20" fill="none" stroke="#ff5b00" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step o"><i>2</i><div><b>Claude escribe el código</b><span>que anima tus textos, gráficos, formas e imágenes.</span></div></div>
+      <div class="arrow"><svg viewBox="0 0 36 40"><path d="M18 4 V30 M6 20 L18 34 L30 20" fill="none" stroke="#ff5b00" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step"><i>3</i><div><b>Lo bajas en MP4</b><span>o lo compartes con un enlace.</span></div></div>
+    </div>
+  </div>
+  <div class="src">Fuente: Anthropic, 8 de octubre de 2026. En beta.</div>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · No es un generador de video -->
+<section class="slide light p3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">03/07</div>
+  <div class="top">
+    <div class="eyebrow">La diferencia</div>
+    <h2>No es un <span class="hl">generador de video.</span></h2>
+    <div class="vs">
+      <div class="no"><small>Generador de video</small><b>Inventa la imagen.</b>
+        <ul><li>Crea escenas desde cero</li><li>Puede crear personas</li><li>Para cambiar algo, se vuelve a generar</li></ul></div>
+      <div class="yes"><small>Claude Motion</small><b>Anima lo que tú le das.</b>
+        <ul><li>Tus textos y tus números</li><li>Sin personas generadas por IA</li><li>Cambias una palabra y el resto queda igual</li></ul></div>
+    </div>
+    <p class="after">Anthropic lo dice así: no usa un modelo de generación de video. <b>Es código que se puede editar.</b></p>
+  </div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Se edita como un documento -->
+<section class="slide surface p4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">04/07</div>
+  <div class="top" style="margin-top:100px">
+    <h2>Se edita como un <span class="hl">documento.</span></h2>
+    <p class="support">Le pides cambios en el chat o lo editas tú. Cambias un detalle y lo demás no se toca.</p>
+    <div class="ed">
+      <div class="hd"><b>Resultados Q3</b><em class="tag">Ilustración</em><span>Exportar MP4</span></div>
+      <div class="tl">
+        <div class="ruler"><span>0:00</span><span>0:10</span><span>0:20</span><span>0:30</span></div>
+        <div class="row">
+          <div class="sc"><b>Título</b><small>0:00-0:08</small></div>
+          <div class="sc on"><b>Gráfico de ventas</b><small>0:08-0:22 · más lento</small></div>
+          <div class="sc"><b>Cierre</b><small>0:22-0:30</small></div>
+          <span class="ph"></span>
+        </div>
+      </div>
+      <div class="chat">
+        <div class="bub me">Haz más lenta la segunda escena.</div>
+        <div class="bub cl">Listo. La escena 2 ahora dura 14 segundos. El resto quedó igual.</div>
+      </div>
+    </div>
+    <p class="more">Para empezar, escribe <code>/motion</code> en el chat. Después lo puedes abrir en Adobe, Descript, Runway y otras.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · Para qué te sirve -->
+<section class="slide light p5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/07</div>
+  <div class="top">
+    <div class="eyebrow">En tu negocio</div>
+    <h2>Úsalo para <span class="hl">explicar tu trabajo.</span></h2>
+    <div class="uses">
+      <div class="use"><div class="th"><em>Mes</em><i style="left:18px;height:34px"></i><i style="left:44px;height:50px"></i><i style="left:70px;height:42px"></i><i class="o" style="left:96px;height:72px"></i></div>
+        <div><b>Los resultados del mes</b><span>para tu equipo, en 30 segundos y no en 20 láminas.</span></div></div>
+      <div class="use"><div class="th"><em>1 · 2 · 3</em><s style="top:52px"></s><s style="top:72px;right:50px;background:#ff5b00"></s></div>
+        <div><b>Cómo funciona tu servicio</b><span>para clientes nuevos, antes de la primera reunión.</span></div></div>
+      <div class="use"><div class="th"><em>+18%</em><i style="left:18px;height:26px"></i><i style="left:44px;height:40px"></i><i style="left:70px;height:56px"></i><i class="o" style="left:96px;height:80px"></i></div>
+        <div><b>Un gráfico que se mueve</b><span>para una presentación con socios o inversionistas.</span></div></div>
+    </div>
+  </div>
+  <div class="src">Basado en los ejemplos de Anthropic: explicaciones para reuniones internas, gráficos para el directorio y recorridos de producto.</div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 06 · Antes de pedirlo -->
+<section class="slide p6" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-black.svg" alt="Plogy">
+  <div class="count">06/07</div>
+  <div class="top" style="margin-top:100px">
+    <h2>Antes de pedirlo, tres cosas.</h2>
+    <div class="checks">
+      <div class="chk"><i>1</i><div><b>Solo en Team y Enterprise.</b><span>Está en beta. En Enterprise, un owner lo activa en la configuración de la organización.</span></div></div>
+      <div class="chk"><i>2</i><div><b>Gasta más que un mensaje.</b><span>Cuenta para el límite de uso de tu plan. Más largo, más consumo.</span></div></div>
+      <div class="chk crit"><i>3</i><div><b>Anima lo que le das.</b><span>Si tu reporte no dice nada, el video tampoco. Primero la idea, después la animación.</span></div></div>
+    </div>
+  </div>
+  <div class="src">Fuente: guía de soporte de Claude, "Get started with Claude Motion". El punto 3 es criterio de Plogy.</div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 07 · CTA (variante 28 adaptada a la clase) -->
+<section class="slide p7" data-n="7">
+  <img class="photo" src="assets/07-cta-publico.jpg" alt="Un público con lentes 3D mira una pantalla; una silueta naranja destaca entre las personas">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2>Jueves 22, 19:30. Te enseñamos a <span class="hl">usar Claude Motion.</span></h2>
+  <div class="btn"><b>Comenta <u>MOTION</u></b><span>y te mandamos el link de inscripción.</span></div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d+)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

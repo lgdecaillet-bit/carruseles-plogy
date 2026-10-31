@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brief · pieza 026 · Motion con Claude</title>
+<!-- Generado automáticamente desde el .md del mismo nombre con piezas/_visor/md_to_html.py. Edita el .md, no este archivo. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--muted:#625951;--orange:#ff5b00;--orangeText:#b43d00;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root{--ink:#f4efe9;--paper:#171310;--muted:#bdb2a8;--surface:#211b17;--border:#3a322c;--orangeText:#ff8a4d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 var(--body)}
+main{max-width:820px;margin:0 auto;padding:40px 24px 96px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.025em;line-height:1.15}
+h1{font-size:40px;margin:0 0 24px}
+h2{font-size:28px;margin:48px 0 12px;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:21px;margin:32px 0 8px}
+p,li{max-width:70ch}
+a{color:var(--orangeText);word-break:break-word}
+code{font:14px ui-monospace,Consolas,monospace;background:var(--surface);padding:2px 6px;border-radius:6px;word-break:break-word}
+pre{background:var(--surface);padding:16px;border-radius:12px;overflow:auto}
+pre code{background:none;padding:0}
+blockquote{margin:18px 0;padding:6px 0 6px 20px;border-left:6px solid var(--orange);color:var(--ink)}
+blockquote p{margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:18px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;min-width:120px}
+th{background:var(--surface);font-family:var(--display)}
+ul,ol{padding-left:24px}
+li{margin:6px 0}
+li.check{list-style:none;margin-left:-24px}
+li.check input{margin-right:10px}
+figure{margin:28px 0}
+figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border)}
+figcaption{margin-top:8px;font-size:14px;line-height:1.4;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--border);margin:32px 0}
+.tag{display:inline-block;background:var(--orange);color:#171310;font:700 13px var(--display);letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:18px}
+</style></head>
+<body><main>
+<h1>Brief · pieza 026 · Motion con Claude</h1>
+<p>Estado: BORRADOR para revisión humana. No publicar. Aprobación humana y fecha: PENDIENTE.</p>
+<h2>Qué es</h2>
+<p>Tercera de la tanda de adaptaciones. La referencia (otra cuenta, en inglés) muestra 16 efectos de movimiento hechos con Claude, cada uno con su línea de prompt para copiar, y cierra con "Comenta STRIPE" para mandar el archivo de estilo y el brief. Sus láminas son animadas.</p>
+<p><strong>Qué cambiamos:</strong></p>
+<ul><li>Las 16 escenas están hechas por nosotros desde cero con Claude Code: código HTML y canvas, sin copiar las de la referencia. Paleta de Plogy (Ink, crema y el degradado del logo, naranja a violeta) en vez de azul marino y morado.</li><li>Escenas llevadas a negocio: las partículas forman "Plogy", la línea son las ventas del mes, el contador la facturación del año, la tarjeta de vidrio una factura, las tarjetas pedidos del día, el globo pagos entre Bogotá, Ciudad de México y Madrid, el botón "Pagar $48.000" y el confeti "Pedido confirmado".</li><li>Prompts en español, con los corchetes para cambiar.</li><li>La referencia usaba el estilo de otra marca (Stripe, leído de su código). Nosotros no: el archivo de estilo es el de quien lo usa.</li><li>Sumamos una lámina de criterio (18) y el CTA de Plogy con tarjeta de vidrio sobre foto.</li></ul>
+<p><strong>Criterio propio de Plogy (lámina 18):</strong> una animación bonita no explica nada sola. Antes de pedir el movimiento, decide qué dato tiene que ver tu cliente; el movimiento solo lo señala.</p>
+<h2>Formato</h2>
+<p>19 láminas de 1080x1350. Cada una es un MP4 de 6 segundos que se repite sin salto (<code>exports/slide-NN.mp4</code>) y tiene un PNG fijo (<code>exports/slide-NN.png</code>). La fuente es <code>carrusel.html</code>: cada escena se dibuja en función del tiempo y <code>scripts/capturar.py</code> la graba cuadro por cuadro (Playwright con Edge y ffmpeg). Abrir <code>carrusel.html</code> en el navegador muestra las animaciones en vivo.</p>
+<h2>Hechos que la pieza afirma</h2>
+<ul><li>"Hecho con Claude Code": cierto, las escenas las escribió Claude Code en esta sesión.</li><li>Claude Motion: no se usó. Si se menciona (en el kit), es como alternativa, con su estado verificado en la pieza 019: beta solo para Team y Enterprise.</li><li>Cifras de negocio (ventas, facturación, factura, pedidos, pago): ejemplos rotulados "Ilustración" en cada lámina donde aparecen.</li></ul>
+<h2>CTA y recurso</h2>
+<p>Comenta MOTION → DM con <code>kit-motion.md</code>: archivo de estilo con corchetes, brief de movimiento y las 16 líneas de escena. Ojo: la pieza 019 ya usa MOTION (para el link de la clase). Ver pendientes.</p>
+<h2>Autor y cuentas</h2>
+<p>Cada lámina lleva al pie una barra con la foto y el usuario de Luco (@lucogav8). La pieza se sube en Plogy y en la cuenta personal (por ejemplo como colaboración de Instagram), con la misma versión. La foto sale del perfil de Instagram (<code>assets/av-autor.png</code>).</p>
+<h2>Pendientes antes de publicar</h2>
+<ul><li>La pieza 019 (Claude Motion) también usa "Comenta MOTION", pero para la clase. Si las dos salen, cambiar la palabra de una.</li><li>Publicar el kit en un enlace y configurar la respuesta automática.</li><li>Probar el kit: pegar estilo + brief + una línea en Claude y comprobar que la escena sale.</li><li>Derechos de la foto <code>assets/19-columnas.jpg</code> (variante 06 de la biblioteca): <code>unverified_reference_only</code>.</li><li>Revisar en un teléfono que los videos se vean nítidos y que la caja de prompt se lea.</li><li>Licencias tipográficas, revisión editorial independiente y aprobación humana con fecha.</li></ul>
+</main></body></html>

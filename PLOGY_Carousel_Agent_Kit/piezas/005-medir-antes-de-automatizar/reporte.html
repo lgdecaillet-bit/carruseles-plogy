@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mide hoy, compara después: guía para medir un proceso antes de automatizarlo</title>
+<!-- Generado automáticamente desde el .md del mismo nombre con piezas/_visor/md_to_html.py. Edita el .md, no este archivo. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--muted:#625951;--orange:#ff5b00;--orangeText:#b43d00;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root{--ink:#f4efe9;--paper:#171310;--muted:#bdb2a8;--surface:#211b17;--border:#3a322c;--orangeText:#ff8a4d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 var(--body)}
+main{max-width:820px;margin:0 auto;padding:40px 24px 96px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.025em;line-height:1.15}
+h1{font-size:40px;margin:0 0 24px}
+h2{font-size:28px;margin:48px 0 12px;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:21px;margin:32px 0 8px}
+p,li{max-width:70ch}
+a{color:var(--orangeText);word-break:break-word}
+code{font:14px ui-monospace,Consolas,monospace;background:var(--surface);padding:2px 6px;border-radius:6px;word-break:break-word}
+pre{background:var(--surface);padding:16px;border-radius:12px;overflow:auto}
+pre code{background:none;padding:0}
+blockquote{margin:18px 0;padding:6px 0 6px 20px;border-left:6px solid var(--orange);color:var(--ink)}
+blockquote p{margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:18px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;min-width:120px}
+th{background:var(--surface);font-family:var(--display)}
+ul,ol{padding-left:24px}
+li{margin:6px 0}
+li.check{list-style:none;margin-left:-24px}
+li.check input{margin-right:10px}
+figure{margin:28px 0}
+figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border)}
+figcaption{margin-top:8px;font-size:14px;line-height:1.4;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--border);margin:32px 0}
+.tag{display:inline-block;background:var(--orange);color:#171310;font:700 13px var(--display);letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:18px}
+</style></head>
+<body><main>
+<h1>Mide hoy, compara después: guía para medir un proceso antes de automatizarlo</h1>
+<figure><img src="assets/reporte/fig-portada.png" alt="Portada de la guía: Mide hoy. Compara después." loading="lazy"><figcaption>Portada de la guía. Figura elaborada por Plogy.</figcaption></figure>
+<p>Guía de Plogy · Pieza 005 · Palabra clave del carrusel: MEDIR</p>
+<ul><li>Estado: BORRADOR para revisión humana. No publicado.</li><li>URL prevista: <code>/guias/medir-antes-de-automatizar</code> (por confirmar cuando se configure la web)</li><li>Fecha de la versión: 2026-10-20</li><li>Última actualización: 2026-10-20 (versión inicial)</li><li>Pilar: Conocimiento · Audiencia: Negocios · Vertical: IA y automatizaciones</li><li>Tipo: guía educativa. No parte de una noticia.</li><li>Autor y revisor: pendiente de asignar</li></ul>
+<h2>Resumen</h2>
+<ol><li>Una automatización se puede juzgar solo si antes se midió cómo se hacía el trabajo. Esa medición es la línea base.</li><li>Bastan cuatro números por proceso: tiempo por caso, reproceso, volumen y costo.</li><li>Hay tres errores comunes al medir: tomar el mejor día, contar solo lo que hace la IA y olvidar el reproceso.</li><li>Al final hay una plantilla de una fila por caso para empezar hoy.</li></ol>
+<h2>1. La idea</h2>
+<p>La línea base es cómo trabajas hoy, medido. Se toma antes de cambiar nada, con casos reales de una semana normal. Cuando el proceso ya está automatizado se vuelve a medir con el mismo método, y la diferencia entre las dos mediciones es el resultado.</p>
+<p>Sin ese punto de partida solo quedan frases como "se siente más rápido" o "parece que hay menos errores". Son opiniones y no sirven para decidir si seguir invirtiendo, ajustar el flujo o dejarlo.</p>
+<figure><img src="assets/reporte/fig-ciclo.png" alt="Cuatro pasos: medir hoy, automatizar, medir igual, comparar" loading="lazy"><figcaption>El ciclo de la línea base. Criterio de Plogy.</figcaption></figure>
+<p>Esta guía es criterio de Plogy. No cita estudios ni cifras de terceros, y las cifras del ejemplo son inventadas y están rotuladas.</p>
+<h2>2. Qué medir</h2>
+<p>Cuatro números alcanzan para casi cualquier proceso repetitivo:</p>
+<ol><li><strong>Tiempo por caso.</strong> Cuánto tarda una persona en sacar uno adelante. Se cronometra o se saca de un registro, con una muestra de casos reales. Incluye el tiempo de revisar y, si hubo que corregir, los minutos de corrección: la plantilla los separa en dos columnas y se suman. Como referencia práctica, de 10 a 20 casos; no es una regla estadística.</li><li><strong>Reproceso.</strong> Cuántos casos hay que corregir o repetir. Se cuentan los casos devueltos sobre el total.</li><li><strong>Volumen.</strong> Cuántos casos entran por semana. Se toma del registro de entradas de varias semanas, no de una sola.</li><li><strong>Costo.</strong> Tiempo por caso × volumen × costo de la hora. Es una cuenta sencilla de lo que cuesta hoy el proceso en tiempo de personas.</li></ol>
+<figure><img src="assets/reporte/fig-numeros.png" alt="Cuatro números por proceso y cómo medir cada uno" loading="lazy"><figcaption>Qué medir. Criterio de Plogy.</figcaption></figure>
+<h2>3. Cómo medirlo, paso a paso</h2>
+<ol><li><strong>Elige un proceso.</strong> Uno repetitivo, con un caso que empieza y termina claramente (una cotización, una factura, una respuesta).</li><li><strong>Define cuándo un caso está bien hecho.</strong> Sin esa definición no se puede contar el reproceso.</li><li><strong>Toma casos reales de una semana normal.</strong> Si hay picos de trabajo en el mes, incluye una semana de pico por separado.</li><li><strong>Anota por cada caso:</strong> quién lo hizo, cuántos minutos tardó, si hubo que corregirlo y cuántos minutos costó la corrección.</li><li><strong>Calcula</strong> el promedio de minutos, el porcentaje de casos corregidos, el volumen por semana y el costo con el valor de la hora.</li><li><strong>Guarda el método.</strong> Cuando midas de nuevo, hazlo igual, con la misma definición y el mismo tipo de semana.</li></ol>
+<h2>4. Tres errores al medir</h2>
+<figure><img src="assets/reporte/fig-errores.png" alt="Tres errores al medir: medir el mejor día, contar solo lo que hace la IA, olvidar el reproceso" loading="lazy"><figcaption>Tres errores al medir. Criterio de Plogy.</figcaption></figure>
+<ul><li><strong>Medir tu mejor día.</strong> Una semana normal tiene picos y atascos. Si solo mides lo que sale bien, la comparación engaña.</li><li><strong>Contar solo lo que hace la IA.</strong> El tiempo de revisar y corregir su resultado también es tiempo del proceso. Si no se suma, el ahorro se ve mayor de lo que es.</li><li><strong>Olvidar el reproceso.</strong> Un caso mal hecho vuelve y cuesta otra vez.</li></ul>
+<h2>5. Un ejemplo, con cifras inventadas</h2>
+<p><strong>Ejemplo hipotético. Ninguna cifra es de un cliente ni de una fuente.</strong> Imagina un negocio que responde cotizaciones. En la línea base mide 25 minutos por cotización, 1 de cada 5 con correcciones y 40 cotizaciones por semana. Después de automatizar y medir igual, mide 8 minutos por cotización (incluyendo la revisión), 1 de cada 10 con correcciones y las mismas 40 por semana.</p>
+<p>La cuenta: (25 − 8) × 40 = 680 minutos, es decir, 11 horas y 20 minutos por semana. Además, el reproceso baja de 8 casos por semana (1 de 5 sobre 40) a 4 (1 de 10 sobre 40). Con la línea base el ahorro se puede explicar y defender. Sin ella solo se podría decir que "se siente más rápido".</p>
+<figure><img src="assets/reporte/fig-ejemplo.png" alt="Tabla antes y después con las cifras hipotéticas y el ahorro semanal" loading="lazy"><figcaption>Ejemplo hipotético con cifras inventadas.</figcaption></figure>
+<p>Lo que el ejemplo no dice: si ese ahorro compensa el costo de la automatización. Eso requiere sumar lo que costó construirla y mantenerla.</p>
+<figure><img src="assets/07-cta-mesa.jpg" alt="Tres personas alrededor de una mesa naranja con una rejilla de casillas" loading="lazy"><figcaption>Imagen de la biblioteca de referencia de Plogy, recortada y con el rojo llevado al naranja de marca. Derechos por verificar antes de publicar.</figcaption></figure>
+<h2>6. La plantilla</h2>
+<p>Una fila por caso. Cópiala a una hoja de cálculo:</p>
+<table><thead><tr><th>Caso</th><th>Fecha</th><th>Quién lo hizo</th><th>Minutos del caso</th><th>¿Hubo que corregir?</th><th>Minutos de corrección</th></tr></thead><tbody><tr><td>1</td><td>dd/mm</td><td>nombre</td><td>0</td><td>sí / no</td><td>0</td></tr><tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+<figure><img src="assets/reporte/fig-plantilla.png" alt="Plantilla de medición con una fila por caso" loading="lazy"><figcaption>Plantilla de medición. Criterio de Plogy.</figcaption></figure>
+<p>Al final de la semana:</p>
+<ul><li class="check"><input type="checkbox" disabled> Promedio de minutos por caso (columna Minutos, más la de corrección).</li><li class="check"><input type="checkbox" disabled> Porcentaje de casos que hubo que corregir.</li><li class="check"><input type="checkbox" disabled> Casos por semana.</li><li class="check"><input type="checkbox" disabled> Costo semanal: minutos totales ÷ 60 × costo de la hora.</li><li class="check"><input type="checkbox" disabled> Anotar qué tipo de semana fue (normal, de pico) y cómo se definió "bien hecho".</li></ul>
+<h2>7. Qué haría Plogy primero</h2>
+<p>Es criterio de Plogy, no un hecho de fuentes externas. Antes de proponer cualquier automatización, mediría un solo proceso con esta plantilla y dejaría la medición escrita. Después propondría el cambio, y volvería a medir igual. Esta guía todavía no se ha aplicado a un cliente de Plogy.</p>
+<h2>8. Lo que esta guía no cubre</h2>
+<ul><li><strong>El tamaño de muestra estadístico.</strong> Los 10 a 20 casos son una referencia práctica.</li><li><strong>Beneficios que no son tiempo ni costo,</strong> como calidad de atención o menos errores graves. Se pueden medir, pero requieren definir cómo.</li><li><strong>El costo de construir y mantener la automatización.</strong> Se resta aparte del ahorro.</li><li><strong>Procesos con muy pocos casos al mes.</strong> Ahí conviene medir por periodos más largos.</li></ul>
+<h2>9. Fuentes</h2>
+<p>No hay fuentes externas. El contenido es criterio de Plogy, con un ejemplo de cifras inventadas rotulado como hipotético. Una revisión humana puede añadir referencias de mejora de procesos si lo considera útil. Pendiente.</p>
+<h2>10. Siguiente paso</h2>
+<p>Sigue a Plogy para ver cómo se implementa la IA en negocios, midiendo antes y después.</p>
+<h2>Historial de cambios</h2>
+<ul><li>2026-10-20: versión inicial en borrador, con portada, cinco figuras, una foto de la biblioteca y la plantilla. Las figuras se generan desde <code>reporte-figuras.html</code>.</li><li>2026-10-20: tras la revisión editorial independiente, se corrigió la frase del error 3 en la figura (olvidar el reproceso distorsiona la comparación, no necesariamente infla el ahorro) y se aclaró qué minutos incluye el tiempo por caso.</li></ul>
+</main></body></html>

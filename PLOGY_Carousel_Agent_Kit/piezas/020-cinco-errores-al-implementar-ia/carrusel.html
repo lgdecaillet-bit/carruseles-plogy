@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 020 · 5 errores al implementar IA en tu negocio</title>
+<!-- Fuente editable. 7 láminas de 1080x1350, estética normal de Plogy.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=7
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7 -Prefix slide-0
+     Contenido: criterio propio de Plogy (piezas 001, 005, 007, 009). Sin cifras ni casos inventados.
+     CTA: variante 26 de la biblioteca (foto arriba, panel Ink y botón contorneado), comercial: Escríbenos ERROR.
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486; --line:#e6ddd5;
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px;color:var(--ink)}
+.light{background:var(--paper)} .surface{background:var(--surface)} .dark{background:var(--ink);color:#fff}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;color:var(--muted);z-index:5}
+.dark .count{color:#e6dfd8}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:5;color:var(--ink)}
+.dark .dots{color:#fff}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.2}
+.dots i.on{opacity:1;background:var(--orange)}
+h1,h2{position:relative;z-index:3;font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.5)}
+
+/* 01 · portada con foto */
+.p1 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.p1 .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.75) 0%,rgba(23,19,16,.1) 25%,rgba(23,19,16,.15) 42%,rgba(23,19,16,.9) 62%,#171310 100%)}
+.p1 .bottom{position:absolute;z-index:3;left:96px;right:96px;bottom:150px}
+.p1 .big{display:block;font:700 300px/.82 var(--display);letter-spacing:-.06em;color:var(--orange);text-shadow:0 0 60px rgba(255,91,0,.45);margin-bottom:10px}
+.p1 h1{font-size:90px;color:#fff}
+.p1 .sub{margin-top:26px;font:400 38px/1.35 var(--body);color:#e6dfd8}
+.p1 .sub b{color:#fff}
+
+/* láminas de error */
+.err .top{position:relative;z-index:3;margin-top:110px}
+.num{display:flex;align-items:baseline;gap:20px;margin-bottom:22px}
+.num b{font:700 150px/.85 var(--display);letter-spacing:-.06em;color:var(--orange)}
+.num span{font:700 28px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--orangeText)}
+.dark .num span{color:var(--orange)}
+.err h2{font-size:92px}
+.pair{position:relative;z-index:3;margin-top:44px;display:flex;flex-direction:column;gap:18px}
+.card{border-radius:34px;padding:30px 36px}
+.card small{display:flex;align-items:center;gap:14px;font:700 26px/1 var(--display);letter-spacing:.12em;text-transform:uppercase}
+.card small i{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 26px/1 var(--display);font-style:normal}
+.card p{margin-top:16px;font:400 36px/1.35 var(--body)}
+.card.bad{background:var(--surface);border:2px dashed var(--border)}
+.card.bad small{color:var(--muted)} .card.bad small i{background:var(--border);color:#fff}
+.card.bad p{color:var(--muted)}
+.card.good{background:var(--ink);color:#fff}
+.card.good small{color:var(--orange)} .card.good small i{background:var(--orange);color:var(--ink)}
+.surface .card.bad{background:var(--paper)}
+.dark .card.bad{background:#231d19;border-color:#4a413a}
+.dark .card.bad p{color:#cfc6bd} .dark .card.bad small{color:#a99d92} .dark .card.bad small i{background:#4a413a}
+.dark .card.good{background:var(--orange);color:var(--ink)}
+.dark .card.good small{color:var(--ink)} .dark .card.good small i{background:var(--ink);color:var(--orange)}
+.or{background:var(--orange)}
+.or .count{color:var(--ink)}
+.or .dots i{opacity:.3} .or .dots i.on{background:var(--ink);opacity:1}
+.or .num b{color:var(--ink)} .or .num span{color:var(--ink)}
+.or .card.bad{background:rgba(255,255,255,.22);border-color:rgba(23,19,16,.45)}
+.or .card.bad small,.or .card.bad p{color:var(--ink)} .or .card.bad small i{background:var(--ink);color:var(--orange)}
+
+/* 07 · CTA variante 26 */
+.p7{background:var(--ink);color:#fff;padding:0}
+.p7 .photo{position:absolute;left:0;top:0;width:1080px;height:904px;object-fit:cover}
+.p7 .shade{position:absolute;left:0;right:0;top:0;height:360px;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.92) 0%,rgba(23,19,16,.7) 45%,rgba(23,19,16,0))}
+.p7 .panel{position:absolute;left:0;right:0;top:850px;bottom:0;background:var(--ink);border-radius:48px 48px 0 0;z-index:2;padding:54px 96px 0}
+.p7 .panel h2{font-size:80px}
+.p7 .out{position:relative;margin-top:30px;width:888px;border:4px solid var(--orange);border-radius:44px;padding:26px 44px}
+.p7 .out b{display:block;font:700 62px/1.05 var(--display);letter-spacing:-.03em}
+.p7 .out b u{text-decoration:none;color:var(--orange)}
+.p7 .out span{display:block;margin-top:8px;font:400 34px/1.3 var(--body);color:#eee6df}
+.p7 .dots{display:none}
+</style>
+</head>
+<body>
+
+<!-- 01 · Portada -->
+<section class="slide dark p1" data-n="1">
+  <img class="bg" src="assets/01-oficina-error.jpg" alt="Una oficina con ventanas de error de computador flotando en el aire, en tonos naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">01/07</div>
+  <div class="bottom">
+    <span class="big">5</span>
+    <h1>errores al implementar <span class="hl">IA en tu negocio.</span></h1>
+    <p class="sub">Casi ninguno es de tecnología. <b>Son de orden, de medida y de personas.</b></p>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Error 1 -->
+<section class="slide light err" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">02/07</div>
+  <div class="top">
+    <div class="num"><b>01</b><span>Error</span></div>
+    <h2>Empezar por la <span class="hl">herramienta.</span></h2>
+    <div class="pair">
+      <div class="card bad"><small><i>×</i>Cómo se nota</small><p>La reunión arranca con "¿usamos ChatGPT o Claude?" y nadie dice qué tarea duele.</p></div>
+      <div class="card good"><small><i>✓</i>Qué hacer</small><p>Escribe primero la tarea: cuánto tarda y quién la hace. La herramienta se elige al final.</p></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · Error 2 -->
+<section class="slide surface err" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">03/07</div>
+  <div class="top">
+    <div class="num"><b>02</b><span>Error</span></div>
+    <h2>Automatizar <span class="hl">el desorden.</span></h2>
+    <div class="pair">
+      <div class="card bad"><small><i>×</i>Cómo se nota</small><p>Cada persona hace el proceso a su manera y nadie lo tiene escrito.</p></div>
+      <div class="card good"><small><i>✓</i>Qué hacer</small><p>Ordénalo y escríbelo a mano. Si no cabe en una hoja, todavía no se automatiza.</p></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Error 3 -->
+<section class="slide dark err" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">04/07</div>
+  <div class="top">
+    <div class="num"><b>03</b><span>Error</span></div>
+    <h2>No medir <span class="hl">el antes.</span></h2>
+    <div class="pair">
+      <div class="card bad"><small><i>×</i>Cómo se nota</small><p>Tres meses después nadie sabe si la IA ahorró tiempo o solo movió el trabajo de lugar.</p></div>
+      <div class="card good"><small><i>✓</i>Qué hacer</small><p>Antes de empezar, anota cuánto tarda hoy, cuántos errores hay y cuánto cuesta. Después compara.</p></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · Error 4 -->
+<section class="slide light err" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/07</div>
+  <div class="top">
+    <div class="num"><b>04</b><span>Error</span></div>
+    <h2>Darle más llaves <span class="hl">de las que necesita.</span></h2>
+    <div class="pair">
+      <div class="card bad"><small><i>×</i>Cómo se nota</small><p>El agente puede enviar correos, mover dinero o borrar datos, y nadie revisa antes.</p></div>
+      <div class="card good"><small><i>✓</i>Qué hacer</small><p>Empieza con permisos de solo lectura y aprobación humana. Los permisos se sueltan de a poco.</p></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 06 · Error 5 -->
+<section class="slide or err" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-black.svg" alt="Plogy">
+  <div class="count">06/07</div>
+  <div class="top">
+    <div class="num"><b>05</b><span>Error</span></div>
+    <h2>Comprar la herramienta y no formar al equipo.</h2>
+    <div class="pair">
+      <div class="card bad"><small><i>×</i>Cómo se nota</small><p>Se pagan licencias que solo se usan para corregir textos.</p></div>
+      <div class="card good"><small><i>✓</i>Qué hacer</small><p>Elige a una o dos personas, fórmalas y hazlas dueñas del proceso. La IA rinde lo que rinde quien la usa.</p></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 07 · CTA (variante 26 adaptada) -->
+<section class="slide p7" data-n="7">
+  <img class="photo" src="assets/07-pantalla-error.jpg" alt="Una pantalla azul de error sobre un parque lleno de gente, en tonos naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="panel">
+    <h2>¿Te reconociste <span class="hl">en alguno?</span></h2>
+    <div class="out"><b>Escríbenos <u>ERROR</u></b><span>por DM y vemos contigo por dónde empezar.</span></div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d+)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

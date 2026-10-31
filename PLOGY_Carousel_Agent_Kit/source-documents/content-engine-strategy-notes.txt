@@ -1,0 +1,1331 @@
+Lo estructuraría como una evolución del sistema editorial que ya tienes definido para Plogy: conservar la trazabilidad, clasificación, pilares, voz y revisión humana, pero pasar de un **orquestador semanal** a un **motor editorial always-on orientado a volumen**. El sistema actual ya establece que la actualidad aporta atención, la implementación utilidad, la filosofía criterio y la experiencia credibilidad; también define las verticales, audiencias y pilares que deberían convertirse en entidades reales dentro del producto. :chatgpt-content-reference{index="0"} La voz y el motor narrativo también están bastante definidos: claridad + tensión + progresión + payoff, evitando convertirse en una cuenta genérica de noticias de IA. :chatgpt-content-reference{index="1"}
+
+Para Instagram, además, la herramienta debería generar briefs compatibles con el sistema visual existente: Screener + Helvetica, INK/PAPER/ORANGE, composición editorial, baja densidad y assets integrados con criterio, no simplemente imágenes generadas. :chatgpt-content-reference{index="2"} Eso también coincide con el Design System general de Plogy. :chatgpt-content-reference{index="3"}
+
+Este sería el documento que yo le entregaría directamente a Codex:
+
+# PLOGY CONTENT ENGINE
+## Product & Strategy Brief
+
+### 1. Qué estamos construyendo
+
+Construir una herramienta interna de inteligencia editorial y producción de contenido para PLOGY.
+
+El objetivo no es simplemente “generar posts”.
+
+El objetivo es crear un **sistema operativo de contenido always-on** capaz de alimentar Instagram y LinkedIn con suficiente volumen, velocidad y calidad para aumentar:
+
+alcance → seguidores → comunidad → oportunidades comerciales.
+
+La herramienta debe reducir radicalmente el cuello de botella entre:
+
+**“hay algo interesante que podríamos publicar”**
+
+y
+
+**“tenemos una pieza aprobada, diseñada para el canal, sustentada con fuentes y lista para publicar”.**
+
+La unidad central del producto debe ser la **oportunidad editorial**, no la noticia ni el post.
+
+Una oportunidad editorial puede originarse en una noticia, un aprendizaje interno, una pregunta de la comunidad, un caso, un evento, una observación del equipo o una idea generada por el sistema.
+
+---
+
+# 2. Problema que debe resolver
+
+PLOGY necesita trabajar con volumen.
+
+El sistema actual de producción depende demasiado de procesos manuales para:
+
+encontrar temas, evaluar si sirven, descubrir un buen ángulo, convertirlos en una narrativa interesante, adaptarlos a diferentes canales, diseñarlos, revisarlos y publicarlos.
+
+Esto genera un cuello de botella que reduce drásticamente la frecuencia de publicación.
+
+El producto debe lograr dos cosas simultáneamente:
+
+**OUTPUT**
+Aumentar considerablemente la cantidad de oportunidades y piezas que PLOGY puede producir.
+
+**QUALITY**
+Evitar que el aumento de volumen convierta a PLOGY en una cuenta genérica de noticias, contenido AI-slop o publicaciones intercambiables con cualquier otra marca.
+
+El sistema debe optimizar para:
+
+**VOLUME × RELEVANCE × VIRALITY × DISTINCTIVENESS**
+
+No solamente para cantidad.
+
+---
+
+# 3. Tesis estratégica
+
+PLOGY no debe depender exclusivamente de noticias.
+
+Las noticias son un excelente motor de volumen y descubrimiento porque constantemente crean nuevas conversaciones y ventanas de atención.
+
+Pero la diferenciación de PLOGY debe provenir de combinar:
+
+**lo que ocurre afuera**
++
+**lo que estamos construyendo**
++
+**lo que estamos aprendiendo**
++
+**lo que pregunta nuestra comunidad**
++
+**lo que creemos**
++
+**lo que hemos comprobado implementando**
+
+Por eso la arquitectura debe comenzar con un **Content Supply Layer** que acepte múltiples fuentes.
+
+---
+
+# 4. Fuentes de contenido
+
+El sistema debe tener un banco unificado de inputs editoriales.
+
+| Tipo | Ejemplos | Naturaleza |
+|---|---|---|
+| NEWS | noticias, lanzamientos, estudios, movimientos de empresas | externa |
+| EVENTS | clases, workshops, encuentros, lanzamientos PLOGY | propia |
+| TEAM LEARNINGS | decisiones, experimentos, errores, hallazgos | propia |
+| COMMUNITY | preguntas, debates, objeciones, necesidades | propia |
+| CASES | implementaciones, resultados, problemas encontrados | propia |
+| IDEAS | ideas editoriales generadas o registradas manualmente | híbrida |
+| OBSERVATIONS | tesis, reflexiones, cambios del mercado | híbrida |
+
+Una fuente puede introducirse:
+
+automáticamente,
+manualmente,
+mediante URL,
+mediante texto,
+mediante un evento interno,
+o a través de una integración futura.
+
+Todo input debe conservar siempre su procedencia.
+
+---
+
+# 5. Arquitectura conceptual
+
+El flujo principal debe ser:
+
+**SOURCE**
+→
+**INGEST**
+→
+**ANALYZE**
+→
+**FILTER**
+→
+**ANGLE**
+→
+**RECIPE**
+→
+**CHANNEL GENERATION**
+→
+**HUMAN REVIEW**
+→
+**CALENDAR**
+→
+**PUBLISH**
+→
+**MEASURE**
+→
+**LEARN**
+
+Todo contenido debe permanecer visible dentro de este pipeline como una cola.
+
+El usuario debe poder entender de inmediato:
+
+qué acaba de entrar,
+qué está siendo evaluado,
+qué vale la pena,
+qué necesita una decisión,
+qué está redactado,
+qué está aprobado,
+qué está programado,
+qué salió,
+y qué funcionó.
+
+---
+
+# 6. Principio: oportunidad editorial antes que publicación
+
+Una noticia no debe convertirse automáticamente en un post.
+
+Primero debe convertirse en una **Editorial Opportunity**.
+
+Ejemplo:
+
+FUENTE  
+“Empresa X lanza sistema Y.”
+
+ANÁLISIS  
+El lanzamiento permite que pequeñas empresas hagan algo que antes requería infraestructura especializada.
+
+ÁNGULO  
+“El cambio importante no es que el modelo sea mejor. Es que bajó el costo de implementar esta capacidad.”
+
+A partir de esa oportunidad pueden generarse:
+
+Instagram carousel  
+Instagram reel  
+Instagram news card  
+LinkedIn post  
+Story  
+Newsletter  
+etc.
+
+Una misma oportunidad debe poder producir múltiples outputs sin duplicar la investigación.
+
+---
+
+# 7. Inteligencia editorial
+
+Cada oportunidad debe evaluarse en varias dimensiones independientes.
+
+No reducir todo demasiado pronto a un solo “AI score”.
+
+### EDITORIAL SCORE
+
+Debe analizar:
+
+**Relevancia**
+¿Qué tan útil es para emprendedores, negocios, creativos o implementadores?
+
+**Brand Fit**
+¿Qué tan bien entra dentro del territorio editorial de PLOGY?
+
+**Evidence**
+¿Existe suficiente evidencia verificable para producir contenido?
+
+**Novelty**
+¿Aporta algo nuevo?
+
+**Timeliness**
+¿Qué tan rápido pierde valor?
+
+**Conversation Potential**
+¿Puede provocar conversación, acuerdo, desacuerdo o reflexión?
+
+**Distinctive Angle**
+¿PLOGY puede decir algo propio sobre esto?
+
+**Repetition Risk**
+¿Ya hemos dicho prácticamente lo mismo recientemente?
+
+**Commercial Relevance**
+¿Existe conexión natural con algo que PLOGY implementa, enseña o vende?
+
+---
+
+# 8. Viral Potential Score
+
+Debe existir una evaluación separada de **potencial de distribución**.
+
+No confundir “tema relevante” con “contenido potencialmente viral”.
+
+Evaluar variables como:
+
+HOOK POTENTIAL  
+¿Existe una frase o consecuencia capaz de detener el scroll?
+
+CURIOSITY GAP  
+¿Hay una pregunta natural que la audiencia quiera resolver?
+
+TENSION  
+¿Existe contradicción, sorpresa, conflicto, error o consecuencia?
+
+UTILITY  
+¿La gente querría guardar esto?
+
+SHAREABILITY  
+¿Existe una razón natural para enviárselo a alguien?
+
+IDENTITY  
+¿Permite que alguien diga “esto me representa” o “esto se lo tengo que mandar a X”?
+
+VISUAL POTENTIAL  
+¿Puede demostrarse visualmente?
+
+TIMELY MOMENTUM  
+¿La conversación ya está creciendo?
+
+COMMENT POTENTIAL  
+¿Hay espacio legítimo para opinión o debate?
+
+La herramienta debe mostrar por separado:
+
+**EDITORIAL VALUE**
+y
+**VIRAL POTENTIAL**.
+
+Una pieza puede ser estratégicamente importante aunque no sea viral.
+
+Una pieza puede tener altísimo potencial viral pero poco valor para PLOGY.
+
+---
+
+# 9. Filtro editorial de PLOGY
+
+Contexto permanente del sistema:
+
+## Mensaje central
+
+**La IA solo crea valor cuando se implementa correctamente.**
+
+PLOGY implementa tecnología dentro de negocios y forma a las personas capaces de hacerlo.
+
+## Verticales
+
+IA_Y_AUTOMATIZACIONES  
+WEB  
+REDES_SOCIALES
+
+## Pilares
+
+CONOCIMIENTO  
+FILOSOFÍA  
+DOCUMENTAL
+
+## Audiencias
+
+NEGOCIOS  
+PLOGGERS  
+AMBOS
+
+Cada oportunidad debe recibir clasificación.
+
+No usar la clasificación únicamente como metadata.
+
+Debe afectar:
+
+el ángulo,
+el nivel técnico,
+el formato,
+el CTA,
+el canal,
+la densidad,
+la prioridad.
+
+---
+
+# 10. Idea Engine
+
+El producto necesita un módulo independiente llamado **Idea Lab**.
+
+No debe depender de noticias.
+
+Su trabajo es producir constantemente nuevas oportunidades editoriales a partir de:
+
+preguntas recurrentes,
+temas de PLOGY,
+aprendizajes,
+casos,
+problemas de empresas,
+problemas de builders,
+tensiones culturales,
+herramientas,
+frameworks,
+errores frecuentes,
+datos disponibles,
+contenidos anteriores.
+
+Una idea debe ser una tesis suficientemente concreta para convertirse en contenido.
+
+Malo:
+
+“Agentes de IA.”
+
+Bueno:
+
+“Muchas empresas quieren un agente cuando en realidad necesitan tres automatizaciones simples.”
+
+Mucho mejor:
+
+“Estamos usando agentes para resolver problemas que todavía no requieren agentes.”
+
+Cada idea generada debe recibir también Editorial Score y Viral Potential.
+
+---
+
+# 11. Recipe Engine
+
+Separar **IDEA** de **RECIPE**.
+
+Una idea responde:
+
+> ¿De qué vamos a hablar?
+
+Una recipe responde:
+
+> ¿Qué estructura narrativa aumenta las probabilidades de que alguien se quede?
+
+Una Recipe es una estructura reutilizable de contenido.
+
+Ejemplo:
+
+### RECIPE: CONTRADICTION
+
+HOOK  
+Todo el mundo intenta hacer X.
+
+COMPLICATION  
+Pero eso está creando Y.
+
+REFRAME  
+El problema real es Z.
+
+PROOF  
+Ejemplo concreto.
+
+PAYOFF  
+Nueva forma de pensar.
+
+Una misma idea puede ejecutarse con diferentes recipes.
+
+El sistema debe construir una librería de recipes y aprender cuáles funcionan mejor según:
+
+canal,
+formato,
+audiencia,
+pilar,
+vertical,
+tema.
+
+Las recipes no son plantillas rígidas de copy.
+
+Son **mecánicas narrativas**.
+
+Ejemplos:
+
+Contradiction  
+Mistake  
+Before / After  
+Myth vs Reality  
+What happened  
+Prediction  
+Case breakdown  
+Unexpected consequence  
+Explainer  
+Framework  
+Comparison  
+Build in public  
+Story  
+Experiment  
+Question  
+Hot take with evidence  
+Data reveal
+
+---
+
+# 12. Angles
+
+Después de seleccionar una oportunidad, el sistema debe proponer múltiples ángulos.
+
+Por ejemplo, una noticia puede producir:
+
+ANGLE A — BUSINESS  
+Qué cambia para empresas.
+
+ANGLE B — BUILDER  
+Qué capacidad nueva aparece.
+
+ANGLE C — PHILOSOPHY  
+Qué creencia anterior deja de ser cierta.
+
+ANGLE D — IMPLEMENTATION  
+Cómo debería utilizarse realmente.
+
+ANGLE E — CONTRARIAN  
+Qué parte de la conversación está exagerada.
+
+Cada ángulo debe incluir:
+
+tesis,
+audiencia,
+pilar,
+razón,
+riesgo,
+potencial de conversación,
+potencial visual.
+
+El usuario puede seleccionar uno o permitir que el sistema recomiende el mejor.
+
+---
+
+# 13. Generation Engine
+
+Después de aprobar:
+
+SOURCE + ANALYSIS + ANGLE + RECIPE
+
+el sistema genera los outputs.
+
+## Instagram Carousel
+
+Debe entregar:
+
+headline,
+slide-by-slide script,
+narrative role de cada slide,
+visual intent,
+assets necesarios,
+queries para encontrar assets,
+caption,
+SEO terms,
+source references.
+
+## Instagram Reel
+
+Debe entregar:
+
+hook,
+script por bloques,
+narrative role,
+visual/edit intent,
+B-roll opportunities,
+assets,
+caption,
+SEO terms,
+fuentes.
+
+## Instagram News Post
+
+Formato de alta velocidad para noticias que no justifican un carrusel completo.
+
+Debe poder producir:
+
+headline,
+subheadline,
+visual brief,
+contexto resumido,
+caption,
+source.
+
+Debe ser especialmente útil para aumentar volumen diario.
+
+## LinkedIn
+
+No reutilizar simplemente el caption de Instagram.
+
+Debe escribir una publicación nativa construida desde:
+
+tesis,
+contexto,
+implicación,
+punto de vista,
+consecuencia.
+
+LinkedIn puede ser más reflexivo y argumentativo que Instagram.
+
+---
+
+# 14. Voz
+
+Todo el sistema debe conocer la voz de PLOGY.
+
+PLOGY suena:
+
+joven,
+preciso,
+curioso,
+builder,
+directo,
+ambicioso,
+anti-humo,
+cercano,
+inteligente sin intentar demostrarlo,
+técnico cuando hace falta,
+simple cuando puede serlo.
+
+No debe sonar:
+
+institucional,
+académico,
+burocrático,
+gurú,
+motivacional,
+corporativo,
+vendedor agresivo,
+cuenta genérica de noticias de IA.
+
+Regla fundamental:
+
+**clarity + tension + progression + payoff**
+
+La claridad no puede destruir la profundidad.
+
+La viralidad no puede destruir la credibilidad.
+
+---
+
+# 15. Sistema visual
+
+El generador visual debe consumir el Design System oficial de PLOGY.
+
+No debe inventar una estética en cada publicación.
+
+Base:
+
+SCREENER BOLD  
+Helvetica Neue  
+INK #171310  
+PAPER #FFFFFF  
+SURFACE #F4F1EF  
+ORANGE #FF5B00
+
+Debe utilizar los logos oficiales.
+
+Para carruseles:
+
+1080 × 1350.
+
+La IA generativa puede crear o modificar recursos visuales.
+
+No debe encargarse de escribir:
+
+titulares finales,
+logo,
+handle,
+contadores,
+gráficas exactas.
+
+Esos elementos deben componerse determinísticamente para garantizar fidelidad.
+
+---
+
+# 16. Human-in-the-loop
+
+El objetivo es automatizar producción sin eliminar criterio.
+
+Debe existir revisión humana antes de publicación, especialmente durante la primera etapa del producto.
+
+El editor debe permitir:
+
+editar,
+regenerar un fragmento,
+cambiar el ángulo,
+cambiar recipe,
+modificar headline,
+reordenar slides,
+editar caption,
+seleccionar assets,
+aprobar,
+rechazar,
+programar.
+
+No debe ser necesario regenerar toda una pieza para corregir una sección.
+
+Cada bloque debe ser editable independientemente.
+
+---
+
+# 17. Source Ledger
+
+Toda afirmación externa debe ser trazable.
+
+Cada Content Opportunity debe mantener:
+
+source_url,
+source_title,
+publisher,
+published_at,
+retrieved_at,
+claims,
+supporting_sources,
+source_type.
+
+Cada claim importante debería poder mostrar:
+
+**“¿de dónde salió esto?”**
+
+Esto es crítico tanto para revisión editorial como para evitar hallucinations.
+
+Cuando existan fuentes contradictorias, marcarlo.
+
+Nunca resolver incertidumbre inventando certeza.
+
+---
+
+# 18. Deduplicación
+
+La deduplicación debe ocurrir en varios niveles.
+
+### EXACT DUPLICATE
+
+La misma noticia.
+
+### STORY DUPLICATE
+
+Distintos artículos sobre el mismo evento.
+
+### TOPIC DUPLICATE
+
+Mismo tema general.
+
+### THESIS DUPLICATE
+
+Dos publicaciones diferentes que terminan diciendo esencialmente lo mismo.
+
+Este último nivel es especialmente importante.
+
+PLOGY puede publicar varias noticias sobre OpenAI.
+
+No debería publicar cinco veces:
+
+“la IA está mejorando rápidamente”.
+
+---
+
+# 19. Freshness
+
+Cada oportunidad debe tener:
+
+published_at,
+detected_at,
+freshness_class,
+expiration estimate.
+
+Clases:
+
+BREAKING  
+CURRENT  
+EMERGING  
+STRUCTURAL  
+EVERGREEN
+
+Esto debe afectar prioridad de producción.
+
+Una noticia que caduca en ocho horas no debe esperar detrás de una idea evergreen.
+
+---
+
+# 20. Queue states
+
+Estado recomendado:
+
+SOURCE_INBOX  
+ANALYZING  
+ANALYZED  
+REJECTED  
+SHORTLISTED  
+ANGLE_READY  
+ANGLE_SELECTED  
+RECIPE_ASSIGNED  
+GENERATING  
+DRAFT_READY  
+IN_REVIEW  
+APPROVED  
+SCHEDULED  
+PUBLISHED  
+MEASURED  
+LEARNED
+
+Además:
+
+ARCHIVED
+
+Cada rechazo debe conservar una reason:
+
+OLD  
+DUPLICATE  
+OFF_TOPIC  
+LOW_EVIDENCE  
+LOW_RELEVANCE  
+REPETITIVE  
+RISK  
+MANUAL_REJECT  
+OTHER
+
+---
+
+# 21. Content Studio
+
+La pantalla central debe comportarse como una fábrica editorial.
+
+Cada pieza debería mostrar visualmente:
+
+SOURCE  
+SCORE  
+ANGLE  
+FORMAT  
+STATUS  
+CHANNEL  
+FRESHNESS  
+OWNER  
+PUBLISH DATE
+
+Debe ser posible:
+
+filtrar,
+ordenar,
+buscar,
+seleccionar múltiples,
+aprobar en batch,
+rechazar en batch.
+
+El sistema debe reducir al mínimo el número de clics necesarios para llevar una oportunidad evidente hasta Draft Ready.
+
+---
+
+# 22. Vistas principales
+
+| Vista | Función |
+|---|---|
+| Control Tower | estado general del pipeline |
+| Sources | configuración de fuentes |
+| Inbox | entradas recién detectadas |
+| Opportunities | oportunidades evaluadas |
+| Idea Lab | ideas no dependientes de noticias |
+| Recipe Lab | estructuras narrativas |
+| Studio | creación y edición |
+| Review Queue | aprobación humana |
+| Calendar | programación multicanal |
+| Analytics | desempeño |
+| Learnings | insights obtenidos del desempeño |
+| Settings | marca, scoring, permisos, integraciones |
+
+---
+
+# 23. Content Supply Dashboard
+
+El sistema debería ayudar también a detectar escasez.
+
+Ejemplo:
+
+NEWS  
+32 opportunities available.
+
+COMMUNITY  
+3 opportunities available.
+
+DOCUMENTAL  
+0 opportunities available.
+
+CASES  
+1 opportunity available.
+
+Esto permite detectar que el problema no siempre está en producción.
+
+Puede estar en que PLOGY no está capturando suficientes aprendizajes, preguntas o casos propios.
+
+---
+
+# 24. Volumen
+
+No hardcodear una frecuencia editorial única.
+
+Configurar targets por canal.
+
+Ejemplo conceptual:
+
+Instagram:
+X reels/day  
+X carousels/day  
+X news posts/day
+
+LinkedIn:
+X posts/day
+
+El dashboard debe comparar:
+
+TARGET  
+READY  
+SCHEDULED  
+PUBLISHED
+
+El sistema debe avisar:
+
+**“Con el inventario actual faltan 4 oportunidades para cumplir el target de mañana.”**
+
+En ese momento puede activar:
+
+NEWS DISCOVERY  
+IDEA GENERATION  
+EVERGREEN RECYCLING
+
+---
+
+# 25. Reciclaje inteligente
+
+No confundir reutilización con repost.
+
+Una buena oportunidad puede transformarse.
+
+Ejemplo:
+
+NOTICIA  
+→ News Card
+
+ANÁLISIS  
+→ Carousel
+
+TESIS  
+→ LinkedIn
+
+CONSECUENCIA  
+→ Reel
+
+PREGUNTA  
+→ Story
+
+Una oportunidad debería mostrar su **Content Tree**.
+
+Así se maximiza volumen sin necesitar una idea completamente nueva para cada publicación.
+
+---
+
+# 26. Analytics
+
+Medir al menos:
+
+reach,
+impressions,
+followers gained,
+profile visits,
+saves,
+shares,
+comments,
+meaningful comments,
+likes,
+watch time,
+completion rate,
+carousel completion,
+link clicks.
+
+Cuando sea posible:
+
+newsletter subscriptions,
+community joins,
+diagnostic visits,
+diagnostic bookings,
+leads.
+
+No optimizar únicamente para likes.
+
+---
+
+# 27. Learning Loop
+
+La herramienta no debe limitarse a reportar métricas.
+
+Debe aprender.
+
+Ejemplo:
+
+“Los reels de IA para negocios con Recipe=ERROR están consiguiendo 2.1× más shares.”
+
+“Las noticias sobre modelos generan reach pero pocos seguidores.”
+
+“Los carruseles sobre implementación generan menos reach pero 3× más saves.”
+
+“LinkedIn responde mejor a casos internos que a noticias.”
+
+El sistema debe poder ajustar gradualmente:
+
+recommended topics,
+recommended recipes,
+recommended angles,
+recommended formats,
+recommended publication windows.
+
+Nunca debe modificar silenciosamente los principios editoriales de marca.
+
+Los aprendizajes deben funcionar como recomendaciones.
+
+---
+
+# 28. Score posterior a publicación
+
+Antes de publicar existe:
+
+PREDICTED VIRALITY.
+
+Después existe:
+
+ACTUAL PERFORMANCE.
+
+Con esos datos debe poder calcularse:
+
+Prediction Error.
+
+Esto permite mejorar el scoring.
+
+Ejemplo:
+
+Predicted viral score: 91  
+Actual percentile: 38
+
+El sistema debe investigar por qué.
+
+Con el tiempo, el objetivo es que el Content Engine entienda mejor qué significa “viral para la audiencia de PLOGY”, no simplemente “viral en Internet”.
+
+---
+
+# 29. Publicación
+
+Primera versión:
+
+GENERATE  
+→ REVIEW  
+→ APPROVE  
+→ EXPORT / READY TO POST
+
+No hacer que las integraciones de publicación sean requisito para validar el producto.
+
+Segunda etapa:
+
+Instagram Professional publishing integration.
+
+LinkedIn profile/page publishing integration.
+
+Cuando existan permisos correctos:
+
+APPROVE  
+→ SCHEDULE  
+→ AUTO-PUBLISH.
+
+El sistema debe registrar resultado de publicación y errores.
+
+---
+
+# 30. MVP
+
+La primera versión debe demostrar una sola cosa:
+
+**PLOGY puede pasar de decenas de inputs a un flujo constante de contenido publicable sin depender de producir manualmente cada pieza.**
+
+MVP imprescindible:
+
+Source Bank  
+News ingestion  
+Manual inputs  
+Analysis  
+Filtering  
+Scoring  
+Deduplication  
+Angle generation  
+Idea Lab  
+Recipe Library  
+Instagram Carousel generation  
+Instagram Reel generation  
+Instagram News Post generation  
+LinkedIn generation  
+Source ledger  
+Human review  
+Calendar  
+Export
+
+La publicación automática y el feedback avanzado de analytics pueden entrar inmediatamente después.
+
+---
+
+# 31. Qué NO construir primero
+
+No comenzar por:
+
+un editor de video completo,
+un Canva clone,
+un scheduler sofisticado,
+un dashboard de analytics gigante,
+un sistema completamente autónomo,
+20 canales diferentes.
+
+El principal riesgo es construir infraestructura alrededor de un motor editorial mediocre.
+
+Prioridad:
+
+**SOURCE QUALITY  
+→ SELECTION QUALITY  
+→ ANGLE QUALITY  
+→ NARRATIVE QUALITY  
+→ PRODUCTION SPEED**
+
+Después automatizar distribución.
+
+---
+
+# 32. Principio de automatización
+
+La herramienta debe automatizar trabajo repetitivo.
+
+No automatizar el criterio diferenciador demasiado pronto.
+
+Automatizar agresivamente:
+
+ingesta,
+deduplicación,
+resumen,
+clasificación,
+scoring preliminar,
+research,
+búsqueda de evidencia,
+generación de alternativas,
+adaptación multicanal,
+metadata,
+assets search,
+formatting.
+
+Mantener intervención humana especialmente en:
+
+selección de tesis,
+opiniones sensibles,
+posicionamiento de marca,
+casos internos,
+publicación final.
+
+Con datos suficientes, algunas de estas decisiones podrán delegarse progresivamente.
+
+---
+
+# 33. UX principle
+
+La interfaz debe sentirse como una **redacción editorial + content factory**, no como un chatbot.
+
+El usuario no debería necesitar escribir prompts continuamente.
+
+Las decisiones deben representarse mediante:
+
+queues,
+cards,
+scores,
+filters,
+states,
+actions,
+editors,
+previews.
+
+La conversación con agentes puede existir como herramienta secundaria.
+
+El workflow debe ser el producto.
+
+---
+
+# 34. Agent architecture
+
+Separar responsabilidades.
+
+### DISCOVERY AGENT
+
+Encuentra inputs.
+
+### RESEARCH AGENT
+
+Consolida fuentes y hechos.
+
+### CLASSIFICATION AGENT
+
+Determina territorio, vertical, pilar y audiencia.
+
+### EDITOR AGENT
+
+Evalúa relevancia y potencial.
+
+### ANGLE AGENT
+
+Encuentra tesis.
+
+### VIRALITY AGENT
+
+Analiza tensión, hook y mecanismos de distribución.
+
+### RECIPE AGENT
+
+Selecciona estructuras narrativas.
+
+### WRITER AGENT
+
+Genera piezas por canal.
+
+### FACT CHECK AGENT
+
+Verifica claims antes de Draft Ready.
+
+### LEARNING AGENT
+
+Analiza desempeño después de publicar.
+
+No necesariamente deben ejecutarse como servicios separados.
+
+Conceptualmente deben mantener responsabilidades separadas para evitar prompts monolíticos imposibles de controlar.
+
+---
+
+# 35. Modelo de datos conceptual
+
+Entidad central:
+
+CONTENT_OPPORTUNITY
+
+Debe relacionarse con:
+
+SOURCE  
+CLAIM  
+CLASSIFICATION  
+SCORE  
+ANGLE  
+RECIPE  
+ASSET  
+CONTENT_DRAFT  
+CHANNEL_VARIANT  
+REVIEW  
+PUBLICATION  
+METRIC  
+LEARNING
+
+Una oportunidad puede tener:
+
+muchas fuentes,
+varios ángulos,
+varias recipes,
+varias piezas,
+varias publicaciones,
+muchas métricas.
+
+No diseñar la base de datos suponiendo:
+
+1 source = 1 post.
+
+---
+
+# 36. Configuración
+
+Settings debe permitir editar:
+
+Brand voice  
+Message central  
+Verticals  
+Pillars  
+Audiences  
+Topics allowed  
+Topics blocked  
+Source list  
+Selection thresholds  
+Virality thresholds  
+Freshness rules  
+Duplicate sensitivity  
+Timezone  
+Content targets  
+Publishing connections  
+Members  
+Roles  
+Visual system  
+CTA library  
+Recipe library
+
+Evitar esconder comportamiento estratégico importante dentro de prompts hardcoded.
+
+---
+
+# 37. Guardrails
+
+El sistema nunca debe:
+
+fabricar hechos,
+publicar rumores como certeza,
+eliminar fuentes,
+presentar contenido externo como experiencia propia,
+inventar un caso PLOGY,
+inventar resultados,
+inventar testimonios,
+inventar eventos,
+inventar métricas.
+
+DOCUMENTAL exige material real de PLOGY.
+
+Cuando falte evidencia:
+
+ASK FOR INPUT  
+o  
+MARK AS UNSUPPORTED.
+
+---
+
+# 38. North Star
+
+La herramienta no se evalúa por:
+
+“cuántos posts genera”.
+
+La métrica real es:
+
+**cuántas piezas relevantes y publicables puede producir PLOGY por unidad de tiempo y cuántas de ellas generan distribución, crecimiento de audiencia o intención comercial.**
+
+Podemos expresarlo como:
+
+**Qualified Content Output / Week**
+
+y después medir su impacto mediante:
+
+Audience Growth  
+Distribution  
+Engagement Quality  
+Community Acquisition  
+Commercial Intent.
+
+---
+
+# 39. Resultado deseado
+
+El estado final del producto debería permitir algo parecido a esto:
+
+Durante la noche entraron 184 señales.
+
+El sistema encontró:
+
+27 historias duplicadas,  
+41 irrelevantes,  
+13 demasiado viejas,  
+68 con poca conexión PLOGY,  
+35 oportunidades potenciales.
+
+De esas:
+
+12 tienen alto valor editorial.  
+7 tienen alto potencial viral.  
+5 sirven para Reel.  
+8 sirven para Carousel.  
+11 pueden convertirse en News Post.  
+6 tienen buen fit para LinkedIn.
+
+Al abrir PLOGY Content Engine por la mañana, el equipo no empieza preguntando:
+
+> “¿Qué publicamos hoy?”
+
+Empieza decidiendo:
+
+> “¿Cuáles de estas oportunidades queremos sacar primero?”
+
+Ese cambio es el producto.
+
+---
+
+# 40. Principio final
+
+El contenido externo genera velocidad.
+
+Las ideas generan profundidad.
+
+Las recipes generan retención.
+
+La experiencia propia genera diferenciación.
+
+La revisión humana genera criterio.
+
+Los datos generan aprendizaje.
+
+El sistema debe juntar esas seis cosas en una sola máquina editorial.
+
+**No queremos automatizar publicaciones.**
+
+**Queremos automatizar el sistema que convierte señales en atención, atención en audiencia y audiencia en oportunidades para PLOGY.**
+
+Hay una decisión de arquitectura que me parece especialmente importante: **News, Ideas y Recipes no deberían ser tres features aisladas**. News e Ideas son dos formas distintas de crear `Content Opportunities`; Recipes es la capa que decide cómo empaquetarlas para maximizar retención. Después todas convergen en el mismo Angle → Generate → Review → Publish → Learn. Esa estructura evita terminar manteniendo tres productos distintos dentro de la misma app.
+
+También cambiaría una cosa frente al workflow semanal actual: mantendría el checkpoint humano, pero no obligaría a hacer una gran selección semanal antes de avanzar. Ese diseño funciona para una parrilla curada, pero se vuelve un cuello de botella cuando buscas varias publicaciones diarias. :chatgpt-content-reference{index="4"} En esta herramienta, cada oportunidad debería poder avanzar independientemente por la cola, con aprobación humana en `IN_REVIEW`, mientras el sistema semanal sigue existiendo como una **vista estratégica** y no como requisito operacional.
+
+El brief de arriba ya está lo bastante aterrizado para que Codex pueda empezar por **arquitectura de información, modelo de datos y wireframes del producto** antes de meterse a programar agentes.

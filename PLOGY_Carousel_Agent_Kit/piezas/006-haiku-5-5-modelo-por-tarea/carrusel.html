@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 006 · Un modelo por tarea</title>
+<!-- Fuente editable. 7 láminas de 1080x1350.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=7
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7 -Prefix slide-0
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit).
+     Noticia: lanzamiento de Claude Haiku 5.5 (Anthropic, 7 de octubre de 2026). Hechos de la lámina 02, 03 y 04 son de Anthropic
+     (anuncio y documentación, consultados el 2026-10-20). Las láminas 05 y 06 son criterio de Plogy.
+     CTA: variante 20 de la biblioteca (vidrio con lista), adaptada a la palabra ELEGIR. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486;
+  --gradient:linear-gradient(180deg,#f75946 0%,#ee5358 33%,#e1556a 50%,#c85981 67%,#9c5aa7 100%);
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px}
+.light{background:var(--paper);color:var(--ink)}
+.surface{background:var(--surface);color:var(--ink)}
+.dark{background:var(--ink);color:var(--paper)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;z-index:5}
+.light .count,.surface .count{color:var(--muted)} .dark .count{color:#e6dfd8}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:5}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.25}
+.dots i.on{opacity:1;background:var(--orange)}
+
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance;position:relative;z-index:3}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.55)}
+.light .hl,.surface .hl{color:var(--orange)}
+.support{position:relative;z-index:3;font-size:40px;line-height:1.38;margin-top:32px;max-width:880px}
+.light .support,.surface .support{color:var(--muted)} .dark .support{color:#e6dfd8}
+.eyebrow{position:relative;z-index:3;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:36px}
+.light .eyebrow,.surface .eyebrow{color:var(--orangeText)} .dark .eyebrow{color:var(--orange)}
+.pill{position:relative;z-index:3;display:inline-block;background:var(--orange);color:var(--ink);font:700 32px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:20px 32px;border-radius:999px;margin-bottom:26px}
+.src{position:absolute;left:96px;right:96px;bottom:128px;z-index:3;font:400 30px/1.35 var(--body)}
+.light .src,.surface .src{color:var(--muted)} .dark .src{color:#cfc6bd}
+.top{position:relative;z-index:3}
+
+/* 01 · esfera grande contra esfera chica */
+.s1 .top{margin-top:180px}
+.s1 h1{font-size:100px}
+.s1 .support{max-width:880px;margin-top:28px}
+.sph{position:absolute;border-radius:50%;background:radial-gradient(circle at 34% 28%,#ff7a2e 0%,#f75946 30%,#c85981 62%,#9c5aa7 100%)}
+.s1 .big{width:860px;height:860px;right:-300px;bottom:-330px;z-index:1}
+.s1 .small{width:112px;height:112px;left:96px;bottom:372px;z-index:2}
+.s1 .tagbig{position:absolute;z-index:3;left:600px;top:1080px;font:700 44px/1.05 var(--display);letter-spacing:-.03em;color:var(--ink);max-width:360px}
+.s1 .tagsmall{position:absolute;z-index:3;left:96px;bottom:176px;font:700 38px/1.1 var(--display);letter-spacing:-.02em;color:#fff;max-width:340px}
+.s1 .tagsmall small{display:block;margin-top:6px;font:400 30px/1.25 var(--body);color:#cfc6bd;letter-spacing:0}
+
+/* 02 · ficha del modelo */
+.s2 .top{margin-top:150px}
+.s2 h2{font-size:96px}
+.spec{position:relative;z-index:3;margin-top:44px;border-radius:32px;background:var(--paper);border:2px solid var(--border);overflow:hidden}
+.spec .id{display:flex;align-items:center;gap:18px;padding:22px 36px;background:var(--ink);color:#fff;font:500 38px/1 'Consolas','Courier New',monospace}
+.spec .id i{width:18px;height:18px;border-radius:50%;background:var(--orange);flex:none}
+.spec .row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:20px 36px;border-top:2px solid #e3dad1}
+.spec .row:nth-child(2){border-top:0}
+.spec .row span{font:400 33px/1.2 var(--body);color:var(--muted)}
+.spec .row b{font:700 60px/1 var(--display);letter-spacing:-.03em}
+.spec .row b small{font:400 30px/1 var(--body);letter-spacing:0;color:var(--muted);margin-left:10px}
+.s2 .support{font-size:34px;margin-top:30px}
+
+/* 03 · para qué lo hizo Anthropic */
+.s3 .top{margin-top:110px}
+.s3 h2{font-size:88px}
+.tags{position:relative;z-index:3;margin-top:44px;display:flex;flex-wrap:wrap;gap:18px 16px}
+.tags span{border:2px solid #5a4f47;border-radius:999px;padding:20px 34px;font:700 44px/1 var(--display);letter-spacing:-.02em}
+.tags span.on{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.limit{position:relative;z-index:3;margin-top:40px;padding:30px 38px;border-radius:28px;background:#241d19;border:2px solid #3b332d;font:400 36px/1.35 var(--body);color:#e6dfd8}
+.limit b{color:#fff}
+
+/* 04 · barras */
+.s4 .top{margin-top:140px}
+.s4 h2{font-size:92px}
+.grp{position:relative;z-index:3;margin-top:50px}
+.grp + .grp{margin-top:44px}
+.grp .t{font:700 34px/1.15 var(--display);letter-spacing:-.01em}
+.grp .t small{display:block;margin-top:4px;font:400 30px/1.2 var(--body);color:var(--muted);letter-spacing:0}
+.bar{display:flex;align-items:center;gap:16px;margin-top:14px}
+.bar .n{flex:none;width:170px;font:700 30px/1 var(--display);color:var(--muted)}
+.bar .tr{flex:1;height:60px;position:relative}
+.bar .fill{height:100%;border-radius:12px}
+.bar .v{position:absolute;top:50%;transform:translateY(-50%);font:700 38px/1 var(--display);letter-spacing:-.02em;padding-left:14px;white-space:nowrap}
+.bar.h .fill{background:var(--orange)} .bar.s .fill{background:var(--ink)}
+.gap4{margin-top:14px;margin-left:186px;font:700 34px/1 var(--display);color:var(--orangeText);letter-spacing:-.01em}
+
+/* 05 · matriz */
+.s5 .top{margin-top:80px}
+.s5 h2{font-size:80px}
+.mx{position:relative;z-index:3;margin-top:30px;display:flex;flex-direction:column;gap:12px}
+.mrow{display:grid;grid-template-columns:1fr 262px;gap:20px;align-items:center;background:var(--paper);border:2px solid var(--border);border-radius:26px;padding:16px 28px}
+.mrow b{display:block;font:700 40px/1.05 var(--display);letter-spacing:-.025em}
+.mrow span{display:block;margin-top:6px;font:400 33px/1.2 var(--body);color:var(--muted)}
+.sz{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.sz .d{display:flex;align-items:flex-end;gap:10px}
+.sz .d i{display:block;border-radius:50%;border:3px solid #b9aca0;background:transparent}
+.sz .d i:nth-child(1){width:22px;height:22px} .sz .d i:nth-child(2){width:32px;height:32px} .sz .d i:nth-child(3){width:44px;height:44px}
+.sz .d i.on{background:var(--orange);border-color:var(--orange)}
+.sz em{font:700 29px/1.1 var(--display);font-style:normal;color:var(--orangeText);letter-spacing:-.01em}
+.s5 .src{bottom:120px}
+
+/* 06 · prueba de 20 casos */
+.s6 .top{margin-top:120px}
+.s6 h2{font-size:100px}
+.g20{position:relative;z-index:3;margin-top:36px;display:grid;grid-template-columns:repeat(10,1fr);gap:12px}
+.g20 i{aspect-ratio:1;border-radius:50%;border:2px solid #6a5e55;display:flex;align-items:center;justify-content:center;font:700 28px/1 var(--display);font-style:normal;color:#cfc6bd}
+.g20 i:nth-child(n+18){border-color:var(--orange);color:var(--orange)}
+.stp{position:relative;z-index:3;margin-top:38px;display:flex;flex-direction:column;gap:20px}
+.stp div{display:flex;gap:24px;align-items:flex-start}
+.stp b{flex:none;width:60px;font:700 64px/.95 var(--display);color:var(--orange)}
+.stp p{font:400 36px/1.28 var(--body);color:#e6dfd8;padding-top:2px}
+.stp p strong{color:#fff;font-weight:700}
+
+/* 07 · CTA variante 20 (vidrio con lista), adaptada */
+.s7{background:var(--ink);color:#fff;padding:0}
+.s7 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.s7 .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.85) 0%,rgba(23,19,16,.5) 24%,rgba(23,19,16,0) 40%,rgba(23,19,16,.35) 60%,rgba(23,19,16,.9) 100%)}
+.s7 .h{position:absolute;left:96px;right:96px;top:200px;z-index:3;font-size:92px}
+.s7 .h{text-shadow:0 2px 22px rgba(23,19,16,.6)}
+.s7 .h .hl{color:#fff}
+.s7 .ck{position:absolute;z-index:4;left:96px;top:690px;width:888px;border-radius:44px;padding:36px 44px 40px;
+  background:linear-gradient(125deg,rgba(255,255,255,.24),rgba(255,255,255,.06)),rgba(23,19,16,.62);border:1.5px solid rgba(255,255,255,.42);
+  backdrop-filter:blur(22px) saturate(125%);box-shadow:0 18px 50px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.5);color:#fff}
+.s7 .ck .lab{font:700 30px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+.s7 .ck ul{list-style:none;margin:20px 0 0;padding:0}
+.s7 .ck li{display:flex;gap:20px;align-items:center;font:500 40px/1.2 var(--body);padding:8px 0}
+.s7 .ck li i{flex:none;width:44px;height:44px;border-radius:50%;background:var(--orange);position:relative}
+.s7 .ck li i::after{content:"";position:absolute;left:14px;top:8px;width:11px;height:20px;border:solid var(--ink);border-width:0 5px 5px 0;transform:rotate(40deg)}
+.s7 .ck .go{margin-top:26px;display:block;background:var(--orange);color:var(--ink);border-radius:999px;padding:26px 40px}
+.s7 .ck .go b{display:block;font:700 56px/1.05 var(--display);letter-spacing:-.03em}
+</style>
+</head>
+<body>
+
+<!-- 01 · Tensión: el modelo más grande para una tarea chica -->
+<section class="slide dark s1" data-n="1">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">01/07</div>
+  <div class="sph big"></div>
+  <div class="tagbig">El modelo más grande</div>
+  <div class="sph small"></div>
+  <div class="tagsmall">Un correo por clasificar<small>Una tarea chica de todos los días</small></div>
+  <div class="top">
+    <p class="eyebrow">Noticia · Modelos de IA</p>
+    <h1>No toda tarea necesita el modelo <span class="hl">más grande.</span></h1>
+    <p class="support">El 7 de octubre Anthropic lanzó Claude Haiku&nbsp;5.5, un modelo pequeño.</p>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Hecho: la ficha -->
+<section class="slide surface s2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">02/07</div>
+  <div class="top">
+    <h2>Haiku 5.5 salió el <span class="hl">7 de octubre.</span></h2>
+    <div class="spec">
+      <div class="id"><i></i>claude-haiku-5-5</div>
+      <div class="row"><span>Entrada</span><b>$0,10<small>por millón de tokens</small></b></div>
+      <div class="row"><span>Salida</span><b>$0,50<small>por millón de tokens</small></b></div>
+      <div class="row"><span>Contexto</span><b>1 millón<small>de tokens</small></b></div>
+      <div class="row"><span>Salida máxima</span><b>128.000<small>tokens</small></b></div>
+    </div>
+    <p class="support">Hasta 100.000&nbsp;tokens por prompt. Por encima: $0,50 de entrada y $2,50 de salida.</p>
+  </div>
+  <div class="src">Fuente: Anthropic, anuncio y ficha del modelo, consultados el 2026-10-20.</div>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · Hecho: para qué lo propone Anthropic -->
+<section class="slide dark s3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">03/07</div>
+  <div class="top">
+    <p class="eyebrow">Lo que dice Anthropic</p>
+    <h2>Lo pensó para trabajo <span class="hl">rápido y repetido.</span></h2>
+    <div class="tags">
+      <span class="on">Resumir</span><span>Compactar contexto</span><span class="on">Consultar bases de datos</span><span>Clasificar</span><span class="on">Atención en vivo</span>
+    </div>
+    <div class="limit"><b>Para código agéntico complejo,</b> dice Anthropic, Sonnet 5.5 y Opus 5.5 siguen siendo mejores.</div>
+  </div>
+  <div class="src">Fuente: Anthropic, anuncio del 7 de octubre. Anthropic vende los tres modelos.</div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Mecanismo: la brecha cambia con la tarea -->
+<section class="slide light s4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">04/07</div>
+  <div class="top">
+    <h2>La brecha cambia <span class="hl">según la tarea.</span></h2>
+    <div class="grp">
+      <div class="t">Código agéntico<small>Terminal-Bench 4.0</small></div>
+      <div class="bar s"><div class="n">Sonnet 5.5</div><div class="tr"><div class="fill" style="width:70.6%"></div><span class="v" style="left:70.6%">70,6%</span></div></div>
+      <div class="bar h"><div class="n">Haiku 5.5</div><div class="tr"><div class="fill" style="width:39.2%"></div><span class="v" style="left:39.2%">39,2%</span></div></div>
+      <div class="gap4">31,4 puntos de diferencia</div>
+    </div>
+    <div class="grp">
+      <div class="t">Uso de computador<small>OSWorld 2.1, subconjunto sin conexión</small></div>
+      <div class="bar s"><div class="n">Sonnet 5.5</div><div class="tr"><div class="fill" style="width:83.9%"></div><span class="v" style="left:83.9%;transform:translate(-100%,-50%);color:#fff;padding:0 14px 0 0">83,9%</span></div></div>
+      <div class="bar h"><div class="n">Haiku 5.5</div><div class="tr"><div class="fill" style="width:72.4%"></div><span class="v" style="left:72.4%;transform:translate(-100%,-50%);color:var(--ink);padding:0 14px 0 0">72,4%</span></div></div>
+      <div class="gap4">11,5 puntos de diferencia</div>
+    </div>
+  </div>
+  <div class="src">Cifras de Anthropic, medidas con sus propias pruebas y sin verificación independiente. Ninguna es tu negocio.</div>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · Criterio de Plogy: la matriz -->
+<section class="slide surface s5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/07</div>
+  <div class="top">
+    <span class="pill">Criterio de Plogy</span>
+    <h2>Clasifica tus tareas <span class="hl">antes de elegir.</span></h2>
+    <div class="mx">
+      <div class="mrow"><p><b>Clasificar y enrutar</b><span>Etiquetar un correo entrante</span></p><div class="sz"><div class="d"><i class="on"></i><i></i><i></i></div><em>Pequeño</em></div></div>
+      <div class="mrow"><p><b>Extraer y resumir</b><span>Datos de una factura</span></p><div class="sz"><div class="d"><i class="on"></i><i></i><i></i></div><em>Pequeño</em></div></div>
+      <div class="mrow"><p><b>Consultar y responder</b><span>Estado de un pedido</span></p><div class="sz"><div class="d"><i class="on"></i><i class="on"></i><i></i></div><em>Pequeño o intermedio</em></div></div>
+      <div class="mrow"><p><b>Razonar y decidir</b><span>Un caso con muchas reglas</span></p><div class="sz"><div class="d"><i></i><i class="on"></i><i class="on"></i></div><em>Intermedio o grande</em></div></div>
+    </div>
+  </div>
+  <div class="src">Punto de partida que se prueba, no un veredicto. Tamaños de ejemplo: Haiku 5.5, Sonnet 5.5 y Opus 5.5.</div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 06 · La prueba de 20 casos -->
+<section class="slide dark s6" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">06/07</div>
+  <div class="top">
+    <h2>Prueba con <span class="hl">20 casos reales.</span></h2>
+    <div class="g20"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i><i>10</i><i>11</i><i>12</i><i>13</i><i>14</i><i>15</i><i>16</i><i>17</i><i>18</i><i>19</i><i>20</i></div>
+    <div class="stp">
+      <div><b>1</b><p><strong>Toma 20 casos reales</strong> de una tarea, con los&nbsp;3&nbsp;más raros.</p></div>
+      <div><b>2</b><p><strong>Escribe antes</strong> qué cuenta como bien hecho.</p></div>
+      <div><b>3</b><p><strong>Pásalos por el modelo pequeño</strong> y cuenta los aciertos.</p></div>
+      <div><b>4</b><p><strong>Si no llega,</strong> sube el esfuerzo o el modelo y repite.</p></div>
+    </div>
+  </div>
+  <div class="src">Criterio de Plogy. Veinte es una referencia práctica, no una regla estadística.</div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 07 · CTA (variante 20 de la biblioteca: vidrio con lista, adaptada a ELEGIR) -->
+<section class="slide s7" data-n="7">
+  <img class="bg" src="assets/20-teclado.jpg" alt="Una mano toca un teclado de teclas verdes sobre un fondo naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count" style="color:#e6dfd8">07/07</div>
+  <h2 class="h">Elige por tarea. <span class="hl">Prueba con 20 casos.</span></h2>
+  <div class="ck"><div class="lab">Lo que recibes</div>
+    <ul><li><i></i>Matriz de tarea a modelo</li><li><i></i>Plantilla de la prueba de 20 casos</li><li><i></i>La noticia, con su fuente</li></ul>
+    <div class="go"><b>Comenta ELEGIR</b></div></div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

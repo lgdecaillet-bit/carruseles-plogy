@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 008 · Nadie garantiza que el agente obedezca</title>
+<!-- Fuente editable. 6 láminas de 1080x1350.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=6
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6 -Prefix slide-0
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit).
+     Noticia con postura. Hecho: audiencia del Concejo de Nueva York del 5 de octubre de 2026 (fuente secundaria Fox News, 6 de octubre).
+     Las citas son traducciones de Plogy. El ejemplo de la lámina 05 es hipotético. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486;
+  --gradient:linear-gradient(180deg,#f75946 0%,#ee5358 33%,#e1556a 50%,#c85981 67%,#9c5aa7 100%);
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --sym:url('../../brandkit/assets/plogy-symbol.svg');
+}
+*{box-sizing:border-box;margin:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px}
+.light{background:var(--paper);color:var(--ink)}
+.surface{background:var(--surface);color:var(--ink)}
+.dark{background:var(--ink);color:var(--paper)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:6}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;z-index:6}
+.light .count,.surface .count{color:var(--muted)} .dark .count{color:#e6dfd8}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:6}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.25}
+.dots i.on{opacity:1;background:var(--orange)}
+
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance;position:relative;z-index:3}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.55)}
+.light .hl,.surface .hl{color:var(--orange)}
+.support{position:relative;z-index:3;font-size:38px;line-height:1.36;margin-top:30px;max-width:880px}
+.light .support,.surface .support{color:var(--muted)} .dark .support{color:#e6dfd8}
+.eyebrow{position:relative;z-index:3;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:34px}
+.light .eyebrow,.surface .eyebrow{color:var(--orangeText)} .dark .eyebrow{color:var(--orange)}
+.pill{position:relative;z-index:3;display:inline-block;background:var(--orange);color:var(--ink);font:700 32px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:20px 32px;border-radius:999px;margin-bottom:28px}
+.src{position:absolute;left:96px;right:96px;bottom:128px;z-index:3;font:400 30px/1.32 var(--body)}
+.light .src,.surface .src{color:var(--muted)} .dark .src{color:#cfc6bd}
+.top{position:relative;z-index:3}
+
+/* 01 · portada con mano y carpeta */
+.s1 .top{margin-top:104px}
+.s1 h1{font-size:108px}
+.s1 .support{max-width:900px}
+.s1 .photo{position:absolute;left:0;top:738px;width:1080px;z-index:1}
+.s1 .fade{position:absolute;left:0;right:0;bottom:0;height:260px;z-index:2;background:linear-gradient(to bottom,rgba(23,19,16,0),#171310 62%)}
+.s1 .fadeTop{position:absolute;left:0;right:0;top:732px;height:120px;z-index:2;background:linear-gradient(to bottom,#171310,rgba(23,19,16,0))}
+
+/* 02 · una pregunta, cuatro respuestas */
+.s2 .top{margin-top:74px}
+.s2 h2{font-size:80px}
+.ask{position:relative;z-index:3;margin-top:28px;background:var(--paper);border:2px solid var(--border);border-radius:34px 34px 34px 8px;padding:18px 30px;font:500 33px/1.27 var(--body)}
+.ask b{font-weight:700}
+.ans{position:relative;z-index:3;margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.ans div{background:var(--ink);color:#fff;border-radius:26px;padding:15px 30px 17px}
+.ans i{display:block;font:700 29px/1 var(--display);font-style:normal;letter-spacing:.06em;color:var(--orange);margin-bottom:8px;text-transform:uppercase}
+.ans i em{font-style:normal;color:#cfc6bd;letter-spacing:.02em;text-transform:none;font-weight:500}
+.ans p{font:400 33px/1.24 var(--body);color:#fff}
+.s2 .src{bottom:124px;font-size:29px}
+
+/* 03 · dijeron / no dijeron */
+.s3 .top{margin-top:140px}
+.s3 h2{font-size:100px}
+.two{position:relative;z-index:3;margin-top:56px;display:flex;flex-direction:column;gap:24px}
+.pan{border-radius:30px;padding:30px 36px 32px}
+.pan.yes{background:var(--orange);color:var(--ink)}
+.pan.no{border:2px solid #5b5149;color:#fff}
+.pan h3{font:700 32px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+.pan.no h3{color:var(--orange)}
+.pan ul{list-style:none;padding:0}
+.pan li{font:500 38px/1.22 var(--body);padding-left:36px;position:relative}
+.pan li + li{margin-top:14px}
+.pan li:before{content:"";position:absolute;left:0;top:.5em;width:16px;height:16px;border-radius:50%;background:currentColor}
+.s3 .src{bottom:128px}
+
+/* 04 · tres reglas */
+.s4 .top{margin-top:96px}
+.s4 h2{font-size:88px}
+.rules{position:relative;z-index:3;margin-top:38px;display:flex;flex-direction:column}
+.rules div{padding:32px 0 30px;border-top:2px solid #d9d0c7}
+.rules div:first-child{border-top:0;padding-top:0}
+.rules b{display:block;font:700 58px/1.04 var(--display);letter-spacing:-.03em}
+.rules span{display:block;margin-top:10px;font:400 35px/1.28 var(--body);color:var(--muted);max-width:860px}
+.rules b em{font-style:normal;color:var(--orangeText)}
+.s4 .close{position:absolute;left:96px;right:96px;bottom:128px;z-index:3;font:700 48px/1.1 var(--display);letter-spacing:-.025em}
+.s4 .close em{font-style:normal;color:var(--orangeText)}
+
+/* 05 · semáforo hipotético */
+.s5 .top{margin-top:96px}
+.s5 h2{font-size:80px}
+.lv{position:relative;z-index:3;margin-top:36px;display:flex;flex-direction:column;gap:14px}
+.lv div{border-radius:28px;padding:28px 34px 30px}
+.lv h3{font:700 54px/1.05 var(--display);letter-spacing:-.03em}
+.lv p{margin-top:8px;font:400 35px/1.25 var(--body)}
+.lv .a{background:var(--paper);border:2px solid var(--border)}
+.lv .a p{color:var(--muted)}
+.lv .b{background:var(--orange);color:var(--ink)}
+.lv .c{background:var(--ink);color:#fff}
+.lv .c p{color:#e6dfd8}
+.s5 .res{position:relative;z-index:3;margin-top:26px;font:700 38px/1.14 var(--display);letter-spacing:-.025em}
+.s5 .res em{font-style:normal;color:var(--orangeText)}
+.s5 .support{font-size:33px;margin-top:12px}
+
+/* 06 · CTA variante 14 (comunidad: comentario fijado y campo de texto) */
+.s6{background:var(--ink);color:#fff;padding:0}
+.s6 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.s6 .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.7) 0%,rgba(23,19,16,0) 24%,rgba(23,19,16,.1) 46%,rgba(23,19,16,.9) 70%,rgba(23,19,16,1) 100%)}
+.s6 .pin{position:absolute;z-index:4;left:96px;width:888px;top:690px;border-radius:44px 44px 44px 12px;background:#fff;color:var(--ink);padding:30px 40px 34px;box-shadow:0 20px 56px rgba(0,0,0,.4)}
+.s6 .pin .who{display:flex;align-items:center;gap:18px;font:700 34px/1 var(--display)}
+.s6 .pin .who i{width:58px;height:58px;border-radius:50%;background:var(--surface) var(--sym) center/62% no-repeat}
+.s6 .pin .who span{font:400 30px/1 var(--body);color:var(--muted);margin-left:auto}
+.s6 .pin p{margin-top:16px;font:700 66px/1.05 var(--display);letter-spacing:-.03em}
+.s6 .cm{position:absolute;z-index:4;left:96px;top:1030px;width:888px;height:124px;border-radius:62px;background:#fff;color:var(--ink);display:flex;align-items:center;gap:20px;padding:0 40px 0 24px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.s6 .cm .av{flex:none;width:76px;height:76px;border-radius:50%;background:var(--surface) var(--sym) center/62% no-repeat}
+.s6 .cm .tx{flex:1;font:500 40px/1 var(--body);white-space:nowrap;color:#8a8077}
+.s6 .cm .caret{display:inline-block;width:5px;height:54px;background:var(--ink);vertical-align:-10px;margin-right:12px}
+.s6 .cm .send{font:700 36px/1 var(--display);color:var(--orangeText)}
+.s6 .cmnote{position:absolute;z-index:4;left:96px;width:888px;top:1182px;font:400 34px/1.3 var(--body);color:#eee6df;text-wrap:balance}
+.s6 .dots{bottom:56px}
+</style>
+</head>
+<body>
+
+<!-- 01 · Tensión -->
+<section class="slide dark s1" data-n="1">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">01/06</div>
+  <img class="photo" src="assets/01-mano-carpeta.jpg" alt="Una mano abierta sostiene una carpeta violeta que brilla, con archivos flotando alrededor">
+  <div class="fadeTop"></div>
+  <div class="fade"></div>
+  <div class="top">
+    <p class="eyebrow">Nueva York · 5 de octubre de 2026</p>
+    <h1>Nadie garantiza que el agente <span class="hl">obedezca.</span></h1>
+    <p class="support">Ni OpenAI, Anthropic, Meta ni Google lo garantizaron ante el Concejo, bajo juramento.</p>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Hecho: una pregunta, cuatro respuestas -->
+<section class="slide surface s2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">02/06</div>
+  <div class="top">
+    <h2>Cuatro respuestas, <span class="hl">ninguna garantía.</span></h2>
+    <div class="ask"><b>Julie Menin</b>, presidenta del Concejo, pidió a cada una asegurar que sus agentes siempre seguirían las salvaguardas contra daños catastróficos.</div>
+    <div class="ans">
+      <div><i>OpenAI <em>· Morgan Dwyer</em></i><p>“No es posible que yo garantice que ninguna tecnología esté libre de riesgo.”</p></div>
+      <div><i>Anthropic <em>· Logan Graham</em></i><p>“La ciencia para lograrlo es fundamentalmente difícil y no está resuelta.”</p></div>
+      <div><i>Google <em>· Alice Friend</em></i><p>“Prometer perfección no sería posible con ningún producto del mercado.”</p></div>
+      <div><i>Meta <em>· Shane Cahill</em></i><p>Se comprometió con desplegar IA de forma segura, no con esa garantía.</p></div>
+    </div>
+  </div>
+  <p class="src">Fuente secundaria: Fox News, 6 oct. Citas traducidas.</p>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · Matiz: admisión, no alarma -->
+<section class="slide dark s3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">03/06</div>
+  <div class="top">
+    <h2>Es una admisión, <span class="hl">no una alarma.</span></h2>
+    <div class="two">
+      <div class="pan yes">
+        <h3>Lo que dijeron</h3>
+        <ul>
+          <li>Que no pueden prometer riesgo cero.</li>
+          <li>Que controlar estos sistemas es ciencia sin cerrar.</li>
+        </ul>
+      </div>
+      <div class="pan no">
+        <h3>Lo que no dijeron</h3>
+        <ul>
+          <li>Que sus agentes sean inseguros.</li>
+          <li>Cuánto riesgo hay: ninguno dio un número para el peor caso.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="src">Respondieron sobre la tecnología en general; la pregunta era sobre agentes.</p>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Postura de Plogy -->
+<section class="slide light s4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">04/06</div>
+  <div class="top">
+    <span class="pill">Criterio de Plogy</span>
+    <h2>Diseña como si fuera a <span class="hl">equivocarse.</span></h2>
+    <div class="rules">
+      <div><b><em>1</em> Permisos mínimos.</b><span>Que acceda solo a lo que esa tarea necesita.</span></div>
+      <div><b><em>2</em> Revisión humana donde importa.</b><span>Una persona aprueba lo que cuesta dinero, llega a un cliente o no se puede revertir.</span></div>
+      <div><b><em>3</em> Forma de deshacer.</b><span>Un registro de lo que hizo y una vuelta atrás probada.</span></div>
+    </div>
+  </div>
+  <p class="close">No es miedo. <em>Es criterio.</em></p>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · Ejemplo hipotético -->
+<section class="slide surface s5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/06</div>
+  <div class="top">
+    <span class="pill">Ejemplo hipotético</span>
+    <h2>Un agente que responde <span class="hl">correos de clientes.</span></h2>
+    <div class="lv">
+      <div class="a"><h3>Lo hace solo</h3><p>Leer el buzón de soporte y redactar borradores.</p></div>
+      <div class="b"><h3>Pregunta antes</h3><p>Enviar a un cliente u ofrecer un descuento.</p></div>
+      <div class="c"><h3>No lo toca</h3><p>Pagos, borrar datos y cambiar permisos.</p></div>
+    </div>
+    <p class="res">Y cada acción queda <em>en un registro</em> para poder deshacerla.</p>
+    <p class="support">No es de ningún cliente. Es una propuesta de diseño.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 06 · CTA (variante 14 de la biblioteca: comunidad, comentario fijado y campo de texto) -->
+<section class="slide s6" data-n="6">
+  <img class="bg" src="assets/14-anden.jpg" alt="Una mujer en un andén de tren con texto en naranja a su lado">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">06/06</div>
+  <div class="pin"><div class="who"><i></i>Plogy<span>comentario fijado</span></div><p>¿Qué no le darías acceso a un agente?</p></div>
+  <div class="cm"><div class="av"></div><div class="tx"><span class="caret"></span>Escribe tu respuesta</div><div class="send">Publicar</div></div>
+  <p class="cmnote">Respóndelo en un comentario: qué no le darías y por qué.</p>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

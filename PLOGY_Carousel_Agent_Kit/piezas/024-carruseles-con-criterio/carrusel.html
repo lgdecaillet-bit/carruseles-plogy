@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 024 · Carruseles con criterio</title>
+<!-- Fuente editable. 8 láminas de 1080x1350, estética normal de Plogy. Adaptación de una referencia de otra cuenta (5 pasos para que Claude no haga carruseles feos).
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=8
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7,8 -Prefix slide-0
+     Todo lo que se muestra sale de este kit: los nombres de las skills, los tokens de marca, la rúbrica, el brief y el código de la pieza 023.
+     Las láminas de ejemplo (assets/ej-*.png) son exports reales de las piezas 019, 020, 021 y 023, todavía en borrador.
+     CTA: tarjeta de vidrio sobre la foto 20 de la biblioteca (teclado), según la preferencia de CTA de Plogy.
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486; --line:#e6ddd5;
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --mono:Consolas,'Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px;color:var(--ink)}
+.light{background:var(--paper)} .surface{background:var(--surface)} .dark{background:var(--ink);color:#fff} .orange{background:var(--orange)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;color:var(--muted);z-index:5}
+.dark .count{color:#e6dfd8} .orange .count{color:var(--ink)}
+h1,h2{position:relative;z-index:3;font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.04;text-wrap:balance}
+h2{font-size:92px}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.5)}
+.orange .hl{color:#fff}
+.eyebrow{font:700 28px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--orangeText);margin-bottom:26px}
+.dark .eyebrow{color:var(--orange)} .orange .eyebrow{color:var(--ink)}
+.top{position:relative;z-index:3;margin-top:110px}
+.lead{position:relative;z-index:3;font:400 36px/1.35 var(--body);color:var(--muted);margin-top:26px;max-width:880px}
+.lead b{color:var(--ink)}
+.dark .lead{color:#d8cfc6} .dark .lead b{color:#fff}
+.orange .lead{color:var(--ink)}
+.how{position:absolute;left:96px;right:96px;bottom:96px;z-index:3;border-top:2px solid var(--line);padding-top:22px;font:400 28px/1.35 var(--body);color:var(--muted)}
+.how b{color:var(--ink)}
+.dark .how{border-color:#3a322c;color:#cfc6bd} .dark .how b{color:#fff}
+.orange .how{border-color:rgba(23,19,16,.25);color:var(--ink)}
+.tag{display:inline-block;font:700 18px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:8px 12px;border:1.5px solid currentColor}
+.file{display:flex;align-items:center;gap:12px;font:600 22px/1 var(--mono);color:var(--muted)}
+.file i{width:12px;height:12px;border-radius:50%;background:var(--orange);display:block}
+
+/* 01 · portada */
+.p1 h1{font-size:100px;margin-top:110px}
+.p1 .lead{margin-top:28px}
+.fan{position:absolute;left:0;right:0;bottom:60px;height:560px;z-index:2}
+.fan img{position:absolute;width:290px;height:363px;border-radius:22px;box-shadow:0 30px 60px rgba(23,19,16,.28);border:1.5px solid rgba(23,19,16,.08)}
+.fan .a{left:70px;top:160px;transform:rotate(-8deg)}
+.fan .b{left:295px;top:90px;transform:rotate(-3deg);z-index:2}
+.fan .c{left:510px;top:95px;transform:rotate(3deg);z-index:3}
+.fan .d{left:725px;top:165px;transform:rotate(8deg);z-index:2}
+.fan .lbl{position:absolute;right:96px;top:-6px;z-index:4;font:700 22px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--orangeText)}
+
+/* tarjeta tipo archivo */
+.doc{position:relative;z-index:3;margin-top:44px;border-radius:28px;background:var(--paper);border:2px solid var(--border);padding:28px 32px;box-shadow:0 20px 50px rgba(23,19,16,.08)}
+.doc .file{margin-bottom:20px}
+.doc .row{display:grid;grid-template-columns:230px 1fr;gap:20px;padding:16px 0;border-top:1.5px solid var(--line);font:400 29px/1.3 var(--body);color:var(--muted)}
+.doc .row b{font:700 24px/1.3 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.doc .row.key{color:var(--ink);font-weight:600}
+.doc .row.key b{color:var(--orangeText)}
+.doc .row s{color:var(--muted);text-decoration-color:var(--orange);text-decoration-thickness:3px}
+
+/* 04 · skills (oscura) */
+.tree{position:relative;z-index:3;margin-top:40px;border-radius:28px;background:#1d1814;border:2px solid #3a322c;padding:24px 30px}
+.tree .file{color:#a99d92;margin-bottom:14px}
+.tree ol{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+.tree li{display:flex;align-items:baseline;gap:14px;border-radius:18px;background:#262019;padding:22px 20px}
+.tree li i{font:700 24px/1 var(--display);font-style:normal;color:var(--orange)}
+.tree li b{display:block;font:700 34px/1.1 var(--display);color:#fff}
+.tree li code{display:block;margin-top:8px;font:500 21px/1.2 var(--mono);color:#a99d92}
+.tree li.rev{grid-column:span 2;background:rgba(255,91,0,.12);border:1.5px solid rgba(255,91,0,.5)}
+
+/* 05 · tokens */
+.sw{position:relative;z-index:3;margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sw div{border-radius:24px;overflow:hidden;border:2px solid var(--line)}
+.sw span{display:block;height:150px}
+.sw b{display:block;padding:14px 16px 4px;font:700 26px/1 var(--display)}
+.sw code{display:block;padding:0 16px 16px;font:500 22px/1 var(--mono);color:var(--muted)}
+.code{position:relative;z-index:3;margin-top:18px;border-radius:24px;background:#1d1814;color:#e6dfd8;padding:22px 28px;font:500 25px/1.55 var(--mono)}
+.code .k{color:#ffb48a} .code .v{color:var(--orange)} .code .c{color:#7d7066}
+.fonts{position:relative;z-index:3;margin-top:18px;display:flex;gap:16px}
+.fonts div{flex:1;border-radius:24px;background:var(--surface);padding:18px 22px}
+.fonts b{display:block;font:700 44px/1 var(--display);letter-spacing:-.02em}
+.fonts .bd b{font:400 40px/1 var(--body)}
+.fonts span{display:block;margin-top:8px;font:500 21px/1 var(--mono);color:var(--muted)}
+
+/* 06 · rúbrica */
+.rub{position:relative;z-index:3;margin-top:40px;border-radius:28px;background:var(--paper);border:2px solid var(--border);padding:26px 30px}
+.rub .file{margin-bottom:16px}
+.rub ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rub li{border-radius:14px;background:var(--surface);padding:13px 16px;font:600 24px/1.2 var(--display);letter-spacing:-.01em}
+.rub .hard{margin-top:16px;display:flex;align-items:center;gap:16px;border-radius:16px;background:var(--ink);color:#fff;padding:16px 20px;font:500 26px/1.3 var(--body)}
+.rub .hard b{font:700 46px/1 var(--display);color:var(--orange)}
+.verd{position:relative;z-index:3;margin-top:22px;display:flex;flex-wrap:wrap;gap:12px}
+.verd span{font:700 22px/1 var(--display);letter-spacing:.06em;border-radius:999px;padding:14px 18px;border:2px solid var(--ink)}
+.verd span.y{background:var(--ink);color:#fff}
+.verd span.h{background:var(--orange);border-color:var(--orange)}
+
+/* 07 · el truco (naranja) */
+.p7 .logo{filter:none}
+.build{position:relative;z-index:3;margin-top:44px;display:grid;grid-template-columns:1fr 64px 300px;align-items:center;gap:18px}
+.build .code{margin:0;font-size:21px;line-height:1.5;padding:22px 24px;border-radius:24px;white-space:pre-wrap}
+.build .arrow{font:700 60px/1 var(--display);text-align:center;color:var(--ink)}
+.build img{width:300px;height:375px;border-radius:20px;box-shadow:0 26px 50px rgba(23,19,16,.35)}
+.build .cap{display:block;margin-top:12px;text-align:center;font:700 20px/1 var(--display);letter-spacing:.12em;text-transform:uppercase}
+
+/* 08 · CTA vidrio + foto */
+.p8{background:#120d0a;color:#fff}
+.p8 .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.p8 .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,13,10,.2) 0%,rgba(18,13,10,.05) 40%,rgba(18,13,10,.65) 100%)}
+.glass{position:absolute;left:96px;right:96px;top:560px;z-index:4;border-radius:44px;padding:50px 56px;text-align:center;
+  background:rgba(30,22,17,.42);border:1.5px solid rgba(255,255,255,.3);
+  -webkit-backdrop-filter:blur(26px) saturate(140%);backdrop-filter:blur(26px) saturate(140%);
+  box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.25)}
+.glass .sym{width:74px;height:74px;display:block;margin:0 auto 22px}
+.glass .ey{font:700 26px/1 var(--display);letter-spacing:.2em;text-transform:uppercase;color:#ffb48a}
+.glass small{display:block;margin-top:28px;font:700 46px/1 var(--display)}
+.glass strong{display:block;margin-top:8px;font:700 132px/1 var(--display);letter-spacing:-.04em;color:var(--orange);text-shadow:0 0 50px rgba(255,91,0,.5)}
+.glass p{margin-top:24px;font:500 33px/1.3 var(--display)}
+.glass p span{display:block;margin-top:14px;font:400 27px/1.4 var(--body);color:#e6dfd8}
+
+/* --- capa visual --- */
+.band{position:absolute;left:0;right:0;bottom:0;height:560px;z-index:1}
+.band img{width:100%;height:100%;object-fit:cover;display:block}
+.band::before{content:"";position:absolute;inset:0;z-index:1}
+.surface .band::before{background:linear-gradient(180deg,#f4f1ef 0%,rgba(244,241,239,0) 38%)}
+.light .band::before{background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,0) 38%)}
+.p2 .band img{object-position:center 60%}
+.p3 .band img{object-position:center 40%}
+.p2 .doc,.p3 .doc{box-shadow:0 30px 70px rgba(23,19,16,.25)}
+.chip{position:absolute;left:96px;bottom:80px;z-index:4;max-width:888px;background:var(--ink);color:#e6dfd8;border-radius:999px;padding:18px 28px;font:400 26px/1.2 var(--body)}
+.chip b{color:#fff}
+.doc.chk .row{grid-template-columns:44px 200px 1fr;align-items:center}
+.ck{width:34px;height:34px;border-radius:50%;background:var(--orange);stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;padding:6px}
+.ck.x{background:var(--ink)}
+.tree li{align-items:center}
+.tree .ic{flex:none;width:52px;height:52px;border-radius:14px;background:rgba(255,91,0,.14);display:flex;align-items:center;justify-content:center}
+.tree .ic svg{width:28px;height:28px;stroke:var(--orange);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.tree li.rev{grid-column:auto;background:rgba(255,91,0,.16);border:1.5px solid var(--orange)}
+.tree li.rev .ic{background:var(--orange)} .tree li.rev .ic svg{stroke:var(--ink)}
+.flow{position:relative;z-index:3;margin-top:26px;display:flex;align-items:center;justify-content:space-between}
+.flow span{font:700 28px/1 var(--display);border-radius:999px;padding:18px 24px;background:#262019;color:#e6dfd8}
+.flow span.o{background:var(--orange);color:var(--ink)} .flow span.w{background:#fff;color:var(--ink)}
+.flow i{font:700 34px/1 var(--display);font-style:normal;color:var(--orange)}
+.tk{position:relative;z-index:3;margin-top:40px;display:grid;grid-template-columns:1fr 330px;gap:26px;align-items:start}
+.tk .sw{margin:0;grid-template-columns:1fr 1fr;gap:14px}
+.tk .sw span{height:110px}
+.spec{margin-top:14px;display:flex;align-items:center;gap:20px;border-radius:24px;background:var(--surface);padding:18px 22px}
+.spec > b{font:700 108px/.9 var(--display);letter-spacing:-.05em;color:var(--orange)}
+.spec strong{display:block;font:700 34px/1 var(--display)}
+.spec span{display:block;margin-top:6px;font:500 20px/1 var(--mono);color:var(--muted)}
+.spec em{display:block;margin-top:12px;font:400 26px/1 var(--body);font-style:normal}
+.tk .right img{width:330px;height:412px;border-radius:22px;box-shadow:0 26px 50px rgba(23,19,16,.25);transform:rotate(2deg);display:block}
+.tk .right span{display:block;margin-top:16px;text-align:center;font:700 20px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--orangeText)}
+.chain{position:relative;z-index:3;margin-top:40px;display:flex;align-items:center;gap:12px}
+.chain div{flex:1;text-align:center;border-radius:26px;background:var(--paper);border:2px solid var(--line);padding:22px 12px}
+.chain .ic{display:flex;align-items:center;justify-content:center;width:66px;height:66px;margin:0 auto;border-radius:50%;background:var(--surface)}
+.chain .ic svg{width:34px;height:34px;stroke:var(--ink);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.chain b{display:block;margin-top:12px;font:700 25px/1.15 var(--display)}
+.chain .o{border-color:var(--orange)} .chain .o .ic{background:var(--orange)}
+.chain .k{background:var(--ink);color:#fff;border-color:var(--ink)} .chain .k .ic{background:#2b241f} .chain .k .ic svg{stroke:#fff}
+.chain i{font:700 34px/1 var(--display);font-style:normal;color:var(--orange)}
+.p6 .rub{margin-top:24px;overflow:visible}
+.p5 .how{display:none}
+.stamp{position:absolute;right:-18px;bottom:-60px;transform:rotate(-8deg);border:4px solid var(--orange);color:var(--orange);background:rgba(255,255,255,.92);border-radius:18px;padding:14px 22px;text-align:center;font:700 28px/1.1 var(--display);letter-spacing:.06em;text-transform:uppercase;box-shadow:0 16px 30px rgba(23,19,16,.15)}
+.stamp span{font-size:22px;letter-spacing:.18em;color:var(--orangeText)}
+
+/* barra de autor: la pieza sale en Plogy y en la cuenta personal */
+.autor{position:absolute;left:96px;bottom:24px;z-index:20;display:flex;align-items:center;gap:12px;border-radius:999px;background:rgba(255,255,255,.94);padding:7px 20px 7px 7px;box-shadow:0 8px 22px rgba(23,19,16,.16),0 0 0 1px rgba(23,19,16,.06)}
+.autor img{width:46px;height:46px;border-radius:50%;display:block}
+.autor b{font:700 22px/1 'Space Grotesk','Helvetica Neue',Arial,sans-serif;color:#171310;white-space:nowrap}
+.autor span{font:500 21px/1 Consolas,'Courier New',monospace;color:#625951;white-space:nowrap}
+.autor i{width:5px;height:5px;border-radius:50%;background:#ff5b00;display:block}
+.how{bottom:112px}
+.chip{bottom:104px}
+.fan{bottom:84px}
+</style>
+</head>
+<body>
+
+<!-- 01 · Portada -->
+<section class="slide light p1" data-n="1">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">01/08</div>
+  <h1>Tu carrusel con IA no es feo. <span class="hl">Le falta criterio.</span></h1>
+  <p class="lead">Así hacemos los nuestros con Claude: <b>5 pasos que puedes copiar.</b></p>
+  <div class="fan">
+    <span class="lbl">Piezas nuestras, hechas así</span>
+    <img class="a" src="assets/ej-019.png" alt="Portada de la pieza 019 de Plogy">
+    <img class="b" src="assets/ej-020.png" alt="Portada de la pieza 020 de Plogy">
+    <img class="c" src="assets/ej-023.png" alt="Portada de la pieza 023 de Plogy">
+    <img class="d" src="assets/ej-021.png" alt="Portada de la pieza 021 de Plogy">
+  </div>
+</section>
+
+<!-- 02 · Paso 1: el brief -->
+<section class="slide surface p2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">02/08</div>
+  <div class="band"><img src="assets/02-camara.jpg" alt="Una cámara de cine sobre un trípode en un estudio naranja"></div>
+  <div class="top">
+    <div class="eyebrow">Paso 1 de 5</div>
+    <h2>Primero, <span class="hl">qué opinas.</span></h2>
+    <p class="lead">Antes de escribir una lámina, cada pieza tiene un brief. <b>Si no hay una opinión propia, no hay carrusel.</b></p>
+    <div class="doc">
+      <div class="file"><i></i>023/brief.md</div>
+      <div class="row"><b>Audiencia</b>Dueños de negocio que miran agentes de IA</div>
+      <div class="row"><b>Prueba</b>Anuncios y centros de ayuda de las 4 empresas</div>
+      <div class="row key"><b>Criterio</b>Ningún agente ordena un negocio desordenado.</div>
+    </div>
+  </div>
+  <div class="chip"><b>Así lo hacemos:</b> el criterio nunca copia la fuente.</div>
+</section>
+
+<!-- 03 · Paso 2: verificar -->
+<section class="slide light p3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">03/08</div>
+  <div class="band"><img src="assets/03-ojos.jpg" alt="Unos ojos enormes en un cartel sobre el andén del metro"></div>
+  <div class="top">
+    <div class="eyebrow">Paso 2 de 5</div>
+    <h2>Cada dato, <span class="hl">con su fuente.</span></h2>
+    <p class="lead">Claude busca rápido, pero también se equivoca. <b>Lo que no se confirma en la fuente original, no sale.</b></p>
+    <div class="doc chk">
+      <div class="file"><i></i>023/brief.md · datos y fuentes</div>
+      <div class="row"><svg class="ck" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><b>6.000+ apps</b>claude.com · anuncio de Duet</div>
+      <div class="row"><svg class="ck" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><b>4.000+ apps</b>openai.com · anuncio de Dots</div>
+      <div class="row"><svg class="ck" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><b>Modelo</b>xAI no lo publica: sale "no publicado"</div>
+      <div class="row key"><svg class="ck x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><b>Citas</b><span><s>Dos frases de testers</s> fuera</span></div>
+    </div>
+  </div>
+  <div class="chip"><b>Lo que es ejemplo</b> se rotula "Ilustración".</div>
+</section>
+
+<!-- 04 · Paso 3: skills -->
+<section class="slide dark p4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">04/08</div>
+  <div class="top">
+    <div class="eyebrow">Paso 3 de 5</div>
+    <h2>Una skill <span class="hl">por oficio.</span></h2>
+    <p class="lead">Un solo prompt que hace todo, lo hace a medias. <b>Separado, cada paso se puede revisar.</b></p>
+    <div class="tree">
+      <div class="file"><i></i>skills/</div>
+      <ol>
+        <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg></span><div><b>Clasificar</b><code>content-classifier</code></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 10h18"/></svg></span><div><b>Planear</b><code>content-planning</code></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><div><b>Escribir</b><code>narrative-language</code></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></span><div><b>Adaptar lo visual</b><code>visual-adaptation</code></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div><b>Captions</b><code>captions</code></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span><div><b>El CTA</b><code>cta-design</code></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 16V8l-9-5-9 5v8l9 5z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span><div><b>Producir</b><code>carousel-production</code></div></li>
+        <li class="rev"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><div><b>Revisar</b><code>editorial-review</code></div></li>
+      </ol>
+    </div>
+    <div class="flow"><span>Idea</span><i>→</i><span>7 skills</span><i>→</i><span class="o">Revisor</span><i>→</i><span class="w">Persona</span></div>
+  </div>
+</section>
+
+<!-- 05 · Paso 4: tokens -->
+<section class="slide light p5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/08</div>
+  <div class="top">
+    <div class="eyebrow">Paso 4 de 5</div>
+    <h2>La marca, <span class="hl">en un archivo.</span></h2>
+    <p class="lead">Colores, letras y logos viven en un archivo de tokens. <b>Claude no elige el naranja: lo lee.</b></p>
+    <div class="tk">
+      <div class="left">
+        <div class="sw">
+          <div><span style="background:#171310"></span><b>Ink</b><code>#171310</code></div>
+          <div><span style="background:#ff5b00"></span><b>Naranja</b><code>#ff5b00</code></div>
+          <div><span style="background:#f4f1ef"></span><b>Superficie</b><code>#f4f1ef</code></div>
+          <div><span style="background:#625951"></span><b>Texto suave</b><code>#625951</code></div>
+        </div>
+        <div class="spec"><b>Aa</b><div><strong>Space Grotesk</strong><span>titulares</span><em>Helvetica · texto</em></div></div>
+      </div>
+      <div class="right"><img src="assets/ej-020.png" alt="Portada de la pieza 020 hecha con esos tokens"><span>Resultado: pieza 020</span></div>
+    </div>
+  </div>
+  <p class="how"><b>Así lo hacemos:</b> los colores y letras de cada pieza salen de brandkit/tokens.json.</p>
+</section>
+
+<!-- 06 · Paso 5: revisor -->
+<section class="slide surface p6" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">06/08</div>
+  <div class="top">
+    <div class="eyebrow">Paso 5 de 5</div>
+    <h2>Quien escribe <span class="hl">no se califica.</span></h2>
+    <div class="chain">
+      <div><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><b>Agente que escribe</b></div>
+      <i>→</i>
+      <div class="o"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><b>Agente revisor</b></div>
+      <i>→</i>
+      <div class="k"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><b>Una persona</b></div>
+    </div>
+    <div class="rub">
+      <div class="file"><i></i>editorial-review/RUBRICA.md</div>
+      <ul>
+        <li>Tono Plogy</li><li>Una idea por lámina</li>
+        <li>Valor para la audiencia</li><li>Honestidad de la evidencia</li>
+        <li>CTA</li><li>Diseño y legibilidad</li>
+        <li>Coherencia entre canales</li><li>Originalidad</li>
+      </ul>
+      <div class="hard"><b>10</b>reglas duras de cumple o falla. Una sola falla y no pasa.</div>
+      <div class="stamp">Aprobación humana<br><span>pendiente</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · El truco -->
+<section class="slide orange p7" data-n="7">
+  <img class="logo" src="../../brandkit/assets/plogy-black.svg" alt="Plogy">
+  <div class="count">07/08</div>
+  <div class="top">
+    <div class="eyebrow">El truco</div>
+    <h2>Claude no dibuja tus láminas. <span class="hl">Las programa.</span></h2>
+    <p class="lead">Cada lámina es una página web de 1080x1350. El texto sale exacto, se corrige en un minuto y se exporta a PNG.</p>
+    <div class="build">
+      <div class="code"><span class="c">&lt;!-- 023 · lámina 9 --&gt;</span>
+<span class="k">&lt;div</span> class=<span class="v">"ey"</span><span class="k">&gt;</span>Nuestro criterio<span class="k">&lt;/div&gt;</span>
+<span class="k">&lt;h2&gt;</span>Ningún agente ordena un negocio desordenado.<span class="k">&lt;/h2&gt;</span>
+<span class="k">&lt;div</span> class=<span class="v">"three"</span><span class="k">&gt;</span>
+  <span class="k">&lt;div&gt;</span>Qué tareas le entregas.<span class="k">&lt;/div&gt;</span>
+  ...</div>
+      <div class="arrow">→</div>
+      <div><img src="assets/ej-023-09.png" alt="Lámina 9 de la pieza 023 exportada"><span class="cap">El PNG</span></div>
+    </div>
+  </div>
+  <p class="how"><b>Prueba:</b> este carrusel está hecho así.</p>
+</section>
+
+<!-- 08 · CTA -->
+<section class="slide p8" data-n="8">
+  <img class="photo" src="assets/08-teclado.jpg" alt="Una mano que toca un teclado iluminado en naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="glass">
+    <img class="sym" src="../../brandkit/assets/plogy-symbol.svg" alt="">
+    <div class="ey">¿Lo quieres en tu Claude?</div>
+    <small>Comenta</small>
+    <strong>CRITERIO</strong>
+    <p>y te mandamos nuestra skill base.<span>Los 5 pasos, listos para pegar en tu Claude y adaptar a tu marca.</span></p>
+  </div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d+)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+<script>
+document.querySelectorAll('.slide').forEach(function(el){var a=document.createElement('div');a.className='autor';a.innerHTML='<img src="assets/av-autor.png" alt=""><b>JuanFra Martínez</b><i></i><span>@juanframartz</span>';el.appendChild(a);});
+</script>
+</body>
+</html>

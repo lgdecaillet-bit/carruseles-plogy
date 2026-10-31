@@ -1,0 +1,24 @@
+{
+  "reference_zip": {
+    "name": "assets refference.zip",
+    "sha256": "7b7461e1bc443af5cdb63fbef800a38ed1d3c6da9f90ae7864edee4ad127f5de",
+    "file_count": 56
+  },
+  "brand_zip": {
+    "name": "plogy-brand-kit (2) (1).zip",
+    "sha256": "5dfc44cbeb00a371f9c6e2c4ad106a1f659670cd8e545187c48e38053bba9173",
+    "file_count": 26
+  },
+  "duplicate_brand_zip": {
+    "name": "plogy-brand-kit (2).zip",
+    "sha256": "5dfc44cbeb00a371f9c6e2c4ad106a1f659670cd8e545187c48e38053bba9173",
+    "included": false
+  },
+  "source_documents": {
+    "content-narrative-language-system.txt": "4eeaef216b83b6c292c4c43ee3cf27ac882038d3d227860ab15069a59e9d7935",
+    "plogy-content-classifier-source.txt": "10ab1814dbe254559b218e51fab96b8aa56bbcba37fc11a7c1f13e137f3cc1c7",
+    "plogy-content-engine-brief.txt": "4ce848e372c5ba71f6cbc75e9bcb64f69b311bd801ae04c2161706b5b802a40e",
+    "content-engine-strategy-notes.txt": "e962cdee83000f7004afd8a564d81bb68325f461932f156536491ed8718237df",
+    "classification-map.png": "b5e0a3c8d7c4d20fd25ab45412f1d9e642f85dcf6dc44c3249e74fea97bae47f"
+  }
+}

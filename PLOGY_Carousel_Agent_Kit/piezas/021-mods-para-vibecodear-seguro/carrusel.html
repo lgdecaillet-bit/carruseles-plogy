@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 021 · Mods para vibecodear seguro</title>
+<!-- Fuente editable. 7 láminas de 1080x1350, estética normal de Plogy. Audiencia: vibecoders sin formación técnica.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=7
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7 -Prefix slide-0
+     Fuentes: documentación oficial de Claude Code (code.claude.com/docs/en/plugins/mods/overview, /events, /create). Ver brief.md.
+     Terminales y paneles: maquetas propias rotuladas "Ilustración".
+     CTA: variante 30 de la biblioteca (círculo, titular y botón naranja), adaptada a la clase: Comenta CLASE.
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486; --line:#e6ddd5;
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --mono:Consolas,'Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px;color:var(--ink)}
+.light{background:var(--paper)} .surface{background:var(--surface)} .dark{background:var(--ink);color:#fff}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;color:var(--muted);z-index:5}
+.dark .count{color:#e6dfd8}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:5;color:var(--ink)}
+.dark .dots{color:#fff}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.2}
+.dots i.on{opacity:1;background:var(--orange)}
+h1,h2{position:relative;z-index:3;font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.5)}
+.eyebrow{font:700 28px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--orangeText);margin-bottom:26px}
+.dark .eyebrow{color:var(--orange)}
+.support{position:relative;z-index:3;font:400 36px/1.35 var(--body);color:var(--muted);margin-top:22px;max-width:880px}
+.dark .support{color:#d8cfc6}
+.support b{color:var(--ink)} .dark .support b{color:#fff}
+.top{position:relative;z-index:3;margin-top:110px}
+.src{position:absolute;left:96px;right:96px;bottom:124px;z-index:3;font:400 27px/1.35 var(--body);color:var(--muted)}
+.dark .src{color:#cfc6bd}
+.pill{display:inline-block;background:var(--orange);color:var(--ink);font:700 30px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:18px 30px;border-radius:999px}
+.tag{display:inline-block;font:700 18px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:8px 12px;border:1.5px solid currentColor}
+
+/* terminal (maqueta) */
+.term{position:relative;border-radius:28px;overflow:hidden;background:#1d1814;color:#e6dfd8;box-shadow:0 26px 60px rgba(23,19,16,.28)}
+.term .bar{display:flex;align-items:center;gap:10px;padding:16px 22px;background:#2b241f;font:500 22px/1 var(--mono);color:#a99d92}
+.term .bar i{width:14px;height:14px;border-radius:50%;background:#5d524a;display:block}
+.term .bar i:first-child{background:var(--orange)}
+.term .bar span{margin-left:10px}
+.term .bar .tag{margin-left:auto;color:#a99d92}
+.term pre{padding:22px 26px;font:500 27px/1.5 var(--mono);white-space:pre-wrap}
+.term pre .c{color:#7d7066} .term pre .r{color:#ff8f7d} .term pre .o{color:var(--orange)} .term pre .w{color:#fff}
+.hold{margin:0 22px 22px;border-radius:20px;border:2px solid var(--orange);background:rgba(255,91,0,.1);padding:20px 22px}
+.hold b{display:block;font:700 28px/1.2 var(--display);color:#fff}
+.hold span{display:block;margin-top:6px;font:400 24px/1.35 var(--body);color:#cfc6bd}
+.btns{display:flex;gap:12px;margin-top:16px}
+.btns em{font:700 24px/1 var(--display);font-style:normal;padding:14px 20px;border-radius:12px}
+.btns .y{background:var(--orange);color:var(--ink)} .btns .n{border:2px solid #5d524a;color:#e6dfd8}
+
+/* 01 · portada */
+.p1 .pill{position:absolute;left:96px;top:196px;z-index:4}
+.p1 .term{position:absolute;z-index:3;left:96px;right:96px;top:300px;transform:rotate(-1.5deg)}
+.p1 .bottom{position:absolute;z-index:4;left:96px;right:96px;bottom:150px}
+.p1 h1{font-size:80px}
+.p1 .support{font-size:36px;margin-top:20px}
+
+/* 02 · los tres accidentes */
+.p2 h2{font-size:84px}
+.acc{position:relative;z-index:3;margin-top:38px;display:flex;flex-direction:column;gap:14px}
+.ac{display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;border-radius:28px;background:#231d19;border:2px solid #3a322c;padding:22px 28px}
+.ac b{display:block;font:700 38px/1.1 var(--display);letter-spacing:-.02em;color:#fff}
+.ac span{display:block;margin-top:6px;font:400 27px/1.3 var(--body);color:#cfc6bd}
+.ac code{font:600 26px/1 var(--mono);color:#ff8f7d;background:#2b241f;border-radius:12px;padding:12px 14px;white-space:nowrap}
+.p2 .mod{position:relative;z-index:3;margin-top:26px;border-radius:28px;background:var(--orange);color:var(--ink);padding:24px 30px;font:700 36px/1.2 var(--display);letter-spacing:-.02em}
+
+/* 03 · blast-radius */
+.p3 h2{font-size:84px}
+.p3 .term{margin-top:34px}
+.p3 .what{position:relative;z-index:3;margin-top:24px;font:400 31px/1.35 var(--body);color:var(--muted)}
+.p3 .what b{color:var(--ink)}
+.p3 .what code{font:600 28px/1 var(--mono);background:var(--surface);padding:3px 8px;border-radius:8px;color:var(--ink)}
+
+/* 04 · revisar cambios */
+.p4 h2{font-size:84px}
+.two{position:relative;z-index:3;margin-top:36px;display:flex;flex-direction:column;gap:18px}
+.mc{border-radius:30px;background:var(--paper);border:2px solid var(--border);padding:26px 30px}
+.mc .h{display:flex;align-items:center;gap:14px}
+.mc .h code{font:700 34px/1 var(--mono);color:var(--ink);background:var(--surface);border-radius:12px;padding:10px 14px}
+.mc .h .tag{margin-left:auto;color:var(--orangeText)}
+.mc .h .tag.in{color:var(--ink);background:var(--orange);border-color:var(--orange)}
+.mc p{margin-top:14px;font:400 31px/1.35 var(--body);color:var(--muted)}
+.mc p b{color:var(--ink)}
+.diff{margin-top:16px;border-radius:16px;background:#1d1814;padding:16px 20px;font:500 24px/1.5 var(--mono);color:#cfc6bd}
+.diff .a{color:#ffb48a} .diff .d{color:#ff8f7d;text-decoration:line-through;text-decoration-color:rgba(255,143,125,.5)}
+
+/* 05 · a medida */
+.p5 h2{font-size:84px}
+.asks{position:relative;z-index:3;margin-top:36px;display:flex;flex-direction:column;gap:18px}
+.ask{border-radius:30px;background:var(--ink);color:#fff;padding:26px 30px}
+.ask small{display:block;font:700 22px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+.ask q{display:block;margin-top:14px;font:500 34px/1.3 var(--body);quotes:"“" "”"}
+.ask span{display:block;margin-top:12px;font:400 26px/1.35 var(--body);color:#cfc6bd}
+.ask span code{font:600 24px/1 var(--mono);color:#ffb48a}
+
+/* 06 · instalar y cuidar (naranja) */
+.p6{background:var(--orange)}
+.p6 .count{color:var(--ink)}
+.p6 .dots i{opacity:.3} .p6 .dots i.on{background:var(--ink);opacity:1}
+.p6 h2{font-size:88px}
+.steps{position:relative;z-index:3;margin-top:34px;display:flex;flex-direction:column;gap:12px}
+.st{display:grid;grid-template-columns:60px 1fr;gap:20px;align-items:start;border-radius:26px;background:var(--ink);color:#fff;padding:20px 26px}
+.st i{font:700 44px/1 var(--display);font-style:normal;color:var(--orange)}
+.st b{display:block;font:700 30px/1.15 var(--display)}
+.st code{display:block;margin-top:8px;font:500 21px/1.4 var(--mono);color:#ffb48a;white-space:pre}
+.p6 .warn{position:relative;z-index:3;margin-top:18px;border-radius:26px;background:var(--paper);padding:22px 26px}
+.p6 .warn b{display:block;font:700 34px/1.15 var(--display)}
+.p6 .warn span{display:block;margin-top:8px;font:400 26px/1.35 var(--body);color:var(--muted)}
+.p6 .warn code{font:600 24px/1 var(--mono);color:var(--ink)}
+.p6 .src{color:var(--ink)}
+
+/* 07 · CTA variante 30 */
+.p7{background:var(--ink);color:#fff}
+.p7 .ring{position:absolute;z-index:2;left:190px;top:150px;width:700px;height:700px;border-radius:50%;overflow:hidden;border:8px solid var(--orange)}
+.p7 .ring img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.p7 h2{position:absolute;left:96px;right:96px;top:880px;font-size:76px;text-align:center}
+.p7 .btn{position:absolute;z-index:4;left:96px;width:888px;top:1110px;text-align:center;background:var(--orange);color:var(--ink);border-radius:44px;padding:28px 44px}
+.p7 .btn b{display:block;font:700 58px/1.05 var(--display);letter-spacing:-.03em}
+.p7 .btn span{display:block;margin-top:8px;font:400 32px/1.3 var(--body)}
+</style>
+</head>
+<body>
+
+<!-- 01 · Portada -->
+<section class="slide light p1" data-n="1">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">01/07</div>
+  <span class="pill">Claude Code · Mods</span>
+  <div class="term">
+    <div class="bar"><i></i><i></i><i></i><span>mi-app</span><span class="tag">Ilustración</span></div>
+    <pre><span class="c">&gt; limpia el proyecto y sube los cambios</span>
+<span class="w">Claude quiere ejecutar:</span> <span class="r">rm -rf ./src</span></pre>
+    <div class="hold"><b>Mod: comando retenido.</b><span>Esto borra la carpeta src entera. ¿Seguir?</span><div class="btns"><em class="y">Cancelar</em><em class="n">Seguir</em></div></div>
+  </div>
+  <div class="bottom">
+    <h1>¿Haces vibecoding? Ponle <span class="hl">frenos a Claude Code.</span></h1>
+    <p class="support">Cinco Mods para que no borre, no pise ni exponga lo que no debe.</p>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Por qué -->
+<section class="slide dark p2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">02/07</div>
+  <div class="top">
+    <div class="eyebrow">El riesgo</div>
+    <h2>Claude Code ejecuta comandos <span class="hl">en tu computador.</span></h2>
+    <div class="acc">
+      <div class="ac"><div><b>Borra una carpeta</b><span>y no hay papelera de reciclaje.</span></div><code>rm -rf</code></div>
+      <div class="ac"><div><b>Pisa tu repositorio</b><span>y se pierde el trabajo que había.</span></div><code>push --force</code></div>
+      <div class="ac"><div><b>Toca tus claves</b><span>las de tu base de datos o tu pago.</span></div><code>.env</code></div>
+    </div>
+    <div class="mod">Un Mod se mete entre Claude y la acción: la mira, la cambia o la frena.</div>
+  </div>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · blast-radius -->
+<section class="slide light p3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">03/07</div>
+  <div class="top">
+    <div class="eyebrow">Mod 1 · Se instala</div>
+    <h2><span class="hl">blast-radius:</span> el freno de mano.</h2>
+    <div class="term">
+      <div class="bar"><i></i><i></i><i></i><span>blast-radius</span><span class="tag">Ilustración</span></div>
+      <pre><span class="w">Claude quiere ejecutar:</span> <span class="r">git push --force</span>
+<span class="c">Cambiaría: 14 commits en main</span></pre>
+      <div class="hold"><b>¿Seguir con este comando?</b><div class="btns"><em class="y">Cancelar</em><em class="n">Seguir</em></div></div>
+    </div>
+    <p class="what"><b>Retiene un comando riesgoso</b>, como <code>rm -rf</code> o un force push, te muestra qué cambiaría y te deja decidir. Es un ejemplo oficial de Anthropic.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Revisar lo que cambió -->
+<section class="slide surface p4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">04/07</div>
+  <div class="top">
+    <div class="eyebrow">Mods 2 y 3 · Revisar</div>
+    <h2>Mira qué cambió <span class="hl">antes de seguir.</span></h2>
+    <div class="two">
+      <div class="mc"><div class="h"><code>/diff</code><span class="tag in">Ya viene incluido</span></div>
+        <p><b>Abre un panel con los cambios</b> que hay en tu proyecto. No instalas nada: escribe /diff.</p>
+        <div class="diff"><span class="d">- precio = 100</span><br><span class="a">+ precio = 120</span></div></div>
+      <div class="mc"><div class="h"><code>/replay</code><span class="tag">replay-theater · se instala</span></div>
+        <p><b>Recorre, paso a paso, cada archivo</b> que Claude editó en su último turno. Ejemplo oficial de Anthropic.</p></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · Los que te armas tú -->
+<section class="slide light p5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/07</div>
+  <div class="top">
+    <div class="eyebrow">Mods 4 y 5 · A medida</div>
+    <h2>Los otros dos, <span class="hl">pídeselos a Claude.</span></h2>
+    <div class="asks">
+      <div class="ask"><small>Guardián de claves</small><q>Haz un mod que no deje leer ni editar mis archivos .env.</q><span>Tus claves se quedan fuera del alcance de Claude.</span></div>
+      <div class="ask"><small>Nada directo a main</small><q>Haz un mod que me pregunte antes de cada git push a main.</q><span>La documentación trae un ejemplo casi igual.</span></div>
+    </div>
+    <p class="support" style="font-size:30px">Claude escribe el Mod y te pide aprobar cada archivo antes de crearlo.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 06 · Cómo instalarlos y cuidado -->
+<section class="slide p6" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-black.svg" alt="Plogy">
+  <div class="count">06/07</div>
+  <div class="top" style="margin-top:96px">
+    <h2>Cómo probar los de ejemplo.</h2>
+    <div class="steps">
+      <div class="st"><i>1</i><div><b>Descarga los ejemplos</b><code>git clone https://github.com/anthropics/claude-code-playground</code></div></div>
+      <div class="st"><i>2</i><div><b>Prueba uno en una sesión</b><code>claude --plugin-dir
+  ./claude-code-playground/claude-code/mods/blast-radius</code></div></div>
+      <div class="st"><i>3</i><div><b>Para dejarlo instalado</b><code>/plugin marketplace add ./claude-code-playground/claude-code/mods
+/plugin install blast-radius@claude-code-playground-mods</code></div></div>
+    </div>
+    <div class="warn"><b>Ojo: un Mod corre con tus permisos.</b><span>Instala solo de fuentes de confianza. Antes, revisa qué hace con <code>claude plugin validate</code>. Para apagarlos, <code>claude --safe-mode</code>.</span></div>
+  </div>
+  <div class="src">Requiere Claude Code 2.1.287 o superior. Fuente: documentación de Claude Code.</div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 07 · CTA (variante 30 adaptada a la clase) -->
+<section class="slide p7" data-n="7">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="ring"><img src="assets/07-pc-viejo.jpg" alt="Un computador antiguo con la pantalla llena de código en naranja"></div>
+  <h2>En la próxima clase gratis, <span class="hl">los instalamos contigo.</span></h2>
+  <div class="btn"><b>Comenta CLASE</b><span>y te mandamos el link de inscripción.</span></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d+)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

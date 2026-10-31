@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guía Plogy · Tus primeros pasos con Claude Code</title>
+<!-- Generado automáticamente desde el .md del mismo nombre con piezas/_visor/md_to_html.py. Edita el .md, no este archivo. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--muted:#625951;--orange:#ff5b00;--orangeText:#b43d00;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root{--ink:#f4efe9;--paper:#171310;--muted:#bdb2a8;--surface:#211b17;--border:#3a322c;--orangeText:#ff8a4d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 var(--body)}
+main{max-width:820px;margin:0 auto;padding:40px 24px 96px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.025em;line-height:1.15}
+h1{font-size:40px;margin:0 0 24px}
+h2{font-size:28px;margin:48px 0 12px;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:21px;margin:32px 0 8px}
+p,li{max-width:70ch}
+a{color:var(--orangeText);word-break:break-word}
+code{font:14px ui-monospace,Consolas,monospace;background:var(--surface);padding:2px 6px;border-radius:6px;word-break:break-word}
+pre{background:var(--surface);padding:16px;border-radius:12px;overflow:auto}
+pre code{background:none;padding:0}
+blockquote{margin:18px 0;padding:6px 0 6px 20px;border-left:6px solid var(--orange);color:var(--ink)}
+blockquote p{margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:18px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;min-width:120px}
+th{background:var(--surface);font-family:var(--display)}
+ul,ol{padding-left:24px}
+li{margin:6px 0}
+li.check{list-style:none;margin-left:-24px}
+li.check input{margin-right:10px}
+figure{margin:28px 0}
+figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border)}
+figcaption{margin-top:8px;font-size:14px;line-height:1.4;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--border);margin:32px 0}
+.tag{display:inline-block;background:var(--orange);color:#171310;font:700 13px var(--display);letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:18px}
+</style></head>
+<body><main>
+<h1>Guía Plogy · Tus primeros pasos con Claude Code</h1>
+<p>Estado: BORRADOR para revisión humana. Es el recurso que se manda por DM a quien comenta CLAUDE. Datos de la documentación oficial de Claude Code (code.claude.com/docs), revisados el 23 de octubre de 2026.</p>
+<h2>Antes de empezar</h2>
+<ul><li><strong>Cuenta:</strong> necesitas un plan Pro, Max, Team o Enterprise de Claude, o una cuenta de Console. El plan gratis de claude.ai no incluye Claude Code.</li><li><strong>Computador:</strong> macOS 13 o superior, Windows 10 (1809) o superior, o Linux (Ubuntu 20.04+, Debian 10+). 4 GB de RAM o más, e internet.</li><li><strong>¿No te llevas con la terminal?</strong> Usa la app de escritorio de Claude: tiene Claude Code sin pasar por la terminal.</li></ul>
+<h2>Paso 1. Instálalo (5 minutos)</h2>
+<p>Abre la terminal y pega el comando de tu sistema:</p>
+<ul><li><strong>Mac o Linux:</strong> <code>curl -fsSL https://claude.ai/install.sh | bash</code></li><li><strong>Windows (PowerShell):</strong> <code>irm https://claude.ai/install.ps1 | iex</code></li></ul>
+<p>Cuando termine, abre una terminal nueva y escribe <code>claude --version</code>. Si ves un número de versión, quedó instalado. Si dice que no encuentra <code>claude</code>, cierra y vuelve a abrir la terminal.</p>
+<h2>Paso 2. Tu primera sesión</h2>
+<ol><li>Crea una carpeta de prueba y pon dentro 2 o 3 archivos de verdad (un Excel de ventas, un documento, notas). Mejor una copia, no los originales.</li><li>En la terminal, entra a esa carpeta y escribe <code>claude</code>.</li><li>La primera vez te pide iniciar sesión en el navegador con tu cuenta de Claude.</li><li>Escribe <code>/init</code>: Claude revisa la carpeta y arma un primer CLAUDE.md.</li></ol>
+<h2>Paso 3. Tu primer encargo, con plan</h2>
+<ol><li>Pulsa <strong>Shift+Tab</strong> hasta que veas "plan mode on" abajo. En ese modo Claude lee y propone, pero no edita nada.</li><li>Escribe el encargo con tres cosas: qué quieres, con qué archivos y cómo se ve el resultado. Ejemplo: "Junta las ventas de octubre de estos 3 archivos y arma un resumen de una página, con el total por sede".</li><li>Lee el plan. Si algo no cuadra, corrígelo ahora: es el momento más barato.</li><li>Apruébalo y deja que lo ejecute.</li><li>Revisa el resultado antes de usarlo o mandarlo a alguien.</li></ol>
+<h2>Paso 4. Enséñale tu contexto (CLAUDE.md)</h2>
+<p>Abre el CLAUDE.md que creó <code>/init</code> y agrega lo que Claude no puede adivinar:</p>
+<pre><code># [Nombre del proyecto]
+[Qué es, en una línea]
+
+## Cómo trabajamos
+- [Ej.: cifras en pesos, sin decimales]
+- [Ej.: un reporte = una página]
+
+## Nunca
+- [Ej.: enviar nada a clientes sin aprobación]</code></pre>
+<p><code>./CLAUDE.md</code> vive en la carpeta del proyecto y lo puede compartir tu equipo. <code>~/.claude/CLAUDE.md</code> es solo tuyo y aplica en todos tus proyectos.</p>
+<h2>Paso 5. Lo que repites, vuélvelo skill</h2>
+<p>Si haces la misma tarea cada semana, pídele a Claude: "Convierte lo que acabamos de hacer en una skill llamada reporte-semanal". Queda en <code>.claude/skills/reporte-semanal/SKILL.md</code> y la próxima vez la usas con <code>/reporte-semanal</code>.</p>
+<h2>Paso 6. Conecta solo lo necesario</h2>
+<p>Con MCP, Claude Code se conecta a herramientas como Notion, Drive o tu base de datos. Ejemplo de la documentación:</p>
+<p><code>claude mcp add --transport http notion https://mcp.notion.com/mcp</code></p>
+<p>Nuestro criterio: conecta una herramienta a la vez y solo la que la tarea necesita. Cada conector es una llave más.</p>
+<h2>Paso 7. Ponle frenos</h2>
+<ul><li><strong>Manual:</strong> solo lee sin preguntar; todo lo demás te lo consulta.</li><li><strong>Accept edits:</strong> crea y edita archivos de la carpeta sin preguntar.</li><li><strong>Plan:</strong> propone y no edita hasta que apruebes.</li></ul>
+<p>Se cambian con Shift+Tab. Para empezar, quédate en Manual o Plan. Y trabaja siempre sobre copias hasta que confíes en el resultado.</p>
+<h2>Tres errores comunes</h2>
+<ol><li><strong>Pedir sin plan.</strong> Un encargo vago da un resultado vago. Plan primero.</li><li><strong>Usarlo sobre los archivos originales.</strong> Trabaja con copias al principio.</li><li><strong>No revisar lo que vuelve.</strong> Claude se equivoca. Revisa antes de mandar.</li></ol>
+<h2>¿Quieres hacerlo acompañado?</h2>
+<p>En las clases gratis de Plogy lo instalamos contigo y armas tu primer encargo con un caso real. Escríbenos y te avisamos de la próxima.</p>
+</main></body></html>

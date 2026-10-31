@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 007 · El agente tiene llaves de tu negocio</title>
+<!-- Fuente editable. 8 láminas de 1080x1350.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=8
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7,8 -Prefix slide-0
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit).
+     Noticia explicada. Hechos de Meta confirmados en su página oficial (ver brief.md). El ejemplo de la lámina 07 es hipotético. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486;
+  --gradient:linear-gradient(180deg,#f75946 0%,#ee5358 33%,#e1556a 50%,#c85981 67%,#9c5aa7 100%);
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px}
+.light{background:var(--paper);color:var(--ink)}
+.surface{background:var(--surface);color:var(--ink)}
+.dark{background:var(--ink);color:var(--paper)}
+.solid{background:var(--orange);color:var(--ink)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;z-index:5}
+.light .count,.surface .count{color:var(--muted)} .dark .count{color:#e6dfd8} .solid .count{color:var(--ink)}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:5}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.25}
+.dots i.on{opacity:1;background:var(--orange)}
+.solid .dots i{background:var(--ink);opacity:.28} .solid .dots i.on{background:var(--ink);opacity:1}
+
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance;position:relative;z-index:3}
+.hl{color:var(--orange)}
+.light .hl,.surface .hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.55)}
+.support{position:relative;z-index:3;font-size:38px;line-height:1.36;margin-top:30px;max-width:890px}
+.light .support,.surface .support{color:var(--muted)} .dark .support{color:#e6dfd8} .solid .support{color:var(--ink)}
+.eyebrow{position:relative;z-index:3;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:36px}
+.light .eyebrow,.surface .eyebrow{color:var(--orangeText)} .dark .eyebrow{color:var(--orange)} .solid .eyebrow{color:var(--ink)}
+.pill{position:relative;z-index:3;display:inline-block;background:var(--orange);color:var(--ink);font:700 32px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:20px 32px;border-radius:999px;margin-bottom:36px}
+.src{position:absolute;left:96px;right:96px;bottom:128px;z-index:3;font:400 30px/1.32 var(--body)}
+.light .src,.surface .src{color:var(--muted)} .dark .src{color:#cfc6bd} .solid .src{color:var(--ink)}
+.top{position:relative;z-index:3}
+
+/* 01 · llaves */
+.s1{background:var(--ink)}
+.s1 .glow{position:absolute;right:-380px;top:-300px;width:980px;height:980px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ff5b00 0%,#d63a52 38%,#6a3dd1 68%,rgba(23,19,16,0) 72%);opacity:.55;z-index:0}
+.s1 .top{margin-top:215px}
+.s1 h1{font-size:104px}
+.s1 .support{margin-top:34px}
+.ring{position:absolute;left:96px;right:96px;bottom:150px;z-index:3;display:flex;align-items:center}
+.ring .o{flex:none;width:92px;height:92px;border-radius:50%;border:12px solid var(--orange)}
+.ring .chain{flex:none;width:34px;height:8px;background:var(--orange)}
+.ring .k{flex:1;display:flex;align-items:center;gap:14px;border:2px solid #5a4f47;border-radius:24px;padding:20px 22px;font:700 38px/1 var(--display);letter-spacing:-.02em;margin-left:12px;background:rgba(255,255,255,.04)}
+.ring .k:first-of-type{margin-left:0}
+.ring .k i{flex:none;width:26px;height:26px;border-radius:50%;border:6px solid var(--orange)}
+
+/* 02 · conectores */
+.s2 .top{margin-top:140px}
+.s2 h2{font-size:86px}
+.s2 .support{margin-top:22px;font-size:36px}
+.chips{position:relative;z-index:3;margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
+.chip{font:500 35px/1 var(--body);padding:16px 24px;border-radius:999px;border:2px solid var(--border);background:var(--paper)}
+.chip.m{background:var(--orange);border-color:var(--orange);color:var(--ink);font-weight:700}
+.legend{position:relative;z-index:3;margin-top:22px;font:400 33px/1.35 var(--body);color:var(--muted)}
+.legend b{display:inline-block;width:22px;height:22px;border-radius:50%;background:var(--orange);margin-right:12px;vertical-align:-2px}
+
+/* 03 · promesa */
+.s3 .top{margin-top:170px}
+.s3 h2{font-size:100px}
+.quote{position:relative;z-index:3;margin-top:56px;background:var(--paper);border:2px solid var(--border);border-left:14px solid var(--orange);border-radius:12px 40px 40px 12px;padding:40px 44px 44px}
+.quote small{display:block;font:700 28px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText)}
+.quote p{margin-top:22px;font:700 66px/1.08 var(--display);letter-spacing:-.03em}
+.quote em{display:block;margin-top:20px;font:400 30px/1.3 var(--body);font-style:normal;color:var(--muted)}
+.s3 .support{margin-top:40px}
+
+/* 04 · alcance de la aprobación */
+.s4 .top{margin-top:130px}
+.s4 h2{font-size:90px}
+.scale{position:relative;z-index:3;margin-top:38px;display:flex;flex-direction:column;gap:12px}
+.bar{height:74px;border-radius:22px;display:flex;align-items:center;padding:0 30px;font:700 38px/1 var(--display);letter-spacing:-.015em;background:#2a231e;border:2px solid #4a413a;color:#f3ece6}
+.bar:nth-child(1){width:44%} .bar:nth-child(2){width:57%} .bar:nth-child(3){width:70%} .bar:nth-child(4){width:84%}
+.bar:nth-child(5){width:100%;background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.s4 .support{font-size:35px;margin-top:30px}
+
+/* 05 · admite errores */
+.s5 .top{margin-top:130px}
+.s5 h2{font-size:88px}
+.says{position:relative;z-index:3;margin-top:38px;display:flex;flex-direction:column;gap:18px}
+.say{background:var(--surface);border:2px solid var(--border);border-radius:30px;padding:26px 34px}
+.say small{display:block;font:700 26px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText)}
+.say b{display:block;margin-top:12px;font:700 48px/1.1 var(--display);letter-spacing:-.025em}
+.say span{display:block;margin-top:8px;font:400 30px/1.3 var(--body);color:var(--muted)}
+.attack{position:relative;z-index:3;margin-top:28px;background:var(--ink);color:#fff;border-radius:30px;padding:30px 34px}
+.attack small{display:block;font:700 26px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+.attack p{margin-top:12px;font:400 36px/1.3 var(--body);color:#ece4dd}
+
+/* 06 · cuatro decisiones (fondo naranja) */
+.s6 .top{margin-top:115px}
+.s6 h2{font-size:84px}
+.s6 .eyebrow{margin-bottom:28px}
+.q4{position:relative;z-index:3;margin-top:34px;display:flex;flex-direction:column;gap:14px}
+.q{display:flex;gap:26px;align-items:center;background:var(--paper);border-radius:30px;padding:20px 34px 22px}
+.q i{flex:none;font:700 84px/1 var(--display);font-style:normal;color:var(--orange);width:56px}
+.q b{display:block;font:700 48px/1.08 var(--display);letter-spacing:-.025em}
+.q span{display:block;margin-top:6px;font:400 33px/1.28 var(--body);color:var(--muted)}
+
+/* 07 · tabla hipotética */
+.s7 .top{margin-top:112px}
+.s7 .pill{margin-bottom:26px}
+.s7 h2{font-size:80px}
+.perm{position:relative;z-index:3;margin-top:32px;border-radius:28px;overflow:hidden;border:2px solid var(--border);background:var(--paper)}
+.perm .row{display:grid;grid-template-columns:1.2fr 1.1fr 1.15fr 1.15fr;border-top:2px solid #e3dad1}
+.perm .row:first-child{border-top:0;background:var(--ink);color:#fff}
+.perm .row div{padding:16px 18px;font:500 33px/1.2 var(--body);display:flex;align-items:center}
+.perm .row div:first-child{font:700 36px/1.1 var(--display);letter-spacing:-.02em}
+.perm .row:first-child div{font:700 26px/1.1 var(--display);letter-spacing:.03em;text-transform:uppercase;color:#fff}
+.perm .row:first-child div:last-child{color:var(--orange)}
+.perm .row div:last-child{color:var(--orangeText);font-weight:700}
+.res7{position:relative;z-index:3;margin-top:24px;font:700 42px/1.15 var(--display);letter-spacing:-.025em}
+.res7 em{font-style:normal;color:var(--orangeText)}
+.s7 .support{font-size:31px;margin-top:14px}
+
+/* 08 · CTA variante 18 (recurso, foto arriba y tarjeta blanca con lista), adaptada */
+.s8{background:var(--ink);color:#fff;padding:0}
+.s8 .photo{position:absolute;left:0;top:0;width:1080px;height:760px;object-fit:cover;object-position:center 40%}
+.s8 .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.95) 0%,rgba(23,19,16,.78) 32%,rgba(23,19,16,.35) 46%,rgba(23,19,16,0) 58%)}
+.s8 .count{color:#fff}
+.s8 .h{position:absolute;left:96px;right:96px;top:200px;z-index:3;font-size:84px}
+.s8 .hl{color:#fff;text-shadow:none}
+.ck{position:absolute;z-index:4;left:96px;width:888px;top:700px;border-radius:44px;padding:36px 44px 40px;background:#fff;color:var(--ink)}
+.ck .lab{font:700 30px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--orangeText)}
+.ck ul{list-style:none;margin:20px 0 0;padding:0}
+.ck li{display:flex;gap:20px;align-items:center;font:500 40px/1.2 var(--body);padding:8px 0}
+.ck li i{flex:none;width:44px;height:44px;border-radius:50%;background:var(--orange);position:relative}
+.ck li i::after{content:"";position:absolute;left:14px;top:8px;width:11px;height:20px;border:solid var(--ink);border-width:0 5px 5px 0;transform:rotate(40deg)}
+.ck .go{margin-top:26px;display:block;background:var(--orange);color:var(--ink);border-radius:999px;padding:26px 40px}
+.ck .go b{display:block;font:700 56px/1.05 var(--display);letter-spacing:-.03em}
+</style>
+</head>
+<body>
+
+<!-- 01 · Tensión: la noticia y las llaves -->
+<section class="slide dark s1" data-n="1">
+  <div class="glow"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">01/08</div>
+  <div class="top">
+    <p class="eyebrow">Noticia · Meta Muse</p>
+    <h1>Este agente puede entrar a tu <span class="hl">Shopify, tu Stripe y tu Slack.</span></h1>
+    <p class="support">Meta presentó Muse for Small Business el 29 de septiembre de 2026.</p>
+  </div>
+  <div class="ring">
+    <div class="o"></div><div class="chain"></div>
+    <div class="k"><i></i>Shopify</div>
+    <div class="k"><i></i>Stripe</div>
+    <div class="k"><i></i>Slack</div>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Qué es y a qué se conecta -->
+<section class="slide light s2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">02/08</div>
+  <div class="top">
+    <h2>Meta nombra <span class="hl">quince herramientas</span> de tu negocio.</h2>
+    <p class="support">Le das un objetivo y lo trabaja en varios pasos.</p>
+    <div class="chips">
+      <span class="chip">Asana</span><span class="chip">Box</span><span class="chip">Canva</span><span class="chip">Dropbox</span><span class="chip">Figma</span>
+      <span class="chip">Granola</span><span class="chip">HighLevel</span><span class="chip m">Intuit QuickBooks</span><span class="chip">Klaviyo</span><span class="chip">Lovable</span>
+      <span class="chip">Notion</span><span class="chip m">Shopify</span><span class="chip">Slack</span><span class="chip m">Stripe</span><span class="chip">Zoom</span>
+    </div>
+    <p class="legend"><b></b>Las que tocan ventas o dinero. Además: Facebook, Instagram y anuncios.</p>
+  </div>
+  <div class="src">Fuente: Meta, 29 de septiembre de 2026. Meta dice que Muse está disponible en EE. UU. y Canadá.</div>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · La promesa de Meta -->
+<section class="slide surface s3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">03/08</div>
+  <div class="top">
+    <h2>La promesa de Meta, <span class="hl">con sus palabras.</span></h2>
+    <div class="quote">
+      <small>Meta · 29 de septiembre de 2026</small>
+      <p>Nada se publica, se envía ni se gasta sin tu aprobación.</p>
+      <em>Traducción nuestra. Original: “nothing publishes, sends, or spends without your approval”.</em>
+    </div>
+    <p class="support">Lo dice Meta, que vende el producto. No encontramos una prueba independiente.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Aprobar tiene tamaños -->
+<section class="slide dark s4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">04/08</div>
+  <div class="top">
+    <h2>Aprobar puede ser <span class="hl">una vez o para siempre.</span></h2>
+    <div class="scale">
+      <div class="bar">Una vez</div>
+      <div class="bar">Una sesión</div>
+      <div class="bar">Una tarea</div>
+      <div class="bar">Con plazo</div>
+      <div class="bar">Permanente</div>
+    </div>
+    <p class="support">Meta describe esos cinco alcances. Lo de solo lectura o ya permitido puede seguir sin preguntar.</p>
+  </div>
+  <div class="src">Fuente: Meta, “How We Built Safety Into Muse”, 8 sep 2026.</div>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · Meta admite errores y ataques -->
+<section class="slide light s5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/08</div>
+  <div class="top">
+    <h2>Meta admite que <span class="hl">se equivocará</span> y que se le puede atacar.</h2>
+    <div class="says">
+      <div class="say"><small>Meta · 8 de septiembre de 2026</small><b>“Muse puede cometer errores y los cometerá.”</b></div>
+      <div class="say"><small>Meta · 8 de septiembre de 2026</small><b>“Muse no es inmune a los ataques.”</b></div>
+    </div>
+    <div class="attack"><small>Un ataque típico</small><p>Un correo o una página con instrucciones escondidas que el agente lee y puede obedecer.</p></div>
+  </div>
+  <div class="src">Traducción nuestra de las frases originales en inglés.</div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 06 · Criterio de Plogy: cuatro decisiones (fondo naranja) -->
+<section class="slide solid s6" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-black.svg" alt="Plogy">
+  <div class="count">06/08</div>
+  <div class="top">
+    <p class="eyebrow">Criterio de Plogy</p>
+    <h2>Cuatro decisiones antes de <span style="color:#fff">conectar una herramienta.</span></h2>
+    <div class="q4">
+      <div class="q"><i>1</i><p><b>¿Qué puede leer?</b><span>Solo los datos que la tarea necesita.</span></p></div>
+      <div class="q"><i>2</i><p><b>¿Qué puede escribir?</b><span>Empieza con borradores, no con cambios.</span></p></div>
+      <div class="q"><i>3</i><p><b>¿Qué puede pagar o enviar?</b><span>Por defecto, nada sin una persona.</span></p></div>
+      <div class="q"><i>4</i><p><b>¿Qué revisa una persona?</b><span>Quién, cuándo y con qué plazo.</span></p></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 07 · Ejemplo hipotético: tabla de permisos -->
+<section class="slide surface s7" data-n="7">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">07/08</div>
+  <div class="top">
+    <span class="pill">Ejemplo hipotético</span>
+    <h2>Así queda una <span class="hl">tabla de permisos.</span></h2>
+    <div class="perm">
+      <div class="row"><div>Herramienta</div><div>Lee</div><div>Escribe</div><div>Paga o envía</div></div>
+      <div class="row"><div>Shopify</div><div>Pedidos y productos</div><div>Borradores de fichas</div><div>Nada</div></div>
+      <div class="row"><div>Stripe</div><div>Pagos, solo ver</div><div>Nada</div><div>Nada</div></div>
+      <div class="row"><div>Slack</div><div>Canal de ventas</div><div>Borradores</div><div>Con aprobación</div></div>
+    </div>
+    <p class="res7">Una persona revisa <em>todo lo que sale</em> del negocio.</p>
+    <p class="support">Tienda en línea imaginada. No es una configuración de Muse ni de ningún cliente.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 08 · CTA variante 18 (foto arriba y tarjeta blanca con lista), recurso por palabra clave -->
+<section class="slide s8" data-n="8">
+  <img class="photo" src="assets/18-cursor-libro.jpg" alt="Un cursor de píxeles apoyado sobre un libro naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">08/08</div>
+  <h2 class="h">Decide qué puede hacer <span class="hl">antes de conectarlo.</span></h2>
+  <div class="ck"><div class="lab">Lo que recibes</div>
+    <ul><li><i></i>Checklist de permisos</li><li><i></i>Plantilla de tabla de permisos</li><li><i></i>Lo que Meta no aclara</li></ul>
+    <div class="go"><b>Comenta PERMISOS</b></div></div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

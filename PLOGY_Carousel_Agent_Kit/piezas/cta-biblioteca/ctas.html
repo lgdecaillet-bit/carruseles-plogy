@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Biblioteca de CTAs de Plogy · 30 variantes</title>
+<!-- Fuente editable de 30 variantes de CTA de último slide (1080x1350). Sin parámetros: cuadrícula. Una sola: ctas.html?v=01 ... ?v=30
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param v -Keys 01,02,...,30 -Prefix cta-
+     Son plantillas: las palabras clave (MAPA, MEDIR, COSTO...) son de ejemplo. Un CTA de recurso exige que el recurso exista; uno comercial, que Plogy confirme qué ofrece.
+     Catálogo con tipo, copy, foto original, transformación y requisitos: CATALOGO.md. Contador y puntos de progreso no se incluyen: se añaden en cada pieza.
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00; --surface:#f4f1ef;
+  --gradient:linear-gradient(180deg,#f75946 0%,#ee5358 33%,#e1556a 50%,#c85981 67%,#9c5aa7 100%);
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --sym:url('../../brandkit/assets/plogy-symbol.svg');
+}
+*{box-sizing:border-box;margin:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--ink);color:#fff}
+body:not(.single){display:flex;flex-wrap:wrap;gap:28px;padding:28px}
+body:not(.single) .slide{zoom:.33}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+.tag{display:none}
+body:not(.single) .tag{display:block;position:absolute;right:30px;top:30px;z-index:20;background:var(--orange);color:var(--ink);font:700 54px/1 var(--display);padding:10px 22px;border-radius:12px}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:6}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shade{position:absolute;inset:0;z-index:1}
+.h{position:absolute;left:96px;right:96px;z-index:3;font:700 100px/1.04 var(--display);letter-spacing:-.035em;text-wrap:balance}
+.hl{color:var(--orange);text-shadow:0 0 34px rgba(255,91,0,.55)}
+.nogl{text-shadow:none}
+.kw{color:var(--orange)}
+
+/* tarjeta de vidrio (la firma) */
+.glass{position:absolute;z-index:4;left:96px;width:888px;border-radius:64px;color:#fff;
+  background:linear-gradient(125deg,rgba(255,255,255,.24),rgba(255,255,255,.06)),rgba(23,19,16,.52);
+  border:1.5px solid rgba(255,255,255,.42);backdrop-filter:blur(22px) saturate(125%);-webkit-backdrop-filter:blur(22px) saturate(125%);
+  box-shadow:0 18px 50px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.5);padding:30px 48px 30px 40px}
+.glass b{display:block;font:700 62px/1.05 var(--display);letter-spacing:-.03em}
+.glass > span,.glass > div > span{display:block;margin-top:8px;font:400 34px/1.3 var(--body);color:#eee6df;text-wrap:balance}
+.glass.sym{display:flex;align-items:center;gap:22px;padding:24px 44px 24px 30px}
+.glass.sym img{width:116px;flex:none;margin:-14px -8px -14px -20px}
+
+/* botón naranja */
+.btn{position:absolute;z-index:4;display:block;background:var(--orange);color:var(--ink);border-radius:44px;padding:30px 44px}
+.btn b{display:block;font:700 62px/1.05 var(--display);letter-spacing:-.03em}
+.btn > span{display:block;margin-top:8px;font:400 34px/1.3 var(--body);color:var(--ink)}
+
+/* maqueta de comentario */
+.cm{position:absolute;z-index:4;left:96px;width:888px;height:124px;border-radius:62px;background:#fff;color:var(--ink);display:flex;align-items:center;gap:20px;padding:0 40px 0 24px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.cm .av{flex:none;width:76px;height:76px;border-radius:50%;background:var(--surface) var(--sym) center/62% no-repeat}
+.cm .tx{flex:1;font:500 42px/1 var(--body);white-space:nowrap}
+.cm .ph{color:#9a9088}
+.cm .typed{font:700 50px/1 var(--display);letter-spacing:-.02em;background:var(--orange);padding:6px 20px 8px;border-radius:14px}
+.cm .caret{display:inline-block;width:5px;height:54px;background:var(--ink);vertical-align:-10px;margin-left:6px}
+.cm .send{font:700 36px/1 var(--display);color:var(--orangeText)}
+.cmnote{position:absolute;z-index:4;left:96px;width:888px;font:400 36px/1.3 var(--body);color:#eee6df;text-wrap:balance}
+
+/* maqueta de chat */
+.bub{position:absolute;z-index:4;max-width:700px;border-radius:46px;padding:26px 38px;color:var(--ink)}
+.bub.me{right:96px;background:var(--orange);border-bottom-right-radius:12px;font:700 64px/1 var(--display);letter-spacing:-.02em}
+.bub.them{left:96px;background:#fff;border-bottom-left-radius:12px;font:500 42px/1.25 var(--body)}
+
+/* maqueta de perfil */
+.pf{position:absolute;z-index:4;left:96px;width:888px;border-radius:56px;background:#fff;color:var(--ink);padding:40px 44px;display:flex;align-items:center;gap:30px;box-shadow:0 22px 60px rgba(0,0,0,.4)}
+.pf .av{flex:none;width:150px;height:150px;border-radius:50%;background:var(--surface) var(--sym) center/64% no-repeat;border:4px solid var(--orange)}
+.pf .nm{flex:1}
+.pf .nm b{display:block;font:700 60px/1 var(--display);letter-spacing:-.03em}
+.pf .nm span{display:block;margin-top:8px;font:400 34px/1.2 var(--body);color:var(--muted)}
+.pf .go{flex:none;background:var(--orange);color:var(--ink);font:700 48px/1 var(--display);padding:30px 44px;border-radius:999px}
+
+/* cinta diagonal */
+.tape{position:absolute;z-index:4;left:-120px;right:-120px;height:132px;background:var(--orange);transform:rotate(-5deg);display:flex;align-items:center;white-space:nowrap;overflow:hidden;font:700 66px/1 var(--display);letter-spacing:-.01em;color:var(--ink);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.tape span{padding:0 26px}
+
+/* lista de lo que se recibe */
+.ck{position:absolute;z-index:4;left:96px;width:888px;border-radius:44px;padding:36px 44px 40px}
+.ck.light{background:#fff;color:var(--ink)}
+.ck .lab{font:700 30px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--orangeText)}
+.ck ul{list-style:none;margin:20px 0 0;padding:0}
+.ck li{display:flex;gap:20px;align-items:center;font:500 40px/1.2 var(--body);padding:8px 0}
+.ck li i{flex:none;width:44px;height:44px;border-radius:50%;background:var(--orange);position:relative}
+.ck li i::after{content:"";position:absolute;left:14px;top:8px;width:11px;height:20px;border:solid var(--ink);border-width:0 5px 5px 0;transform:rotate(40deg)}
+.ck .go{margin-top:26px;display:block;background:var(--orange);color:var(--ink);border-radius:999px;padding:26px 40px}
+.ck .go b{display:block;font:700 56px/1.05 var(--display);letter-spacing:-.03em}
+.ck .go span{display:block;margin-top:6px;font:400 34px/1.25 var(--body)}
+
+/* ---------- variantes ---------- */
+/* 01 Seguir · texto grande a la izquierda */
+.v01 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.55) 0%,rgba(23,19,16,0) 24%,rgba(23,19,16,.15) 44%,rgba(23,19,16,.92) 74%,rgba(23,19,16,1) 100%)}
+.v01 .big{position:absolute;z-index:3;left:96px;right:96px;bottom:170px;font:700 176px/.92 var(--display);letter-spacing:-.05em}
+.v01 .big small{display:block;font:700 76px/1 var(--display);letter-spacing:-.03em;margin-bottom:14px}
+.v01 .sub{position:absolute;z-index:3;left:96px;right:96px;bottom:90px;font:400 40px/1.3 var(--body);color:#e6dfd8}
+
+/* 02 Seguir · vidrio con símbolo */
+.v02 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.85) 0%,rgba(23,19,16,.5) 24%,rgba(23,19,16,0) 46%,rgba(23,19,16,.1) 66%,rgba(23,19,16,.75) 100%)}
+.v02 .h{top:215px}
+.v02 .glass{top:1010px}
+
+/* 03 Seguir · botón naranja ancho */
+.v03 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.9) 0%,rgba(23,19,16,.6) 26%,rgba(23,19,16,0) 48%,rgba(23,19,16,.2) 70%,rgba(23,19,16,.92) 100%)}
+.v03 .h{top:215px}
+.v03 .btn{left:96px;width:888px;top:1020px;text-align:center}
+.v03 .btn b{font-size:78px}
+
+/* 04 Seguir · vidrio arriba, avión abajo */
+.v04 .h{top:200px;font-size:112px}
+.v04 .glass{top:560px}
+
+/* 05 Seguir · foto arriba y panel Ink */
+.v05 .photo{position:absolute;left:0;top:0;width:1080px;height:820px;object-fit:cover}
+.v05 .panel{position:absolute;left:0;right:0;top:790px;bottom:0;background:var(--ink);border-radius:48px 48px 0 0;z-index:2;padding:52px 96px 0}
+.v05 .panel .h2{font:700 76px/1.05 var(--display);letter-spacing:-.035em;text-wrap:balance}
+.v05 .btn{position:relative;margin-top:30px;width:888px}
+
+/* 06 Seguir · maqueta de perfil */
+.v06 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.92) 0%,rgba(23,19,16,.7) 30%,rgba(23,19,16,.4) 52%,rgba(23,19,16,.6) 100%)}
+.v06 .hl{color:#fff;text-shadow:none}
+.v06 .h{top:215px;font-size:92px}
+.v06 .pf{top:800px}
+.v06 .cmnote{top:1060px}
+
+/* 07 Seguir · esferas sobre crema */
+.v07{background:#f4f2e6;color:var(--ink)}
+.v07 .ph{position:absolute;right:-70px;top:60px;width:600px;z-index:1}
+.v07 .big{position:absolute;z-index:3;left:96px;bottom:440px;font:700 138px/.95 var(--display);letter-spacing:-.05em}
+.v07 .big em{font-style:normal;color:var(--orange)}
+.v07 .sub{position:absolute;z-index:3;left:96px;width:480px;bottom:270px;font:400 44px/1.3 var(--body);color:var(--muted)}
+.v07 .btn{left:96px;bottom:110px}
+.v07 .btn b{font-size:56px}
+
+/* 08 Seguir · vidrio con símbolo sobre morado */
+.v08 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.7) 0%,rgba(23,19,16,.1) 34%,rgba(23,19,16,0) 60%,rgba(23,19,16,.7) 100%)}
+.v08 .h{top:215px}
+.v08 .glass{top:1010px}
+
+/* 09 Seguir · cinta diagonal */
+.v09 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.8) 0%,rgba(23,19,16,.25) 36%,rgba(23,19,16,.2) 60%,rgba(23,19,16,.85) 100%)}
+.v09 .h{top:215px;font-size:96px}
+.v09 .tape{top:820px}
+.v09 .cmnote{top:1090px;font-size:40px;text-align:center}
+
+/* 10 Seguir · losa naranja abajo */
+.v10 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.9) 0%,rgba(23,19,16,.55) 26%,rgba(23,19,16,0) 50%)}
+.v10 .h{top:200px;font-size:88px}
+.v10 .hl{color:#fff;text-shadow:none}
+.v10 .slab{position:absolute;z-index:4;left:0;right:0;bottom:0;height:430px;background:var(--orange);color:var(--ink);clip-path:polygon(0 16%,100% 0,100% 100%,0 100%);padding:150px 96px 0}
+.v10 .slab b{display:block;font:700 96px/1 var(--display);letter-spacing:-.04em}
+.v10 .slab span{display:block;margin-top:12px;font:500 40px/1.3 var(--body)}
+
+/* 11 Comunidad · foto en banda y maqueta de comentario */
+.v11 .photo{position:absolute;left:0;top:130px;width:1080px;height:608px;object-fit:cover}
+.v11 .h{top:770px;font-size:78px}
+.v11 .cm{top:1000px}
+.v11 .cmnote{top:1160px}
+
+/* 12 Comunidad · vidrio en columna */
+.v12 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.9) 0%,rgba(23,19,16,.55) 30%,rgba(23,19,16,.1) 52%,rgba(23,19,16,.2) 66%,rgba(23,19,16,.85) 100%)}
+.v12 .h{top:215px;font-size:94px}
+.v12 .glass{top:1000px}
+
+/* 13 Comunidad · foto arriba, panel claro y botón Ink */
+.v13 .shade,.v26 .shade,.v28 .shade{bottom:auto;height:360px;background:linear-gradient(to bottom,rgba(23,19,16,.92) 0%,rgba(23,19,16,.7) 45%,rgba(23,19,16,0))}
+.v13{background:var(--surface);color:var(--ink)}
+.v13 .photo{position:absolute;left:0;top:0;width:1080px;height:800px;object-fit:cover}
+.v13 .panel{position:absolute;left:0;right:0;top:770px;bottom:0;background:var(--surface);border-radius:48px 48px 0 0;z-index:2;padding:56px 96px 0}
+.v13 .panel .h2{font:700 82px/1.05 var(--display);letter-spacing:-.035em;text-wrap:balance}
+.v13 .panel .h2 em{font-style:normal;color:var(--orange)}
+.v13 .btn{position:relative;margin-top:36px;width:888px;background:var(--ink);color:#fff}
+.v13 .btn > span{color:#eee6df}
+
+/* 14 Comunidad · comentario fijado y campo */
+.v14 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.55) 0%,rgba(23,19,16,0) 24%,rgba(23,19,16,.1) 50%,rgba(23,19,16,.9) 76%,rgba(23,19,16,1) 100%)}
+.v14 .pin{position:absolute;z-index:4;left:96px;width:888px;top:790px;border-radius:44px 44px 44px 12px;background:#fff;color:var(--ink);padding:30px 40px 34px;box-shadow:0 20px 56px rgba(0,0,0,.4)}
+.v14 .pin .who{display:flex;align-items:center;gap:18px;font:700 34px/1 var(--display)}
+.v14 .pin .who i{width:58px;height:58px;border-radius:50%;background:var(--surface) var(--sym) center/62% no-repeat}
+.v14 .pin .who span{font:400 30px/1 var(--body);color:var(--muted);margin-left:auto}
+.v14 .pin p{margin-top:16px;font:700 62px/1.05 var(--display);letter-spacing:-.03em}
+.v14 .cm{top:1050px}
+.v14 .cmnote{top:1200px;font-size:34px}
+
+/* 15 Comunidad · titular gigante y vidrio */
+.v15 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.55),rgba(23,19,16,.35) 60%,rgba(23,19,16,.8))}
+.v15 .h{top:200px;font-size:150px;line-height:.98}
+.v15 .glass{top:1000px}
+
+/* 16 Comunidad · foto arriba y panel con degradado de marca */
+.v16 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.6) 0%,rgba(23,19,16,0) 24%)}
+.v16 .photo{position:absolute;left:0;top:0;width:1080px;height:860px;object-fit:cover;object-position:center 30%}
+.v16 .panel{position:absolute;left:0;right:0;top:760px;bottom:0;background:var(--gradient);border-radius:48px 48px 0 0;z-index:2;padding:56px 96px 0;color:#fff}
+.v16 .panel .h2{font:700 82px/1.04 var(--display);letter-spacing:-.035em;text-wrap:balance;color:#fff}
+.v16 .btn{position:relative;margin-top:34px;width:888px;background:var(--ink);color:#fff}
+.v16 .btn > span{color:#eee6df}
+
+/* 17 Recurso · tarjeta inclinada y palabra clave a la derecha */
+.v17 .h{top:190px;font-size:96px}
+.v17 .card{position:absolute;z-index:3;left:96px;top:520px;width:440px;padding:14px;background:#f4f1ef;transform:rotate(-4deg);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.v17 .card img{display:block;width:100%}
+.v17 .side{position:absolute;z-index:4;left:590px;right:60px;top:560px}
+.v17 .side small{display:block;font:700 62px/1 var(--display);letter-spacing:-.03em}
+.v17 .side b{display:block;font:700 108px/1 var(--display);letter-spacing:-.05em;color:var(--orange);text-shadow:0 0 34px rgba(255,91,0,.55)}
+.v17 .side span{display:block;margin-top:20px;font:400 36px/1.3 var(--body);color:#e6dfd8}
+
+/* 18 Recurso · foto arriba y tarjeta blanca con lista */
+.v18 .photo{position:absolute;left:0;top:0;width:1080px;height:760px;object-fit:cover;object-position:center 40%}
+.v18 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.92) 0%,rgba(23,19,16,.6) 32%,rgba(23,19,16,0) 54%)}
+.v18 .hl{color:#fff;text-shadow:none}
+.v18 .h{top:200px;font-size:84px}
+.v18 .ck{top:700px}
+
+/* 19 Recurso · vidrio con símbolo */
+.v19 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.85) 0%,rgba(23,19,16,.45) 26%,rgba(23,19,16,0) 48%,rgba(23,19,16,.15) 66%,rgba(23,19,16,.8) 100%)}
+.v19 .h{top:215px}
+.v19 .glass{top:1000px}
+
+/* 20 Recurso · vidrio con lista */
+.v20 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.85) 0%,rgba(23,19,16,.5) 24%,rgba(23,19,16,0) 40%,rgba(23,19,16,.35) 60%,rgba(23,19,16,.9) 100%)}
+.v20 .h{top:200px;font-size:92px}
+.v20 .hl{color:#fff;text-shadow:none}
+.v20 .ck{top:690px;background:linear-gradient(125deg,rgba(255,255,255,.24),rgba(255,255,255,.06)),rgba(23,19,16,.62);border:1.5px solid rgba(255,255,255,.42);backdrop-filter:blur(22px) saturate(125%);box-shadow:0 18px 50px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.5);color:#fff}
+.v20 .ck .lab{color:var(--orange)}
+
+/* 21 Recurso · palabra clave gigante */
+.v21 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.7) 0%,rgba(23,19,16,0) 28%,rgba(23,19,16,.25) 52%,rgba(23,19,16,.92) 76%,rgba(23,19,16,1) 100%)}
+.v21 .h{top:200px;font-size:104px}
+.v21 .hl{color:#fff;text-shadow:none}
+.v21 .kwbig{position:absolute;z-index:3;left:96px;right:96px;bottom:210px}
+.v21 .kwbig small{display:block;font:700 60px/1 var(--display);letter-spacing:-.03em}
+.v21 .kwbig b{display:block;font:700 290px/.9 var(--display);letter-spacing:-.06em;color:var(--orange);text-shadow:0 0 50px rgba(255,91,0,.5)}
+.v21 .sub{position:absolute;z-index:3;left:96px;right:96px;bottom:100px;font:400 38px/1.3 var(--body);color:#e6dfd8}
+
+/* 22 Recurso · texto impreso sobre el bloque naranja */
+.v22 .blk{position:absolute;z-index:3;left:232px;width:596px;top:300px;color:var(--ink)}
+.v22 .blk small{display:block;font:700 70px/1 var(--display);letter-spacing:-.03em}
+.v22 .blk b{display:block;font:700 190px/.95 var(--display);letter-spacing:-.06em}
+.v22 .blk span{display:block;margin-top:18px;font:500 38px/1.28 var(--body)}
+.v22 .logo{filter:none}
+
+/* 23 Recurso · fondo naranja sólido */
+.v23{background:var(--orange);color:var(--ink)}
+.v23 .h{top:190px;font-size:96px;color:var(--ink)}
+.v23 .pic{position:absolute;z-index:2;left:96px;width:888px;top:470px;height:420px;border-radius:32px;overflow:hidden;box-shadow:0 20px 50px rgba(23,19,16,.35)}
+.v23 .pic img{width:100%;height:100%;object-fit:cover}
+.v23 .cta{position:absolute;z-index:3;left:96px;right:96px;top:950px}
+.v23 .cta b{display:block;font:700 92px/1 var(--display);letter-spacing:-.04em}
+.v23 .cta b u{text-decoration-thickness:8px;text-underline-offset:10px}
+.v23 .cta span{display:block;margin-top:14px;font:500 40px/1.3 var(--body)}
+
+/* 24 Recurso · foto sobre crema y tarjeta Ink */
+.v24{background:var(--surface);color:var(--ink)}
+.v24 .h{top:190px;font-size:84px;color:var(--ink)}
+.v24 .photo{position:absolute;left:150px;top:470px;width:780px;mix-blend-mode:multiply;z-index:1}
+.v24 .card{position:absolute;z-index:4;left:96px;top:1030px;width:888px;border-radius:56px;background:var(--ink);color:#fff;padding:28px 44px 30px;box-shadow:0 18px 50px rgba(23,19,16,.28)}
+.v24 .card b{display:block;font:700 62px/1.05 var(--display);letter-spacing:-.03em}
+.v24 .card > span{display:block;margin-top:8px;font:400 34px/1.3 var(--body);color:#eee6df}
+
+/* 25 Comercial · círculo y chat */
+.v25 .ring{position:absolute;z-index:2;left:260px;top:140px;width:560px;height:560px;border-radius:50%;overflow:hidden;border:8px solid var(--orange)}
+.v25 .ring img{width:100%;height:100%;object-fit:cover}
+.v25 .h{top:730px;text-align:center;font-size:104px}
+.v25 .bub.me{top:900px}
+.v25 .bub.them{top:1030px}
+.v25 .cmnote{top:1222px;text-align:center;font:700 42px/1.2 var(--display)}
+
+/* 26 Comercial · foto arriba, panel Ink y botón contorneado */
+.v26 .photo{position:absolute;left:0;top:0;width:1080px;height:904px;object-fit:cover}
+.v26 .panel{position:absolute;left:0;right:0;top:850px;bottom:0;background:var(--ink);border-radius:48px 48px 0 0;z-index:2;padding:54px 96px 0}
+.v26 .panel .h2{font:700 80px/1.05 var(--display);letter-spacing:-.035em;text-wrap:balance}
+.v26 .out{position:relative;margin-top:30px;width:888px;border:4px solid var(--orange);border-radius:44px;padding:26px 44px}
+.v26 .out b{display:block;font:700 62px/1.05 var(--display);letter-spacing:-.03em}
+.v26 .out > span{display:block;margin-top:6px;font:400 34px/1.3 var(--body);color:#eee6df}
+
+/* 27 Comercial · todo centrado sobre el túnel */
+.v27 .shade{background:radial-gradient(ellipse at 50% 40%,rgba(23,19,16,.15) 0%,rgba(23,19,16,.7) 65%),linear-gradient(to top,rgba(23,19,16,.92),rgba(23,19,16,.2) 55%,rgba(23,19,16,.55))}
+.v27 .logo{left:50%;margin-left:-115px}
+.v27 .center{position:absolute;z-index:3;left:96px;right:96px;bottom:170px;text-align:center}
+.v27 .center .kick{font:700 46px/1.2 var(--display);letter-spacing:-.02em}
+.v27 .center .big{margin-top:24px;font:700 112px/1 var(--display);letter-spacing:-.05em}
+.v27 .center .pill{display:inline-block;margin-top:14px;background:var(--orange);color:var(--ink);font:700 118px/1 var(--display);letter-spacing:-.04em;padding:22px 64px 28px;border-radius:999px}
+.v27 .center .sub{margin-top:30px;font:400 42px/1.3 var(--body);color:#e6dfd8}
+
+/* 28 Comercial · foto en banda sobre crema y botón Ink */
+.v28{background:var(--surface);color:var(--ink)}
+.v28 .photo{position:absolute;left:0;top:0;width:1080px;height:644px;object-fit:cover}
+.v28 .h{top:700px;font-size:88px;color:var(--ink)}
+.v28 .btn{left:96px;width:888px;top:1010px;background:var(--ink);color:#fff}
+.v28 .btn > span{color:#eee6df}
+
+/* 29 Comercial · vidrio con símbolo */
+.v29 .shade{background:linear-gradient(to bottom,rgba(23,19,16,.88) 0%,rgba(23,19,16,.5) 24%,rgba(23,19,16,0) 44%,rgba(23,19,16,.15) 64%,rgba(23,19,16,.8) 100%)}
+.v29 .h{top:215px}
+.v29 .hl{color:#fff;text-shadow:none}
+.v29 .glass{top:1010px}
+
+/* 30 Comercial · círculo, titular y botón naranja */
+.v30 .ring{position:absolute;z-index:2;left:190px;top:150px;width:700px;height:700px;border-radius:50%;overflow:hidden;border:8px solid var(--orange)}
+.v30 .ring img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.v30 .h{top:880px;font-size:88px;text-align:center}
+.v30 .btn{left:96px;width:888px;top:1100px;text-align:center}
+.v30 .btn b{font-size:58px}
+.v30 .btn > span{font-size:32px}
+</style>
+</head>
+<body>
+
+<!-- 01 · Seguir · texto grande -->
+<section class="slide v01" data-v="01">
+  <img class="bg" src="assets/01-multitud.jpg" alt="Una multitud borrosa camina en diagonal; una sola figura nítida se detiene en el centro">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <p class="big"><small>Sigue a</small><span class="hl">Plogy</span></p>
+  <p class="sub">Aquí la IA se implementa, no se promete.</p>
+  <div class="tag">01</div>
+</section>
+
+<!-- 02 · Seguir · vidrio con símbolo -->
+<section class="slide v02" data-v="02">
+  <img class="bg" src="assets/02-escalera.jpg" alt="Una silueta al pie de una escalera naranja que sube hacia una luz">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">El siguiente paso es <span class="hl">seguir.</span></h2>
+  <div class="glass sym"><img src="../../brandkit/assets/plogy-symbol.svg" alt=""><div><b>Sigue a <span class="kw">Plogy</span></b><span>IA para negocios, sin humo.</span></div></div>
+  <div class="tag">02</div>
+</section>
+
+<!-- 03 · Seguir · botón naranja ancho -->
+<section class="slide v03" data-v="03">
+  <img class="bg" src="assets/03-radiografia.jpg" alt="Radiografía naranja de una persona encorvada sobre su teléfono">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Menos scroll. <span class="hl">Más criterio.</span></h2>
+  <div class="btn"><b>Sigue a Plogy</b><span>Noticias de IA leídas desde el negocio.</span></div>
+  <div class="tag">03</div>
+</section>
+
+<!-- 04 · Seguir · vidrio arriba -->
+<section class="slide v04" data-v="04">
+  <img class="bg" src="assets/04-despegue.jpg" alt="Un avión de caza despega sobre un arco de luz violeta y coral">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Despega <span class="hl">con criterio.</span></h2>
+  <div class="glass"><b>Sigue a <span class="kw">Plogy</span></b><span>para construir con IA, no solo mirar.</span></div>
+  <div class="tag">04</div>
+</section>
+
+<!-- 05 · Seguir · foto arriba y panel -->
+<section class="slide v05" data-v="05">
+  <img class="photo" src="assets/05-playa.jpg" alt="Una persona con audífonos mira un hongo nuclear desde una playa">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="panel">
+    <h2 class="h2">Que la explosión no te pille <span class="hl">sin proceso.</span></h2>
+    <div class="btn"><b>Sigue a Plogy</b><span>Primero el proceso. Después la IA.</span></div>
+  </div>
+  <div class="tag">05</div>
+</section>
+
+<!-- 06 · Seguir · maqueta de perfil -->
+<section class="slide v06" data-v="06">
+  <img class="bg" src="assets/06-columnas.jpg" alt="Columnas de luz naranja que se alejan en diagonal">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Menos humo. <span class="hl">Más IA implementada.</span></h2>
+  <div class="pf"><div class="av"></div><div class="nm"><b>Plogy</b><span>IA implementada en negocios</span></div><div class="go">Seguir</div></div>
+  <p class="cmnote">Toca seguir y no te pierdas la próxima idea.</p>
+  <div class="tag">06</div>
+</section>
+
+<!-- 07 · Seguir · esferas sobre crema -->
+<section class="slide v07" data-v="07">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <img class="ph" src="assets/07-esferas.jpg" alt="Dos esferas con degradado de coral a violeta sobre fondo crema">
+  <p class="big">Primero<br><em>entender.</em></p>
+  <p class="sub">Sigue a Plogy para ver cómo se implementa la IA en negocios.</p>
+  <div class="btn"><b>Sigue a Plogy</b></div>
+  <div class="tag">07</div>
+</section>
+
+<!-- 08 · Seguir · vidrio con símbolo sobre morado -->
+<section class="slide v08" data-v="08">
+  <img class="bg" src="assets/08-morado.jpg" alt="Ilustración morada de una persona frente a un computador con una luz de píxeles">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Hay quien mira. <span class="hl">Hay quien construye.</span></h2>
+  <div class="glass sym"><img src="../../brandkit/assets/plogy-symbol.svg" alt=""><div><b>Sigue a <span class="kw">Plogy</span></b><span>Implementamos IA en negocios y formamos a quienes pueden construirla.</span></div></div>
+  <div class="tag">08</div>
+</section>
+
+<!-- 09 · Seguir · cinta diagonal -->
+<section class="slide v09" data-v="09">
+  <img class="bg" src="assets/09-ojos.jpg" alt="Un mural de ojos enormes en una estación de metro con una persona diminuta debajo">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Mira tu proceso. <span class="hl">Antes que la IA.</span></h2>
+  <div class="tape"><span>SIGUE A PLOGY</span><span>•</span><span>SIGUE A PLOGY</span><span>•</span><span>SIGUE A PLOGY</span><span>•</span><span>SIGUE A PLOGY</span></div>
+  <p class="cmnote">IA para negocios, sin humo.</p>
+  <div class="tag">09</div>
+</section>
+
+<!-- 10 · Seguir · losa naranja -->
+<section class="slide v10" data-v="10">
+  <img class="bg" src="assets/10-platillo.jpg" alt="Un haz de luz naranja cae desde arriba sobre un terreno de trama">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Que la IA aterrice en tu negocio, <span class="hl">no en un PowerPoint.</span></h2>
+  <div class="slab"><b>Sigue a Plogy</b><span>Aquí la IA se implementa, no se promete.</span></div>
+  <div class="tag">10</div>
+</section>
+
+<!-- 11 · Comunidad · banda y comentario -->
+<section class="slide v11" data-v="11">
+  <img class="photo" src="assets/11-reunion.jpg" alt="Doce personas alrededor de una mesa vista desde arriba">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">¿Quién decide qué se <span class="hl">automatiza?</span></h2>
+  <div class="cm"><div class="av"></div><div class="tx"><span class="typed">Plogy</span><span class="caret"></span></div><div class="send">Publicar</div></div>
+  <p class="cmnote">Comenta Plogy y cuéntanos quién decide en tu negocio.</p>
+  <div class="tag">11</div>
+</section>
+
+<!-- 12 · Comunidad · vidrio en columna -->
+<section class="slide v12" data-v="12">
+  <img class="bg" src="assets/12-nino-tv.jpg" alt="Un niño mira un televisor encendido en una habitación oscura, en tonos naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">¿Qué le dejarías hacer a una IA <span class="hl">en tu negocio?</span></h2>
+  <div class="glass"><b>Comenta <span class="kw">Plogy</span></b><span>y cuéntanos dónde pondrías tu límite.</span></div>
+  <div class="tag">12</div>
+</section>
+
+<!-- 13 · Comunidad · panel claro -->
+<section class="slide v13" data-v="13">
+  <img class="photo" src="assets/13-rostro.jpg" alt="Un rostro en trama de puntos en blanco y negro">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="panel">
+    <h2 class="h2">¿Qué proceso no le confiarías <em>a una IA?</em></h2>
+    <div class="btn"><b>Comenta <span class="kw">Plogy</span></b><span>y cuéntanos por qué.</span></div>
+  </div>
+  <div class="tag">13</div>
+</section>
+
+<!-- 14 · Comunidad · comentario fijado -->
+<section class="slide v14" data-v="14">
+  <img class="bg" src="assets/14-anden.jpg" alt="Una mujer en un andén de tren con texto en naranja a su lado">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="pin"><div class="who"><i></i>Plogy<span>comentario fijado</span></div><p>¿Qué te frena para automatizar?</p></div>
+  <div class="cm"><div class="av"></div><div class="tx"><span class="typed">Plogy</span><span class="caret"></span></div><div class="send">Publicar</div></div>
+  <p class="cmnote">Responde con la palabra Plogy y cuéntanos qué te frena.</p>
+  <div class="tag">14</div>
+</section>
+
+<!-- 15 · Comunidad · titular gigante -->
+<section class="slide v15" data-v="15">
+  <img class="bg" src="assets/15-oficina-error.jpg" alt="Una oficina naranja con ventanas de error flotando y dos manos de trama">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">¿Qué se rompió <span class="nogl">primero?</span></h2>
+  <div class="glass"><b>Comenta <span class="kw">Plogy</span></b><span>y cuéntanos qué falló en tu automatización.</span></div>
+  <div class="tag">15</div>
+</section>
+
+<!-- 16 · Comunidad · panel con degradado de marca -->
+<section class="slide v16" data-v="16">
+  <img class="photo" src="assets/16-ascii.jpg" alt="Una figura dibujada con caracteres sobre fondo oscuro">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="panel">
+    <h2 class="h2">Dinos qué quieres entender de la IA.</h2>
+    <div class="btn"><b>Comenta <span class="kw">Plogy</span></b><span>y lo convertimos en una próxima idea.</span></div>
+  </div>
+  <div class="tag">16</div>
+</section>
+
+<!-- 17 · Recurso · tarjeta inclinada -->
+<section class="slide v17" data-v="17">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Tú diriges.<br><span class="hl">La IA ejecuta.</span></h2>
+  <div class="card"><img src="assets/17-pintor.jpg" alt="Un hombre con paleta pinta sobre la pantalla de un computador antiguo"></div>
+  <div class="side"><small>Comenta</small><b>PROMPT</b><span>y te mandamos la plantilla para pedirle bien las cosas a una IA.</span></div>
+  <div class="tag">17</div>
+</section>
+
+<!-- 18 · Recurso · tarjeta blanca con lista -->
+<section class="slide v18" data-v="18">
+  <img class="photo" src="assets/18-cursor-libro.jpg" alt="Un cursor de píxeles apoyado sobre un libro naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Empieza por una guía, <span class="hl">no por una herramienta.</span></h2>
+  <div class="ck light"><div class="lab">Lo que recibes</div>
+    <ul><li><i></i>La guía paso a paso</li><li><i></i>Una plantilla para copiar</li><li><i></i>Lo que todavía no sabemos</li></ul>
+    <div class="go"><b>Comenta GUIA</b></div></div>
+  <div class="tag">18</div>
+</section>
+
+<!-- 19 · Recurso · vidrio con símbolo (MEDIR) -->
+<section class="slide v19" data-v="19">
+  <img class="bg" src="assets/19-camara.jpg" alt="Una cámara sobre un trípode en un cuarto naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Mide hoy. <span class="hl">Compara después.</span></h2>
+  <div class="glass sym"><img src="../../brandkit/assets/plogy-symbol.svg" alt=""><div><b>Comenta <span class="kw">MEDIR</span></b><span>y te mandamos la guía y la plantilla de medición.</span></div></div>
+  <div class="tag">19</div>
+</section>
+
+<!-- 20 · Recurso · vidrio con lista (MIGRAR) -->
+<section class="slide v20" data-v="20">
+  <img class="bg" src="assets/20-teclado.jpg" alt="Una mano toca un teclado de teclas verdes sobre un fondo naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Primero el inventario. <span class="hl">Después la migración.</span></h2>
+  <div class="ck"><div class="lab">Lista de revisión</div>
+    <ul><li><i></i>Inventario de dónde está el modelo</li><li><i></i>Pruebas con casos reales</li><li><i></i>Vuelta atrás lista</li></ul>
+    <div class="go"><b>Comenta MIGRAR</b></div></div>
+  <div class="tag">20</div>
+</section>
+
+<!-- 21 · Recurso · palabra clave gigante (COSTO) -->
+<section class="slide v21" data-v="21">
+  <img class="bg" src="assets/21-silueta-destello.jpg" alt="Una silueta teclea frente a una pantalla que lanza destellos naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Mide la tarea. <span class="hl">No el token.</span></h2>
+  <div class="kwbig"><small>Comenta</small><b>COSTO</b></div>
+  <p class="sub">y te mandamos el reporte con las tres cuentas.</p>
+  <div class="tag">21</div>
+</section>
+
+<!-- 22 · Recurso · texto sobre el bloque (MAPA) -->
+<section class="slide v22" data-v="22">
+  <img class="bg" src="assets/22-bloque.jpg" alt="Una ciudad en blanco y negro con un edificio convertido en un bloque naranja liso">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="blk"><small>Comenta</small><b>MAPA</b><span>y te mandamos el checklist de las 3 preguntas.</span></div>
+  <div class="tag">22</div>
+</section>
+
+<!-- 23 · Recurso · fondo naranja sólido (AUDITORIA) -->
+<section class="slide v23" data-v="23">
+  <img class="logo" src="../../brandkit/assets/plogy-black.svg" alt="Plogy">
+  <h2 class="h">Tu proceso, <span class="nogl">en una lista.</span></h2>
+  <div class="pic"><img src="assets/23-manos.jpg" alt="Dos manos de trama naranja a punto de tocarse sobre fondo negro"></div>
+  <div class="cta"><b>Comenta <u>AUDITORIA</u></b><span>y te mandamos una lista para revisar tus automatizaciones actuales.</span></div>
+  <div class="tag">23</div>
+</section>
+
+<!-- 24 · Recurso · foto sobre crema y tarjeta Ink (BANCO) -->
+<section class="slide v24" data-v="24">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <h2 class="h">La noticia de IA, <span style="color:var(--orange)">leída desde el negocio.</span></h2>
+  <img class="photo" src="assets/24-telefono.jpg" alt="Una mano sostiene un teléfono rodeado de burbujas en un collage naranja y negro">
+  <div class="card"><b>Comenta <span class="kw">BANCO</span></b><span>y te mandamos la noticia completa y nuestro análisis.</span></div>
+  <div class="tag">24</div>
+</section>
+
+<!-- 25 · Comercial · círculo y chat -->
+<section class="slide v25" data-v="25">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="ring"><img src="assets/25-ojo-pez.jpg" alt="Un hombre con gabardina de pie en una sala, visto con lente de ojo de pez"></div>
+  <h2 class="h">Toca la <span class="hl">puerta.</span></h2>
+  <div class="bub me">PROCESO</div>
+  <div class="bub them">Cuéntanos qué quieres automatizar.</div>
+  <p class="cmnote">Escríbenos <span class="kw">PROCESO</span> por DM.</p>
+  <div class="tag">25</div>
+</section>
+
+<!-- 26 · Comercial · panel y botón contorneado (ERROR) -->
+<section class="slide v26" data-v="26">
+  <img class="photo" src="assets/26-pantalla-error.jpg" alt="Un parque lleno de gente bajo una pantalla de error, en tonos naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="panel">
+    <h2 class="h2">¿Se cayó tu <span class="hl">automatización?</span></h2>
+    <div class="out"><b>Escríbenos <span class="kw">ERROR</span></b><span>por DM y vemos qué se rompió.</span></div>
+  </div>
+  <div class="tag">26</div>
+</section>
+
+<!-- 27 · Comercial · centrado sobre el túnel (EMPEZAR) -->
+<section class="slide v27" data-v="27">
+  <img class="bg" src="assets/27-portal.jpg" alt="Una persona corre hacia el centro de un túnel en espiral">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="center"><p class="kick">Da el paso.</p><p class="big">Escríbenos</p><p class="pill">EMPEZAR</p><p class="sub">por DM y vemos contigo por dónde empezar.</p></div>
+  <div class="tag">27</div>
+</section>
+
+<!-- 28 · Comercial · banda sobre crema (DIFERENTE) -->
+<section class="slide v28" data-v="28">
+  <img class="photo" src="assets/28-silueta-publico.jpg" alt="Un público con gafas 3D en el que una silueta naranja no coincide con los demás">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Tu negocio no es <span style="color:var(--orange)">como los demás.</span></h2>
+  <div class="btn"><b>Escríbenos <span class="kw">DIFERENTE</span></b><span>por DM y cuéntanos qué hace distinto a tu negocio.</span></div>
+  <div class="tag">28</div>
+</section>
+
+<!-- 29 · Comercial · vidrio con símbolo (ORDEN) -->
+<section class="slide v29" data-v="29">
+  <img class="bg" src="assets/29-explosion.jpg" alt="Una persona sentada mira un hongo nuclear con el teléfono en la mano">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2 class="h">Automatizar sin orden <span class="hl">termina así.</span></h2>
+  <div class="glass sym"><img src="../../brandkit/assets/plogy-symbol.svg" alt=""><div><b>Escríbenos <span class="kw">ORDEN</span></b><span>por DM y vemos por dónde empezar a ordenar.</span></div></div>
+  <div class="tag">29</div>
+</section>
+
+<!-- 30 · Comercial · círculo y botón naranja (REVISAR) -->
+<section class="slide v30" data-v="30">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="ring"><img src="assets/30-pc-viejo.jpg" alt="Un computador viejo con un ojo en la pantalla"></div>
+  <h2 class="h">¿Tu proceso lleva años <span class="hl">igual?</span></h2>
+  <div class="btn"><b>Escríbenos REVISAR</b><span>por DM y revisamos contigo qué se puede renovar.</span></div>
+  <div class="tag">30</div>
+</section>
+
+<script>
+  var m = location.search.match(/v=(\d+)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-v="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

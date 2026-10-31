@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 009 · Automatizar lo que nadie eligió</title>
+<!-- Fuente editable. 7 láminas de 1080x1350.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=7
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7 -Prefix slide-0
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit).
+     Pieza de filosofía: postura de Plogy, sin fuente externa. Los ejemplos de la lámina 02 son genéricos y están rotulados. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486;
+  --gradient:linear-gradient(180deg,#f75946 0%,#ee5358 33%,#e1556a 50%,#c85981 67%,#9c5aa7 100%);
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px}
+.light{background:var(--paper);color:var(--ink)}
+.surface{background:var(--surface);color:var(--ink)}
+.dark{background:var(--ink);color:var(--paper)}
+.orangebg{background:var(--orange);color:var(--ink)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;z-index:5}
+.light .count,.surface .count{color:var(--muted)} .dark .count{color:#e6dfd8} .orangebg .count{color:var(--ink)}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:5}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.25}
+.dots i.on{opacity:1;background:var(--orange)}
+.orangebg .dots i{background:var(--ink);opacity:.3} .orangebg .dots i.on{opacity:1}
+
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.04em;line-height:1.02;text-wrap:balance;position:relative;z-index:3}
+.hl{color:var(--orange)}
+.light .hl,.surface .hl{color:var(--orangeText)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.55)}
+.support{position:relative;z-index:3;font-size:40px;line-height:1.36;margin-top:36px;max-width:880px}
+.light .support,.surface .support{color:var(--muted)} .dark .support{color:#e6dfd8} .orangebg .support{color:var(--ink)}
+.eyebrow{position:relative;z-index:3;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:36px}
+.light .eyebrow,.surface .eyebrow{color:var(--orangeText)} .dark .eyebrow{color:var(--orange)} .orangebg .eyebrow{color:var(--ink)}
+.pill{position:relative;z-index:3;display:inline-block;background:var(--orange);color:var(--ink);font:700 32px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:20px 32px;border-radius:999px;margin-bottom:40px}
+.top{position:relative;z-index:3}
+
+/* 01 · portada: frase enorme */
+.s1 .top{margin-top:250px}
+.s1 h1{font-size:150px;line-height:.98}
+.s1 .support{font-size:44px;max-width:760px;margin-top:48px;color:var(--ink);font-weight:500}
+.s1 .orb{position:absolute;right:-250px;bottom:-250px;width:760px;opacity:.95;z-index:1}
+
+/* 02 · lista de tareas que nadie eligió */
+.s2 .top{margin-top:128px}
+.s2 h2{font-size:96px}
+.list{position:relative;z-index:3;margin-top:44px;border-top:2px solid #d8cec4}
+.item{display:flex;align-items:center;gap:30px;padding:20px 0;border-bottom:2px solid #d8cec4;font:500 45px/1.15 var(--body);letter-spacing:-.01em}
+.item i{flex:none;width:54px;height:54px;border-radius:14px;border:4px solid var(--orangeText);color:var(--orangeText);font:700 44px/46px var(--display);font-style:normal;text-align:center}
+.s2 .support{font-size:35px;margin-top:28px}
+.s2 .pill{margin-bottom:32px}
+
+/* 03 · la regla y la pregunta */
+.s3 .top{margin-top:150px}
+.s3 h2{font-size:112px}
+.ask{position:relative;z-index:3;margin-top:56px;border-radius:34px;background:#fff;color:var(--ink);padding:30px 40px;font:700 52px/1.1 var(--display);letter-spacing:-.03em;text-align:center}
+.branch{position:relative;z-index:3;margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.branch div{border-radius:30px;padding:28px 32px 32px;border:2px solid #4a413a}
+.branch div.yes{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.branch b{display:block;font:700 84px/1 var(--display);letter-spacing:-.04em}
+.branch span{display:block;margin-top:12px;font:500 38px/1.2 var(--body)}
+.branch div:not(.yes) b{color:#fff} .branch div:not(.yes) span{color:#e6dfd8}
+
+/* 04 · giro: sobre naranja */
+.s4 .bigword{position:absolute;left:70px;top:130px;font:700 300px/1 var(--display);letter-spacing:-.06em;color:var(--ink);opacity:.1;z-index:0}
+.s4 .top{margin-top:410px}
+.s4 h1{font-size:128px;line-height:1.14}
+.s4 h1 .hl{background:var(--ink);color:var(--orange);padding:0 .12em;border-radius:.1em;-webkit-box-decoration-break:clone;box-decoration-break:clone;text-shadow:none}
+.s4 .support{font-size:42px;font-weight:500;margin-top:44px}
+
+/* 05 · el tiempo liberado */
+.s5 .top{margin-top:150px}
+.s5 h2{font-size:112px}
+.bars{position:relative;z-index:3;margin-top:56px}
+.bars .lab{font:700 28px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.bars .row{display:grid;grid-template-columns:repeat(12,1fr);gap:8px;margin-bottom:34px}
+.bars .row b{height:62px;border-radius:12px;background:var(--ink)}
+.bars .row b.free{background:none;border:4px dashed var(--orangeText);color:var(--orangeText);font:700 38px/54px var(--display);text-align:center}
+.bars .note{font:400 30px/1.3 var(--body);color:var(--muted);margin-top:-6px}
+.s5 .support{font-size:40px;margin-top:34px}
+
+/* 06 · dos preguntas */
+.s6 .top{margin-top:150px}
+.s6 h2{font-size:108px}
+.qs{position:relative;z-index:3;margin-top:56px;display:flex;flex-direction:column;gap:24px}
+.q{border-radius:34px;padding:36px 42px 40px}
+.q small{display:block;font:700 28px/1.1 var(--display);letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.q b{display:block;font:700 62px/1.06 var(--display);letter-spacing:-.035em}
+.q.a{border:2px solid #4a413a}
+.q.a small{color:#b8aea4} .q.a b{color:#e6dfd8}
+.q.b{background:var(--orange);color:var(--ink)}
+.q.b small{color:var(--ink)}
+.s6 .support{font-size:42px;margin-top:40px;color:#fff;font-weight:500}
+
+/* 07 · CTA variante 08 (vidrio con símbolo sobre ilustración morada), adaptada */
+.s7{background:var(--ink);color:#fff;padding:0}
+.s7 .count{color:#fff}
+.s7 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.s7 .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.78) 0%,rgba(23,19,16,.1) 34%,rgba(23,19,16,0) 60%,rgba(23,19,16,.7) 100%)}
+.s7 .h{position:absolute;left:96px;right:96px;top:166px;z-index:3;font:700 98px/1.04 var(--display);letter-spacing:-.035em;text-wrap:balance}
+.s7 .h .hl{color:var(--orange);text-shadow:0 0 34px rgba(255,91,0,.55)}
+.glass{position:absolute;z-index:4;left:96px;width:888px;border-radius:64px;color:#fff;
+  background:linear-gradient(125deg,rgba(255,255,255,.24),rgba(255,255,255,.06)),rgba(23,19,16,.52);
+  border:1.5px solid rgba(255,255,255,.42);backdrop-filter:blur(22px) saturate(125%);-webkit-backdrop-filter:blur(22px) saturate(125%);
+  box-shadow:0 18px 50px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.5);padding:30px 48px 30px 40px}
+.glass b{display:block;font:700 62px/1.05 var(--display);letter-spacing:-.03em}
+.glass > span,.glass > div > span{display:block;margin-top:8px;font:400 34px/1.3 var(--body);color:#eee6df;text-wrap:balance}
+.glass.sym{display:flex;align-items:center;gap:22px;padding:24px 44px 24px 30px}
+.glass.sym img{width:116px;flex:none;margin:-14px -8px -14px -20px}
+.s7 .glass{top:1010px}
+.kw{color:var(--orange)}
+</style>
+</head>
+<body>
+
+<!-- 01 · Tensión: la frase -->
+<section class="slide light s1" data-n="1">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">01/07</div>
+  <img class="orb" src="../../brandkit/assets/plogy-symbol.svg" alt="">
+  <div class="top">
+    <p class="eyebrow">Postura · Automatización</p>
+    <h1><span class="hl">Nadie</span> eligió esta parte de tu trabajo.</h1>
+    <p class="support">Y es la primera que conviene automatizar.</p>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · La lista -->
+<section class="slide surface s2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">02/07</div>
+  <div class="top">
+    <span class="pill">Ejemplos</span>
+    <h2>Tareas que nadie <span class="hl">eligió.</span></h2>
+    <div class="list">
+      <div class="item"><i>×</i>Pasar datos de un correo a una hoja</div>
+      <div class="item"><i>×</i>Renombrar y archivar archivos</div>
+      <div class="item"><i>×</i>Perseguir a alguien para que responda</div>
+      <div class="item"><i>×</i>Armar el mismo reporte cada lunes</div>
+      <div class="item"><i>×</i>Reenviar el mismo PDF a cada cliente</div>
+    </div>
+    <p class="support">Alguien las hace cada semana. Ninguna es la razón por la que esa persona está en el equipo.</p>
+  </div>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · La regla -->
+<section class="slide dark s3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">03/07</div>
+  <div class="top">
+    <h2>Automatiza primero lo que <span class="hl">nadie eligió.</span></h2>
+    <div class="ask">¿Alguien eligió hacer esto?</div>
+    <div class="branch">
+      <div class="yes"><b>No</b><span>Candidata a automatizar.</span></div>
+      <div><b>Sí</b><span>Habla primero con esa persona.</span></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Giro -->
+<section class="slide orangebg s4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-black.svg" alt="Plogy">
+  <div class="count">04/07</div>
+  <div class="bigword">pero</div>
+  <div class="top">
+    <h1>No toda tarea aburrida <span class="hl">sobra.</span></h1>
+    <p class="support">A veces es donde alguien aprende cómo funciona el negocio. Esa se entiende primero y se automatiza después.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · El tiempo liberado -->
+<section class="slide light s5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/07</div>
+  <div class="top">
+    <h2>El tiempo que liberas <span class="hl">necesita dueño.</span></h2>
+    <div class="bars">
+      <p class="lab">Antes</p>
+      <div class="row"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+      <p class="lab">Después</p>
+      <div class="row"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b class="free">?</b><b class="free">?</b><b class="free">?</b><b class="free">?</b><b class="free">?</b></div>
+      <p class="note">Esquema ilustrativo, sin cifras.</p>
+    </div>
+    <p class="support">Si nadie decide en qué se usa, se llena con más tareas que nadie eligió.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 06 · Resolución: dos preguntas -->
+<section class="slide dark s6" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">06/07</div>
+  <div class="top">
+    <h2>Dos preguntas <span class="hl">distintas.</span></h2>
+    <div class="qs">
+      <div class="q a"><small>Automatizar para recortar</small><b>¿Cuánto cuesta este trabajo?</b></div>
+      <div class="q b"><small>Automatizar lo que nadie eligió</small><b>¿En qué quieres que piense tu gente?</b></div>
+    </div>
+    <p class="support">Plogy trabaja con la segunda.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 07 · CTA seguimiento (variante 08 adaptada: vidrio con símbolo sobre ilustración morada) -->
+<section class="slide s7" data-n="7">
+  <img class="bg" src="assets/08-morado.jpg" alt="Ilustración morada de una persona frente a un computador con una luz de píxeles">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">07/07</div>
+  <h2 class="h">Que la máquina repita. <span class="hl">Tú decides.</span></h2>
+  <div class="glass sym"><img src="../../brandkit/assets/plogy-symbol.svg" alt=""><div><b>Sigue a <span class="kw">Plogy</span></b><span>Automatización con criterio, explicada sin humo.</span></div></div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Figuras del reporte · pieza 003</title>
+<!-- Figuras 1600x900 para reporte.md. Se exportan a assets/reporte/ con render-slides.ps1 (-Param f -Width 1600 -Height 900).
+     Cada figura usa solo cifras del reporte. Lo que es cálculo de Plogy o hipótesis lo dice en la propia figura. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--orange:#ff5b00;--orangeText:#b43d00;--muted:#625951;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:#888;font-family:var(--body);color:var(--ink)}
+.fig{position:relative;width:1600px;height:900px;overflow:hidden;padding:72px 80px;display:none}
+body:not(.single) .fig{display:block;margin-bottom:20px;zoom:.5}
+body.single .fig{display:block}
+.light{background:#fff}.surface{background:var(--surface)}.dark{background:var(--ink);color:#fff}
+.logo{position:absolute;right:80px;top:64px;width:190px}
+.src{position:absolute;left:80px;bottom:44px;right:80px;font:500 22px/1.3 var(--body);color:var(--muted)}
+.dark .src{color:#bdb2a8}
+.eyebrow{font:700 24px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText)}
+.dark .eyebrow{color:var(--orange)}
+h2{font:700 64px/1.05 var(--display);letter-spacing:-.035em;margin-top:18px;max-width:1180px}
+.hl{color:var(--orange)}
+/* hero */
+.hero h1{font:700 118px/.98 var(--display);letter-spacing:-.045em;margin-top:34px;max-width:1300px}
+.hero .glow{position:absolute;right:-470px;top:-260px;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ff5b00 0%,#d63a52 38%,#6a3dd1 68%,rgba(23,19,16,0) 72%);opacity:.9}
+.hero .meta{position:absolute;left:80px;bottom:56px;font:500 28px/1.3 var(--body);color:#d9cfc6}
+.hero .logo{left:80px;right:auto}
+.hero .eyebrow{margin-top:120px}
+/* precios */
+.cards{display:flex;gap:40px;margin-top:48px}
+.card{flex:1;border-radius:28px;padding:40px 44px;border:2px solid var(--border);background:#fff}
+.card.later{background:var(--ink);color:#fff;border-color:var(--ink)}
+.card .when{font:700 26px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--orangeText)}
+.card.later .when{color:var(--orange)}
+.card .row{display:flex;justify-content:space-between;align-items:baseline;margin-top:30px;font:500 30px/1 var(--body)}
+.card .row b{font:700 84px/1 var(--display);letter-spacing:-.04em}
+.card.later .row b{color:var(--orange)}
+.card .row small{font:500 24px/1 var(--body);opacity:.75}
+/* barras */
+.bars{margin-top:40px;display:flex;flex-direction:column;gap:20px}
+.bar{display:flex;align-items:center;gap:24px}
+.bar .name{width:430px;flex:none;font:700 30px/1.1 var(--display);letter-spacing:-.01em}
+.bar .name small{display:block;font:500 22px/1.2 var(--body);color:var(--muted);margin-top:4px}
+.bar .track{flex:1;position:relative;height:62px}
+.bar .fill{height:100%;border-radius:14px;background:var(--border);display:flex;align-items:center;justify-content:flex-end;padding-right:18px}
+.bar .fill b{font:700 34px/1 var(--display)}
+.bar.a .fill{background:var(--orange)}
+.bar.b .fill{background:var(--ink)}.bar.b .fill b{color:#fff}
+.note{margin-top:26px;font:500 26px/1.35 var(--body);color:var(--muted);max-width:1300px}
+/* tokens */
+.tok .bar .name{width:380px}
+.tok .bar .track{height:90px}
+.tok .bar .fill b{font-size:44px}
+.hatch{background:repeating-linear-gradient(135deg,var(--border) 0 14px,#e8e1da 14px 28px)!important}
+/* formula */
+.formula{display:flex;align-items:stretch;gap:26px;margin-top:64px}
+.term{flex:1;border-radius:26px;padding:34px 34px;background:#fff;border:2px solid var(--border)}
+.term b{display:block;font:700 56px/1 var(--display);color:var(--orangeText);letter-spacing:-.03em}
+.term span{display:block;margin-top:16px;font:700 36px/1.1 var(--display);letter-spacing:-.02em}
+.term small{display:block;margin-top:12px;font:500 24px/1.35 var(--body);color:var(--muted)}
+.op{align-self:center;font:700 72px/1 var(--display);color:var(--orange)}
+.result{margin-top:40px;font:700 52px/1.1 var(--display);letter-spacing:-.03em}
+/* ejemplo */
+.bills{display:flex;gap:40px;margin-top:48px}
+.bill{flex:1;border-radius:28px;padding:40px 44px;background:#fff;border:2px solid var(--border)}
+.bill.d{background:var(--ink);color:#fff;border-color:var(--ink)}
+.bill .l{font:700 26px/1.1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--orangeText)}
+.bill.d .l{color:var(--orange)}
+.bill .v{margin-top:20px;font:700 130px/1 var(--display);letter-spacing:-.05em}
+.bill.d .v{color:var(--orange)}
+.bill .c{margin-top:14px;font:500 26px/1.3 var(--body);opacity:.8}
+.tag{display:inline-block;margin-top:28px;background:var(--orange);color:var(--ink);font:700 24px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border-radius:999px}
+</style>
+</head>
+<body>
+
+<!-- 1. Portada del reporte -->
+<section class="fig dark hero" data-f="portada">
+  <div class="glow"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow" style="position:relative">Reporte de Plogy · IA + costos</div>
+  <h1 style="position:relative">Barato por token.<br><span class="hl">Caro por tarea.</span></h1>
+  <div class="meta">Gemini 4 Argon · versión 2026-10-19 · borrador</div>
+</section>
+
+<!-- 2. Precios por token -->
+<section class="fig light" data-f="precios">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Precio por millón de tokens</div>
+  <h2>El precio de lanzamiento <span class="hl">se duplica</span> el 1 de diciembre</h2>
+  <div class="cards">
+    <div class="card"><div class="when">Lanzamiento · hasta el 30 de nov.</div>
+      <div class="row"><span>Entrada</span><b>$2</b></div>
+      <div class="row"><span>Salida</span><b>$10</b></div>
+      <div class="row"><small>Entrada en caché</small><small>$0,10</small></div></div>
+    <div class="card later"><div class="when">Estándar · desde el 1 de dic.</div>
+      <div class="row"><span>Entrada</span><b>$4</b></div>
+      <div class="row"><span>Salida</span><b>$20</b></div>
+      <div class="row"><small>Entrada en caché</small><small>$0,20</small></div></div>
+  </div>
+  <div class="src">Fuente: AIHubMix (13 oct 2026). La fecha de fin del precio de lanzamiento es reportada, no confirmada por Google.</div>
+</section>
+
+<!-- 3. Tokens por tarea -->
+<section class="fig surface tok" data-f="tokens">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Tokens de salida por tarea</div>
+  <h2>Argon escribe <span class="hl">2,3 veces más</span> que GPT-6 Astra</h2>
+  <div class="bars">
+    <div class="bar a"><div class="name">Gemini 4 Argon<small>dato de Artificial Analysis</small></div><div class="track"><div class="fill" style="width:100%"><b>≈ 62.000</b></div></div></div>
+    <div class="bar"><div class="name">GPT-6 Astra<small>cálculo de Plogy: 62.000 ÷ 2,3</small></div><div class="track"><div class="fill hatch" style="width:43.5%"><b>≈ 27.000</b></div></div></div>
+  </div>
+  <div class="note">La cifra de GPT-6 Astra no está en la fuente. Es el resultado de dividir 62.000 entre 2,3, y se muestra rayada para marcarlo.</div>
+  <div class="src">Fuente: Artificial Analysis, citado por AIHubMix. Razonamiento: alto en Argon, max en GPT-6 Astra.</div>
+</section>
+
+<!-- 4. Costo por tarea -->
+<section class="fig light" data-f="costo-por-tarea">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Costo por tarea · USD</div>
+  <h2>El orden cambia <span class="hl">solo por el precio</span></h2>
+  <div class="bars">
+    <div class="bar a"><div class="name">Argon, lanzamiento<small>índice de inteligencia 53</small></div><div class="track"><div class="fill" style="width:33%"><b>$1,99</b></div></div></div>
+    <div class="bar"><div class="name">GPT-6 Astra<small>índice 53</small></div><div class="track"><div class="fill" style="width:54.5%"><b>$3,26</b></div></div></div>
+    <div class="bar b"><div class="name">Argon, desde diciembre<small>índice 53</small></div><div class="track"><div class="fill" style="width:66.5%"><b>$3,98</b></div></div></div>
+    <div class="bar"><div class="name">Claude Sonnet 5.5<small>índice 56</small></div><div class="track"><div class="fill" style="width:91%"><b>$5,46</b></div></div></div>
+    <div class="bar"><div class="name">Claude Opus 5.5<small>índice 58</small></div><div class="track"><div class="fill" style="width:100%"><b>$5,98</b></div></div></div>
+  </div>
+  <div class="src">Fuente: Artificial Analysis, citado por AIHubMix. Razonamiento: alto en Argon, max en Astra, sin dato para Claude. Los modelos no rinden igual.</div>
+</section>
+
+<!-- 5. La fórmula -->
+<section class="fig surface" data-f="formula">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">La lectura de Plogy</div>
+  <h2>Lo que pagas es <span class="hl">una tarea terminada</span></h2>
+  <div class="formula">
+    <div class="term"><b>1</b><span>Tokens usados</span><small>Cuántos entran y cuántos salen en una tarea tuya.</small></div>
+    <div class="op">×</div>
+    <div class="term"><b>2</b><span>Precio por token</span><small>El que pagarás, no el promocional.</small></div>
+    <div class="op">×</div>
+    <div class="term"><b>3</b><span>Intentos</span><small>Hasta que el resultado queda bien.</small></div>
+  </div>
+  <div class="result">= costo de <span class="hl">una</span> tarea</div>
+  <div class="src">Criterio de Plogy sobre datos de terceros. No es una recomendación de modelo.</div>
+</section>
+
+<!-- 6. Ejemplo hipotético -->
+<section class="fig light" data-f="ejemplo">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">10.000 tareas al mes con Argon</div>
+  <h2>Misma cuenta, <span class="hl">dos facturas</span></h2>
+  <div class="bills">
+    <div class="bill"><div class="l">Precio de lanzamiento</div><div class="v">$19.900</div><div class="c">10.000 × $1,99</div></div>
+    <div class="bill d"><div class="l">Precio de diciembre</div><div class="v">$39.800</div><div class="c">10.000 × $3,98</div></div>
+  </div>
+  <span class="tag">Ejemplo hipotético · volumen inventado</span>
+  <div class="src">Costos por tarea: Artificial Analysis, citado por AIHubMix. El volumen no es de ningún cliente.</div>
+</section>
+
+<script>
+var q=new URLSearchParams(location.search).get('f');
+if(q){document.body.classList.add('single');document.querySelectorAll('.fig').forEach(function(e){if(e.dataset.f!==q)e.style.display='none';});}
+</script>
+</body>
+</html>

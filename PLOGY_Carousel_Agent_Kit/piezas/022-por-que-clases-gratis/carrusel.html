@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 022 · Por qué hacemos clases gratis</title>
+<!-- Fuente editable. 7 láminas de 1080x1350, estética normal de Plogy con fotos reales de clases y Plogy Nights.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=7
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7 -Prefix slide-0
+     Tesis de Luciano: no solo se trata de saber qué solución darle a cada cliente, se trata de tener el talento adecuado para desarrollarla.
+     Fotos: Drive de Plogy (assets/originales), recortadas con scripts/derive.py para sacar pantallas de laptop.
+     CTA: tarjeta de vidrio con símbolo sobre foto de grupo (preferencia de CTA de Plogy): Comenta Plogy para unirte a la comunidad.
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486;
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px;color:var(--ink)}
+.light{background:var(--paper)} .surface{background:var(--surface)} .dark{background:var(--ink);color:#fff}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;color:var(--muted);z-index:5}
+.dark .count,.photo-slide .count{color:#fff}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:5;color:var(--ink)}
+.dark .dots{color:#fff}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.2}
+.dots i.on{opacity:1;background:var(--orange)}
+h1,h2{position:relative;z-index:3;font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.5)}
+.support{position:relative;z-index:3;font:400 38px/1.35 var(--body);color:var(--muted);margin-top:24px;max-width:880px}
+.dark .support{color:#e6dfd8}
+.support b{color:var(--ink)} .dark .support b{color:#fff}
+.eyebrow{position:relative;z-index:3;font:700 28px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--orangeText);margin-bottom:26px}
+.dark .eyebrow{color:var(--orange)}
+.pill{display:inline-block;background:var(--orange);color:var(--ink);font:700 30px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:18px 30px;border-radius:999px}
+
+/* 01 · portada con foto */
+.p1 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 50%}
+.p1 .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.7) 0%,rgba(23,19,16,.05) 24%,rgba(23,19,16,.1) 42%,rgba(23,19,16,.9) 63%,#171310 100%)}
+.p1 .pill{position:absolute;left:96px;top:196px;z-index:4}
+.p1 .bottom{position:absolute;z-index:3;left:96px;right:96px;bottom:150px}
+.p1 h1{font-size:104px;color:#fff}
+.p1 .support{font-size:40px;margin-top:26px}
+
+/* 02 · la mitad del trabajo (foto en banda) */
+.p2{padding:0}
+.p2 .band{position:absolute;left:0;top:0;width:100%;height:620px;object-fit:cover;object-position:50% 35%}
+.p2 .shade{position:absolute;left:0;right:0;top:0;height:620px;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.75) 0%,rgba(23,19,16,0) 30%,rgba(23,19,16,0) 70%,rgba(255,255,255,1) 100%)}
+.p2 .count{color:#fff}
+.p2 .txt{position:absolute;z-index:3;left:96px;right:96px;top:640px}
+.p2 h2{font-size:80px}
+.p2 .support{font-size:38px}
+
+/* 03 · la tesis (naranja) */
+.p3{background:var(--orange)}
+.p3 .count{color:var(--ink)}
+.p3 .dots i{opacity:.3} .p3 .dots i.on{background:var(--ink);opacity:1}
+.p3 .q{position:absolute;z-index:3;left:96px;right:96px;top:360px}
+.p3 .q .a{font:700 64px/1.1 var(--display);letter-spacing:-.03em;color:var(--ink);opacity:.62;text-wrap:balance}
+.p3 .q .b{margin-top:40px;font:700 98px/1.02 var(--display);letter-spacing:-.04em;color:var(--ink);text-wrap:balance}
+.p3 .q .b u{text-decoration:none;color:#fff}
+.p3 .sig{position:absolute;z-index:3;left:96px;bottom:140px;font:700 30px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+
+/* 04 · se forma (foto arriba, Ink abajo) */
+.p4{padding:0}
+.p4 .band{position:absolute;left:0;top:0;width:100%;height:700px;object-fit:cover;object-position:50% 60%}
+.p4 .shade{position:absolute;left:0;right:0;top:0;height:700px;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.75) 0%,rgba(23,19,16,0) 30%,rgba(23,19,16,0) 60%,#171310 100%)}
+.p4 .txt{position:absolute;z-index:3;left:96px;right:96px;top:690px}
+.p4 h2{font-size:96px}
+.p4 .support{font-size:38px}
+
+/* 05 · ganamos los dos */
+.p5 .top{position:relative;z-index:3;margin-top:110px}
+.p5 h2{font-size:84px}
+.p5 .photo{position:relative;z-index:2;margin-top:34px;height:500px;border-radius:30px;overflow:hidden}
+.p5 .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
+.both{position:relative;z-index:3;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.both div{border-radius:28px;padding:24px 26px}
+.both small{display:block;font:700 22px/1 var(--display);letter-spacing:.12em;text-transform:uppercase}
+.both p{margin-top:12px;font:500 32px/1.3 var(--body)}
+.both .you{background:var(--paper);border:2px solid var(--border)} .both .you small{color:var(--orangeText)} .both .you p{color:var(--muted)}
+.both .us{background:var(--ink);color:#fff} .both .us small{color:var(--orange)} .both .us p{color:#e6dfd8}
+
+/* 06 · así se ven (collage) */
+.p6 .top{position:relative;z-index:3;margin-top:110px}
+.p6 h2{font-size:84px}
+.grid{position:relative;z-index:2;margin-top:34px;display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:330px 330px;gap:14px}
+.grid div{border-radius:26px;overflow:hidden;position:relative}
+.grid img{width:100%;height:100%;object-fit:cover;display:block}
+.grid .tall{grid-row:span 2}
+.grid .tall img{object-position:50% 40%}
+.grid span{position:absolute;left:14px;bottom:14px;background:rgba(23,19,16,.78);color:#fff;font:700 20px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;border-radius:999px}
+.p6 .cap{position:relative;z-index:3;margin-top:22px;font:400 30px/1.35 var(--body);color:#d8cfc6}
+.p6 .cap b{color:#fff}
+
+/* 07 · CTA vidrio sobre foto de grupo */
+.p7{padding:0;background:var(--ink)}
+.p7 .bg{position:absolute;left:0;top:0;width:100%;height:860px;object-fit:cover;object-position:50% 40%}
+.p7 .shade{position:absolute;left:0;right:0;top:0;height:860px;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.7) 0%,rgba(23,19,16,.05) 22%,rgba(23,19,16,0) 60%,#171310 100%)}
+.p7 h2{position:absolute;z-index:3;left:96px;right:96px;top:810px;font-size:84px;color:#fff}
+.glass{position:absolute;z-index:4;left:96px;right:96px;bottom:130px;display:flex;align-items:center;gap:28px;border-radius:40px;padding:30px 36px;
+  background:rgba(23,19,16,.5);border:1.5px solid rgba(255,255,255,.28);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.glass img{width:110px;height:110px;flex:none}
+.glass b{display:block;font:700 60px/1.05 var(--display);letter-spacing:-.03em;color:#fff}
+.glass b u{text-decoration:none;color:var(--orange)}
+.glass span{display:block;margin-top:8px;font:400 32px/1.3 var(--body);color:#eee6df}
+</style>
+</head>
+<body>
+
+<!-- 01 · Portada -->
+<section class="slide dark p1" data-n="1">
+  <img class="bg" src="assets/01-clase-noche.jpg" alt="Una sala con poca luz donde un hombre explica frente a una pantalla y un grupo de personas lo escucha">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">01/07</div>
+  <span class="pill">Plogy</span>
+  <div class="bottom">
+    <h1>¿Por qué hacemos <span class="hl">clases gratis?</span></h1>
+    <p class="support">La respuesta tiene que ver con quién construye lo que diseñamos.</p>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · La mitad del trabajo -->
+<section class="slide light p2" data-n="2">
+  <img class="band" src="assets/02-ensenando.jpg" alt="Un joven da una charla frente a una pantalla proyectada">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">02/07</div>
+  <div class="txt">
+    <h2>Saber qué necesita un cliente es <span class="hl">la mitad del trabajo.</span></h2>
+    <p class="support">La otra mitad es que alguien lo construya bien. Y eso no se resuelve con una herramienta.</p>
+  </div>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · La tesis -->
+<section class="slide p3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-black.svg" alt="Plogy">
+  <div class="count">03/07</div>
+  <div class="q">
+    <p class="a">No solo se trata de saber qué solución darle a cada cliente.</p>
+    <p class="b">Se trata de tener <u>el talento adecuado</u> para desarrollarla.</p>
+  </div>
+  <div class="sig">Así pensamos en Plogy</div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Ese talento se forma -->
+<section class="slide dark p4" data-n="4">
+  <img class="band" src="assets/04-estudiantes.jpg" alt="Dos estudiantes concentrados frente a sus computadores durante una clase">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">04/07</div>
+  <div class="txt">
+    <h2>Ese talento no se encuentra. <span class="hl">Se forma.</span></h2>
+    <p class="support">Por eso abrimos las clases: enseñamos a construir con IA a quien quiera aprender, sin cobrar la entrada.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · Ganamos los dos -->
+<section class="slide surface p5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/07</div>
+  <div class="top">
+    <h2>Gratis no es <span class="hl">regalado.</span></h2>
+    <div class="photo"><img src="assets/05-clase-dia.jpg" alt="Un instructor habla con micrófono junto a un proyector mientras tres estudiantes lo escuchan"></div>
+    <div class="both">
+      <div class="you"><small>Tú te llevas</small><p>Herramientas, criterio y gente que construye lo mismo que tú.</p></div>
+      <div class="us"><small>Nosotros ganamos</small><p>Conocer a las personas con las que queremos construir.</p></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 06 · Así se ven -->
+<section class="slide dark p6" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">06/07</div>
+  <div class="top">
+    <div class="eyebrow">Plogy Nights</div>
+    <h2>Así se ve <span class="hl">una noche de clase.</span></h2>
+    <div class="grid">
+      <div class="tall"><img src="assets/06-bienvenidos.jpg" alt="Proyección en una pared de concreto: Bienvenidos a Plogy Nights"><span>Plogy Nights</span></div>
+      <div><img src="assets/01-clase-noche.jpg" alt="Una clase en una sala con poca luz" style="object-position:45% 50%"></div>
+      <div><img src="assets/07-grupo.jpg" alt="Un grupo de diez personas sonriendo después de una clase" style="object-position:50% 35%"></div>
+    </div>
+    <p class="cap"><b>"La comunidad que construye el futuro del trabajo creativo."</b> Así le damos la bienvenida a cada Plogy Night.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 07 · CTA vidrio -->
+<section class="slide p7" data-n="7">
+  <img class="bg" src="assets/07-grupo.jpg" alt="Un grupo de diez personas de la comunidad de Plogy sonriendo juntas">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2>Aquí se aprende <span class="hl">construyendo.</span></h2>
+  <div class="glass"><img src="../../brandkit/assets/plogy-symbol.svg" alt=""><div><b>Comenta <u>Plogy</u></b><span>y únete a nuestra comunidad.</span></div></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d+)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

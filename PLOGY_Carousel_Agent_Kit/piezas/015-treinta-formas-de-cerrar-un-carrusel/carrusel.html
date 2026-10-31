@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 015 · 30 formas de cerrar un carrusel</title>
+<!-- Fuente editable. 7 láminas de 1080x1350.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=7
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7 -Prefix slide-0
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit).
+     Pieza documental (Building Plogy). Todo lo que se cuenta sale de piezas/cta-biblioteca/ (ver brief.md, tabla de evidencia).
+     Las hojas de contacto de assets/ las arma scripts/derive.py con los PNG reales de la biblioteca. Los "antes" no existen como imagen. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486; --violet:#9c5aa7;
+  --gradient:linear-gradient(180deg,#f75946 0%,#ee5358 33%,#e1556a 50%,#c85981 67%,#9c5aa7 100%);
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --sym:url('../../brandkit/assets/plogy-symbol.svg');
+}
+*{box-sizing:border-box;margin:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px}
+.light{background:var(--paper);color:var(--ink)}
+.surface{background:var(--surface);color:var(--ink)}
+.dark{background:var(--ink);color:var(--paper)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:6}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;z-index:6}
+.light .count,.surface .count{color:var(--muted)} .dark .count{color:#e6dfd8}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:6}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.25}
+.dots i.on{opacity:1;background:var(--orange)}
+
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance;position:relative;z-index:3}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.55)}
+.light .hl,.surface .hl{color:var(--orange)}
+.support{position:relative;z-index:3;font-size:38px;line-height:1.36;margin-top:26px;max-width:888px}
+.light .support,.surface .support{color:var(--muted)} .dark .support{color:#e6dfd8}
+.support b{color:inherit}
+.dark .support b{color:#fff} .light .support b,.surface .support b{color:var(--ink)}
+.eyebrow{position:relative;z-index:3;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:30px}
+.light .eyebrow,.surface .eyebrow{color:var(--orangeText)} .dark .eyebrow{color:var(--orange)}
+.top{position:relative;z-index:3}
+.fig{position:relative;z-index:3;display:block}
+.cap{position:relative;z-index:3;font:400 32px/1.3 var(--body)}
+.light .cap,.surface .cap{color:var(--muted)} .dark .cap{color:#cfc6bd}
+
+/* 01 · portada con mosaico real */
+.s1 .top{margin-top:210px}
+.s1 h1{font-size:112px}
+.s1 .support{max-width:800px}
+.s1 .mosaic{position:absolute;left:0;bottom:0;width:1080px;height:450px;z-index:1}
+.s1 .shade{position:absolute;left:0;bottom:0;width:1080px;height:450px;z-index:2;
+  background:linear-gradient(to bottom,rgba(23,19,16,1) 0%,rgba(23,19,16,.55) 30%,rgba(23,19,16,.5) 58%,rgba(23,19,16,.94) 84%,rgba(23,19,16,1) 100%)}
+
+/* 02 · las 30 */
+.s2 .top{margin-top:110px}
+.s2 h2{font-size:80px}
+.legend{position:relative;z-index:3;display:flex;gap:10px;margin-top:26px;flex-wrap:nowrap}
+.legend span{font:700 28px/1 var(--display);padding:13px 18px 14px;border-radius:12px;white-space:nowrap;letter-spacing:-.01em}
+.lg1{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.lg2{background:var(--orange);color:var(--ink);border:2px solid var(--orange)}
+.lg3{background:var(--violet);color:#fff;border:2px solid var(--violet)}
+.lg4{background:var(--ink);color:#fff;border:2px solid var(--ink)}
+.s2 .fig{width:730px;margin:26px auto 0}
+.s2 .cap{margin-top:20px;text-align:center}
+
+/* 03 · paleta */
+.s3 .top{margin-top:110px}
+.s3 h2{font-size:88px}
+.s3 .support{font-size:36px}
+.s3 .lab{position:relative;z-index:3;font:700 34px/1.1 var(--display);letter-spacing:-.01em;margin:34px 0 14px;color:#fff}
+.s3 .lab em{font-style:normal;color:var(--orange)}
+.s3 .fig{width:800px}
+
+/* 04 · titulares */
+.s4 .top{margin-top:110px}
+.s4 h2{font-size:84px}
+.s4 .fig{width:640px;margin:30px auto 0}
+.s4 .cap{margin-top:16px;text-align:center}
+
+/* 05 · logo */
+.s5 .top{margin-top:110px}
+.s5 h2{font-size:86px}
+.s5 .support{font-size:36px}
+.s5 .fig{width:800px;margin:30px 0 0}
+
+/* 06 · recurso */
+.s6 .top{margin-top:110px}
+.s6 h2{font-size:78px}
+.rec{position:relative;z-index:3;margin-top:26px;display:flex;flex-direction:column;gap:8px}
+.rec div{display:flex;align-items:center;gap:20px;background:var(--paper);border:2px solid #d9d0c7;border-radius:22px;padding:8px 22px 8px 14px}
+.rec .n{flex:none;font:700 28px/1 var(--display);background:var(--violet);color:#fff;border-radius:10px;padding:10px 12px 11px;letter-spacing:-.01em}
+.rec b{flex:none;width:262px;font:700 40px/1 var(--display);letter-spacing:-.025em}
+.rec span{flex:1;font:400 32px/1.1 var(--body);color:var(--muted)}
+.rec i{flex:none;font:700 24px/1 var(--display);font-style:normal;letter-spacing:.06em;text-transform:uppercase;padding:11px 16px 12px;border-radius:999px}
+.rec .yes i{background:var(--orange);color:var(--ink)}
+.rec .no{background:transparent}
+.rec .no i{border:2px solid var(--border);color:var(--muted)}
+.s6 .support{font-size:36px;margin-top:24px}
+
+/* 07 · CTA comunidad, variante 11 de la biblioteca (foto en banda y maqueta de comentario) */
+.s7{background:var(--ink);color:#fff;padding:0}
+.s7 .photo{position:absolute;left:0;top:176px;width:1080px;height:608px;object-fit:cover;z-index:1}
+.s7 h2{position:absolute;left:96px;right:96px;top:800px;font-size:78px}
+.s7 .cm{position:absolute;z-index:4;left:96px;top:996px;width:888px;height:124px;border-radius:62px;background:#fff;color:var(--ink);display:flex;align-items:center;gap:20px;padding:0 40px 0 24px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.s7 .cm .av{flex:none;width:76px;height:76px;border-radius:50%;background:var(--surface) var(--sym) center/62% no-repeat}
+.s7 .cm .tx{flex:1;font:500 42px/1 var(--body);white-space:nowrap}
+.s7 .cm .ph{color:#9a9088}
+.s7 .cm .typed{font:700 50px/1 var(--display);letter-spacing:-.02em;background:var(--orange);padding:6px 20px 8px;border-radius:14px}
+.s7 .cm .caret{display:inline-block;width:5px;height:54px;background:var(--ink);vertical-align:-10px;margin:0 16px 0 6px}
+.s7 .cm .send{font:700 36px/1 var(--display);color:var(--orangeText)}
+.s7 .cmnote{position:absolute;z-index:4;left:96px;top:1140px;width:888px;font:400 36px/1.3 var(--body);color:#eee6df;text-wrap:balance}
+.kw{color:var(--orange)}
+</style>
+</head>
+<body>
+
+<!-- 01 · Tensión: 30 finales y 14 corregidos -->
+<section class="slide dark s1" data-n="1">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">01/07</div>
+  <img class="mosaic" src="assets/hoja-portada.png" alt="Mosaico de doce de los treinta finales de carrusel de la biblioteca de Plogy">
+  <div class="shade"></div>
+  <div class="top">
+    <p class="eyebrow">Building Plogy</p>
+    <h1>Armamos <span class="hl">30 formas</span> de cerrar un carrusel.</h1>
+    <p class="support">14 hubo que corregirlas. Esto fue lo que falló.</p>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Qué hicimos: las 30, por tipo -->
+<section class="slide surface s2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">02/07</div>
+  <div class="top">
+    <h2>30 finales, <span class="hl">cuatro tipos.</span></h2>
+    <div class="legend"><span class="lg1">Seguimiento 10</span><span class="lg2">Comunidad 6</span><span class="lg3">Recurso 8</span><span class="lg4">Comercial 6</span></div>
+    <img class="fig" src="assets/hoja-30.png" alt="Hoja de contacto con las 30 variantes de CTA numeradas del 01 al 30, en seis columnas">
+    <p class="cap">Ninguna se ha publicado ni medido.</p>
+  </div>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · Lección 1: paleta -->
+<section class="slide dark s3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">03/07</div>
+  <div class="top">
+    <p class="eyebrow">Lección 1</p>
+    <h2>Una foto fuera de marca <span class="hl">va a la paleta.</span></h2>
+    <p class="support">17 de las 30 fotos pasaron por un tratamiento de color.</p>
+    <p class="lab">11 con mapa a la paleta <em>(azul, verde, amarillo)</em></p>
+    <img class="fig" src="assets/hoja-mapa.png" alt="Las once variantes cuyas fotos pasaron por mapa de color: 03, 04, 09, 10, 12, 13, 15, 16, 21, 23 y 26">
+    <p class="lab">6 con los rojos llevados al naranja</p>
+    <img class="fig" src="assets/hoja-rojos.png" alt="Las seis variantes cuyos rojos se llevaron al naranja de marca: 14, 18, 20, 22, 24 y 28">
+  </div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Lección 2: titular naranja sobre foto naranja -->
+<section class="slide surface s4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">04/07</div>
+  <div class="top">
+    <p class="eyebrow">Lección 2</p>
+    <h2>Naranja sobre foto naranja, <span class="hl">el titular se pierde.</span></h2>
+    <p class="support">En 6 variantes el titular pasó a blanco.</p>
+    <img class="fig" src="assets/hoja-titulares.png" alt="Las seis variantes con el titular en blanco: 06, 10, 18, 20, 21 y 29">
+    <p class="cap">Solo guardamos el después, no el antes.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · Lección 3: logo -->
+<section class="slide dark s5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">05/07</div>
+  <div class="top">
+    <p class="eyebrow">Lección 3</p>
+    <h2>Sobre una foto ocupada, <span class="hl">el logo se pierde.</span></h2>
+    <p class="support">5 correcciones: sombra arriba en 13, 26 y 28, foto más abajo en 11 y logo negro sobre naranja en 23.</p>
+    <img class="fig" src="assets/hoja-logos.png" alt="Recortes de la zona del logo en las variantes 13, 26, 28, 11 y 23">
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 06 · Lección 4: el recurso tiene que existir -->
+<section class="slide surface s6" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">06/07</div>
+  <div class="top">
+    <p class="eyebrow">Lección 4</p>
+    <h2>Un CTA de recurso solo sirve <span class="hl">si el recurso existe.</span></h2>
+    <div class="rec">
+      <div class="no"><em class="n" style="font-style:normal">17</em><b>PROMPT</b><span>Plantilla de ejemplo</span><i>No existe</i></div>
+      <div class="no"><em class="n" style="font-style:normal">18</em><b>GUIA</b><span>Guía de ejemplo</span><i>No existe</i></div>
+      <div class="yes"><em class="n" style="font-style:normal">19</em><b>MEDIR</b><span>Guía de medición</span><i>Borrador</i></div>
+      <div class="yes"><em class="n" style="font-style:normal">20</em><b>MIGRAR</b><span>Lista de revisión</span><i>Borrador</i></div>
+      <div class="yes"><em class="n" style="font-style:normal">21</em><b>COSTO</b><span>Reporte de costos</span><i>Borrador</i></div>
+      <div class="no"><em class="n" style="font-style:normal">22</em><b>MAPA</b><span>Checklist sin hacer</span><i>No existe</i></div>
+      <div class="no"><em class="n" style="font-style:normal">23</em><b>AUDITORIA</b><span>Lista de ejemplo</span><i>No existe</i></div>
+      <div class="no"><em class="n" style="font-style:normal">24</em><b>BANCO</b><span>Reporte de ejemplo</span><i>No existe</i></div>
+    </div>
+    <p class="support">De 8, solo 3 tienen algo detrás, y ninguno está publicado.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 07 · CTA comunidad (variante 11 de la biblioteca, adaptada): pregunta que se responde comentando -->
+<section class="slide s7" data-n="7">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">07/07</div>
+  <img class="photo" src="assets/11-reunion.jpg" alt="Doce personas alrededor de una mesa vista desde arriba, en blanco y negro">
+  <h2>¿Cuál usarías para <span class="hl">cerrar tu carrusel?</span></h2>
+  <div class="cm"><div class="av"></div><div class="tx"><span class="typed">Plogy</span><span class="caret"></span><span class="ph">y el número</span></div><div class="send">Publicar</div></div>
+  <p class="cmnote">Comenta <span class="kw">Plogy</span> y dinos el número. Ninguna se ha publicado ni medido todavía.</p>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 018 · Seis dashboards para tu negocio</title>
+<!-- GENERADO por scripts/build.py (no editar a mano; editar el script y scripts/slides.css).
+     8 láminas de 1080x1350. Una lámina sola: carrusel.html?s=1 ... ?s=8
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7,8 -Prefix slide-0
+     Formato inspirado en un carrusel de referencia; el ángulo (pregunta + datos que necesitas) es de Plogy.
+     Dashboards: maquetas propias con DATOS DE EJEMPLO, rotuladas en cada pantalla.
+     Tipografía: Space Grotesk (display, respaldo de Screener DEMO) e Inter (interfaz de los dashboards). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --night:#0f0c0a; --orange:#ff5b00;
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --ui:Inter,'Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px;background:var(--night);color:#fff}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;color:#e6dfd8;z-index:5}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:5;color:#fff}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.25}
+.dots i.on{opacity:1;background:var(--orange)}
+.grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,.035) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.035) 2px,transparent 2px);background-size:90px 90px}
+.blob{position:absolute;z-index:0;border-radius:50%;filter:blur(150px);opacity:.42}
+h1,h2{position:relative;z-index:3;font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance}
+
+.top{position:relative;z-index:3;margin-top:100px}
+.eb{font:700 28px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:26px}
+.eb b{color:#fff;opacity:.55;font-weight:700}
+.top h2{font-size:74px}
+.top .m{margin-top:20px;font:400 34px/1.32 var(--body);color:#d8cfc6;max-width:880px}
+.top .dash{margin-top:44px}
+.need{position:absolute;z-index:3;left:96px;right:96px;bottom:128px;font:400 29px/1.3 var(--body);color:#cfc6bd}
+.need b{font-family:var(--display);color:#fff}
+
+/* ===== contenedor: app de 1400x880 escalada a 888 de ancho ===== */
+.dash{position:relative;z-index:3;width:888px;height:558px;border-radius:20px;overflow:hidden;
+  border:1.5px solid var(--ga);box-shadow:0 0 0 1px rgba(255,255,255,.04),0 0 100px var(--ga),0 30px 80px rgba(0,0,0,.65)}
+.app{width:1400px;height:880px;transform:scale(.63429);transform-origin:0 0;display:grid;grid-template-columns:232px 1fr;
+  background:#15110e;color:#f3eee9;font:400 16px/1.3 var(--ui);letter-spacing:-.005em}
+.app svg.i{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.app .mute{color:#6f655d}
+
+/* barra lateral */
+.sb{background:#100d0b;border-right:1px solid rgba(255,255,255,.06);padding:22px 16px;display:flex;flex-direction:column}
+.ws{display:flex;align-items:center;gap:12px;padding:4px 8px 18px}
+.wl{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--g),var(--g2));box-shadow:0 0 18px var(--ga)}
+.ws b{display:block;font:600 16px/1.2 var(--ui)} .ws small{color:#8d8279;font-size:13px}
+.srch{display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.08);background:#1a1512;border-radius:10px;padding:10px 12px;color:#8d8279;font-size:14px;margin-bottom:10px}
+.srch span{flex:1}
+kbd{font:500 11px/1 var(--ui);color:#8d8279;border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 6px}
+.sec{font:600 11.5px/1 var(--ui);letter-spacing:.09em;text-transform:uppercase;color:#6f655d;padding:16px 12px 8px}
+.nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:#b7ada4;font:500 15px/1 var(--ui)}
+.nav a.on{background:rgba(255,255,255,.06);color:#fff;box-shadow:inset 3px 0 0 var(--g)}
+.nav a.on svg.i{color:var(--g)}
+.nav .n{margin-left:auto;font:700 11.5px/1 var(--ui);background:var(--g);color:#16120f;border-radius:999px;padding:4px 8px}
+.me{margin-top:auto;display:flex;align-items:center;gap:10px;border-top:1px solid rgba(255,255,255,.06);padding:16px 6px 0}
+.me div{flex:1} .me b{display:block;font:600 14px/1.2 var(--ui)} .me small{color:#8d8279;font-size:12.5px}
+.av{width:34px;height:34px;flex:none;border-radius:50%;background:linear-gradient(135deg,#f75946,#9c5aa7);display:inline-flex;align-items:center;justify-content:center;font:700 12.5px/1 var(--ui);color:#fff}
+.av.sm{width:38px;height:38px}
+.av.xs{width:28px;height:28px;font-size:11px;margin-right:10px;vertical-align:middle}
+.av.a1{background:linear-gradient(135deg,#ff9a5c,#ff5b00)} .av.a2{background:linear-gradient(135deg,#e1556a,#9c5aa7)}
+.av.a3{background:linear-gradient(135deg,#8d8279,#4a413a)} .av.a4{background:linear-gradient(135deg,#c85981,#6b3a78)}
+
+/* contenido */
+.mn{padding:22px 26px;display:flex;flex-direction:column;gap:16px;min-width:0;min-height:0}
+.tb{display:flex;justify-content:space-between;align-items:center;height:56px}
+.tb small{color:#8d8279;font-size:13px} .tb h3{font:650 26px/1.15 var(--ui);font-weight:700;letter-spacing:-.02em;margin-top:5px}
+.tools{display:flex;align-items:center;gap:10px}
+.px{border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:9px 12px;font:500 13.5px/1 var(--ui);color:#cfc6bd;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.px svg.i{width:16px;height:16px}
+.px.ex{color:var(--g);border-color:var(--ga);background:var(--gt);font-weight:700;letter-spacing:.02em}
+.icb{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;position:relative;color:#cfc6bd}
+.icb i{position:absolute;top:8px;right:9px;width:7px;height:7px;border-radius:50%;background:var(--g)}
+
+.kr{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;height:132px;flex:none}
+.kc{background:#1d1814;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px 18px;position:relative;overflow:hidden}
+.kh{display:flex;justify-content:space-between;align-items:center;color:#9a8f85;font:500 14px/1.2 var(--ui)}
+.kc b{display:block;margin-top:12px;font:700 32px/1 var(--ui);letter-spacing:-.03em}
+.kf{margin-top:12px;display:flex;gap:8px;align-items:center;font-size:12.5px;color:#8d8279;position:relative;z-index:2}
+.up,.dn{font:600 12px/1 var(--ui);border-radius:6px;padding:4px 7px;white-space:nowrap}
+.up{background:var(--gt);color:var(--g)} .dn{background:rgba(255,143,125,.14);color:#ff8f7d}
+.kc .spark{position:absolute;right:18px;top:46px;width:92px;height:38px}
+.pb{margin-top:12px;height:8px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden}
+.pb i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--g2),var(--g))}
+.pb.in{margin:0}
+
+.g1{display:grid;grid-template-columns:2fr 1fr;gap:14px;height:340px;flex:none}
+.g2{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;flex:1;min-height:0}
+.g2.eq{grid-template-columns:1fr 1fr}
+.g3{display:grid;grid-template-columns:2.05fr 1fr;gap:14px;flex:1;min-height:0}
+.stack{display:flex;flex-direction:column;gap:14px;min-height:0}
+.stack .cd{flex:1}
+.cd{background:#1d1814;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px 18px;min-width:0;min-height:0;overflow:hidden;position:relative}
+.ch{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}
+.ch b{font:600 16px/1.2 var(--ui)} .ch small{display:block;color:#8d8279;font-size:13px;margin-top:3px}
+.ch > div:last-child,.ch > .seg,.ch > .lg{display:flex;align-items:center;gap:14px}
+.seg{display:flex;background:#15110e;border:1px solid rgba(255,255,255,.05);border-radius:9px;padding:3px;font:500 12.5px/1 var(--ui);color:#8d8279}
+.seg span{padding:6px 10px;border-radius:7px} .seg .on{background:#2c241f;color:#fff}
+.lg{display:flex;gap:14px;font-size:12.5px;color:#9a8f85}
+.lg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.lnk{font:600 13px/1 var(--ui);color:var(--g)}
+.chart{display:block;width:100%;height:auto}
+.chart .gl line{stroke:rgba(255,255,255,.06);stroke-width:1.5}
+.chart .ax text{font:500 12.5px var(--ui);fill:#7d7269}
+.chart .axt{font:600 13px var(--ui);fill:#9a8f85}
+.chart .vl{font:700 13px var(--ui);fill:#f3eee9}
+.chart .tt1{font:700 15px var(--ui);fill:#fff} .chart .tt2{font:500 13px var(--ui);fill:#b7ada4}
+.chart .tt2.hot,.chart .mn1{fill:#ff8f7d;font:600 12.5px var(--ui)}
+
+/* donut + lista */
+.dw{display:flex;justify-content:center;margin:0 0 8px}
+svg.dnt .t1{font:700 21px var(--ui);fill:#fff;letter-spacing:-.02em} svg.dnt .t2{font:500 13px var(--ui);fill:#8d8279}
+.lst div{display:flex;align-items:center;gap:10px;padding:6px 0;border-top:1px solid rgba(255,255,255,.05);font-size:14px}
+.lst span{flex:1;color:#cfc6bd} .lst i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px}
+.lst b{font-weight:600} .lst em{font-style:normal;color:#8d8279;width:40px;text-align:right}
+
+/* barras horizontales */
+.hb{margin-bottom:14px}
+.hbl{display:flex;justify-content:space-between;font-size:14px;color:#cfc6bd;margin-bottom:7px}
+.hbl b{color:#fff;font-weight:600}
+.hbt{height:10px;border-radius:5px;background:rgba(255,255,255,.06);overflow:hidden}
+.hbt i{display:block;height:100%;border-radius:5px}
+
+/* tareas / alertas */
+.tasks div{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid rgba(255,255,255,.05)}
+.tasks div:first-child{border-top:0}
+.ti{width:36px;height:36px;flex:none;border-radius:10px;background:#2a231e;display:flex;align-items:center;justify-content:center;color:#cfc6bd}
+.tasks .hot .ti{background:var(--gt);color:var(--g)}
+.tasks p{flex:1} .tasks p b{display:block;font:600 14.5px/1.25 var(--ui)} .tasks p small{color:#8d8279;font-size:12.5px}
+.tasks em{font-style:normal;font-weight:700;font-size:14.5px}
+.tasks em.chip{font:600 12px/1 var(--ui);color:var(--g);background:var(--gt);padding:5px 9px;border-radius:999px}
+
+/* tablas */
+.tbl{width:100%;border-collapse:collapse;font:500 14px/1.2 var(--ui)}
+.tbl th{color:#7d7269;font:600 11.5px/1 var(--ui);letter-spacing:.07em;text-transform:uppercase;text-align:left;padding:2px 8px 10px 0}
+.tbl td{padding:9px 8px 9px 0;border-top:1px solid rgba(255,255,255,.05);color:#e6dfd8;white-space:nowrap}
+.tbl .r{text-align:right} .tbl .mu{color:#8d8279}
+.tbl b{font-weight:600} .tbl b.hot{color:#ff8f7d} .tbl b.okc{color:var(--g)}
+.tbl b.neg{color:#e6dfd8} .tbl b.pos{color:var(--g)}
+.tbl td.sp{padding-right:0} .tbl td.sp svg{width:90px;height:30px;display:block}
+.st{font:600 12px/1 var(--ui);padding:5px 10px;border-radius:999px;display:inline-block}
+.st.ok{background:var(--gt);color:var(--g)} .st.warn{background:rgba(255,143,125,.14);color:#ff8f7d} .st.mid{background:rgba(255,255,255,.07);color:#cfc6bd}
+.chn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;margin-right:10px;font:700 11px/1 var(--ui);color:#16120f;vertical-align:middle}
+.chn.c0{background:var(--g)} .chn.c1{background:var(--g2)} .chn.c2{background:#8d8279} .chn.c3{background:#5d524a;color:#fff}
+
+/* tarjeta de alerta */
+.alertc{background:linear-gradient(160deg,var(--gt),rgba(255,255,255,.02) 70%),#1d1814;border-color:var(--ga)}
+.ah{display:flex;align-items:center;gap:10px;color:var(--g);font:700 12.5px/1 var(--ui);letter-spacing:.09em;text-transform:uppercase;margin-bottom:14px}
+.ah span{flex:1}
+.alertc > b{display:block;font:700 23px/1.22 var(--ui);letter-spacing:-.02em}
+.alertc > p{margin-top:10px;font-size:14.5px;color:#cfc6bd;line-height:1.4}
+.alertc ul{margin-top:10px;list-style:none}
+.alertc li{font-size:14px;color:#e6dfd8;padding:8px 0 8px 18px;border-top:1px solid rgba(255,255,255,.06);position:relative}
+.alertc li::before{content:"";position:absolute;left:2px;top:14px;width:7px;height:7px;border-radius:50%;background:var(--g)}
+
+/* kanban */
+.cd.tall{display:flex;flex-direction:column}
+.kb{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;flex:1;min-height:0}
+.kcol{background:#17130f;border:1px solid rgba(255,255,255,.04);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:9px;min-width:0}
+.kcol.hotc{border-color:var(--ga);background:linear-gradient(180deg,var(--gt),#17130f 60%)}
+.kch{display:flex;align-items:center;gap:8px;font-size:14px}
+.kch b{font-weight:600} .kch span{font:700 12px/1 var(--ui);background:rgba(255,255,255,.08);border-radius:999px;padding:4px 8px;color:#cfc6bd}
+.kch em svg.i{width:12px;height:12px}
+.kch em{display:flex;align-items:center;gap:3px;white-space:nowrap;margin-left:auto;font:700 11px/1 var(--ui);font-style:normal;color:#ff8f7d;background:rgba(255,143,125,.14);padding:4px 7px;border-radius:999px}
+.oc{background:#221c18;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:11px 12px}
+.oc div{display:flex;justify-content:space-between;align-items:center}
+.oc b{font:600 14px/1 var(--ui)} .oc small{display:block;margin-top:6px;color:#8d8279;font-size:12.5px}
+.oc .tm{white-space:nowrap;display:flex;align-items:center;gap:4px;font-size:12px;color:#9a8f85} .oc .tm svg.i{width:13px;height:13px}
+.oc em{display:inline-block;margin-top:8px;font:700 11px/1 var(--ui);font-style:normal;color:#ff8f7d;background:rgba(255,143,125,.14);padding:4px 7px;border-radius:6px}
+.oc.late{border-color:rgba(255,143,125,.35)} .oc.late .tm{color:#ff8f7d}
+.oc.done{opacity:.6}
+.more{margin-top:auto;font:500 12.5px/1 var(--ui);color:#7d7269;text-align:center;padding:6px 0}
+
+/* barras con presupuesto */
+.bvs{display:flex;flex-direction:column;gap:20px;margin-top:6px}
+.bvl{display:flex;align-items:baseline;gap:12px;margin-bottom:9px;font-size:14.5px}
+.bvl b{font-weight:600;width:110px} .bvl span{flex:1;color:#e6dfd8;font-weight:600} .bvl small{color:#8d8279;font-weight:500}
+.bvl em{font:700 12px/1 var(--ui);font-style:normal;color:#16120f;background:var(--g);padding:5px 8px;border-radius:999px}
+.bvl i{font:600 12.5px/1 var(--ui);font-style:normal;color:#8d8279}
+.bvt{position:relative;height:14px;border-radius:7px;background:rgba(255,255,255,.06)}
+.bvt i{display:block;height:100%;border-radius:7px}
+.bvt u{position:absolute;top:-6px;bottom:-6px;width:3px;margin-left:-1.5px;border-radius:2px;background:#fff}
+
+/* ===== portada y CTA ===== */
+.mini{position:absolute;z-index:2;width:888px;height:558px;transform-origin:center}
+.p1 .m1{left:-170px;top:150px;transform:scale(.62) rotate(-7deg)}
+.p1 .m2{left:340px;top:40px;transform:scale(.62) rotate(6deg)}
+.p1 .m3{left:120px;top:420px;transform:scale(.7) rotate(-2deg)}
+.p1 .shade{position:absolute;inset:0;z-index:2;background:linear-gradient(to bottom,rgba(15,12,10,.55) 0%,rgba(15,12,10,0) 18%,rgba(15,12,10,0) 44%,rgba(15,12,10,.94) 64%,#0f0c0a 100%)}
+.p1 .pill{position:absolute;z-index:4;left:96px;top:196px;background:var(--orange);color:var(--ink);font:700 30px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:18px 30px;border-radius:999px}
+.p1 .bottom{position:absolute;z-index:4;left:96px;right:96px;bottom:150px}
+.p1 h1{font-size:86px}
+.p1 h1 .hl{color:var(--orange);text-shadow:0 0 34px rgba(255,91,0,.55)}
+.p1 .sub{margin-top:24px;font:400 36px/1.32 var(--body);color:#e6dfd8}
+.p1 .sub b{color:#fff;font-weight:700}
+
+.p8 .m1{left:-380px;top:0px;transform:scale(.5) rotate(9deg)}
+.p8 .m2{left:580px;top:20px;transform:scale(.5) rotate(-9deg)}
+.p8 .m3{left:-330px;top:930px;transform:scale(.5) rotate(-8deg)}
+.p8 .m4{left:540px;top:950px;transform:scale(.5) rotate(8deg)}
+.p8 .shade{position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse 640px 560px at 50% 47%,rgba(15,12,10,.96) 0%,rgba(15,12,10,.85) 55%,rgba(15,12,10,.2) 100%)}
+.p8 .center{position:absolute;z-index:4;left:60px;right:60px;top:440px;text-align:center}
+.p8 .center small{display:block;font:700 62px/1 var(--display);letter-spacing:-.03em}
+.p8 .center b{display:block;margin-top:14px;font:700 230px/1 var(--display);letter-spacing:-.055em;color:var(--orange);text-shadow:0 0 50px rgba(255,91,0,.55)}
+.p8 .center p{margin:30px auto 0;max-width:820px;text-wrap:balance;font:400 40px/1.3 var(--body);color:#e6dfd8}
+.p8 .center p strong{color:#fff}
+.p8 .center p.ev{margin:0 auto 46px;max-width:860px;font:700 52px/1.12 var(--display);letter-spacing:-.03em;color:#fff}
+.p8 .center p.ev strong{color:var(--orange)}
+
+</style>
+</head>
+<body>
+
+<!-- 01 · Portada -->
+<section class="slide p1" data-n="1">
+  <div class="grid"></div>
+  <div class="blob" style="width:700px;height:600px;left:-100px;top:100px;background:#ff5b00"></div>
+  <div class="blob" style="width:600px;height:500px;right:-150px;top:0;background:#9c5aa7"></div>
+  <div class="mini m1" data-clone="d3"></div>
+  <div class="mini m2" data-clone="d7"></div>
+  <div class="mini m3" data-clone="d2"></div>
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">01/08</div>
+  <span class="pill">Guía</span>
+  <div class="bottom">
+    <h1>6 dashboards que le puedes pedir a <span class="hl">Claude</span> para tu negocio.</h1>
+    <p class="sub">Y la pregunta que responde cada uno. <b>Si no tienes la pregunta, no necesitas el dashboard.</b></p>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Ejecutivo -->
+<section class="slide" data-n="2">
+  <div class="grid"></div>
+  <div class="blob" style="width:900px;height:620px;left:90px;top:640px;background:#ff5b00"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">02/08</div>
+  <div class="top">
+    <div class="eb" style="color:#ff5b00">Dashboard 1 <b>· Ejecutivo</b></div>
+    <h2>¿Cómo va el negocio este mes?</h2>
+    <p class="m">Facturación, margen, caja y avance contra la meta, en una sola pantalla.</p>
+    <div class="dash" id="d2" style="--g:#ff5b00;--g2:#ff9a5c;--ga:rgba(255,91,0,.55);--gt:rgba(255,91,0,.16)"><div class="app">
+  <aside class="sb">
+    <div class="ws"><span class="wl"></span><div><b>Mi negocio</b><small>Espacio de trabajo</small></div></div>
+    <div class="srch"><svg class="i " viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Buscar</span><kbd>Ctrl K</kbd></div>
+    <p class="sec">Paneles</p>
+    <nav class="nav"><a class="on"><svg class="i " viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Resumen</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/></svg>Ventas</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-3v3"/><path d="M16 14h2"/></svg>Caja<span class="n">1</span></a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 10v4h4l7 4V6L7 10z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg>Marketing</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 10h5l3 3v3h-8"/><circle cx="6" cy="18.5" r="2"/><circle cx="17" cy="18.5" r="2"/></svg>Operaciones<span class="n">7</span></a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>Gasto en IA</a></nav>
+    <p class="sec">Cuenta</p>
+    <nav class="nav"><a><svg class="i " viewBox="0 0 24 24"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"/></svg>Integraciones</a><a><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Ajustes</a><a><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.7M12 17h.01"/></svg>Ayuda</a></nav>
+    <div class="me"><span class="av">TU</span><div><b>Tu cuenta</b><small>Administrador</small></div><svg class="i mute" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div>
+  </aside>
+  <main class="mn">
+    <header class="tb">
+      <div><small>Paneles / Resumen</small><h3>Resumen del mes</h3></div>
+      <div class="tools"><span class="px ex">Datos de ejemplo</span><span class="px"><svg class="i " viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>1 al 21 oct 2026</span>
+        <span class="px"><svg class="i " viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/></svg>Exportar</span><span class="icb"><svg class="i " viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></svg><i></i></span><span class="av sm">TU</span></div>
+    </header>
+    <div class="kr"><div class="kc"><div class="kh"><span>Facturación</span><svg class="i mute" viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/></svg></div><b>$48.200</b><div class="kf"><span class="up">▲ 8%</span><small>vs septiembre</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk11" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L17.1 29.9 L34.3 33.1 L51.4 21.8 L68.6 23.4 L85.7 13.7 L102.9 10.5 L120.0 4.0 L120 42 Z" fill="url(#spk11)"/><polyline points="0.0,38.0 17.1,29.9 34.3,33.1 51.4,21.8 68.6,23.4 85.7,13.7 102.9,10.5 120.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Margen bruto</span><svg class="i mute" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></div><b>31%</b><div class="kf"><span class="up">▲ 2 pts</span><small>vs septiembre</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk12" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L20.0 29.5 L40.0 21.0 L60.0 25.2 L80.0 12.5 L100.0 16.8 L120.0 4.0 L120 42 Z" fill="url(#spk12)"/><polyline points="0.0,38.0 20.0,29.5 40.0,21.0 60.0,25.2 80.0,12.5 100.0,16.8 120.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Caja disponible</span><svg class="i mute" viewBox="0 0 24 24"><path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-3v3"/><path d="M16 14h2"/></svg></div><b>$12.400</b><div class="kf"><span class="dn">▼ 5%</span><small>vs septiembre</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk13" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8f7d" stop-opacity=".35"/><stop offset="1" stop-color="#ff8f7d" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 4.0 L24.0 12.5 L48.0 6.1 L72.0 23.1 L96.0 29.5 L120.0 38.0 L120 42 Z" fill="url(#spk13)"/><polyline points="0.0,4.0 24.0,12.5 48.0,6.1 72.0,23.1 96.0,29.5 120.0,38.0" fill="none" stroke="#ff8f7d" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Avance de la meta</span><svg class="i mute" viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg></div><b>72%</b><div class="kf"><small>de $67.000 del mes</small></div><div class="pb"><i style="width:72%"></i></div></div></div><div class="g1"><div class="cd "><div class="ch"><div><b>Facturación acumulada vs meta</b><small>Octubre 2026</small></div><div class="lg"><span><i style="background:var(--g)"></i>Real</span><span><i style="background:#8d8279"></i>Meta</span></div><div class="seg"><span class="">Semana</span><span class="on">Mes</span><span class="">Trimestre</span></div></div><svg class="chart" viewBox="0 0 700 250">
+      <defs><linearGradient id="ga1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".38"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs>
+      <g class="gl"><line x1="52" x2="690" y1="216.0" y2="216.0"/><line x1="52" x2="690" y1="158.9" y2="158.9"/><line x1="52" x2="690" y1="101.7" y2="101.7"/><line x1="52" x2="690" y1="44.6" y2="44.6"/></g><g class="ax"><text x="0" y="221.0">$0</text><text x="0" y="163.9">$20k</text><text x="0" y="106.7">$40k</text><text x="0" y="49.6">$60k</text><text x="52.0" y="244" text-anchor="middle">1 oct</text><text x="200.4" y="244" text-anchor="middle">8 oct</text><text x="348.8" y="244" text-anchor="middle">15 oct</text><text x="497.2" y="244" text-anchor="middle">22 oct</text><text x="645.6" y="244" text-anchor="middle">29 oct</text></g>
+      <line x1="52.0" y1="209.8" x2="688.0" y2="24.6" stroke="#8d8279" stroke-width="2.5" stroke-dasharray="8 7"/>
+      <path d="M52.0 216 L52.0 208.1 L73.2 198.8 L94.4 196.2 L115.6 193.9 L136.8 185.3 L158.0 176.3 L179.2 169.4 L200.4 162.4 L221.6 153.3 L242.8 150.3 L264.0 148.0 L285.2 140.4 L306.4 131.1 L327.6 123.3 L348.8 116.8 L370.0 108.4 L391.2 105.2 L412.4 102.8 L433.6 95.9 L454.8 86.9 L476.0 78.3 L476.0 216 Z" fill="url(#ga1)"/>
+      <polyline points="52.0,208.1 73.2,198.8 94.4,196.2 115.6,193.9 136.8,185.3 158.0,176.3 179.2,169.4 200.4,162.4 221.6,153.3 242.8,150.3 264.0,148.0 285.2,140.4 306.4,131.1 327.6,123.3 348.8,116.8 370.0,108.4 391.2,105.2 412.4,102.8 433.6,95.9 454.8,86.9 476.0,78.3" fill="none" stroke="var(--g)" stroke-width="3.5" stroke-linejoin="round"/>
+      <line x1="476.0" x2="476.0" y1="14" y2="216" stroke="rgba(255,255,255,.25)" stroke-dasharray="4 5"/>
+      <circle cx="476.0" cy="78.3" r="7" fill="#15110e" stroke="var(--g)" stroke-width="4"/>
+      <g transform="translate(271.0,72.3)"><rect width="190" height="62" rx="10" fill="#2a231e" stroke="rgba(255,255,255,.1)"/>
+        <text x="14" y="24" class="tt1">21 oct · $48.200</text><text x="14" y="46" class="tt2">Meta al día: $45.400</text></g>
+    </svg></div><div class="cd "><div class="ch"><div><b>Ingresos por línea</b><small>Del 1 al 21 oct</small></div><svg class="i mute" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div><div class="dw"><svg class="dnt" viewBox="0 0 132 132" style="width:132px;height:132px"><circle cx="66.0" cy="66.0" r="56.0" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="20"/><circle cx="66" cy="66" r="56" fill="none" stroke="var(--g)" stroke-width="20" stroke-dasharray="200.1 151.8" stroke-dashoffset="0.0" transform="rotate(-90 66 66)"/><circle cx="66" cy="66" r="56" fill="none" stroke="var(--g2)" stroke-width="20" stroke-dasharray="101.6 250.3" stroke-dashoffset="-204.1" transform="rotate(-90 66 66)"/><circle cx="66" cy="66" r="56" fill="none" stroke="#5d524a" stroke-width="20" stroke-dasharray="38.2 313.6" stroke-dashoffset="-309.6" transform="rotate(-90 66 66)"/><text x="66.0" y="68.0" text-anchor="middle" class="t1">$48,2k</text><text x="66.0" y="90.0" text-anchor="middle" class="t2">total</text></svg></div><div class="lst"><div><span><i style="background:var(--g)"></i>Productos</span><b>$28.000</b><em>58%</em></div><div><span><i style="background:var(--g2)"></i>Servicios</span><b>$14.500</b><em>30%</em></div><div><span><i style="background:#5d524a"></i>Suscripciones</span><b>$5.700</b><em>12%</em></div></div></div></div><div class="g2"><div class="cd "><div class="ch"><div><b>Gastos por categoría</b><small>Total $33.300</small></div><div class="seg"><span class="on">Mes</span><span class="">Año</span></div></div><div class="hb"><div class="hbl"><span>Sueldos</span><b>$18.600</b></div><div class="hbt"><i style="width:100.0%;background:var(--g)"></i></div></div><div class="hb"><div class="hbl"><span>Proveedores</span><b>$9.400</b></div><div class="hbt"><i style="width:50.5%;background:#5d524a"></i></div></div><div class="hb"><div class="hbl"><span>Arriendo</span><b>$3.200</b></div><div class="hbt"><i style="width:17.2%;background:#5d524a"></i></div></div><div class="hb"><div class="hbl"><span>Marketing</span><b>$2.100</b></div><div class="hbt"><i style="width:11.3%;background:#5d524a"></i></div></div></div><div class="cd "><div class="ch"><div><b>Pendientes</b><small>Esta semana</small></div><span class="lnk">Ver todo</span></div><div class="tasks"><div><span class="ti"><svg class="i " viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg></span><p><b>3 facturas por cobrar</b><small>Vencen esta semana</small></p><em>$6.800</em></div><div><span class="ti"><svg class="i " viewBox="0 0 24 24"><path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-3v3"/><path d="M16 14h2"/></svg></span><p><b>Pago a proveedor</b><small>28 oct</small></p><em>$6.400</em></div><div><span class="ti"><svg class="i " viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><p><b>Cierre de mes</b><small>31 oct</small></p><em class="chip">En 10 días</em></div></div></div></div>
+  </main>
+</div></div>
+  </div>
+  <p class="need"><b>Necesitas:</b> tus ventas y gastos del mes en una planilla.</p>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+<!-- 03 · Ventas -->
+<section class="slide" data-n="3">
+  <div class="grid"></div>
+  <div class="blob" style="width:900px;height:620px;left:90px;top:640px;background:#f75946"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">03/08</div>
+  <div class="top">
+    <div class="eb" style="color:#f75946">Dashboard 2 <b>· Ventas</b></div>
+    <h2>¿Quién llega a la meta y quién no?</h2>
+    <p class="m">Ventas por persona, ticket promedio y avance de cada una contra su meta.</p>
+    <div class="dash" id="d3" style="--g:#f75946;--g2:#ffab9f;--ga:rgba(247,89,70,.55);--gt:rgba(247,89,70,.16)"><div class="app">
+  <aside class="sb">
+    <div class="ws"><span class="wl"></span><div><b>Mi negocio</b><small>Espacio de trabajo</small></div></div>
+    <div class="srch"><svg class="i " viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Buscar</span><kbd>Ctrl K</kbd></div>
+    <p class="sec">Paneles</p>
+    <nav class="nav"><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Resumen</a><a class="on"><svg class="i " viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/></svg>Ventas</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-3v3"/><path d="M16 14h2"/></svg>Caja<span class="n">1</span></a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 10v4h4l7 4V6L7 10z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg>Marketing</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 10h5l3 3v3h-8"/><circle cx="6" cy="18.5" r="2"/><circle cx="17" cy="18.5" r="2"/></svg>Operaciones<span class="n">7</span></a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>Gasto en IA</a></nav>
+    <p class="sec">Cuenta</p>
+    <nav class="nav"><a><svg class="i " viewBox="0 0 24 24"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"/></svg>Integraciones</a><a><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Ajustes</a><a><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.7M12 17h.01"/></svg>Ayuda</a></nav>
+    <div class="me"><span class="av">TU</span><div><b>Tu cuenta</b><small>Administrador</small></div><svg class="i mute" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div>
+  </aside>
+  <main class="mn">
+    <header class="tb">
+      <div><small>Paneles / Ventas</small><h3>Equipo comercial</h3></div>
+      <div class="tools"><span class="px ex">Datos de ejemplo</span><span class="px"><svg class="i " viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>1 al 21 oct 2026</span>
+        <span class="px"><svg class="i " viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/></svg>Exportar</span><span class="icb"><svg class="i " viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></svg><i></i></span><span class="av sm">TU</span></div>
+    </header>
+    <div class="kr"><div class="kc"><div class="kh"><span>Ventas del mes</span><svg class="i mute" viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/></svg></div><b>$31.500</b><div class="kf"><span class="up">▲ 12%</span><small>vs septiembre</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk21" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L20.0 32.1 L40.0 35.0 L60.0 23.2 L80.0 26.2 L100.0 14.3 L120.0 4.0 L120 42 Z" fill="url(#spk21)"/><polyline points="0.0,38.0 20.0,32.1 40.0,35.0 60.0,23.2 80.0,26.2 100.0,14.3 120.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Ticket promedio</span><svg class="i mute" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg></div><b>$420</b><div class="kf"><span class="up">▲ $35</span><small>vs septiembre</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk22" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L24.0 31.2 L48.0 21.0 L72.0 24.4 L96.0 14.2 L120.0 4.0 L120 42 Z" fill="url(#spk22)"/><polyline points="0.0,38.0 24.0,31.2 48.0,21.0 72.0,24.4 96.0,14.2 120.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Ventas cerradas</span><svg class="i mute" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></div><b>75</b><div class="kf"><span class="up">▲ 6</span><small>vs septiembre</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk23" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L24.0 28.9 L48.0 24.4 L72.0 17.6 L96.0 10.8 L120.0 4.0 L120 42 Z" fill="url(#spk23)"/><polyline points="0.0,38.0 24.0,28.9 48.0,24.4 72.0,17.6 96.0,10.8 120.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Equipo vs meta</span><svg class="i mute" viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg></div><b>85%</b><div class="kf"><small>faltan $5.500</small></div><div class="pb"><i style="width:85%"></i></div></div></div><div class="g1"><div class="cd "><div class="ch"><div><b>Avance de cada vendedor</b><small>Meta individual de octubre</small></div><div class="seg"><span class="on">Mes</span><span class="">Trimestre</span></div></div><table class="tbl"><tr><th>#</th><th>Vendedor</th><th class="r">Ventas</th><th class="r">Meta</th><th style="width:150px">Avance</th><th class="r">%</th><th>Estado</th></tr><tr><td class="mu">1</td><td><span class="av xs a0">AR</span>Ana</td><td class="r">$9.440</td><td class="r mu">$8.000</td><td><div class="pb in"><i style="width:100%;background:var(--g)"></i></div></td><td class="r"><b>118%</b></td><td><span class="st ok">En meta</span></td></tr><tr><td class="mu">2</td><td><span class="av xs a1">BM</span>Bruno</td><td class="r">$7.280</td><td class="r mu">$7.000</td><td><div class="pb in"><i style="width:100%;background:var(--g)"></i></div></td><td class="r"><b>104%</b></td><td><span class="st ok">En meta</span></td></tr><tr><td class="mu">3</td><td><span class="av xs a2">CS</span>Carla</td><td class="r">$5.520</td><td class="r mu">$6.000</td><td><div class="pb in"><i style="width:92%;background:#7a6d63"></i></div></td><td class="r"><b>92%</b></td><td><span class="st mid">En riesgo</span></td></tr><tr><td class="mu">4</td><td><span class="av xs a3">DL</span>Diego</td><td class="r">$4.970</td><td class="r mu">$7.000</td><td><div class="pb in"><i style="width:71%;background:#ff8f7d"></i></div></td><td class="r"><b>71%</b></td><td><span class="st warn">Bajo</span></td></tr><tr><td class="mu">5</td><td><span class="av xs a4">EP</span>Elena</td><td class="r">$4.290</td><td class="r mu">$9.000</td><td><div class="pb in"><i style="width:48%;background:#ff8f7d"></i></div></td><td class="r"><b>48%</b></td><td><span class="st warn">Bajo</span></td></tr></table></div><div class="cd "><div class="ch"><div><b>Ventas por semana</b><small>S4 en curso</small></div><svg class="i mute" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div><svg class="chart" viewBox="0 0 330 232"><defs><pattern id="hz2" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="rgba(255,255,255,.04)"/><line x1="0" y1="0" x2="0" y2="8" stroke="var(--g)" stroke-width="3" opacity=".6"/></pattern></defs>
+                <line x1="0" x2="330" y1="200" y2="200" stroke="rgba(255,255,255,.08)"/><rect x="20" y="77.6" width="48" height="122.4" rx="8" fill="var(--g)" /><text x="44" y="69.6" text-anchor="middle" class="vl">$7.200</text><text x="44" y="226" text-anchor="middle" class="axt">S1</text><rect x="98" y="48.7" width="48" height="151.3" rx="8" fill="var(--g)" /><text x="122" y="40.7" text-anchor="middle" class="vl">$8.900</text><text x="122" y="226" text-anchor="middle" class="axt">S2</text><rect x="176" y="45.3" width="48" height="154.7" rx="8" fill="var(--g)" /><text x="200" y="37.3" text-anchor="middle" class="vl">$9.100</text><text x="200" y="226" text-anchor="middle" class="axt">S3</text><rect x="254" y="92.9" width="48" height="107.1" rx="8" fill="url(#hz2)" stroke="var(--g)" stroke-width="2"/><text x="278" y="84.9" text-anchor="middle" class="vl">$6.300</text><text x="278" y="226" text-anchor="middle" class="axt">S4</text></svg></div></div><div class="g2"><div class="cd "><div class="ch"><div><b>Últimas ventas</b><small>Hoy</small></div><span class="lnk">Ver todas</span></div><table class="tbl"><tr><th>Venta</th><th>Cliente</th><th>Vendedor</th><th class="r">Monto</th><th class="r">Hora</th></tr><tr><td class="mu">#2291</td><td>Cliente 1042</td><td>Ana</td><td class="r"><b>$640</b></td><td class="r mu">10:42</td></tr><tr><td class="mu">#2290</td><td>Cliente 0877</td><td>Bruno</td><td class="r"><b>$380</b></td><td class="r mu">10:15</td></tr><tr><td class="mu">#2289</td><td>Cliente 1310</td><td>Carla</td><td class="r"><b>$1.120</b></td><td class="r mu">09:58</td></tr><tr><td class="mu">#2288</td><td>Cliente 0456</td><td>Ana</td><td class="r"><b>$290</b></td><td class="r mu">09:31</td></tr></table></div><div class="cd "><div class="ch"><div><b>Alertas</b><small>Generadas por el panel</small></div></div><div class="tasks"><div class="hot"><span class="ti"><svg class="i " viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg></span><p><b>Diego y Elena bajo el 80%</b><small>de su meta individual</small></p></div><div><span class="ti"><svg class="i " viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg></span><p><b>Elena tiene el ticket más bajo</b><small>del equipo este mes</small></p></div><div><span class="ti"><svg class="i " viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><p><b>Quedan 7 días hábiles</b><small>para cerrar octubre</small></p></div></div></div></div>
+  </main>
+</div></div>
+  </div>
+  <p class="need"><b>Necesitas:</b> las ventas del mes con el nombre de quien vendió.</p>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+<!-- 04 · Caja -->
+<section class="slide" data-n="4">
+  <div class="grid"></div>
+  <div class="blob" style="width:900px;height:620px;left:90px;top:640px;background:#ee5358"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">04/08</div>
+  <div class="top">
+    <div class="eb" style="color:#ee5358">Dashboard 3 <b>· Caja</b></div>
+    <h2>¿Te alcanza la caja para el próximo mes?</h2>
+    <p class="m">Cobros y pagos que vienen, y un aviso el día que el saldo baja del mínimo.</p>
+    <div class="dash" id="d4" style="--g:#ee5358;--g2:#f7a3a6;--ga:rgba(238,83,88,.55);--gt:rgba(238,83,88,.16)"><div class="app">
+  <aside class="sb">
+    <div class="ws"><span class="wl"></span><div><b>Mi negocio</b><small>Espacio de trabajo</small></div></div>
+    <div class="srch"><svg class="i " viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Buscar</span><kbd>Ctrl K</kbd></div>
+    <p class="sec">Paneles</p>
+    <nav class="nav"><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Resumen</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/></svg>Ventas</a><a class="on"><svg class="i " viewBox="0 0 24 24"><path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-3v3"/><path d="M16 14h2"/></svg>Caja<span class="n">1</span></a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 10v4h4l7 4V6L7 10z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg>Marketing</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 10h5l3 3v3h-8"/><circle cx="6" cy="18.5" r="2"/><circle cx="17" cy="18.5" r="2"/></svg>Operaciones<span class="n">7</span></a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>Gasto en IA</a></nav>
+    <p class="sec">Cuenta</p>
+    <nav class="nav"><a><svg class="i " viewBox="0 0 24 24"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"/></svg>Integraciones</a><a><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Ajustes</a><a><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.7M12 17h.01"/></svg>Ayuda</a></nav>
+    <div class="me"><span class="av">TU</span><div><b>Tu cuenta</b><small>Administrador</small></div><svg class="i mute" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div>
+  </aside>
+  <main class="mn">
+    <header class="tb">
+      <div><small>Paneles / Caja</small><h3>Flujo de caja</h3></div>
+      <div class="tools"><span class="px ex">Datos de ejemplo</span><span class="px"><svg class="i " viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>1 al 21 oct 2026</span>
+        <span class="px"><svg class="i " viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/></svg>Exportar</span><span class="icb"><svg class="i " viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></svg><i></i></span><span class="av sm">TU</span></div>
+    </header>
+    <div class="kr"><div class="kc"><div class="kh"><span>Saldo hoy</span><svg class="i mute" viewBox="0 0 24 24"><path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-3v3"/><path d="M16 14h2"/></svg></div><b>$8.400</b><div class="kf"><small>en 2 cuentas</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk31" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 4.0 L24.0 14.5 L48.0 6.6 L72.0 22.3 L96.0 28.8 L120.0 38.0 L120 42 Z" fill="url(#spk31)"/><polyline points="0.0,4.0 24.0,14.5 48.0,6.6 72.0,22.3 96.0,28.8 120.0,38.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Cobros próximos 30 días</span><svg class="i mute" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg></div><b>$22.000</b><div class="kf"><small>9 facturas</small></div></div><div class="kc"><div class="kh"><span>Pagos próximos 30 días</span><svg class="i mute" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><b>$27.600</b><div class="kf"><small>8 pagos</small></div></div><div class="kc"><div class="kh"><span>Saldo al día 30</span><svg class="i mute" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg></div><b>$2.800</b><div class="kf"><span class="dn">▼ bajo el mínimo</span><small></small></div></div></div><div class="g1"><div class="cd "><div class="ch"><div><b>Saldo proyectado</b><small>Próximos 30 días, día a día</small></div><div class="lg"><span><i style="background:var(--g)"></i>Saldo proyectado</span><span><i style="background:#ff8f7d"></i>Mínimo</span></div><div class="seg"><span class="on">30 días</span><span class="">60 días</span><span class="">90 días</span></div></div><svg class="chart" viewBox="0 0 700 250">
+      <defs><linearGradient id="ga3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".32"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs>
+      <g class="gl"><line x1="52" x2="690" y1="216.0" y2="216.0"/><line x1="52" x2="690" y1="149.3" y2="149.3"/><line x1="52" x2="690" y1="82.7" y2="82.7"/><line x1="52" x2="690" y1="16.0" y2="16.0"/></g><g class="ax"><text x="0" y="221.0">$0</text><text x="0" y="154.3">$5k</text><text x="0" y="87.7">$10k</text><text x="0" y="21.0">$15k</text><text x="52.0" y="244" text-anchor="middle">Hoy</text><text x="200.4" y="244" text-anchor="middle">28 oct</text><text x="348.8" y="244" text-anchor="middle">4 nov</text><text x="497.2" y="244" text-anchor="middle">11 nov</text><text x="645.6" y="244" text-anchor="middle">18 nov</text></g>
+      <line x1="52" x2="690" y1="149.3" y2="149.3" stroke="#ff8f7d" stroke-width="2.5" stroke-dasharray="8 7"/>
+      <text x="60" y="169.3" class="mn1">Mínimo $5.000</text>
+      <path d="M52.0 216 L52.0 104.0 L94.4 62.7 L115.6 90.7 L158.0 58.7 L200.4 144.0 L221.6 90.7 L264.0 133.3 L306.4 109.3 L348.8 134.7 L370.0 88.0 L433.6 120.0 L454.8 90.7 L518.4 69.3 L560.8 154.7 L603.2 129.3 L624.4 164.0 L666.8 144.0 L688.0 178.7 L688.0 216 Z" fill="url(#ga3)"/>
+      <polyline points="52.0,104.0 94.4,62.7 115.6,90.7 158.0,58.7 200.4,144.0 221.6,90.7 264.0,133.3 306.4,109.3 348.8,134.7 370.0,88.0 433.6,120.0 454.8,90.7 518.4,69.3 560.8,154.7 603.2,129.3 624.4,164.0 666.8,144.0 688.0,178.7" fill="none" stroke="var(--g)" stroke-width="3.5" stroke-linejoin="round"/>
+      <circle cx="94.4" cy="62.7" r="3.5" fill="var(--g)"/><circle cx="115.6" cy="90.7" r="3.5" fill="var(--g)"/><circle cx="158.0" cy="58.7" r="3.5" fill="var(--g)"/><circle cx="200.4" cy="144.0" r="3.5" fill="var(--g)"/><circle cx="221.6" cy="90.7" r="3.5" fill="var(--g)"/><circle cx="264.0" cy="133.3" r="3.5" fill="var(--g)"/><circle cx="306.4" cy="109.3" r="3.5" fill="var(--g)"/><circle cx="348.8" cy="134.7" r="3.5" fill="var(--g)"/><circle cx="370.0" cy="88.0" r="3.5" fill="var(--g)"/><circle cx="433.6" cy="120.0" r="3.5" fill="var(--g)"/><circle cx="454.8" cy="90.7" r="3.5" fill="var(--g)"/><circle cx="518.4" cy="69.3" r="3.5" fill="var(--g)"/><circle cx="560.8" cy="154.7" r="3.5" fill="var(--g)"/><circle cx="603.2" cy="129.3" r="3.5" fill="var(--g)"/><circle cx="624.4" cy="164.0" r="3.5" fill="var(--g)"/><circle cx="666.8" cy="144.0" r="3.5" fill="var(--g)"/><circle cx="688.0" cy="178.7" r="3.5" fill="var(--g)"/>
+      <circle cx="560.8" cy="154.7" r="7" fill="#15110e" stroke="#ff8f7d" stroke-width="4"/>
+      <line x1="560.8" x2="560.8" y1="66.7" y2="146.7" stroke="rgba(255,143,125,.45)" stroke-dasharray="4 4"/><g transform="translate(345.8,4.7)"><rect width="200" height="62" rx="10" fill="#2a231e" stroke="rgba(255,143,125,.5)"/>
+        <text x="14" y="24" class="tt1">14 nov · $4.600</text><text x="14" y="46" class="tt2 hot">Bajo el mínimo</text></g>
+    </svg></div><div class="cd alertc"><div class="ah"><svg class="i " viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><span>Aviso</span></div>
+      <b>El 14 de noviembre el saldo baja del mínimo.</b>
+      <p>Opciones para evitarlo:</p>
+      <ul><li>Adelantar el cobro del 16 nov ($1.900)</li><li>Mover el pago del 14 nov al 17 nov</li><li>Pedir un anticipo a un cliente</li></ul></div></div><div class="g2 eq"><div class="cd "><div class="ch"><div><b>Próximos pagos</b></div><span class="lnk">Ver todos</span></div><table class="tbl"><tr><th>Fecha</th><th>Concepto</th><th class="r">Monto</th></tr><tr><td class="mu">28 oct</td><td>Proveedor de insumos</td><td class="r"><b class="neg">−$6.400</b></td></tr><tr><td class="mu">31 oct</td><td>Arriendo</td><td class="r"><b class="neg">−$3.200</b></td></tr><tr><td class="mu">14 nov</td><td>Sueldos</td><td class="r"><b class="neg">−$6.400</b></td></tr><tr><td class="mu">17 nov</td><td>Impuestos</td><td class="r"><b class="neg">−$2.600</b></td></tr></table></div><div class="cd "><div class="ch"><div><b>Próximos cobros</b></div><span class="lnk">Ver todos</span></div><table class="tbl"><tr><th>Fecha</th><th>Concepto</th><th class="r">Monto</th></tr><tr><td class="mu">23 oct</td><td>Factura #1042</td><td class="r"><b class="pos">+$3.100</b></td></tr><tr><td class="mu">26 oct</td><td>Factura #1047</td><td class="r"><b class="pos">+$2.400</b></td></tr><tr><td class="mu">29 oct</td><td>Factura #1051</td><td class="r"><b class="pos">+$4.000</b></td></tr><tr><td class="mu">2 nov</td><td>Factura #1055</td><td class="r"><b class="pos">+$1.800</b></td></tr></table></div></div>
+  </main>
+</div></div>
+  </div>
+  <p class="need"><b>Necesitas:</b> cobros y pagos pendientes, cada uno con su fecha.</p>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+<!-- 05 · Marketing -->
+<section class="slide" data-n="5">
+  <div class="grid"></div>
+  <div class="blob" style="width:900px;height:620px;left:90px;top:640px;background:#e1556a"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">05/08</div>
+  <div class="top">
+    <div class="eb" style="color:#e1556a">Dashboard 4 <b>· Marketing</b></div>
+    <h2>¿Qué canal te trae clientes que pagan?</h2>
+    <p class="m">Inversión, clientes nuevos y cuánto te cuesta cada cliente, canal por canal.</p>
+    <div class="dash" id="d5" style="--g:#e1556a;--g2:#f0a3b0;--ga:rgba(225,85,106,.55);--gt:rgba(225,85,106,.16)"><div class="app">
+  <aside class="sb">
+    <div class="ws"><span class="wl"></span><div><b>Mi negocio</b><small>Espacio de trabajo</small></div></div>
+    <div class="srch"><svg class="i " viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Buscar</span><kbd>Ctrl K</kbd></div>
+    <p class="sec">Paneles</p>
+    <nav class="nav"><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Resumen</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/></svg>Ventas</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-3v3"/><path d="M16 14h2"/></svg>Caja<span class="n">1</span></a><a class="on"><svg class="i " viewBox="0 0 24 24"><path d="M3 10v4h4l7 4V6L7 10z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg>Marketing</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 10h5l3 3v3h-8"/><circle cx="6" cy="18.5" r="2"/><circle cx="17" cy="18.5" r="2"/></svg>Operaciones<span class="n">7</span></a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>Gasto en IA</a></nav>
+    <p class="sec">Cuenta</p>
+    <nav class="nav"><a><svg class="i " viewBox="0 0 24 24"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"/></svg>Integraciones</a><a><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Ajustes</a><a><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.7M12 17h.01"/></svg>Ayuda</a></nav>
+    <div class="me"><span class="av">TU</span><div><b>Tu cuenta</b><small>Administrador</small></div><svg class="i mute" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div>
+  </aside>
+  <main class="mn">
+    <header class="tb">
+      <div><small>Paneles / Marketing</small><h3>Canales de adquisición</h3></div>
+      <div class="tools"><span class="px ex">Datos de ejemplo</span><span class="px"><svg class="i " viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>1 al 21 oct 2026</span>
+        <span class="px"><svg class="i " viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/></svg>Exportar</span><span class="icb"><svg class="i " viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></svg><i></i></span><span class="av sm">TU</span></div>
+    </header>
+    <div class="kr"><div class="kc"><div class="kh"><span>Inversión del mes</span><svg class="i mute" viewBox="0 0 24 24"><path d="M3 10v4h4l7 4V6L7 10z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg></div><b>$2.100</b><div class="kf"><small>4 canales</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk41" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L30.0 24.4 L60.0 31.2 L90.0 10.8 L120.0 4.0 L120 42 Z" fill="url(#spk41)"/><polyline points="0.0,38.0 30.0,24.4 60.0,31.2 90.0,10.8 120.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Clientes nuevos</span><svg class="i mute" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></div><b>50</b><div class="kf"><span class="up">▲ 9</span><small>vs septiembre</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk42" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L30.0 31.2 L60.0 24.4 L90.0 17.6 L120.0 4.0 L120 42 Z" fill="url(#spk42)"/><polyline points="0.0,38.0 30.0,31.2 60.0,24.4 90.0,17.6 120.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Costo por cliente</span><svg class="i mute" viewBox="0 0 24 24"><path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-3v3"/><path d="M16 14h2"/></svg></div><b>$42</b><div class="kf"><span class="dn">▼ $6</span><small>más caro que sept.</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk43" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8f7d" stop-opacity=".35"/><stop offset="1" stop-color="#ff8f7d" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L30.0 32.3 L60.0 21.0 L90.0 15.3 L120.0 4.0 L120 42 Z" fill="url(#spk43)"/><polyline points="0.0,38.0 30.0,32.3 60.0,21.0 90.0,15.3 120.0,4.0" fill="none" stroke="#ff8f7d" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Conversión</span><svg class="i mute" viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/></svg></div><b>3,1%</b><div class="kf"><span class="up">▲ 0,3 pts</span><small>leads a clientes</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk44" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L30.0 31.2 L60.0 17.6 L90.0 24.4 L120.0 4.0 L120 42 Z" fill="url(#spk44)"/><polyline points="0.0,38.0 30.0,31.2 60.0,17.6 90.0,24.4 120.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div></div><div class="g1"><div class="cd "><div class="ch"><div><b>Rendimiento por canal</b><small>Octubre 2026</small></div><div class="seg"><span class="on">Mes</span><span class="">Trimestre</span></div></div><table class="tbl"><tr><th>Canal</th><th class="r">Inversión</th><th class="r">Leads</th><th class="r">Clientes</th><th class="r">Conversión</th><th class="r">Costo/cliente</th><th style="padding-left:14px">Tendencia</th></tr><tr><td><span class="chn c0">IG</span>Instagram</td><td class="r">$800</td><td class="r">620</td><td class="r">20</td><td class="r">3,2%</td><td class="r"><b class="">$40</b></td><td class="sp" style="padding-left:14px"><svg class="spark" viewBox="0 0 90 30"><defs><linearGradient id="sp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><polyline points="0.0,26.0 18.0,17.2 36.0,21.6 54.0,12.8 72.0,4.0 90.0,8.4" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></td></tr><tr><td><span class="chn c1">G</span>Google</td><td class="r">$1.200</td><td class="r">540</td><td class="r">15</td><td class="r">2,8%</td><td class="r"><b class="hot">$80</b></td><td class="sp" style="padding-left:14px"><svg class="spark" viewBox="0 0 90 30"><defs><linearGradient id="sp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8f7d" stop-opacity=".35"/><stop offset="1" stop-color="#ff8f7d" stop-opacity="0"/></linearGradient></defs><polyline points="0.0,4.0 18.0,11.3 36.0,11.3 54.0,18.7 72.0,18.7 90.0,26.0" fill="none" stroke="#ff8f7d" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></td></tr><tr><td><span class="chn c2">@</span>Email</td><td class="r">$100</td><td class="r">210</td><td class="r">6</td><td class="r">2,9%</td><td class="r"><b class="okc">$17</b></td><td class="sp" style="padding-left:14px"><svg class="spark" viewBox="0 0 90 30"><defs><linearGradient id="sp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><polyline points="0.0,26.0 18.0,26.0 36.0,4.0 54.0,26.0 72.0,4.0 90.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></td></tr><tr><td><span class="chn c3">R</span>Referidos</td><td class="r">$0</td><td class="r">240</td><td class="r">9</td><td class="r">3,8%</td><td class="r"><b class="okc">$0</b></td><td class="sp" style="padding-left:14px"><svg class="spark" viewBox="0 0 90 30"><defs><linearGradient id="sp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><polyline points="0.0,26.0 18.0,18.7 36.0,18.7 54.0,11.3 72.0,11.3 90.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></td></tr></table></div><div class="cd "><div class="ch"><div><b>Clientes por canal</b><small>50 en total</small></div><svg class="i mute" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div><div class="dw"><svg class="dnt" viewBox="0 0 132 132" style="width:132px;height:132px"><circle cx="66.0" cy="66.0" r="56.0" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="20"/><circle cx="66" cy="66" r="56" fill="none" stroke="var(--g)" stroke-width="20" stroke-dasharray="136.7 215.1" stroke-dashoffset="0.0" transform="rotate(-90 66 66)"/><circle cx="66" cy="66" r="56" fill="none" stroke="var(--g2)" stroke-width="20" stroke-dasharray="101.6 250.3" stroke-dashoffset="-140.7" transform="rotate(-90 66 66)"/><circle cx="66" cy="66" r="56" fill="none" stroke="#8d8279" stroke-width="20" stroke-dasharray="38.2 313.6" stroke-dashoffset="-246.3" transform="rotate(-90 66 66)"/><circle cx="66" cy="66" r="56" fill="none" stroke="#5d524a" stroke-width="20" stroke-dasharray="59.3 292.5" stroke-dashoffset="-288.5" transform="rotate(-90 66 66)"/><text x="66.0" y="68.0" text-anchor="middle" class="t1">50</text><text x="66.0" y="90.0" text-anchor="middle" class="t2">clientes</text></svg></div><div class="lst"><div><span><i style="background:var(--g)"></i>Instagram</span><b>20</b><em>40%</em></div><div><span><i style="background:var(--g2)"></i>Google</span><b>15</b><em>30%</em></div><div><span><i style="background:#8d8279"></i>Email</span><b>6</b><em>12%</em></div><div><span><i style="background:#5d524a"></i>Referidos</span><b>9</b><em>18%</em></div></div></div></div><div class="g2"><div class="cd "><div class="ch"><div><b>Clientes nuevos por semana</b></div></div><svg class="chart" viewBox="0 0 640 180"><g class="gl"><line x1="30" x2="640" y1="150.0" y2="150.0"/><line x1="30" x2="640" y1="85.0" y2="85.0"/><line x1="30" x2="640" y1="20.0" y2="20.0"/></g><g class="ax"><text x="0" y="155.0">0</text><text x="0" y="90.0">10</text><text x="0" y="25.0">20</text><text x="40" y="176" text-anchor="middle">Semana 1</text><text x="230" y="176" text-anchor="middle">Semana 2</text><text x="420" y="176" text-anchor="middle">Semana 3</text><text x="610" y="176" text-anchor="middle">Semana 4</text></g><polyline points="40,91.5 230,59.0 420,52.5 610,72.0" fill="none" stroke="var(--g)" stroke-width="3.5"/><circle cx="40" cy="91.5" r="6" fill="#15110e" stroke="var(--g)" stroke-width="3"/><text x="40" y="77.5" text-anchor="middle" class="vl">9</text><circle cx="230" cy="59.0" r="6" fill="#15110e" stroke="var(--g)" stroke-width="3"/><text x="230" y="45.0" text-anchor="middle" class="vl">14</text><circle cx="420" cy="52.5" r="6" fill="#15110e" stroke="var(--g)" stroke-width="3"/><text x="420" y="38.5" text-anchor="middle" class="vl">15</text><circle cx="610" cy="72.0" r="6" fill="#15110e" stroke="var(--g)" stroke-width="3"/><text x="610" y="58.0" text-anchor="middle" class="vl">12</text></svg></div><div class="cd alertc"><div class="ah"><svg class="i " viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg><span>Para revisar</span></div>
+      <b>Google cuesta el doble por cliente que Instagram.</b>
+      <p>$80 contra $40. Y referidos trae 9 clientes sin inversión.</p></div></div>
+  </main>
+</div></div>
+  </div>
+  <p class="need"><b>Necesitas:</b> la inversión por canal y de dónde vino cada cliente.</p>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+<!-- 06 · Operaciones -->
+<section class="slide" data-n="6">
+  <div class="grid"></div>
+  <div class="blob" style="width:900px;height:620px;left:90px;top:640px;background:#c85981"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">06/08</div>
+  <div class="top">
+    <div class="eb" style="color:#e07aa0">Dashboard 5 <b>· Operaciones</b></div>
+    <h2>¿Dónde se traban tus pedidos?</h2>
+    <p class="m">Cuántos pedidos hay en cada etapa y cuál acumula atraso.</p>
+    <div class="dash" id="d6" style="--g:#e07aa0;--g2:#f2b8cd;--ga:rgba(200,89,129,.55);--gt:rgba(200,89,129,.16)"><div class="app">
+  <aside class="sb">
+    <div class="ws"><span class="wl"></span><div><b>Mi negocio</b><small>Espacio de trabajo</small></div></div>
+    <div class="srch"><svg class="i " viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Buscar</span><kbd>Ctrl K</kbd></div>
+    <p class="sec">Paneles</p>
+    <nav class="nav"><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Resumen</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/></svg>Ventas</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-3v3"/><path d="M16 14h2"/></svg>Caja<span class="n">1</span></a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 10v4h4l7 4V6L7 10z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg>Marketing</a><a class="on"><svg class="i " viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 10h5l3 3v3h-8"/><circle cx="6" cy="18.5" r="2"/><circle cx="17" cy="18.5" r="2"/></svg>Operaciones<span class="n">7</span></a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>Gasto en IA</a></nav>
+    <p class="sec">Cuenta</p>
+    <nav class="nav"><a><svg class="i " viewBox="0 0 24 24"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"/></svg>Integraciones</a><a><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Ajustes</a><a><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.7M12 17h.01"/></svg>Ayuda</a></nav>
+    <div class="me"><span class="av">TU</span><div><b>Tu cuenta</b><small>Administrador</small></div><svg class="i mute" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div>
+  </aside>
+  <main class="mn">
+    <header class="tb">
+      <div><small>Paneles / Operaciones</small><h3>Pedidos en curso</h3></div>
+      <div class="tools"><span class="px ex">Datos de ejemplo</span><span class="px"><svg class="i " viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>1 al 21 oct 2026</span>
+        <span class="px"><svg class="i " viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/></svg>Exportar</span><span class="icb"><svg class="i " viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></svg><i></i></span><span class="av sm">TU</span></div>
+    </header>
+    <div class="kr"><div class="kc"><div class="kh"><span>Pedidos activos</span><svg class="i mute" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 10h5l3 3v3h-8"/><circle cx="6" cy="18.5" r="2"/><circle cx="17" cy="18.5" r="2"/></svg></div><b>45</b><div class="kf"><small>hoy</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk51" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L24.0 23.4 L48.0 28.3 L72.0 13.7 L96.0 8.9 L120.0 4.0 L120 42 Z" fill="url(#spk51)"/><polyline points="0.0,38.0 24.0,23.4 48.0,28.3 72.0,13.7 96.0,8.9 120.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Entregados en octubre</span><svg class="i mute" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></div><b>61</b><div class="kf"><span class="up">▲ 4</span><small>vs mismo día de sept.</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk52" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L24.0 29.9 L48.0 21.8 L72.0 15.3 L96.0 8.9 L120.0 4.0 L120 42 Z" fill="url(#spk52)"/><polyline points="0.0,38.0 24.0,29.9 48.0,21.8 72.0,15.3 96.0,8.9 120.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Tiempo promedio</span><svg class="i mute" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><b>3,2 días</b><div class="kf"><span class="dn">▼ 0,8 días</span><small>más lento que sept.</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk53" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8f7d" stop-opacity=".35"/><stop offset="1" stop-color="#ff8f7d" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L24.0 33.8 L48.0 25.2 L72.0 16.8 L96.0 12.5 L120.0 4.0 L120 42 Z" fill="url(#spk53)"/><polyline points="0.0,38.0 24.0,33.8 48.0,25.2 72.0,16.8 96.0,12.5 120.0,4.0" fill="none" stroke="#ff8f7d" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Atrasados</span><svg class="i mute" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg></div><b>7</b><div class="kf"><span class="dn">▼ 4</span><small>todos en despacho</small></div></div></div><div class="g3"><div class="cd tall"><div class="ch"><div><b>Pedidos por etapa</b><small>Tablero en vivo</small></div><div class="seg"><span class="on">Tablero</span><span class="">Lista</span></div></div><div class="kb"><div class="kcol "><div class="kch"><b>Recibido</b><span>14</span></div><div class="oc "><div><b>#3121</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>2 h</span></div><small>3 productos</small></div><div class="oc "><div><b>#3120</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>3 h</span></div><small>1 producto</small></div><div class="oc "><div><b>#3119</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5 h</span></div><small>5 productos</small></div><div class="oc "><div><b>#3118</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>6 h</span></div><small>2 productos</small></div><div class="more">+10 más</div></div><div class="kcol "><div class="kch"><b>Preparación</b><span>9</span></div><div class="oc "><div><b>#3114</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>0,8 d</span></div><small>2 productos</small></div><div class="oc "><div><b>#3112</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>1,1 d</span></div><small>4 productos</small></div><div class="oc "><div><b>#3111</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>0,6 d</span></div><small>1 producto</small></div><div class="oc "><div><b>#3109</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>1,3 d</span></div><small>3 productos</small></div><div class="more">+5 más</div></div><div class="kcol hotc"><div class="kch"><b>Despacho</b><span>22</span><em><svg class="i " viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg>7</em></div><div class="oc late"><div><b>#3098</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5,1 d</span></div><small>2 productos</small><em>Atrasado</em></div><div class="oc late"><div><b>#3101</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>4,6 d</span></div><small>3 productos</small><em>Atrasado</em></div><div class="oc late"><div><b>#3105</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>4,2 d</span></div><small>1 producto</small><em>Atrasado</em></div><div class="oc late"><div><b>#3107</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>3,8 d</span></div><small>2 productos</small><em>Atrasado</em></div><div class="more">+18 más</div></div><div class="kcol "><div class="kch"><b>Entregado</b><span>61</span></div><div class="oc done"><div><b>#3097</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>hoy</span></div><small>2 productos</small></div><div class="oc done"><div><b>#3095</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>hoy</span></div><small>6 productos</small></div><div class="oc done"><div><b>#3093</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>ayer</span></div><small>1 producto</small></div><div class="oc done"><div><b>#3090</b><span class="tm"><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>ayer</span></div><small>4 productos</small></div><div class="more">+57 más</div></div></div></div><div class="stack"><div class="cd "><div class="ch"><div><b>Tiempo promedio por etapa</b><small>Total 3,2 días</small></div></div><div class="hb"><div class="hbl"><span>Recibido</span><b>0,4 d</b></div><div class="hbt"><i style="width:25.0%;background:#5d524a"></i></div></div><div class="hb"><div class="hbl"><span>Preparación</span><b>0,9 d</b></div><div class="hbt"><i style="width:56.2%;background:#5d524a"></i></div></div><div class="hb"><div class="hbl"><span>Despacho</span><b>1,6 d</b></div><div class="hbt"><i style="width:100.0%;background:var(--g)"></i></div></div><div class="hb"><div class="hbl"><span>Entrega</span><b>0,3 d</b></div><div class="hbt"><i style="width:18.7%;background:#5d524a"></i></div></div></div><div class="cd alertc"><div class="ah"><svg class="i " viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><span>Cuello de botella</span></div>
+      <b>Despacho junta 22 pedidos.</b><p>7 llevan más de 3 días ahí. Revisa la asignación de transporte.</p></div></div></div>
+  </main>
+</div></div>
+  </div>
+  <p class="need"><b>Necesitas:</b> los pedidos con la fecha en que pasaron por cada etapa.</p>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+<!-- 07 · Gasto en IA -->
+<section class="slide" data-n="7">
+  <div class="grid"></div>
+  <div class="blob" style="width:900px;height:620px;left:90px;top:640px;background:#9c5aa7"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">07/08</div>
+  <div class="top">
+    <div class="eb" style="color:#c18bd0">Dashboard 6 <b>· Gasto en IA</b></div>
+    <h2>¿Cuánto gasta tu equipo en IA, y en qué?</h2>
+    <p class="m">Gasto por área, costo por tarea y un aviso cuando un área pasa su presupuesto.</p>
+    <div class="dash" id="d7" style="--g:#c18bd0;--g2:#e0c3e8;--ga:rgba(156,90,167,.55);--gt:rgba(156,90,167,.16)"><div class="app">
+  <aside class="sb">
+    <div class="ws"><span class="wl"></span><div><b>Mi negocio</b><small>Espacio de trabajo</small></div></div>
+    <div class="srch"><svg class="i " viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Buscar</span><kbd>Ctrl K</kbd></div>
+    <p class="sec">Paneles</p>
+    <nav class="nav"><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Resumen</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/></svg>Ventas</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-3v3"/><path d="M16 14h2"/></svg>Caja<span class="n">1</span></a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M3 10v4h4l7 4V6L7 10z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg>Marketing</a><a class=""><svg class="i " viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 10h5l3 3v3h-8"/><circle cx="6" cy="18.5" r="2"/><circle cx="17" cy="18.5" r="2"/></svg>Operaciones<span class="n">7</span></a><a class="on"><svg class="i " viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>Gasto en IA</a></nav>
+    <p class="sec">Cuenta</p>
+    <nav class="nav"><a><svg class="i " viewBox="0 0 24 24"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"/></svg>Integraciones</a><a><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Ajustes</a><a><svg class="i " viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.7M12 17h.01"/></svg>Ayuda</a></nav>
+    <div class="me"><span class="av">TU</span><div><b>Tu cuenta</b><small>Administrador</small></div><svg class="i mute" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div>
+  </aside>
+  <main class="mn">
+    <header class="tb">
+      <div><small>Paneles / Gasto en IA</small><h3>Uso de IA del equipo</h3></div>
+      <div class="tools"><span class="px ex">Datos de ejemplo</span><span class="px"><svg class="i " viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>1 al 21 oct 2026</span>
+        <span class="px"><svg class="i " viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/></svg>Exportar</span><span class="icb"><svg class="i " viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></svg><i></i></span><span class="av sm">TU</span></div>
+    </header>
+    <div class="kr"><div class="kc"><div class="kh"><span>Gasto del mes</span><svg class="i mute" viewBox="0 0 24 24"><path d="M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-3v3"/><path d="M16 14h2"/></svg></div><b>$186</b><div class="kf"><small>de $200 previstos</small></div><div class="pb"><i style="width:93%"></i></div></div><div class="kc"><div class="kh"><span>Tareas hechas</span><svg class="i mute" viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg></div><b>1.240</b><div class="kf"><span class="up">▲ 18%</span><small>vs septiembre</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk62" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 38.0 L24.0 31.8 L48.0 26.4 L72.0 21.8 L96.0 13.3 L120.0 4.0 L120 42 Z" fill="url(#spk62)"/><polyline points="0.0,38.0 24.0,31.8 48.0,26.4 72.0,21.8 96.0,13.3 120.0,4.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Costo por tarea</span><svg class="i mute" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg></div><b>$0,15</b><div class="kf"><small>promedio</small></div><svg class="spark" viewBox="0 0 120 42"><defs><linearGradient id="spk63" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--g)" stop-opacity=".35"/><stop offset="1" stop-color="var(--g)" stop-opacity="0"/></linearGradient></defs><path d="M0 42 L0.0 4.0 L30.0 21.0 L60.0 21.0 L90.0 38.0 L120.0 38.0 L120 42 Z" fill="url(#spk63)"/><polyline points="0.0,4.0 30.0,21.0 60.0,21.0 90.0,38.0 120.0,38.0" fill="none" stroke="var(--g)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="kc"><div class="kh"><span>Áreas sobre presupuesto</span><svg class="i mute" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg></div><b>1</b><div class="kf"><small>Soporte</small></div></div></div><div class="g1"><div class="cd "><div class="ch"><div><b>Gasto vs presupuesto por área</b><small>La línea blanca marca el presupuesto</small></div><div class="seg"><span class="on">Mes</span><span class="">Trimestre</span></div></div><div class="bvs"><div class="bv"><div class="bvl"><b>Ventas</b><span>$38 <small>de $50</small></span><i>76%</i></div><div class="bvt"><i style="width:47.5%;background:#5d524a"></i><u style="left:62.5%"></u></div></div><div class="bv"><div class="bvl"><b>Soporte</b><span>$74 <small>de $60</small></span><em>+$14</em></div><div class="bvt"><i style="width:92.5%;background:var(--g)"></i><u style="left:75.0%"></u></div></div><div class="bv"><div class="bvl"><b>Marketing</b><span>$46 <small>de $50</small></span><i>92%</i></div><div class="bvt"><i style="width:57.5%;background:#5d524a"></i><u style="left:62.5%"></u></div></div><div class="bv"><div class="bvl"><b>Admin</b><span>$28 <small>de $40</small></span><i>70%</i></div><div class="bvt"><i style="width:35.0%;background:#5d524a"></i><u style="left:50.0%"></u></div></div></div></div><div class="cd "><div class="ch"><div><b>Por tipo de uso</b><small>$186 en total</small></div><svg class="i mute" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></div><div class="dw"><svg class="dnt" viewBox="0 0 132 132" style="width:132px;height:132px"><circle cx="66.0" cy="66.0" r="56.0" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="20"/><circle cx="66" cy="66" r="56" fill="none" stroke="var(--g)" stroke-width="20" stroke-dasharray="136.0 215.9" stroke-dashoffset="0.0" transform="rotate(-90 66 66)"/><circle cx="66" cy="66" r="56" fill="none" stroke="var(--g2)" stroke-width="20" stroke-dasharray="109.5 242.4" stroke-dashoffset="-140.0" transform="rotate(-90 66 66)"/><circle cx="66" cy="66" r="56" fill="none" stroke="#5d524a" stroke-width="20" stroke-dasharray="94.4 257.5" stroke-dashoffset="-253.5" transform="rotate(-90 66 66)"/><text x="66.0" y="68.0" text-anchor="middle" class="t1">$186</text><text x="66.0" y="90.0" text-anchor="middle" class="t2">octubre</text></svg></div><div class="lst"><div><span><i style="background:var(--g)"></i>Agente de soporte</span><b>$74</b></div><div><span><i style="background:var(--g2)"></i>Automatizaciones</span><b>$60</b></div><div><span><i style="background:#5d524a"></i>Asistente de chat</span><b>$52</b></div></div></div></div><div class="g2"><div class="cd "><div class="ch"><div><b>Gasto acumulado vs ritmo del presupuesto</b></div><div class="lg"><span><i style="background:var(--g)"></i>Real</span><span><i style="background:#8d8279"></i>Presupuesto</span></div></div><svg class="chart" viewBox="0 0 640 180"><g class="gl"><line x1="40" x2="640" y1="150.0" y2="150.0"/><line x1="40" x2="640" y1="106.7" y2="106.7"/><line x1="40" x2="640" y1="63.3" y2="63.3"/><line x1="40" x2="640" y1="20.0" y2="20.0"/></g><g class="ax"><text x="0" y="155.0">$0</text><text x="0" y="111.7">$100</text><text x="0" y="68.3">$200</text><text x="0" y="25.0">$300</text><text x="40.0" y="176" text-anchor="middle">1 oct</text><text x="236.7" y="176" text-anchor="middle">11 oct</text><text x="433.3" y="176" text-anchor="middle">21 oct</text><text x="630.0" y="176" text-anchor="end">31 oct</text></g><line x1="40.0" y1="147.2" x2="630.0" y2="63.3" stroke="#8d8279" stroke-width="2.5" stroke-dasharray="8 7"/><polyline points="40.0,146.2 59.7,142.2 79.3,138.6 99.0,134.5 118.7,131.1 138.3,127.0 158.0,122.7 177.7,119.5 197.3,115.2 217.0,112.2 236.7,107.8 256.3,103.2 276.0,100.5 295.7,95.8 315.3,93.3 335.0,88.6 354.7,83.7 374.3,81.5 394.0,76.5 413.7,74.5 433.3,69.4" fill="none" stroke="var(--g)" stroke-width="3.5"/><line x1="433.3" y1="69.4" x2="630.0" y2="30.8" stroke="var(--g)" stroke-width="2.5" stroke-dasharray="3 6" opacity=".8"/><circle cx="630.0" cy="30.8" r="6" fill="#15110e" stroke="var(--g)" stroke-width="3"/><text x="620.0" y="34.8" text-anchor="end" class="vl">Proyección: $275</text></svg></div><div class="cd alertc"><div class="ah"><svg class="i " viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg><span>Aviso</span></div>
+      <b>Soporte pasó su presupuesto en $14.</b><p>El agente de soporte hizo 410 tareas a $0,18 cada una. Revisa cuáles lo dispararon.</p></div></div>
+  </main>
+</div></div>
+  </div>
+  <p class="need"><b>Necesitas:</b> el reporte de consumo que exporta tu proveedor de IA.</p>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 08 · CTA: misma clase que la pieza 016 (jueves 22, 19:30), palabra clave CLAUDE -->
+<section class="slide p8" data-n="8">
+  <div class="grid"></div>
+  <div class="blob" style="width:520px;height:420px;left:-120px;top:120px;background:#f75946"></div>
+  <div class="blob" style="width:520px;height:420px;right:-120px;top:150px;background:#9c5aa7"></div>
+  <div class="blob" style="width:520px;height:420px;left:-120px;bottom:60px;background:#ee5358"></div>
+  <div class="blob" style="width:520px;height:420px;right:-120px;bottom:40px;background:#ff5b00"></div>
+  <div class="mini m1" data-clone="d3"></div>
+  <div class="mini m2" data-clone="d7"></div>
+  <div class="mini m3" data-clone="d4"></div>
+  <div class="mini m4" data-clone="d2"></div>
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="center">
+    <p class="ev">Jueves 22, 19:30. Te enseñamos a <strong>crear dashboards para tu negocio.</strong></p>
+    <small>Comenta</small>
+    <b>CLAUDE</b>
+    <p>y te mandamos el link de inscripción.</p>
+  </div>
+</section>
+
+<script>
+  // Copia los dashboards en la portada y el CTA; renombra los id de SVG para que los degradados funcionen en la copia.
+  document.querySelectorAll('[data-clone]').forEach(function (h, n) {
+    var src = document.getElementById(h.getAttribute('data-clone'));
+    if (!src) return;
+    var c = src.cloneNode(true);
+    c.removeAttribute('id');
+    c.innerHTML = c.innerHTML.replace(/id="([^"]+)"/g, 'id="$1-c' + n + '"').replace(/url\(#([^)]+)\)/g, 'url(#$1-c' + n + ')');
+    h.appendChild(c);
+  });
+  var m = location.search.match(/s=(\d+)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 013 · Automatización, asistente o agente</title>
+<!-- Fuente editable. 7 láminas de 1080x1350.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=7
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7 -Prefix slide-0
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit).
+     Pieza educativa (framework de decisión): no parte de una noticia. Criterio de Plogy; la definición de agente se cita de Anthropic.
+     Los procesos de la lámina 05 son hipotéticos. CTA comercial por DM: variante 25 de la biblioteca (círculo y chat), adaptada. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486;
+  --gradient:linear-gradient(180deg,#f75946 0%,#ee5358 33%,#e1556a 50%,#c85981 67%,#9c5aa7 100%);
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px}
+.light{background:var(--paper);color:var(--ink)}
+.surface{background:var(--surface);color:var(--ink)}
+.dark{background:var(--ink);color:var(--paper)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;z-index:5}
+.light .count,.surface .count{color:var(--muted)} .dark .count{color:#e6dfd8}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:5}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.25}
+.dots i.on{opacity:1;background:var(--orange)}
+
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance;position:relative;z-index:3}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.55)}
+.light .hl,.surface .hl{color:var(--orange)}
+.support{position:relative;z-index:3;font-size:40px;line-height:1.38;margin-top:32px;max-width:880px}
+.light .support,.surface .support{color:var(--muted)} .dark .support{color:#e6dfd8}
+.eyebrow{position:relative;z-index:3;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:36px}
+.light .eyebrow,.surface .eyebrow{color:var(--orangeText)} .dark .eyebrow{color:var(--orange)}
+.pill{position:relative;z-index:3;display:inline-block;background:var(--orange);color:var(--ink);font:700 32px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:20px 32px;border-radius:999px;margin-bottom:34px}
+.src{position:absolute;left:96px;right:96px;bottom:118px;z-index:3;font:400 32px/1.35 var(--body)}
+.dark .src{color:#cfc6bd}
+.top{position:relative;z-index:3}
+
+/* chips de nivel (se repiten en 01, 04, 05) */
+.lv{display:inline-block;font:700 30px/1 var(--display);letter-spacing:-.01em;padding:16px 24px;border-radius:999px;white-space:nowrap}
+.lv.a{background:var(--ink);color:#fff}
+.lv.s{background:#fff;color:var(--ink);border:3px solid var(--orange);padding:13px 21px}
+.lv.g{background:var(--orange);color:var(--ink)}
+
+/* 01 · portada con escalera de pastillas */
+.s1 .top{margin-top:210px}
+.s1 h1{font-size:100px}
+.s1 .support{margin-top:30px;font-size:40px;max-width:820px}
+.rise{position:absolute;left:96px;right:96px;bottom:150px;z-index:3;display:flex;flex-direction:column;gap:18px}
+.rise div{display:flex;align-items:center;gap:22px;border-radius:999px;padding:0 40px 0 14px;height:96px;font:700 44px/1 var(--display);letter-spacing:-.02em}
+.rise b{flex:none;width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 38px/1 var(--display)}
+.rise .r1{width:600px;background:var(--surface);color:var(--ink)} .rise .r1 b{background:var(--ink);color:#fff}
+.rise .r2{width:760px;background:#ffd9c2;color:var(--ink)} .rise .r2 b{background:var(--ink);color:#fff}
+.rise .r3{width:888px;background:var(--orange);color:var(--ink)} .rise .r3 b{background:var(--ink);color:var(--orange)}
+
+/* 02 · tres niveles */
+.s2 .top{margin-top:140px}
+.s2 h2{font-size:92px}
+.lvls{position:relative;z-index:3;margin-top:40px;display:flex;flex-direction:column;gap:20px}
+.lvl{display:grid;grid-template-columns:1fr 210px;gap:24px;align-items:center;border:2px solid #4a413a;border-radius:30px;padding:26px 32px}
+.lvl strong{display:block;font:700 50px/1.05 var(--display);letter-spacing:-.025em;color:#fff}
+.lvl span{display:block;margin-top:8px;font:400 34px/1.28 var(--body);color:#e0d8d0;text-wrap:balance}
+.lvl em{font-style:normal;text-align:center}
+.lvl em i{display:block;font:700 26px/1 var(--display);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:#cfc6bd;margin-bottom:10px}
+.lvl em u{display:block;text-decoration:none;font:700 38px/1.05 var(--display);color:var(--orange)}
+.lvl.on{border-color:var(--orange);background:rgba(255,91,0,.10)}
+
+/* 03 · cuatro preguntas */
+.s3 .top{margin-top:160px}
+.s3 h2{font-size:88px}
+.qs{position:relative;z-index:3;margin-top:44px}
+.q{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:start;padding:24px 0;border-top:2px solid #e3dad1}
+.q:first-child{border-top:0}
+.q b{font:700 96px/.9 var(--display);color:var(--orange);letter-spacing:-.04em}
+.q strong{display:block;font:700 50px/1.08 var(--display);letter-spacing:-.025em}
+.q span{display:block;margin-top:10px;font:400 34px/1.28 var(--body);color:var(--muted)}
+
+/* 04 · árbol de decisión */
+.s4 .top{margin-top:130px}
+.s4 h2{font-size:84px}
+.tree{position:relative;z-index:3;margin-top:36px}
+.tr{display:grid;grid-template-columns:520px 70px 1fr;align-items:center}
+.tq{display:flex;gap:18px;align-items:center;background:#fff;border:2px solid var(--border);border-radius:28px;padding:20px 24px;min-height:128px;font:700 38px/1.12 var(--display);letter-spacing:-.02em}
+.tq i{flex:none;width:56px;height:56px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font:700 30px/1 var(--display);font-style:normal}
+.br{text-align:center;font:700 32px/1 var(--display);color:var(--orangeText)}
+.br::after{content:"→";display:block;font-size:44px;margin-top:4px;color:var(--orange)}
+.out{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.out small{font:400 32px/1.2 var(--body);color:var(--muted);max-width:290px}
+.gap{height:44px;padding-left:230px;font:700 32px/44px var(--display);color:var(--orangeText)}
+.gap::before{content:"No ↓";}
+.gap.si::before{content:"Sí ↓";}
+.tr.last .tq{min-height:140px}
+
+/* 05 · ejemplos hipotéticos */
+.s5 .top{margin-top:104px}
+.s5 .pill{font-size:28px;padding:16px 26px;margin-bottom:24px}
+.s5 h2{font-size:80px}
+.s5 .support{font-size:33px;margin-top:16px;line-height:1.3}
+.cases{position:relative;z-index:3;margin-top:26px;display:flex;flex-direction:column;gap:16px}
+.case{background:#fff;border:2px solid var(--border);border-radius:30px;padding:20px 28px 22px}
+.case p{font:700 35px/1.15 var(--display);letter-spacing:-.02em}
+.path{margin-top:14px;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.path em{font-style:normal;font:700 30px/1 var(--display);background:var(--surface);border:2px solid #e3dad1;border-radius:14px;padding:12px 14px;color:var(--ink)}
+.path .arrow{margin-left:auto;font:700 38px/1 var(--display);color:var(--orange)}
+.path .lv{font-size:30px}
+.note5{margin-top:10px!important;font-size:33px!important}
+.path .lv{margin-left:0}
+
+/* 06 · escalera */
+.s6 .top{margin-top:150px}
+.s6 h2{font-size:88px}
+.steps{position:relative;z-index:3;margin-top:46px;height:470px;display:flex;align-items:flex-end;gap:10px}
+.step{flex:1;border-radius:26px 26px 0 0;padding:24px 20px 22px}
+.step b{display:block;font:700 33px/1.05 var(--display);letter-spacing:-.03em;margin-bottom:12px}
+.step span{display:block;font:400 33px/1.25 var(--body)}
+.step.a{height:270px;background:#2a231f;color:#fff;border:2px solid #4a413a;border-bottom:0}
+.step.s{height:370px;background:#6b2f12;color:#fff}
+.step.g{height:470px;background:var(--orange);color:var(--ink)}
+.step.g span{color:var(--ink)}
+.quote{position:relative;z-index:3;margin-top:34px;border-left:8px solid var(--orange);padding:4px 0 4px 28px;font:500 36px/1.3 var(--body);color:#f1ebe5}
+.quote small{display:block;margin-top:12px;font:400 30px/1.3 var(--body);color:#cfc6bd}
+
+/* 07 · CTA variante 25 (comercial: círculo y chat), adaptada */
+.s7{background:var(--ink);color:#fff}
+.s7 .count{color:#e6dfd8}
+.s7 .ring{position:absolute;z-index:2;left:300px;top:130px;width:480px;height:480px;border-radius:50%;overflow:hidden;border:8px solid var(--orange)}
+.s7 .ring img{width:100%;height:100%;object-fit:cover}
+.s7 h2{position:absolute;left:96px;right:96px;top:650px;text-align:center;font-size:96px}
+.bub{position:absolute;z-index:4;max-width:700px;border-radius:46px;padding:26px 38px;color:var(--ink)}
+.bub.me{right:96px;top:890px;background:var(--orange);border-bottom-right-radius:12px;font:700 64px/1 var(--display);letter-spacing:-.02em}
+.bub.them{left:96px;top:1020px;background:#fff;border-bottom-left-radius:12px;font:500 40px/1.25 var(--body)}
+.cmnote{position:absolute;z-index:4;left:96px;width:888px;top:1190px;text-align:center;font:700 42px/1.2 var(--display);color:#eee6df}
+.kw{color:var(--orange)}
+</style>
+</head>
+<body>
+
+<!-- 01 · Tensión -->
+<section class="slide light s1" data-n="1">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">01/07</div>
+  <div class="top">
+    <p class="eyebrow">Guía · Decisión</p>
+    <h1>¿Automatización, asistente o <span class="hl">agente?</span></h1>
+    <p class="support">Tu proceso necesita uno. Subir de nivel cuesta más y arriesga más.</p>
+  </div>
+  <div class="rise">
+    <div class="r1"><b>1</b>Automatización</div>
+    <div class="r2"><b>2</b>Asistente</div>
+    <div class="r3"><b>3</b>Agente</div>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Los tres niveles -->
+<section class="slide dark s2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">02/07</div>
+  <div class="top">
+    <h2>Cambia <span class="hl">quién decide</span> los pasos.</h2>
+    <div class="lvls">
+      <div class="lvl">
+        <p><strong>Automatización</strong><span>Reglas fijas. Los mismos pasos, siempre, aunque uno use IA.</span></p>
+        <em><i>Decide</i><u>Las reglas</u></em>
+      </div>
+      <div class="lvl">
+        <p><strong>Asistente</strong><span>Una persona pide y la IA responde. La persona decide qué hacer.</span></p>
+        <em><i>Decide</i><u>La persona</u></em>
+      </div>
+      <div class="lvl on">
+        <p><strong>Agente</strong><span>La IA decide los pasos y usa herramientas para actuar.</span></p>
+        <em><i>Decide</i><u>La IA</u></em>
+      </div>
+    </div>
+  </div>
+  <p class="src">Agente según Anthropic: el modelo dirige sus propios procesos y herramientas. Anthropic las vende.</p>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · Cuatro preguntas -->
+<section class="slide light s3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">03/07</div>
+  <div class="top">
+    <h2>Cuatro preguntas <span class="hl">deciden el nivel.</span></h2>
+    <div class="qs">
+      <div class="q"><b>1</b><p><strong>¿Los pasos son siempre iguales?</strong><span>Si sí, bastan reglas.</span></p></div>
+      <div class="q"><b>2</b><p><strong>¿Hay que juzgar?</strong><span>Leer, interpretar o redactar pide un modelo.</span></p></div>
+      <div class="q"><b>3</b><p><strong>¿Tiene que actuar sobre sistemas?</strong><span>Enviar, cobrar o cambiar datos sube el nivel.</span></p></div>
+      <div class="q"><b>4</b><p><strong>¿Qué pasa si se equivoca?</strong><span>Define cuánto control humano lleva.</span></p></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Árbol de decisión -->
+<section class="slide surface s4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">04/07</div>
+  <div class="top">
+    <h2>Responde en este <span class="hl">orden.</span></h2>
+    <div class="tree">
+      <div class="tr"><div class="tq"><i>1</i>¿Los pasos son siempre iguales?</div><div class="br">Sí</div><div class="out"><span class="lv a">Automatización</span></div></div>
+      <div class="gap"></div>
+      <div class="tr"><div class="tq"><i>2</i>¿Hay que juzgar?</div><div class="br">No</div><div class="out"><span class="lv a">Automatización</span><small>con condiciones</small></div></div>
+      <div class="gap si"></div>
+      <div class="tr"><div class="tq"><i>3</i>¿Actúa sobre sistemas?</div><div class="br">No</div><div class="out"><span class="lv s">Asistente</span></div></div>
+      <div class="gap si"></div>
+      <div class="tr last"><div class="tq"><i>4</i>¿Qué pasa si se equivoca?</div><div class="br"></div><div class="out"><span class="lv g">Agente</span><small>Si cuesta caro, una persona aprueba.</small></div></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · Ejemplos hipotéticos -->
+<section class="slide light s5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/07</div>
+  <div class="top">
+    <span class="pill">Ejemplo hipotético</span>
+    <h2>Tres procesos, <span class="hl">tres niveles.</span></h2>
+    <p class="support">1 pasos iguales · 2 juicio · 3 actúa · 4 error</p>
+    <div class="cases">
+      <div class="case"><p>Guardar cada factura que llega por correo y anotarla en una hoja.</p>
+        <div class="path"><em>1 sí</em><span class="arrow">→</span><span class="lv a">Automatización</span></div></div>
+      <div class="case"><p>Redactar respuestas a clientes que preguntan cosas distintas.</p>
+        <div class="path"><em>1 no</em><em>2 sí</em><em>3 no</em><span class="arrow">→</span><span class="lv s">Asistente</span></div></div>
+      <div class="case"><p>Gestionar un reclamo: leer el caso, revisar el pedido y reembolsar.</p>
+        <div class="path"><em>1 no</em><em>2 sí</em><em>3 sí</em><em>4 caro</em><span class="arrow">→</span><span class="lv g">Agente + aprobación</span></div></div>
+    </div>
+    <p class="support note5">Procesos inventados, no son de ningún cliente.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 06 · Escalera: sube solo si hace falta -->
+<section class="slide dark s6" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">06/07</div>
+  <div class="top">
+    <h2>Sube de nivel solo si el anterior <span class="hl">no alcanza.</span></h2>
+    <div class="steps">
+      <div class="step a"><b>Automatización</b><span>Predecible.</span></div>
+      <div class="step s"><b>Asistente</b><span>Flexible, con una persona al mando.</span></div>
+      <div class="step g"><b>Agente</b><span>Más flexible. También más costo y errores que se acumulan.</span></div>
+    </div>
+    <p class="quote">“Buscar la solución más simple posible y subir la complejidad solo cuando haga falta.”<small>Anthropic, Building effective agents, 2024 (traducción de Plogy). Anthropic vende herramientas de agentes.</small></p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 07 · CTA (variante 25: comercial, círculo y chat; PROCESO por DM) -->
+<section class="slide s7" data-n="7">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">07/07</div>
+  <div class="ring"><img src="assets/25-ojo-pez.jpg" alt="Un hombre con gabardina de pie en una sala, visto por una mirilla con lente de ojo de pez"></div>
+  <h2>Ponle nivel a tu <span class="hl">proceso.</span></h2>
+  <div class="bub me">PROCESO</div>
+  <div class="bub them">Cuéntanos qué proceso es y vemos qué nivel pide.</div>
+  <p class="cmnote">Escríbenos <span class="kw">PROCESO</span> por DM.</p>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

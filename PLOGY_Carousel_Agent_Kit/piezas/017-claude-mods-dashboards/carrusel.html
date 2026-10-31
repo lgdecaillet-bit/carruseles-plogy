@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 017 · Claude Mods en formato dashboard</title>
+<!-- Fuente editable. 6 láminas de 1080x1350. Mismo contenido y estética que la pieza 016, contado como paneles de control.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=6
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6 -Prefix slide-0
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit).
+     Los paneles son ILUSTRACIONES: ninguna cifra, hora ni archivo es un dato real. Cada lámina lo dice.
+     CTA: variante 21 de la biblioteca (palabra clave gigante), adaptada a un evento: Comenta MOD. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486; --ink2:#2b241f;
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --mono:Consolas,'Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px}
+.light{background:var(--paper);color:var(--ink)}
+.surface{background:var(--surface);color:var(--ink)}
+.dark{background:var(--ink);color:var(--paper)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;z-index:5}
+.light .count,.surface .count{color:var(--muted)} .dark .count{color:#e6dfd8}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:5}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.25}
+.dots i.on{opacity:1;background:var(--orange)}
+
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance;position:relative;z-index:3}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.55)}
+.support{position:relative;z-index:3;font-size:38px;line-height:1.35;margin-top:24px;max-width:880px}
+.light .support,.surface .support{color:var(--muted)} .dark .support{color:#e6dfd8}
+.support b{color:var(--ink)} .dark .support b{color:#fff}
+.pill{position:relative;z-index:3;display:inline-block;background:var(--orange);color:var(--ink);font:700 32px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:20px 32px;border-radius:999px;margin-bottom:34px}
+.src{position:absolute;left:96px;right:96px;bottom:118px;z-index:3;font:400 28px/1.35 var(--body)}
+.light .src,.surface .src{color:var(--muted)} .dark .src{color:#cfc6bd}
+.top{position:relative;z-index:3;margin-top:130px}
+
+/* ventana de dashboard */
+.win{position:relative;z-index:3;border-radius:30px;overflow:hidden;border:2px solid var(--border);background:var(--paper);color:var(--ink)}
+.dark .win{border-color:#4a413a}
+.bar{display:flex;align-items:center;gap:12px;padding:18px 26px;background:var(--ink2);color:#e6dfd8;font:500 26px/1 var(--mono)}
+.bar i{width:16px;height:16px;border-radius:50%;background:#6b5f55;display:block}
+.bar i:first-child{background:var(--orange)}
+.bar span{margin-left:12px}
+.bar em{margin-left:auto;font:700 22px/1 var(--display);font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:#ffb48a}
+.body{padding:26px 30px}
+.tag{display:inline-block;font:700 24px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--orangeText)}
+.dark .tag{color:var(--orange)}
+.ill{position:relative;z-index:3;margin-top:16px;font:400 26px/1.3 var(--body)}
+.light .ill,.surface .ill{color:var(--muted)} .dark .ill{color:#cfc6bd}
+
+/* 01 · portada */
+.p1 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.p1 .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.82) 0%,rgba(23,19,16,0) 22%,rgba(23,19,16,0) 40%,rgba(23,19,16,.86) 60%,rgba(23,19,16,1) 100%)}
+.p1 .pill{position:absolute;left:96px;top:196px;margin:0}
+.p1 .alert{position:absolute;z-index:3;right:96px;top:470px;width:560px;border-radius:26px;background:rgba(23,19,16,.92);border:2px solid var(--orange);padding:22px 28px;box-shadow:0 0 40px rgba(255,91,0,.35)}
+.p1 .alert small{display:block;font:700 22px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+.p1 .alert code{display:block;margin-top:12px;font:500 34px/1.2 var(--mono);color:#fff}
+.p1 .alert span{display:block;margin-top:10px;font:400 28px/1.25 var(--body);color:#e6dfd8}
+.p1 .bottom{position:absolute;z-index:3;left:96px;right:96px;bottom:150px}
+.p1 h1{font-size:84px;color:#fff}
+.p1 .support{font:700 50px/1.1 var(--display);letter-spacing:-.03em;margin-top:22px;color:#fff}
+.p1 .lead{font:400 34px/1.3 var(--body);color:#e6dfd8;margin-top:20px;max-width:860px}
+.p1 .dots{color:#fff}
+
+/* 02 · eventos y Mod */
+.p2 h2{font-size:88px}
+.p2 .support{font-size:34px;margin-top:20px}
+.p2 .win{margin-top:28px}
+.p2 .top{margin-top:104px}
+.ev{display:grid;grid-template-columns:1fr auto;align-items:center;gap:18px;padding:18px 30px;border-top:2px solid #e6ddd5}
+.ev:first-of-type{border-top:0}
+.ev b{display:block;font:700 36px/1.1 var(--display);letter-spacing:-.02em}
+.ev div span{display:block;margin-top:6px;font:400 27px/1.2 var(--mono);color:var(--muted)}
+.ev .chip{display:inline-block;margin:0;border-radius:999px;font:700 28px/1 var(--display);letter-spacing:.02em;padding:16px 24px;white-space:nowrap}
+.ev .chip.a{background:var(--surface);color:var(--ink);border:2px solid var(--border)}
+.ev .chip.b{background:var(--paper);color:var(--orangeText);border:3px solid var(--orange)}
+.ev .chip.c{background:var(--orange);color:var(--ink)}
+.head{display:flex;justify-content:space-between;padding:16px 30px;background:var(--surface);font:700 22px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* 03 · freno de mano + cámara */
+.p3 h2{font-size:82px}
+.p3 .cards{position:relative;z-index:3;margin-top:30px;display:flex;flex-direction:column;gap:22px}
+.card-t{font:700 38px/1.05 var(--display);letter-spacing:-.02em}
+.brake .body{display:grid;grid-template-columns:1fr;gap:12px}
+.brake code{display:block;border-radius:16px;background:var(--ink);color:#ffb48a;font:500 38px/1.2 var(--mono);padding:18px 22px}
+.brake p{font:400 30px/1.3 var(--body);color:var(--muted)}
+.btns{display:flex;gap:16px;margin-top:6px}
+.btn{flex:1;text-align:center;border-radius:18px;padding:20px 10px;font:700 32px/1 var(--display)}
+.btn.go{background:var(--orange);color:var(--ink)}
+.btn.no{border:3px solid var(--ink);color:var(--ink)}
+.cam .body{display:grid;grid-template-columns:270px 1fr;gap:26px;align-items:stretch;padding:0}
+.cam img{width:270px;height:100%;min-height:290px;object-fit:cover;object-position:30% 25%;display:block}
+.cam ol{list-style:none;padding:22px 26px 22px 0;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.cam li{display:flex;gap:16px;font:400 29px/1.2 var(--body);color:var(--ink)}
+.cam li time{flex:none;font:500 26px/1.3 var(--mono);color:var(--muted);width:92px}
+.cam li.stop{font-weight:700;color:var(--orangeText)}
+
+/* 04 · alerta de gasto */
+.p4 h2{font-size:92px}
+.p4 .chart{display:block;width:100%;height:auto}
+.kpis{display:flex;gap:14px;margin-bottom:16px}
+.kpi{flex:1;border-radius:20px;background:var(--surface);padding:14px 20px}
+.kpi small{display:block;font:700 21px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.kpi b{display:block;margin-top:6px;font:700 34px/1.05 var(--display);letter-spacing:-.02em}
+.kpi.hot{background:var(--orange)}
+.kpi.hot small,.kpi.hot b{color:var(--ink)}
+.also{position:relative;z-index:3;margin-top:20px}
+.also p{font:400 30px/1.3 var(--body);color:var(--muted);margin-bottom:10px}
+.also div{display:flex;flex-wrap:wrap;gap:10px}
+.also span{border:2px solid var(--border);border-radius:999px;padding:11px 20px;font:700 26px/1 var(--display);color:var(--ink)}
+
+/* 05 · ajustes */
+.p5 h2{font-size:84px}
+.set .row{padding:16px 30px;border-top:2px solid #e6ddd5}
+.set .row:first-child{border-top:0}
+.set .r1{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.set .r1 b{font:700 38px/1.05 var(--display);letter-spacing:-.025em}
+.set .r1 u{text-decoration:none;color:var(--orange)}
+.tog{flex:none;width:84px;height:46px;border-radius:999px;background:var(--orange);position:relative}
+.tog::after{content:"";position:absolute;top:5px;right:5px;width:36px;height:36px;border-radius:50%;background:#fff}
+.set .row em{display:block;margin-top:8px;border-radius:14px;background:var(--surface);padding:10px 18px;font:500 27px/1.25 var(--body);font-style:normal;color:var(--ink)}
+.set .row em.m{font-family:var(--mono);font-size:27px}
+.warn{position:relative;z-index:3;margin-top:20px;border-radius:30px;background:var(--orange);color:var(--ink);padding:22px 30px}
+.warn b{display:block;font:700 40px/1.08 var(--display);letter-spacing:-.025em}
+.warn span{display:block;margin-top:8px;font:500 29px/1.3 var(--body)}
+.warn code{font:600 29px/1.2 var(--mono)}
+
+/* 06 · CTA variante 21 */
+.p6{background:var(--ink);color:#fff;padding:0}
+.p6 .count{display:none}
+.p6 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.p6 .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.82) 0%,rgba(23,19,16,.4) 30%,rgba(23,19,16,.25) 50%,rgba(23,19,16,.92) 74%,rgba(23,19,16,1) 100%)}
+.p6 h2{position:absolute;z-index:3;left:96px;right:96px;top:196px;font-size:88px;color:#fff}
+.p6 .kwbig{position:absolute;z-index:3;left:96px;right:96px;bottom:225px}
+.p6 .kwbig small{display:block;font:700 60px/1 var(--display);letter-spacing:-.03em}
+.p6 .kwbig b{display:block;font:700 380px/.9 var(--display);letter-spacing:-.06em;color:var(--orange);text-shadow:0 0 50px rgba(255,91,0,.5)}
+.p6 .sub{position:absolute;z-index:3;left:96px;right:96px;bottom:118px;font:400 40px/1.3 var(--body);color:#e6dfd8}
+.p6 .dots{color:#fff}
+.p6 .hl{color:#fff;text-shadow:none}
+</style>
+</head>
+<body>
+
+<!-- 01 · Gancho con foto retro y alerta -->
+<section class="slide dark p1" data-n="1">
+  <img class="bg" src="assets/01-retro.jpg" alt="Un hombre con una taza de café frente a una pared de pantallas de computador de los años ochenta, en tonos naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">01/06</div>
+  <span class="pill">Claude Mods</span>
+  <div class="alert"><small>Alerta · ilustración</small><code>rm -rf ./clientes</code><span>La IA quiere borrar una carpeta. ¿Permitir?</span></div>
+  <div class="bottom">
+    <h1>¿Le darías las llaves de tu auto a una <span class="hl">IA</span> para que maneje sola?</h1>
+    <p class="support">Da miedo, ¿verdad?</p>
+    <p class="lead">Con las IA de hoy pasa algo parecido: si trabajan solas en tu negocio, pueden borrar archivos por error o gastar de más sin que lo notes.</p>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Qué es un Mod: eventos y decisión -->
+<section class="slide surface p2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">02/06</div>
+  <div class="top">
+    <h2>Para eso existen los <span class="hl">Claude Mods.</span></h2>
+    <p class="support">Como los mods de un videojuego, pero para tu IA: programas pequeños que <b>cambian cómo se comporta</b> Claude Code. Cada acción de la IA es un evento, y el Mod decide qué hacer con él.</p>
+    <div class="win">
+      <div class="bar"><i></i><i></i><i></i><span>eventos de la IA</span><em>Ilustración</em></div>
+      <div class="head"><span>Lo que la IA quiere hacer</span><span>Lo que hace el Mod</span></div>
+      <div class="ev"><div><b>Leer un archivo</b><span>ventas.xlsx</span></div><span class="chip a">Mira</span></div>
+      <div class="ev"><div><b>Escribir un mensaje</b><span>correo al cliente</span></div><span class="chip b">Cambia</span></div>
+      <div class="ev"><div><b>Borrar una carpeta</b><span>./clientes</span></div><span class="chip c">Toma el control</span></div>
+    </div>
+  </div>
+  <div class="src">Fuente: documentación de Anthropic, “Mods overview”. Los eventos del panel son de ejemplo.</div>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · Freno de mano y cámara de seguridad -->
+<section class="slide dark p3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">03/06</div>
+  <div class="top" style="margin-top:120px">
+    <h2>El <span class="hl">freno de mano</span> y la cámara de seguridad.</h2>
+    <div class="cards">
+      <div class="win brake">
+        <div class="bar"><i></i><i></i><i></i><span>1 · freno de mano</span><em>Ilustración</em></div>
+        <div class="body">
+          <code>rm -rf ./clientes</code>
+          <p>Este comando borra una carpeta entera. El Mod lo frena y te deja decidir.</p>
+          <div class="btns"><div class="btn go">Bloquear</div><div class="btn no">Permitir</div></div>
+        </div>
+      </div>
+      <div class="win cam">
+        <div class="bar"><i></i><i></i><i></i><span>3 · cámara de seguridad</span><em>Ilustración</em></div>
+        <div class="body">
+          <img src="assets/05-vigilancia.jpg" alt="Una persona detectada por una IA con cajas y puntos naranja">
+          <ol>
+            <li><time>10:02</time>Leyó ventas.xlsx</li>
+            <li><time>10:03</time>Editó precios.csv</li>
+            <li class="stop"><time>10:04</time>Quiso borrar ./clientes. Frenado.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="src">Basado en los ejemplos de Anthropic: blast-radius y replay-theater.</div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Alerta de gasto -->
+<section class="slide light p4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">04/06</div>
+  <div class="top" style="margin-top:100px">
+    <h2>2. La <span class="hl">alerta de gasto.</span></h2>
+    <p class="support">Lee cuánto consume cada solicitud y te avisa.</p>
+    <div class="win" style="margin-top:30px">
+      <div class="bar"><i></i><i></i><i></i><span>consumo por solicitud</span><em>Ilustración</em></div>
+      <div class="body">
+        <div class="kpis"><div class="kpi hot"><small>Alerta</small><b>La solicitud 7 pasó el límite</b></div></div>
+        <svg class="chart" viewBox="0 40 888 360" role="img" aria-label="Gráfico de barras ilustrativo: la solicitud 7 supera la línea de límite">
+          <line x1="20" y1="350" x2="868" y2="350" stroke="#a39486" stroke-width="2"/>
+          <rect x="44"  y="290" width="56" height="60"  rx="10" fill="#171310"/>
+          <rect x="124" y="260" width="56" height="90"  rx="10" fill="#171310"/>
+          <rect x="204" y="280" width="56" height="70"  rx="10" fill="#171310"/>
+          <rect x="284" y="240" width="56" height="110" rx="10" fill="#171310"/>
+          <rect x="364" y="270" width="56" height="80"  rx="10" fill="#171310"/>
+          <rect x="444" y="250" width="56" height="100" rx="10" fill="#171310"/>
+          <rect x="524" y="60"  width="56" height="290" rx="10" fill="#ff5b00"/>
+          <rect x="604" y="255" width="56" height="95"  rx="10" fill="#171310"/>
+          <rect x="684" y="265" width="56" height="85"  rx="10" fill="#171310"/>
+          <rect x="764" y="245" width="56" height="105" rx="10" fill="#171310"/>
+          <line x1="20" y1="150" x2="868" y2="150" stroke="#b43d00" stroke-width="4" stroke-dasharray="16 12"/>
+          <text x="868" y="136" text-anchor="end" font-family="Space Grotesk,Helvetica,Arial,sans-serif" font-weight="700" font-size="26" fill="#b43d00">LÍMITE</text>
+          <g font-family="Space Grotesk,Helvetica,Arial,sans-serif" font-weight="700" font-size="24" fill="#625951" text-anchor="middle">
+            <text x="72" y="384">1</text><text x="152" y="384">2</text><text x="232" y="384">3</text><text x="312" y="384">4</text><text x="392" y="384">5</text>
+            <text x="472" y="384">6</text><text x="552" y="384" fill="#b43d00">7</text><text x="632" y="384">8</text><text x="712" y="384">9</text><text x="792" y="384">10</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="also"><p>Y también:</p><div><span>Ocultar claves</span><span>Confirmar antes de tocar producción</span><span>Reescribir tus mensajes</span></div></div>
+  </div>
+  <div class="src">Se pide a medida: un Mod puede leer el uso de tokens por solicitud (Anthropic). Datos del gráfico: ilustración.</div>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · Cómo conseguir uno y cuidados -->
+<section class="slide surface p5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/06</div>
+  <div class="top" style="margin-top:100px">
+    <h2>No hace falta <span class="hl">programarlo.</span></h2>
+    <div class="win set" style="margin-top:30px">
+      <div class="bar"><i></i><i></i><i></i><span>ajustes · mods</span><em>Ilustración</em></div>
+      <div class="row"><div class="r1"><b><u>1.</u> Pídeselo a Claude</b><span class="tog"></span></div><em>“Haz un mod que muestre la rama de git encima del prompt.”</em></div>
+      <div class="row"><div class="r1"><b><u>2.</u> Instala uno hecho</b><span class="tog"></span></div><em class="m">/plugin install nombre@marketplace</em></div>
+      <div class="row"><div class="r1"><b><u>3.</u> Pruébalo sin instalar</b><span class="tog"></span></div><em class="m">claude --plugin-dir ./mi-mod</em></div>
+    </div>
+    <div class="warn"><b>Ojo: un Mod corre con tus permisos.</b><span>Solo de fuentes de confianza. Antes, <code>claude plugin validate</code>. Para apagarlos, <code>claude --safe-mode</code>.</span></div>
+  </div>
+  <div class="src">Requiere Claude Code 2.1.287 o superior. Fuente: Anthropic.</div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 06 · CTA (variante 21 adaptada: palabra clave gigante para recibir el enlace de inscripción) -->
+<section class="slide p6" data-n="6">
+  <img class="bg" src="assets/07-cta-silueta.jpg" alt="Una silueta teclea frente a una pantalla que lanza destellos naranja">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <h2>Jueves 22, 19:30. Te enseñamos a <span class="hl">usar los Mods.</span></h2>
+  <div class="kwbig"><small>Comenta</small><b>MOD</b></div>
+  <p class="sub">y te mandamos el link de inscripción.</p>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d+)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visor de piezas Plogy</title>
+<!-- Visor local de las piezas. No reemplaza ni borra nada: cada pieza conserva sus propios archivos y aquí solo se alterna entre ellos.
+     Cómo agregar una pieza nueva: añade un objeto a PIEZAS (más abajo) con su carpeta y sus vistas.
+     Hay que abrirlo desde el disco (doble clic). Las láminas y los textos se cargan en marcos (iframes) desde las carpetas de cada pieza.
+     La vista "Brief" y las páginas de texto (.html) se generan desde los .md con piezas/_visor/md_to_html.py. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#d9d0c7; --stage:#e4ddd5;
+  --display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--ink:#f4efe9;--paper:#171310;--muted:#bdb2a8;--surface:#211b17;--border:#3a322c;--stage:#0f0c0a;--orangeText:#ff8a4d}
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--paper);color:var(--ink);font:15px/1.4 var(--body);display:flex;flex-direction:column}
+header{flex:none;padding:14px 20px 0;border-bottom:1px solid var(--border);background:var(--paper)}
+.top{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.top h1{font:700 20px/1 var(--display);letter-spacing:-.02em}
+.top small{color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 0}
+.tabs button{font:inherit;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:999px}
+.tabs button b{font-family:var(--display);margin-right:6px}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.row2{padding:10px 0 12px}
+.row2 .tabs{margin:0}
+.row2 .tabs button{padding:6px 12px;font-size:14px}
+.row2 .tabs button[aria-selected="true"]{background:var(--orange);border-color:var(--orange);color:#171310}
+.row3{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:0 0 12px;color:var(--muted);font-size:14px}
+.row3 a{color:var(--orangeText)}
+main{flex:1;min-height:0;background:var(--stage);overflow:auto;position:relative}
+iframe{border:0;display:block;background:var(--paper)}
+.full iframe{width:100%;height:100%}
+.single{padding:16px;display:flex;justify-content:center}
+.single .frame{box-shadow:0 10px 40px rgba(0,0,0,.25);transform-origin:top left}
+.note{padding:10px 20px;color:var(--muted);font-size:14px}
+/* Las piezas van en una sola fila con desplazamiento horizontal, para que la cabecera no crezca con cada pieza nueva. */
+#pieces{position:relative;flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+#pieces button{flex:none;white-space:nowrap;padding:7px 12px;font-size:14px;max-width:280px;overflow:hidden;text-overflow:ellipsis}
+.row3{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+#lotes button{padding:8px 16px}
+#lotes button b{font-size:15px}
+#lotes button[aria-selected="true"]{background:var(--orange);border-color:var(--orange);color:#171310}
+#pieces{margin-top:8px}
+.row3 > *{flex:none;white-space:nowrap}
+</style>
+</head>
+<body>
+<header>
+  <div class="top"><h1>Visor de piezas Plogy</h1><small id="hint">Cambia de pieza arriba. Nada se borra: cada pieza conserva sus archivos.</small></div>
+  <div class="tabs" id="lotes" role="tablist"></div>
+  <div class="tabs" id="pieces" role="tablist"></div>
+  <div class="row2"><div class="tabs" id="views" role="tablist"></div></div>
+  <div class="row3" id="nav"></div>
+</header>
+<main id="stage"></main>
+
+<script>
+/* Para sumar una pieza: añade un objeto aquí. "file" es relativo a la carpeta de la pieza.
+   kind:"slides" -> láminas 1080x1350 (param s o v, keys = valores del parámetro).
+   kind:"doc"    -> una página de texto. */
+var PIEZAS = [
+  { id:"001", title:"Automatizar el desorden", dir:"001-automatizar-el-desorden", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Variantes de CTA", kind:"slides", file:"cta-variantes.html", param:"v", keys:["b","c","d","e","f"], png:function(k){return "exports/cta/cta-"+k+".png";},
+        note:"La variante A es la lámina 06 de la vista Láminas." },
+      { label:"Brief y textos", kind:"doc", file:"brief.html" } ] },
+  { id:"002", title:"Los bancos frenan a los agentes de IA", dir:"002-bancos-frenan-agentes-ia", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Brief y textos", kind:"doc", file:"brief.html" } ] },
+  { id:"003", title:"Barato por token, caro por tarea", dir:"003-costo-por-token-vs-por-tarea", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Reporte web", kind:"doc", file:"reporte.html" },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"DM", kind:"doc", file:"dm.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"004", title:"Tu automatización vence el 14 de enero", dir:"004-gpt-4o-se-apaga-14-enero", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Reporte web", kind:"doc", file:"reporte.html" },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"DM", kind:"doc", file:"dm.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"005", title:"Mide hoy, compara después", dir:"005-medir-antes-de-automatizar", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Guía web", kind:"doc", file:"reporte.html" },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"DM", kind:"doc", file:"dm.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"006", title:"Elige el modelo por tarea", dir:"006-haiku-5-5-modelo-por-tarea", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Reporte web", kind:"doc", file:"reporte.html" },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"DM", kind:"doc", file:"dm.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"007", title:"Un agente con las llaves de tu negocio", dir:"007-agente-con-llaves-de-tu-negocio", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Reporte web", kind:"doc", file:"reporte.html" },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"DM", kind:"doc", file:"dm.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"008", title:"Nadie garantiza que el agente obedezca", dir:"008-nadie-garantiza-que-el-agente-obedezca", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Comunidad", kind:"doc", file:"comunidad.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"009", title:"Automatizar lo que nadie eligió", dir:"009-automatizar-lo-que-nadie-eligio", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"010", title:"Brief de web en seis campos", dir:"010-brief-de-web-en-seis-campos", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Reporte web", kind:"doc", file:"reporte.html" },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"DM", kind:"doc", file:"dm.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"011", title:"Cinco señales de un post sin criterio", dir:"011-cinco-senales-de-un-post-sin-criterio", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Reporte web", kind:"doc", file:"reporte.html" },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"DM", kind:"doc", file:"dm.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"012", title:"Cuatro semanas, un proceso real", dir:"012-ruta-de-cuatro-semanas-para-ploggers", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Reporte web", kind:"doc", file:"reporte.html" },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"DM", kind:"doc", file:"dm.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"013", title:"Automatización, asistente o agente", dir:"013-automatizacion-asistente-o-agente", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"DM", kind:"doc", file:"dm.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"014", title:"Un agente calificó nuestras piezas", dir:"014-otro-agente-califico-nuestras-piezas", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"015", title:"30 formas de cerrar un carrusel", dir:"015-treinta-formas-de-cerrar-un-carrusel", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Comunidad", kind:"doc", file:"comunidad.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"016", title:"Claude Mods, los frenos de la IA", dir:"016-claude-mods-frenos-de-la-ia", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"017", title:"Claude Mods en dashboards", dir:"017-claude-mods-dashboards", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"018", title:"Seis dashboards para tu negocio", dir:"018-seis-dashboards-para-tu-negocio", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7","8"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Prompt (extra opcional)", kind:"doc", file:"prompt.html" },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"019", title:"Claude Motion", dir:"019-claude-motion", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"020", title:"5 errores al implementar IA", dir:"020-cinco-errores-al-implementar-ia", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"021", title:"Mods para vibecodear seguro", dir:"021-mods-para-vibecodear-seguro", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"022", title:"Por qué hacemos clases gratis", dir:"022-por-que-clases-gratis", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"023", title:"La pelea de los agentes", dir:"023-pelea-de-agentes-ia", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7","8","9","10"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Guía (DM)", kind:"doc", file:"guia.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"024", title:"Carruseles con criterio", dir:"024-carruseles-con-criterio", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7","8"], png:function(k){return "exports/slide-0"+k+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Skill base (DM)", kind:"doc", file:"skill-base.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"025", title:"Claude Code de cero", dir:"025-claude-code-de-cero", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7","8","9","10"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Guía (DM)", kind:"doc", file:"guia.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"026", title:"Motion con Claude (animado)", dir:"026-motion-con-claude", views:[
+      { label:"Láminas animadas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".mp4";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Kit (DM)", kind:"doc", file:"kit-motion.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"CAL", lote:"semana", title:"Calendario de la semana", dir:".", views:[
+      { label:"Calendario", kind:"doc", file:"CALENDARIO-26oct-1nov.html" } ] },
+  { id:"027", lote:"semana", title:"Lun 26 · ChatGPT Ads en Colombia", dir:"027-chatgpt-ads-llega-a-colombia", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"028", lote:"semana", title:"Lun 26 · Clase 1 · Tu asistente no es un chat", dir:"028-tu-asistente-no-es-un-chat", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7","8"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"029", lote:"semana", title:"Lun 26 · Anthropic pide salir a bolsa", dir:"029-anthropic-pide-salir-a-bolsa", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"030", lote:"semana", title:"Mar 27 · WhatsApp Business vuelve a cobrar", dir:"030-whatsapp-business-vuelve-a-cobrar", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"031", lote:"semana", title:"Mar 27 · Clase 2 · Cinco tareas", dir:"031-cinco-tareas-para-tu-asistente", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7","8"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"032", lote:"semana", title:"Mié 28 · Gemini para pequeños negocios", dir:"032-gemini-para-pequenos-negocios", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"033", lote:"semana", title:"Mié 28 · Clase 3 · Instrucciones", dir:"033-instrucciones-de-tu-asistente", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7","8","9"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"034", lote:"semana", title:"Jue 29 · Clase 4 · Hoy creamos tu asistente", dir:"034-hoy-creamos-tu-asistente", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"035", lote:"semana", title:"Jue 29 · ILIA 2026 · pequeñas empresas", dir:"035-ilia-2026-pequenas-empresas", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"036", lote:"semana", title:"Vie 30 · GPT-6 arma herramientas", dir:"036-gpt-6-arma-herramientas", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"037", lote:"semana", title:"Vie 30 · Lead · Carruseles así", dir:"037-carruseles-que-se-ven-asi", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Recurso (DM)", kind:"doc", file:"recurso-como-hacemos-carruseles.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"038", lote:"semana", title:"Sáb 31 · Canva Craft", dir:"038-canva-craft", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"039", lote:"semana", title:"Sáb 31 · Gems de Gemini se retiran", dir:"039-gems-de-gemini-se-retiran", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"040", lote:"semana", title:"Dom 1 · Claude: nuevas reglas de uso", dir:"040-claude-nuevas-reglas-de-uso", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"041", lote:"semana", title:"Dom 1 · Lead · Primera tarea", dir:"041-la-primera-tarea-a-automatizar", views:[
+      { label:"Láminas", kind:"slides", file:"carrusel.html", param:"s", keys:["1","2","3","4","5","6","7"], png:function(k){return "exports/slide-"+(k.length<2?"0"+k:k)+".png";} },
+      { label:"Textos por canal", kind:"doc", file:"textos.html" },
+      { label:"Recurso (DM)", kind:"doc", file:"recurso-plantilla-tareas.html" },
+      { label:"Brief", kind:"doc", file:"brief.html" } ] },
+  { id:"CTA", title:"Biblioteca de CTAs (30)", dir:"cta-biblioteca", views:[
+      { label:"Variantes", kind:"slides", file:"ctas.html", param:"v", keys:["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"], png:function(k){return "exports/cta-"+k+".png";},
+        note:"Plantillas de último slide. Palabras clave de ejemplo." },
+      { label:"Catálogo", kind:"doc", file:"CATALOGO.html" } ] }
+];
+
+/* Lotes: agrupan las piezas en la cabecera. Una pieza sin "lote" va en "anteriores". */
+var LOTES = [
+  { id:"semana", title:"Semana 26 oct a 1 nov", sub:"15 piezas" },
+  { id:"anteriores", title:"Piezas 001 a 026", sub:"y biblioteca de CTA" }
+];
+function loteDe(x){ return x.lote || "anteriores"; }
+var state = { p:0, v:0, k:"all" };
+var $lotes = document.getElementById("lotes"), $pieces = document.getElementById("pieces"), $views = document.getElementById("views"),
+    $nav = document.getElementById("nav"), $stage = document.getElementById("stage");
+
+function parseHash(){
+  var m = location.hash.replace("#","").split("/");
+  var p = PIEZAS.findIndex(function(x){return x.id===m[0];});
+  if (p>=0){ state.p=p; var v = parseInt(m[1],10); state.v = (v>=0 && v<PIEZAS[p].views.length) ? v : 0; state.k = m[2]||"all"; }
+}
+function setHash(){ location.hash = PIEZAS[state.p].id + "/" + state.v + (state.k!=="all" ? "/"+state.k : ""); }
+
+function btn(label, selected, fn){
+  var b = document.createElement("button"); b.setAttribute("role","tab"); b.setAttribute("aria-selected", selected?"true":"false");
+  b.innerHTML = label; b.onclick = fn; return b;
+}
+
+function render(){
+  var P = PIEZAS[state.p], V = P.views[state.v];
+  $lotes.innerHTML = ""; $pieces.innerHTML = ""; $views.innerHTML = ""; $nav.innerHTML = ""; $stage.innerHTML = "";
+  var L = loteDe(P);
+  LOTES.forEach(function(l){
+    $lotes.appendChild(btn("<b>"+l.title+"</b>"+l.sub, l.id===L, function(){
+      state.p = PIEZAS.findIndex(function(x){return loteDe(x)===l.id;}); state.v=0; state.k="all"; setHash(); render(); }));
+  });
+  PIEZAS.forEach(function(x,i){
+    if (loteDe(x)!==L) return;
+    $pieces.appendChild(btn("<b>"+x.id+"</b>"+x.title, i===state.p, function(){ state.p=i; state.v=0; state.k="all"; setHash(); render(); }));
+  });
+  var sel = $pieces.querySelector('[aria-selected="true"]');
+  if (sel) $pieces.scrollLeft = sel.offsetLeft - ($pieces.clientWidth - sel.offsetWidth) / 2;
+  P.views.forEach(function(x,i){
+    $views.appendChild(btn(x.label, i===state.v, function(){ state.v=i; state.k="all"; setHash(); render(); }));
+  });
+
+  var base = P.dir + "/" + V.file;
+  if (V.kind==="slides"){
+    var all = btn("Todas", state.k==="all", function(){ state.k="all"; setHash(); render(); });
+    $nav.appendChild(document.createTextNode("Ver: ")); $nav.appendChild(all);
+    V.keys.forEach(function(k){
+      var label = (V.param==="v") ? k.toUpperCase() : k;
+      $nav.appendChild(btn(label, state.k===k, function(){ state.k=k; setHash(); render(); }));
+    });
+    $nav.querySelectorAll("button").forEach(function(b){ b.style.cssText="font:inherit;cursor:pointer;border:1px solid var(--border);background:"+(b.getAttribute("aria-selected")==="true"?"var(--ink)":"var(--surface)")+";color:"+(b.getAttribute("aria-selected")==="true"?"var(--paper)":"var(--ink)")+";padding:5px 12px;border-radius:999px"; });
+    if (V.note){ var n=document.createElement("span"); n.textContent=V.note; $nav.appendChild(n); }
+    if (state.k==="all"){
+      $stage.className="full";
+      var f=document.createElement("iframe"); f.src=base; f.title=P.title+" · "+V.label; $stage.appendChild(f);
+    } else {
+      $stage.className="single";
+      var wrap=document.createElement("div"); wrap.className="frame";
+      var f2=document.createElement("iframe"); f2.src=base+"?"+V.param+"="+state.k; f2.width=1080; f2.height=1350; f2.title=P.title+" · "+V.label+" "+state.k;
+      wrap.appendChild(f2); $stage.appendChild(wrap); fit(wrap);
+      var a=document.createElement("a"); a.href=P.dir+"/"+V.png(state.k); a.target="_blank"; a.textContent="Abrir el PNG exportado"; $nav.appendChild(a);
+    }
+  } else {
+    $stage.className="full";
+    var f3=document.createElement("iframe"); f3.src=base; f3.title=P.title+" · "+V.label; $stage.appendChild(f3);
+    var a2=document.createElement("a"); a2.href=base; a2.target="_blank"; a2.textContent="Abrir en una pestaña"; $nav.appendChild(a2);
+  }
+}
+
+function fit(wrap){
+  var availW = $stage.clientWidth - 32, availH = $stage.clientHeight - 32;
+  var s = Math.min(1, availW/1080, availH/1350);
+  wrap.style.width = (1080*s)+"px"; wrap.style.height = (1350*s)+"px";
+  var f = wrap.querySelector("iframe"); f.style.transform = "scale("+s+")"; f.style.transformOrigin = "top left";
+}
+window.addEventListener("resize", function(){ var w=document.querySelector(".frame"); if(w) fit(w); });
+window.addEventListener("hashchange", function(){ parseHash(); render(); });
+/* La rueda del mouse mueve la fila de piezas de lado. */
+document.getElementById("pieces").addEventListener("wheel", function(e){
+  if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { this.scrollLeft += e.deltaY; e.preventDefault(); }
+}, {passive:false});
+document.addEventListener("keydown", function(e){
+  var V = PIEZAS[state.p].views[state.v];
+  if (V.kind!=="slides" || state.k==="all") return;
+  var i = V.keys.indexOf(state.k);
+  if (e.key==="ArrowRight" && i<V.keys.length-1){ state.k=V.keys[i+1]; setHash(); render(); }
+  if (e.key==="ArrowLeft" && i>0){ state.k=V.keys[i-1]; setHash(); render(); }
+});
+
+if (!location.hash) state.p = PIEZAS.findIndex(function(x){return loteDe(x)==="semana";});
+parseHash(); render();
+</script>
+</body>
+</html>

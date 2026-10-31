@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 010 · Brief de web en seis campos</title>
+<!-- Fuente editable. 8 láminas de 1080x1350.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=8
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7,8 -Prefix slide-0
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit).
+     Pieza educativa: no parte de una noticia. Todo es criterio de Plogy; el ejemplo de la lámina 06 es hipotético.
+     Lámina 08: variante 23 de la biblioteca de CTAs (fondo naranja sólido, foto en tarjeta), adaptada. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486; --line:#e3dad1;
+  --gradient:linear-gradient(180deg,#f75946 0%,#ee5358 33%,#e1556a 50%,#c85981 67%,#9c5aa7 100%);
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px}
+.light{background:var(--paper);color:var(--ink)}
+.surface{background:var(--surface);color:var(--ink)}
+.dark{background:var(--ink);color:var(--paper)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;z-index:5}
+.light .count,.surface .count{color:var(--muted)} .dark .count{color:#e6dfd8}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:5}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.25}
+.dots i.on{opacity:1;background:var(--orange)}
+
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance;position:relative;z-index:3}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.55)}
+.support{position:relative;z-index:3;font-size:40px;line-height:1.38;margin-top:32px;max-width:880px}
+.light .support,.surface .support{color:var(--muted)} .dark .support{color:#e6dfd8}
+.eyebrow{position:relative;z-index:3;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:36px}
+.light .eyebrow,.surface .eyebrow{color:var(--orangeText)} .dark .eyebrow{color:var(--orange)}
+.pill{position:relative;z-index:3;display:inline-block;background:var(--orange);color:var(--ink);font:700 32px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:20px 32px;border-radius:999px}
+.top{position:relative;z-index:3}
+
+/* 01 · pedido típico en un campo de chat */
+.s1 .top{margin-top:190px}
+.s1 h1{font-size:118px}
+.s1 .support{max-width:820px;margin-top:34px}
+.chat{position:absolute;z-index:3;left:96px;right:96px;top:838px}
+.chat small{display:block;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--orangeText);margin-bottom:22px}
+.composer{background:var(--paper);border:3px solid var(--ink);border-radius:44px;padding:34px 38px 28px;box-shadow:0 20px 50px rgba(23,19,16,.14)}
+.composer p{font:500 50px/1.22 var(--body);min-height:124px}
+.composer p u{display:inline-block;width:5px;height:50px;background:var(--orange);vertical-align:-8px;margin-left:6px;text-decoration:none}
+.composer .bar{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
+.composer .bar span{font:400 33px/1 var(--body);color:var(--muted)}
+.composer .send{width:84px;height:84px;border-radius:50%;background:var(--orange);color:var(--ink);font:700 48px/84px var(--display);text-align:center}
+
+/* 02 · una petición, tres webs */
+.s2 .top{margin-top:130px}
+.s2 h2{font-size:92px}
+.req{position:absolute;z-index:3;left:196px;width:688px;top:470px;background:var(--paper);color:var(--ink);border-radius:999px;padding:24px 20px;text-align:center;font:500 44px/1.1 var(--body)}
+.branch{position:absolute;z-index:2;left:96px;top:570px;width:888px;height:110px}
+.sites{position:absolute;z-index:3;left:96px;right:96px;top:680px;display:flex;gap:24px}
+.site{flex:1}
+.site .scr{height:330px;border-radius:22px;overflow:hidden;position:relative;border:2px solid #4a413a}
+.site label{display:block;margin-top:18px;text-align:center;font:700 34px/1 var(--display);letter-spacing:-.01em;color:#e6dfd8}
+.s2 .support{position:absolute;left:96px;right:96px;top:1120px;margin:0;font-size:38px}
+.s2 .support b{color:#fff}
+/* miniaturas */
+.ta{background:#fff}
+.ta i{position:absolute;display:block}
+.ta .l{left:20px;top:22px;width:40px;height:8px;background:#171310;border-radius:4px}
+.ta .t1{left:50%;margin-left:-100px;top:118px;width:200px;height:14px;background:#171310;border-radius:7px}
+.ta .t2{left:50%;margin-left:-70px;top:146px;width:140px;height:14px;background:#171310;border-radius:7px}
+.ta .bt{left:50%;margin-left:-44px;top:206px;width:88px;height:28px;border:3px solid #171310;border-radius:16px}
+.tb{background:linear-gradient(160deg,#f75946,#9c5aa7)}
+.tb i{position:absolute;display:block}
+.tb .c{right:-34px;top:-30px;width:150px;height:150px;border-radius:50%;background:#ffd0a0}
+.tb .t1{left:18px;top:34px;width:120px;height:26px;background:#fff;border-radius:6px}
+.tb .g1,.tb .g2,.tb .g3,.tb .g4{width:112px;height:80px;border-radius:14px;background:rgba(255,255,255,.88)}
+.tb .g1{left:18px;top:150px}.tb .g2{left:146px;top:150px;background:#171310}
+.tb .g3{left:18px;top:240px;background:#171310}.tb .g4{left:146px;top:240px}
+.c3{background:#2a2420}
+.c3 i{position:absolute;display:block}
+.c3 .l{left:50%;margin-left:-14px;top:24px;width:28px;height:28px;border-radius:50%;border:3px solid #ff5b00}
+.c3 .h{left:18px;right:18px;top:96px;height:2px;background:#8a7b6e}
+.c3 .t1{left:50%;margin-left:-90px;top:126px;width:180px;height:18px;background:#f4efe9;border-radius:2px}
+.c3 .t2{left:50%;margin-left:-60px;top:160px;width:120px;height:10px;background:#8a7b6e}
+.c3 .t3{left:50%;margin-left:-60px;top:182px;width:120px;height:10px;background:#8a7b6e}
+.c3 .h2{left:18px;right:18px;top:262px;height:2px;background:#8a7b6e}
+.c3 .bt{left:50%;margin-left:-50px;top:284px;width:100px;height:22px;background:#ff5b00}
+
+/* 03 · formulario */
+.s3 .top{margin-top:130px}
+.s3 h2{font-size:92px}
+.form{position:relative;z-index:3;margin-top:44px;display:flex;flex-direction:column;gap:12px}
+.fld{display:flex;align-items:center;height:86px;background:var(--paper);border:2px solid #d9d0c7;border-radius:24px;overflow:hidden}
+.fld b{flex:none;width:372px;height:100%;display:flex;align-items:center;gap:16px;padding:0 26px;background:var(--ink);color:#fff;font:700 34px/1 var(--display);letter-spacing:-.01em}
+.fld b i{font-style:normal;color:var(--orange);font-size:34px}
+.fld span{padding:0 28px;font:400 34px/1.2 var(--body);color:var(--muted)}
+.send3{margin-top:10px;height:96px;border-radius:999px;background:var(--orange);color:var(--ink);display:flex;align-items:center;justify-content:center;font:700 42px/1 var(--display);letter-spacing:-.01em}
+
+/* 04 · navegador con campos */
+.s4 .top{margin-top:120px}
+.s4 h2{font-size:92px}
+.win{position:relative;z-index:3;margin-top:38px;background:var(--paper);color:var(--ink);border-radius:30px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.chrome{height:62px;background:#e9e3dd;display:flex;align-items:center;gap:12px;padding:0 26px}
+.chrome i{width:18px;height:18px;border-radius:50%;background:#b5aaa0}
+.chrome span{margin-left:18px;flex:1;height:38px;border-radius:19px;background:#fff;font:400 30px/38px var(--body);color:var(--muted);padding:0 22px}
+.hero4{padding:22px 32px 24px;background:var(--surface)}
+.tag4{display:flex;align-items:center;gap:14px;font:700 30px/1 var(--display);color:var(--orangeText);letter-spacing:.02em}
+.n4{flex:none;width:44px;height:44px;border-radius:50%;background:var(--orange);color:var(--ink);font:700 28px/44px var(--display);text-align:center}
+.hero4 .big{font:700 54px/1.08 var(--display);letter-spacing:-.03em;margin:8px 0 16px}
+.hero4 .sub{font:400 34px/1.2 var(--body);color:var(--muted);margin-top:8px}
+.cta4{display:flex;align-items:center;gap:18px;margin-top:16px}
+.cta4 em{font-style:normal;background:var(--orange);color:var(--ink);font:700 34px/1 var(--display);padding:18px 32px;border-radius:999px}
+.proof4{padding:18px 32px 20px}
+.cards4{display:flex;gap:16px;margin-top:12px}
+.cards4 div{flex:1;height:92px;border-radius:18px;border:2px solid var(--line);padding:18px}
+.cards4 div i{display:block;height:12px;border-radius:6px;background:#d9d0c7;margin-bottom:10px}
+.cards4 div i:first-child{width:60%;background:var(--ink)}
+.foot4{background:var(--ink);color:#fff;padding:22px 32px;font:400 34px/1.28 var(--body);display:flex;align-items:center;gap:18px}
+.foot4 .bd{flex:none;display:flex;gap:8px}
+.foot4 .n4{width:40px;height:40px;font-size:26px;line-height:40px}
+.foot4 b{font:700 34px/1.28 var(--display)}
+
+/* 05 · prueba */
+.s5 .top{margin-top:130px}
+.s5 h2{font-size:92px}
+.yes{position:relative;z-index:3;margin-top:40px;border:3px solid var(--ink);border-radius:34px;padding:28px 38px 16px;background:var(--paper)}
+.yes small,.no small{display:block;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+.yes small{color:var(--orangeText)}
+.yes p{display:flex;align-items:center;gap:22px;padding:13px 0;border-top:2px solid var(--line);font:500 40px/1.15 var(--body)}
+.yes p:first-of-type{border-top:0}
+.yes p::before{content:"✓";flex:none;width:52px;height:52px;border-radius:50%;background:var(--orange);color:var(--ink);font:700 32px/52px var(--display);text-align:center}
+.no{position:relative;z-index:3;margin-top:20px;border:3px dashed var(--border);border-radius:34px;padding:24px 38px 14px;background:transparent}
+.no small{color:var(--muted)}
+.no p{display:flex;align-items:center;gap:22px;padding:12px 0;font:400 38px/1.15 var(--body);color:var(--muted);text-decoration:line-through;text-decoration-thickness:3px}
+.no p::before{content:"✕";flex:none;width:52px;height:52px;border-radius:50%;border:3px solid var(--border);color:var(--muted);font:700 28px/46px var(--display);text-align:center;text-decoration:none;display:inline-block}
+.s5 .support{font-size:38px;margin-top:22px;color:var(--ink)}
+.light .s5 .support{color:var(--ink)}
+
+/* 06 · antes y después */
+.s6{padding:0}
+.s6 .band{position:absolute;left:0;right:0;top:0;height:506px;background:var(--ink)}
+.s6 .logo{z-index:6}
+.s6 .count{color:#e6dfd8}
+.s6 .before{position:absolute;z-index:3;left:96px;right:96px;top:196px}
+.s6 .before small,.s6 .after small{display:block;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase}
+.s6 .before small{color:var(--orange);margin:26px 0 16px}
+.s6 .bubble{background:#fff;color:var(--ink);border-radius:34px 34px 34px 8px;padding:24px 34px;font:500 46px/1.18 var(--body);max-width:760px}
+.s6 .after{position:absolute;z-index:3;left:96px;right:96px;top:548px}
+.s6 .after small{color:var(--orangeText);margin-bottom:12px}
+.brief6 .row{display:grid;grid-template-columns:240px 1fr;gap:0;align-items:baseline;padding:13px 0;border-top:2px solid var(--line)}
+.brief6 .row:first-child{border-top:0}
+.brief6 .row b{font:700 30px/1.2 var(--display);color:var(--orangeText);letter-spacing:-.005em}
+.brief6 .row span{font:500 35px/1.2 var(--body);color:var(--ink);text-wrap:balance}
+.s6 .note{position:absolute;z-index:3;left:96px;right:96px;bottom:122px;font:400 31px/1.3 var(--body);color:var(--muted)}
+
+/* 07 · el examen */
+.s7 .top{margin-top:120px}
+.s7 h2{font-size:92px}
+.chk{position:relative;z-index:3;margin-top:40px;display:flex;flex-direction:column;gap:14px}
+.chk div{display:flex;align-items:center;gap:26px;border:2px solid #4a413a;border-radius:28px;padding:16px 30px}
+.chk div::before{content:"✓";flex:none;width:60px;height:60px;border-radius:16px;background:var(--orange);color:var(--ink);font:700 40px/60px var(--display);text-align:center}
+.chk p{font:500 38px/1.18 var(--body);color:#fff}
+.chk p em{display:block;margin-top:6px;font:700 28px/1 var(--display);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+.exam{position:absolute;z-index:3;left:96px;right:96px;top:856px;background:var(--orange);color:var(--ink);border-radius:40px;padding:32px 44px 34px}
+.exam small{display:block;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.exam b{display:block;font:700 84px/1.02 var(--display);letter-spacing:-.04em}
+.exam span{display:block;margin-top:14px;font:400 38px/1.3 var(--body)}
+
+/* 08 · CTA variante 23 (recurso, fondo naranja sólido y foto en tarjeta) */
+.s8{background:var(--orange);color:var(--ink)}
+.s8 .count{color:var(--ink)}
+.s8 .dots i{background:var(--ink);opacity:.28}
+.s8 .dots i.on{background:var(--ink);opacity:1}
+.s8 h2{position:absolute;left:96px;right:96px;top:190px;font-size:94px;color:var(--ink)}
+.s8 .pic{position:absolute;z-index:2;left:96px;width:888px;top:470px;height:420px;border-radius:32px;overflow:hidden;box-shadow:0 20px 50px rgba(23,19,16,.35)}
+.s8 .pic img{width:100%;height:100%;object-fit:cover}
+.s8 .cta{position:absolute;z-index:3;left:96px;right:96px;top:950px}
+.s8 .cta b{display:block;font:700 92px/1 var(--display);letter-spacing:-.04em}
+.s8 .cta b u{text-decoration-thickness:8px;text-underline-offset:10px}
+.s8 .cta span{display:block;margin-top:14px;font:500 40px/1.3 var(--body)}
+</style>
+</head>
+<body>
+
+<!-- 01 · Tensión: el pedido típico -->
+<section class="slide light s1" data-n="1">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">01/08</div>
+  <div class="top">
+    <p class="eyebrow">Guía · Web</p>
+    <h1>Una web bonita <span class="hl">no es un brief.</span></h1>
+    <p class="support">Es un deseo. Quien lo recibe, sea una IA o un equipo, adivina el resto.</p>
+  </div>
+  <div class="chat">
+    <small>Un pedido típico</small>
+    <div class="composer">
+      <p>Hazme una web bonita para mi negocio.<u></u></p>
+      <div class="bar"><span>A una IA o a un equipo</span><div class="send">↑</div></div>
+    </div>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Problema: una petición, tres webs -->
+<section class="slide dark s2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">02/08</div>
+  <div class="top">
+    <h2>Una petición, <span class="hl">tres webs distintas.</span></h2>
+  </div>
+  <div class="req">“Hazme una web bonita.”</div>
+  <svg class="branch" viewBox="0 0 888 110" fill="none" stroke="#ff5b00" stroke-width="4" stroke-linecap="round">
+    <path d="M444 0 V40 H148 V108"/><path d="M444 0 V108"/><path d="M444 0 V40 H740 V108"/>
+  </svg>
+  <div class="sites">
+    <div class="site"><div class="scr ta"><i class="l"></i><i class="t1"></i><i class="t2"></i><i class="bt"></i></div><label>Sobria</label></div>
+    <div class="site"><div class="scr tb"><i class="c"></i><i class="t1"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i></div><label>Llamativa</label></div>
+    <div class="site"><div class="scr c3"><i class="l"></i><i class="h"></i><i class="t1"></i><i class="t2"></i><i class="t3"></i><i class="h2"></i><i class="bt"></i></div><label>Elegante</label></div>
+  </div>
+  <p class="support"><b>Las tres son bonitas.</b> Ninguna dice para qué.</p>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · Concepto: los seis campos como formulario -->
+<section class="slide surface s3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">03/08</div>
+  <div class="top">
+    <h2>El brief cabe en <span class="hl">seis campos.</span></h2>
+    <div class="form">
+      <div class="fld"><b><i>1</i>Objetivo</b><span>Qué debe lograr</span></div>
+      <div class="fld"><b><i>2</i>Audiencia</b><span>Quién entra</span></div>
+      <div class="fld"><b><i>3</i>Oferta</b><span>Qué ofreces</span></div>
+      <div class="fld"><b><i>4</i>Prueba</b><span>Qué lo demuestra</span></div>
+      <div class="fld"><b><i>5</i>Acción principal</b><span>Qué debe hacer</span></div>
+      <div class="fld"><b><i>6</i>Restricciones</b><span>Qué límites hay</span></div>
+      <div class="send3">Enviar brief</div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Mecanismo: cada campo en la pantalla -->
+<section class="slide dark s4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">04/08</div>
+  <div class="top">
+    <h2>Cada campo se ve <span class="hl">en la pantalla.</span></h2>
+    <div class="win">
+      <div class="chrome"><i></i><i></i><i></i><span>tunegocio.com</span></div>
+      <div class="hero4">
+        <div class="tag4"><span class="n4">3</span>Oferta</div>
+        <div class="big">Lo que ofreces, en una frase.</div>
+        <div class="tag4"><span class="n4">2</span>Audiencia</div>
+        <div class="sub">Con las palabras de quien entra.</div>
+        <div class="cta4"><em>Agendar ahora</em><div class="tag4"><span class="n4">5</span>Acción principal</div></div>
+      </div>
+      <div class="proof4">
+        <div class="tag4"><span class="n4">4</span>Prueba</div>
+        <div class="cards4"><div><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div></div>
+      </div>
+      <div class="foot4"><div class="bd"><span class="n4">1</span><span class="n4">6</span></div><p><b>Objetivo y restricciones</b> no se ven: se notan en lo que sobra y en lo que falta.</p></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · El campo difícil: la prueba -->
+<section class="slide light s5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">05/08</div>
+  <div class="top">
+    <h2>La prueba no se inventa. <span class="hl">Se junta.</span></h2>
+    <div class="yes">
+      <small>Cuenta como prueba</small>
+      <p>Reseñas reales, con permiso</p>
+      <p>Trabajos hechos, con fotos propias</p>
+      <p>Garantías y certificaciones reales</p>
+      <p>Años de oficio, si son ciertos</p>
+    </div>
+    <div class="no">
+      <small>No cuenta</small>
+      <p>“Somos los mejores.”</p>
+      <p>Cifras que no puedes mostrar</p>
+    </div>
+    <p class="support">¿Aún no la tienes? Anótalo: es una tarea.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 06 · Ejemplo hipotético: antes y después -->
+<section class="slide light s6" data-n="6">
+  <div class="band"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">06/08</div>
+  <div class="before">
+    <span class="pill">Ejemplo hipotético</span>
+    <small>Antes</small>
+    <div class="bubble">“Hazme una web bonita para mi clínica.”</div>
+  </div>
+  <div class="after">
+    <small>Después · seis campos</small>
+    <div class="brief6">
+      <div class="row"><b>Objetivo</b><span>Más citas de primera consulta</span></div>
+      <div class="row"><b>Audiencia</b><span>Dueños de mascotas del barrio, que buscan desde el celular</span></div>
+      <div class="row"><b>Oferta</b><span>Consulta y vacunas, con cita el mismo día</span></div>
+      <div class="row"><b>Prueba</b><span>Reseñas reales y fotos propias de la clínica</span></div>
+      <div class="row"><b>Acción</b><span>Agendar por WhatsApp</span></div>
+      <div class="row"><b>Restricciones</b><span>Lista en cuatro semanas. Sin tienda en línea.</span></div>
+    </div>
+  </div>
+  <div class="note">Clínica inventada para mostrar el brief. No es de ningún cliente.</div>
+  <div class="dots" style="left:96px"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 07 · Recompensa: lo que el brief permite comprobar -->
+<section class="slide dark s7" data-n="7">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">07/08</div>
+  <div class="top">
+    <h2>El brief también es <span class="hl">el examen.</span></h2>
+    <div class="chk">
+      <div><p>¿Se entiende la oferta de un vistazo?<em>Oferta</em></p></div>
+      <div><p>¿La prueba está a la vista?<em>Prueba</em></p></div>
+      <div><p>¿Se respetaron los límites acordados?<em>Restricciones</em></p></div>
+    </div>
+  </div>
+  <div class="exam">
+    <small>Acción principal</small>
+    <b>¿La web logró la acción?</b>
+    <span>Cuenta cuántas personas la hicieron.</span>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 08 · CTA (variante 23 adaptada: fondo naranja sólido, foto en tarjeta, palabra clave BRIEF) -->
+<section class="slide s8" data-n="8">
+  <img class="logo" src="../../brandkit/assets/plogy-black.svg" alt="Plogy">
+  <div class="count">08/08</div>
+  <h2>Primero el brief, después la web.</h2>
+  <div class="pic"><img src="assets/23-cta-manos.jpg" alt="Dos manos de trama naranja a punto de tocarse sobre fondo negro"></div>
+  <div class="cta"><b>Comenta <u>BRIEF</u></b><span>y te mandamos la guía con la plantilla de brief y un ejemplo completo.</span></div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

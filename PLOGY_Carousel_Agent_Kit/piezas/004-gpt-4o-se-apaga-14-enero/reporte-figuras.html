@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Figuras del reporte · pieza 004</title>
+<!-- Figuras 1600x900 para reporte.md. Se exportan a assets/reporte/ con render-slides.ps1 (-Param f -Width 1600 -Height 900).
+     Cada figura usa solo cifras del reporte. Lo que viene de un tercero o no está confirmado lo dice en la propia figura. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--orange:#ff5b00;--orangeText:#b43d00;--muted:#625951;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+--mono:ui-monospace,'Cascadia Mono',Consolas,'Courier New',monospace}
+*{box-sizing:border-box;margin:0}
+body{background:#888;font-family:var(--body);color:var(--ink)}
+.fig{position:relative;width:1600px;height:900px;overflow:hidden;padding:72px 80px;display:none}
+body:not(.single) .fig{display:block;margin-bottom:20px;zoom:.5}
+body.single .fig{display:block}
+.light{background:#fff}.surface{background:var(--surface)}.dark{background:var(--ink);color:#fff}
+.logo{position:absolute;right:80px;top:64px;width:190px}
+.src{position:absolute;left:80px;bottom:44px;right:80px;font:500 22px/1.3 var(--body);color:var(--muted)}
+.dark .src{color:#bdb2a8}
+.eyebrow{font:700 24px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText)}
+.dark .eyebrow{color:var(--orange)}
+h2{font:700 64px/1.05 var(--display);letter-spacing:-.035em;margin-top:18px;max-width:1180px}
+.hl{color:var(--orange)}
+/* portada */
+.hero h1{font:700 118px/.98 var(--display);letter-spacing:-.045em;margin-top:34px;max-width:1300px;position:relative}
+.hero .glow{position:absolute;right:-600px;top:-260px;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ff5b00 0%,#d63a52 38%,#6a3dd1 68%,rgba(23,19,16,0) 72%);opacity:.9}
+.hero .meta{position:absolute;left:80px;bottom:56px;font:500 28px/1.3 var(--body);color:#d9cfc6}
+.hero .logo{left:80px;right:auto}
+.hero .eyebrow{margin-top:120px;position:relative}
+/* línea de tiempo */
+.tl{position:relative;margin:110px 40px 0;height:360px}
+.tl .line{position:absolute;left:0;right:0;top:170px;height:8px;border-radius:4px;background:var(--ink)}
+.pt{position:absolute;top:150px;width:48px;height:48px;margin-left:-24px;border-radius:50%;background:var(--orange);border:6px solid var(--surface)}
+.pt.unk{background:var(--surface);border:5px dashed var(--muted)}
+.pt.end{background:var(--ink)}
+.lab{position:absolute;width:420px;font:500 26px/1.3 var(--body)}
+.lab b{display:block;font:700 34px/1.1 var(--display);letter-spacing:-.02em;margin-bottom:6px}
+.lab.up{bottom:230px}.lab.dn{top:230px}
+.lab.unk{color:var(--muted)}
+.span92{position:absolute;left:0;right:0;top:100px;text-align:center;font:700 30px/1 var(--display);color:var(--orangeText)}
+.span92 s{display:none}
+/* modelos */
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:20px 30px;margin-top:44px;max-width:1300px}
+.chip{background:#fff;border:2px solid var(--border);border-radius:20px;padding:24px 32px;font:700 38px/1 var(--mono)}
+.chip em{font-style:normal;color:var(--orangeText)}
+.chip small{display:block;margin-top:10px;font:500 22px/1 var(--body);color:var(--muted)}
+.chip.ft{background:var(--ink);color:#fff;border-color:var(--ink);font:700 34px/1.15 var(--display)}
+.chip.ft small{color:#cfc6bd}
+/* tabla */
+table.cmp{border-collapse:separate;border-spacing:0;margin-top:34px;width:100%;font:500 28px/1.2 var(--body)}
+.cmp th,.cmp td{padding:15px 22px;text-align:left;border-bottom:2px solid var(--border)}
+.cmp th{font:700 28px/1 var(--display);letter-spacing:.02em;color:var(--muted);border-bottom:3px solid var(--ink)}
+.cmp td:first-child{color:var(--muted);width:420px}
+.cmp td:nth-child(3){font-weight:700;background:#fff3ea}
+.cmp th:nth-child(3){color:var(--orangeText)}
+.cmp td b{font:700 32px/1 var(--display)}
+/* flujo */
+.flow{position:relative;margin-top:44px;height:560px}
+.node{position:absolute;border-radius:24px;padding:26px 30px;font:700 32px/1.15 var(--display);letter-spacing:-.02em}
+.node small{display:block;margin-top:8px;font:500 24px/1.3 var(--body);letter-spacing:0}
+.node.q{background:var(--ink);color:#fff;left:0;top:170px;width:420px}
+.node.ok{background:#fff;border:2px solid var(--border);left:640px;top:0;width:600px}
+.node.a{background:#fff;border:2px solid var(--orange);left:640px;top:190px;width:600px}
+.node.b{background:#fff;border:2px solid var(--orange);left:640px;top:390px;width:600px}
+.node code{font:700 28px/1 var(--mono);color:var(--orangeText)}
+.arr{position:absolute;font:700 30px/1 var(--display);color:var(--orange)}
+/* lista */
+.list{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;max-width:1440px}
+.it{display:flex;gap:20px;background:#fff;border:2px solid var(--border);border-radius:20px;padding:22px 26px}
+.it i{flex:none;width:36px;height:36px;border:4px solid var(--ink);border-radius:8px;margin-top:4px}
+.it b{display:block;font:700 30px/1.1 var(--display);letter-spacing:-.02em}
+.it span{display:block;margin-top:6px;font:500 23px/1.3 var(--body);color:var(--muted)}
+</style>
+</head>
+<body>
+
+<!-- 1. Portada del reporte -->
+<section class="fig dark hero" data-f="portada">
+  <div class="glow"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow">Reporte de Plogy · IA + automatizaciones</div>
+  <h1>Tu automatización<br><span class="hl">vence el 14 de enero.</span></h1>
+  <div class="meta">GPT-4o y GPT-4.1 en la API de OpenAI · versión 2026-10-19 · borrador</div>
+</section>
+
+<!-- 2. Línea de tiempo -->
+<section class="fig surface" data-f="calendario">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Calendario</div>
+  <h2>De aviso a apagado: <span class="hl">92 días</span></h2>
+  <div class="tl">
+    <div class="line"></div>
+    <div class="span92">92 días</div>
+    <div class="lab up" style="left:0"><b>14 oct 2026</b>OpenAI avisa a los desarrolladores.</div>
+    <div class="pt" style="left:0"></div>
+    <div class="lab dn unk" style="left:calc(100% - 800px);width:600px"><b>6 ene 2027 · aplicación sin confirmar</b>Según OpenAI, los clientes activos ya no podrán crear nuevos ajustes finos. La página no nombra estos modelos; que les afecte es la lectura de Digital Applied.</div>
+    <div class="pt unk" style="left:calc(100% - 128px)"></div>
+    <div class="lab up" style="right:-40px;text-align:right"><b>14 ene 2027</b>Se apagan los cinco modelos y sus versiones afinadas.</div>
+    <div class="pt end" style="left:100%"></div>
+  </div>
+  <div class="src">Fuentes: OpenAI, página de deprecaciones (14 oct y 14 ene). 92 días: cuenta de Plogy. Punto discontinuo: la fecha está en OpenAI, pero no se confirma que aplique a estos modelos.</div>
+</section>
+
+<!-- 3. Modelos que salen -->
+<section class="fig light" data-f="modelos">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Salen de la API el 14 de enero de 2027</div>
+  <h2>Cinco versiones, <span class="hl">y las afinadas con ellas</span></h2>
+  <div class="chips">
+    <div class="chip">gpt-4o-<em>2024-08-06</em></div>
+    <div class="chip">gpt-4o-<em>2024-11-20</em></div>
+    <div class="chip">gpt-4o-mini-<em>2024-07-18</em></div>
+    <div class="chip">gpt-4.1-<em>2025-04-14</em></div>
+    <div class="chip">gpt-4.1-mini-<em>2025-04-14</em></div>
+    <div class="chip ft">Fine-tunes de estos modelos<small>Siguen el calendario de su modelo base.</small></div>
+  </div>
+  <div class="src">Fuente: OpenAI, página de deprecaciones. Reemplazo recomendado: gpt-6-luna.</div>
+</section>
+
+<!-- 4. Comparación -->
+<section class="fig surface" data-f="comparacion">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Comparación de modelos</div>
+  <h2>Más barato y más grande, <span class="hl">pero distinto</span></h2>
+  <table class="cmp">
+    <tr><th></th><th>GPT-4o</th><th>gpt-6-luna</th></tr>
+    <tr><td>Entrada, por millón de tokens</td><td>$2,50</td><td><b>$0,10</b></td></tr>
+    <tr><td>Salida, por millón de tokens</td><td>$10</td><td><b>$0,50</b></td></tr>
+    <tr><td>Contexto</td><td>128.000 tokens</td><td><b>1.050.000 tokens</b></td></tr>
+    <tr><td>Salida máxima</td><td>16.384 tokens</td><td><b>128.000 tokens</b></td></tr>
+    <tr><td>Conocimiento hasta</td><td>octubre de 2023</td><td><b>18 de mayo de 2026</b></td></tr>
+    <tr><td>Fine-tuning</td><td>Existen versiones afinadas</td><td><b>No admite</b></td></tr>
+  </table>
+  <div class="src">Fuente: fichas de gpt-6-luna y de GPT-4o en OpenAI, leídas el 2026-10-20. La ficha de GPT-4o no muestra aviso de retiro ese día.</div>
+</section>
+
+<!-- 5. Llamadas a funciones -->
+<section class="fig light" data-f="llamadas">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Si tu flujo usa llamadas a funciones</div>
+  <h2>Cambiar el nombre del modelo <span class="hl">puede no bastar</span></h2>
+  <div class="flow">
+    <div class="node q">¿Tu automatización usa llamadas a funciones (tool calls)?</div>
+    <div class="node ok" style="top:0">No: puedes cambiar el modelo y probar.<small>Aun así, revisa formato y costo con casos reales.</small></div>
+    <div class="node a" style="top:190px">Sí, con la API Chat Completions<small>Solo funciona con <code>reasoning_effort: none</code>.</small></div>
+    <div class="node b" style="top:390px">Sí, y quieres razonamiento activado<small>Pasa a la Responses API.</small></div>
+    <div class="arr" style="left:450px;top:70px">→ No</div>
+    <div class="arr" style="left:450px;top:240px">→ Sí</div>
+    <div class="arr" style="left:450px;top:430px">→ Sí</div>
+  </div>
+  <div class="src">Fuente: OpenAI, ficha de gpt-6-luna. El esfuerzo de razonamiento por defecto es medio.</div>
+</section>
+
+<!-- 6. Lista de revisión -->
+<section class="fig surface" data-f="lista">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Lista de revisión de Plogy</div>
+  <h2>Seis comprobaciones <span class="hl">antes del 14 de enero</span></h2>
+  <div class="list">
+    <div class="it"><i></i><p><b>Inventario</b><span>Dónde aparece gpt-4o o gpt-4.1: código, herramientas, proveedores, variables y tareas programadas.</span></p></div>
+    <div class="it"><i></i><p><b>Ficha por uso</b><span>Cada uso: ¿llama funciones?, ¿usa un fine-tune?, ¿quién es el responsable?</span></p></div>
+    <div class="it"><i></i><p><b>Ruta</b><span>Elegir Chat Completions sin razonamiento, Responses API con razonamiento, o lo que ofrezca el proveedor.</span></p></div>
+    <div class="it"><i></i><p><b>Prueba</b><span>Casos reales: formato de salida, llamadas a funciones, tiempos y costo por tarea.</span></p></div>
+    <div class="it"><i></i><p><b>Fine-tunes</b><span>Decidir qué hacer con ellos: Luna no admite ajuste fino.</span></p></div>
+    <div class="it"><i></i><p><b>Vuelta atrás</b><span>Modelo viejo en una rama hasta el último día, con fecha de revisión.</span></p></div>
+  </div>
+  <div class="src">Criterio de Plogy sobre datos de OpenAI. No es una garantía de que la migración funcione.</div>
+</section>
+
+<script>
+var q=new URLSearchParams(location.search).get('f');
+if(q){document.body.classList.add('single');document.querySelectorAll('.fig').forEach(function(e){if(e.dataset.f!==q)e.style.display='none';});}
+</script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Pieza 003 · Barato por token, caro por tarea</title>
+<!-- Fuente editable. 7 láminas de 1080x1350.
+     Vista previa: abrir sin parámetros. Una lámina sola: carrusel.html?s=1 ... ?s=7
+     Exportar: skills/plogy-cta-design/scripts/render-slides.ps1 -Param s -Keys 1,2,3,4,5,6,7 -Prefix slide-0
+     Tipografía: Screener solo tiene licencia DEMO, por eso el display usa Space Grotesk (respaldo del brand kit). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171310; --paper:#ffffff; --muted:#625951; --orange:#ff5b00; --orangeText:#b43d00;
+  --surface:#f4f1ef; --border:#a39486;
+  --gradient:linear-gradient(180deg,#f75946 0%,#ee5358 33%,#e1556a 50%,#c85981 67%,#9c5aa7 100%);
+  --display:Screener,'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  --body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#d9d2cb;font-family:var(--body)}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;padding:96px}
+.light{background:var(--paper);color:var(--ink)}
+.surface{background:var(--surface);color:var(--ink)}
+.dark{background:var(--ink);color:var(--paper)}
+body:not(.single){display:flex;flex-wrap:wrap;gap:32px;padding:32px}
+body:not(.single) .slide{zoom:.4}
+body.single{background:none}
+body.single .slide:not(.on){display:none}
+
+.logo{position:absolute;top:80px;left:58px;width:230px;height:auto;z-index:5}
+.count{position:absolute;top:96px;right:96px;font:700 30px/1 var(--display);letter-spacing:.04em;z-index:5}
+.light .count,.surface .count{color:var(--muted)} .dark .count{color:#e6dfd8}
+.dots{position:absolute;bottom:80px;left:96px;display:flex;gap:14px;z-index:5}
+.dots i{width:14px;height:14px;border-radius:50%;background:currentColor;opacity:.25}
+.dots i.on{opacity:1;background:var(--orange)}
+
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.06;text-wrap:balance;position:relative;z-index:3}
+.hl{color:var(--orange)}
+.dark .hl{text-shadow:0 0 34px rgba(255,91,0,.55)}
+.support{position:relative;z-index:3;font-size:40px;line-height:1.38;margin-top:32px;max-width:880px}
+.light .support,.surface .support{color:var(--muted)} .dark .support{color:#e6dfd8}
+.eyebrow{position:relative;z-index:3;font:700 30px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;margin-bottom:36px}
+.light .eyebrow,.surface .eyebrow{color:var(--orangeText)} .dark .eyebrow{color:var(--orange)}
+.pill{position:relative;z-index:3;display:inline-block;background:var(--orange);color:var(--ink);font:700 32px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:20px 32px;border-radius:999px;margin-bottom:40px}
+.src{position:absolute;left:96px;right:96px;bottom:130px;z-index:3;font:400 30px/1.35 var(--body)}
+.light .src,.surface .src{color:var(--muted)} .dark .src{color:#cfc6bd}
+.top{position:relative;z-index:3}
+
+/* 01 */
+.s1 .sphere{position:absolute;width:420px;height:420px;border-radius:50%;background:var(--gradient);right:-150px;top:150px;z-index:1}
+.s1 .top{margin-top:300px}
+.s1 h1{font-size:130px}
+.s1 .support{max-width:760px}
+.s1 .tag{position:relative;z-index:3;display:inline-block;margin-top:56px;font:700 44px/1 var(--display);letter-spacing:-.02em;padding:22px 34px;border:3px solid var(--ink);border-radius:20px}
+.s1 .tag s{text-decoration-thickness:5px;color:var(--muted)}
+
+/* 02 · tarjetas de precio */
+.s2 .top{margin-top:170px}
+.s2 h2{font-size:92px}
+.prices{position:relative;z-index:3;display:flex;gap:20px;margin-top:56px;align-items:stretch}
+.card{flex:1;border-radius:28px;padding:34px 34px 38px;background:var(--paper);border:2px solid var(--border)}
+.card.now{background:var(--paper)}
+.card.later{background:var(--ink);color:#fff;border-color:var(--ink)}
+.card .lab{font:700 30px/1.1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card.later .lab{color:#cfc6bd}
+.card .row{margin-top:22px;display:flex;justify-content:space-between;align-items:baseline}
+.card .row span{font:400 32px/1.1 var(--body);color:var(--muted)}
+.card.later .row span{color:#cfc6bd}
+.card .row b{font:700 84px/1 var(--display);letter-spacing:-.04em}
+.card.later .row b{color:var(--orange)}
+.unit{position:relative;z-index:3;margin-top:22px;font:400 32px/1.3 var(--body);color:var(--muted)}
+
+/* 03 · número grande */
+.s3 .top{margin-top:170px}
+.s3 h2{font-size:108px}
+.big{position:relative;z-index:3;margin-top:46px;font:700 230px/.95 var(--display);letter-spacing:-.06em;color:var(--orange);text-shadow:0 0 50px rgba(255,91,0,.45)}
+.s3 .support{margin-top:20px}
+.s3 .support b{color:#fff}
+
+/* 04 · barras */
+.s4 .top{margin-top:150px}
+.s4 h2{font-size:84px}
+.bars{position:relative;z-index:3;margin-top:50px;display:flex;flex-direction:column;gap:16px}
+.bar{display:flex;align-items:center;gap:20px}
+.bar .name{width:290px;flex:none;font:700 32px/1.1 var(--display);letter-spacing:-.01em}
+.bar .track{flex:1;height:60px;background:transparent;position:relative}
+.bar .fill{height:100%;border-radius:14px;background:var(--border);display:flex;align-items:center;justify-content:flex-end;padding-right:16px}
+.bar .fill b{font:700 34px/1 var(--display);color:var(--ink)}
+.bar.argon .fill{background:var(--orange)}
+.bar.argon2 .fill{background:var(--ink)}
+.bar.argon2 .fill b{color:#fff}
+.note{position:relative;z-index:3;margin-top:30px;font:400 30px/1.35 var(--body);color:var(--muted)}
+
+/* 05 · foto superior, 3 cuentas */
+.s5 .photo{position:absolute;left:0;top:176px;width:1080px;height:526px;object-fit:cover;z-index:1}
+.s5 .bottom{position:absolute;left:96px;right:96px;top:732px;z-index:3}
+.s5 h2{font-size:72px}
+.steps{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+.steps div{display:flex;gap:22px;align-items:baseline}
+.steps b{font:700 56px/1 var(--display);color:var(--orange);width:44px;flex:none}
+.steps span{font:400 38px/1.25 var(--body);color:#e6dfd8}
+
+/* 06 · ejemplo hipotético */
+.s6 .top{margin-top:150px}
+.s6 h2{font-size:96px}
+.bills{position:relative;z-index:3;margin-top:50px;display:flex;gap:20px}
+.bill{flex:1;border-radius:28px;padding:34px;background:var(--paper);border:2px solid var(--border)}
+.bill.d{background:var(--ink);border-color:var(--ink);color:#fff}
+.bill .lab{font:700 30px/1.1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.bill.d .lab{color:#cfc6bd}
+.bill .v{margin-top:20px;font:700 92px/1 var(--display);letter-spacing:-.05em}
+.bill.d .v{color:var(--orange)}
+.bill .s{margin-top:10px;font:400 32px/1.2 var(--body);color:var(--muted)}
+.bill.d .s{color:#cfc6bd}
+.s6 .support{font-size:34px;margin-top:34px}
+
+/* 07 · CTA variante E (comercial/recurso) de skills/plogy-cta-design */
+.s7 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.s7 .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(23,19,16,.92) 0%,rgba(23,19,16,.75) 28%,rgba(23,19,16,.3) 48%,rgba(23,19,16,.25) 62%,rgba(23,19,16,.8) 100%)}
+.s7 h2{position:absolute;left:96px;right:96px;top:215px;font-size:100px;color:#fff}
+.glass{position:absolute;z-index:4;left:96px;top:1000px;width:888px;padding:30px 48px 30px 40px;border-radius:64px;color:#fff;
+  background:linear-gradient(125deg,rgba(255,255,255,.24),rgba(255,255,255,.06)),rgba(23,19,16,.52);
+  border:1.5px solid rgba(255,255,255,.42);backdrop-filter:blur(22px) saturate(125%);-webkit-backdrop-filter:blur(22px) saturate(125%);
+  box-shadow:0 18px 50px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.5)}
+.glass b{display:block;font:700 62px/1.05 var(--display);letter-spacing:-.03em}
+.glass > span{display:block;margin-top:10px;font:400 34px/1.3 var(--body);color:#eee6df;text-wrap:balance}
+.kw{color:var(--orange)}
+</style>
+</head>
+<body>
+
+<!-- 01 · Tensión -->
+<section class="slide light s1" data-n="1">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">01/07</div>
+  <div class="sphere"></div>
+  <div class="top">
+    <p class="eyebrow">IA + costos · Oct 2026</p>
+    <h1>Barato por <span class="hl">token.</span> Caro por <span class="hl">tarea.</span></h1>
+    <p class="support">Gemini 4 Argon cuesta poco por token. Una tarea completa puede costar más de lo que parece.</p>
+  </div>
+  <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 02 · Hecho: precio de lanzamiento -->
+<section class="slide surface s2" data-n="2">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">02/07</div>
+  <div class="top">
+    <h2>El precio de lanzamiento <span class="hl">se duplica</span> el 1 de diciembre.</h2>
+    <div class="prices">
+      <div class="card now">
+        <p class="lab">Hasta el 30 de nov.</p>
+        <div class="row"><span>entrada</span><b>$2</b></div>
+        <div class="row"><span>salida</span><b>$10</b></div>
+      </div>
+      <div class="card later">
+        <p class="lab">Desde el 1 de dic.</p>
+        <div class="row"><span>entrada</span><b>$4</b></div>
+        <div class="row"><span>salida</span><b>$20</b></div>
+      </div>
+    </div>
+    <p class="unit">Dólares por millón de tokens.</p>
+  </div>
+  <p class="src">Fuente: AIHubMix, 13 oct 2026. La fecha del 1 de dic. es reportada, no confirmada por Google.</p>
+  <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 03 · Mecanismo: tokens por tarea -->
+<section class="slide dark s3" data-n="3">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">03/07</div>
+  <div class="top">
+    <h2>El token no es la <span class="hl">tarea.</span></h2>
+    <p class="big">62.000</p>
+    <p class="support"><b>tokens de salida por tarea</b> en un test de Artificial Analysis. 2,3 veces más que GPT-6 Astra en la misma prueba.</p>
+  </div>
+  <p class="src">Fuente: AIHubMix, 13 oct 2026, citando a Artificial Analysis.</p>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 04 · Hecho: costo por tarea -->
+<section class="slide light s4" data-n="4">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">04/07</div>
+  <div class="top">
+    <h2>En diciembre, Argon pasa de más barato a <span class="hl">más caro que Astra.</span></h2>
+    <div class="bars">
+      <div class="bar argon"><span class="name">Argon, hoy</span><div class="track"><div class="fill" style="width:33%"><b>$1,99</b></div></div></div>
+      <div class="bar"><span class="name">GPT-6 Astra</span><div class="track"><div class="fill" style="width:54%"><b>$3,26</b></div></div></div>
+      <div class="bar argon2"><span class="name">Argon, desde dic.</span><div class="track"><div class="fill" style="width:66%"><b>$3,98</b></div></div></div>
+      <div class="bar"><span class="name">Sonnet 5.5</span><div class="track"><div class="fill" style="width:91%"><b>$5,46</b></div></div></div>
+      <div class="bar"><span class="name">Opus 5.5</span><div class="track"><div class="fill" style="width:100%"><b>$5,98</b></div></div></div>
+    </div>
+    <p class="note">Costo por tarea. Los modelos no rinden igual: 53 Argon y Astra, 56 Sonnet 5.5, 58 Opus 5.5 en el índice de inteligencia.</p>
+  </div>
+  <p class="src">Fuente: AIHubMix, 13 oct 2026, citando a Artificial Analysis. Razonamiento: alto en Argon, max en Astra.</p>
+  <div class="dots"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- 05 · Criterio de Plogy: tres cuentas -->
+<section class="slide dark s5" data-n="5">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">05/07</div>
+  <img class="photo" src="assets/05-medir.jpg" alt="Una persona caminando mirando el teléfono, con cajas de seguimiento naranja sobre su cabeza y su mano">
+  <div class="bottom">
+    <h2>Tres cuentas antes de <span class="hl">elegir un modelo.</span></h2>
+    <div class="steps">
+      <div><b>1</b><span>Mide los tokens de una tarea real.</span></div>
+      <div><b>2</b><span>Usa el precio que pagarás, no el de lanzamiento.</span></div>
+      <div><b>3</b><span>Suma los reintentos hasta que sale bien.</span></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- 06 · Ejemplo hipotético -->
+<section class="slide surface s6" data-n="6">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="count">06/07</div>
+  <div class="top">
+    <span class="pill">Ejemplo hipotético</span>
+    <h2>10.000 tareas al mes. <span class="hl">Dos facturas.</span></h2>
+    <div class="bills">
+      <div class="bill">
+        <p class="lab">Hasta el 30 de nov.</p>
+        <p class="v">$19.900</p>
+        <p class="s">$1,99 por tarea</p>
+      </div>
+      <div class="bill d">
+        <p class="lab">Desde el 1 de dic.</p>
+        <p class="v">$39.800</p>
+        <p class="s">$3,98 por tarea</p>
+      </div>
+    </div>
+    <p class="support">Cuenta de Plogy con el costo por tarea de Argon en Artificial Analysis y un volumen inventado.</p>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+</section>
+
+<!-- 07 · CTA (variante E de skills/plogy-cta-design con palabra clave para recibir la noticia y el reporte) -->
+<section class="slide dark s7" data-n="7">
+  <img class="bg" src="assets/07-cta-oficina.jpg" alt="Una persona con casco y traje al teléfono, con los pies sobre un escritorio puesto en medio de un campo seco">
+  <div class="shade"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="count">07/07</div>
+  <h2>Mide la tarea. <span class="hl">No el token.</span></h2>
+  <div class="glass">
+    <b>Comenta <span class="kw">COSTO</span></b>
+    <span>y te mandamos la noticia completa y nuestro análisis.</span>
+  </div>
+  <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+</section>
+
+<script>
+  var m = location.search.match(/s=(\d)/);
+  if (m) {
+    document.body.classList.add('single');
+    var el = document.querySelector('.slide[data-n="' + m[1] + '"]');
+    if (el) el.classList.add('on');
+  }
+</script>
+</body>
+</html>

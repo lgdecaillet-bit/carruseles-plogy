@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Figuras de la guía · pieza 011</title>
+<!-- Figuras 1600x900 para reporte.md. Se exportan a assets/reporte/ con render-slides.ps1 (-Param f -Width 1600 -Height 900).
+     Pieza educativa: ninguna cifra viene de una fuente externa y no hay cifras. El antes y después usa una tienda inventada y la figura lo dice. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--orange:#ff5b00;--orangeText:#b43d00;--muted:#625951;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:#888;font-family:var(--body);color:var(--ink)}
+.fig{position:relative;width:1600px;height:900px;overflow:hidden;padding:72px 80px;display:none}
+body:not(.single) .fig{display:block;margin-bottom:20px;zoom:.5}
+body.single .fig{display:block}
+.light{background:#fff}.surface{background:var(--surface)}.dark{background:var(--ink);color:#fff}
+.logo{position:absolute;right:80px;top:64px;width:190px}
+.src{position:absolute;left:80px;bottom:40px;right:80px;font:500 24px/1.3 var(--body);color:var(--muted)}
+.dark .src{color:#bdb2a8}
+.eyebrow{font:700 24px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText)}
+.dark .eyebrow{color:var(--orange)}
+h2{font:700 62px/1.05 var(--display);letter-spacing:-.035em;margin-top:18px;max-width:1180px}
+.hl{color:var(--orange)}
+/* portada */
+.hero h1{font:700 118px/.98 var(--display);letter-spacing:-.045em;margin-top:34px;max-width:1300px;position:relative}
+.hero .glow{position:absolute;right:-620px;top:-260px;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ff5b00 0%,#d63a52 38%,#6a3dd1 68%,rgba(23,19,16,0) 72%);opacity:.9}
+.hero .meta{position:absolute;left:80px;bottom:56px;font:500 28px/1.3 var(--body);color:#d9cfc6}
+.hero .logo{left:80px;right:auto}
+.hero .eyebrow{margin-top:120px;position:relative}
+/* señales */
+table.sn{border-collapse:separate;border-spacing:0;margin-top:34px;width:100%;background:#fff;border:2px solid var(--border);border-radius:24px;overflow:hidden}
+.sn th,.sn td{padding:15px 22px;text-align:left;border-bottom:2px solid #eee6df;vertical-align:middle}
+.sn th{background:var(--ink);color:#fff;font:700 22px/1.1 var(--display);letter-spacing:.06em;text-transform:uppercase}
+.sn th:last-child{color:var(--orange)}
+.sn td:first-child{width:70px;font:700 40px/1 var(--display);color:var(--orange);text-align:center}
+.sn td:nth-child(2){width:420px;font:700 29px/1.15 var(--display);letter-spacing:-.02em}
+.sn td:nth-child(3){width:430px;font:500 26px/1.3 var(--body);color:var(--muted)}
+.sn td:nth-child(4){font:500 26px/1.3 var(--body)}
+.sn tr:last-child td{border-bottom:0}
+/* filtro */
+.q8{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;margin-top:34px}
+.q{display:grid;grid-template-columns:54px 1fr;column-gap:18px;align-items:center;background:#fff;border:2px solid var(--border);border-radius:22px;padding:16px 24px;min-height:104px}
+.q .bx{width:46px;height:46px;border:4px solid var(--ink);border-radius:12px}
+.q b{display:block;font:700 30px/1.12 var(--display);letter-spacing:-.02em}
+.q small{display:block;margin-top:5px;font:700 20px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText)}
+.q.ex{background:var(--ink);border-color:var(--ink);color:#fff}
+.q.ex .bx{border-color:var(--orange)}
+.q.ex small{color:var(--orange)}
+/* uso */
+.flow{display:flex;align-items:stretch;gap:22px;margin-top:64px}
+.st{flex:1;border-radius:26px;padding:32px 28px;background:#fff;border:2px solid var(--border)}
+.st.on{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.st b{display:block;font:700 32px/1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--orangeText)}
+.st.on b{color:var(--ink)}
+.st span{display:block;margin-top:16px;font:700 40px/1.1 var(--display);letter-spacing:-.025em}
+.st small{display:block;margin-top:14px;font:500 26px/1.35 var(--body);color:var(--muted)}
+.st.on small{color:var(--ink)}
+.flow .arr{align-self:center;font:700 56px/1 var(--display);color:var(--orange)}
+.rule{margin-top:38px;background:var(--ink);color:#fff;border-radius:24px;padding:28px 36px;font:700 36px/1.2 var(--display);letter-spacing:-.02em;max-width:1440px}
+.rule em{font-style:normal;color:var(--orange)}
+/* ejemplo */
+.ex2{display:flex;gap:32px;margin-top:34px;align-items:stretch}
+.cd{flex:1;border-radius:26px;padding:30px 34px 32px}
+.cd small{display:block;font:700 24px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+.cd p{font:400 32px/1.34 var(--body)}
+.cd.bad{background:#fff;border:2px dashed #a39486;color:var(--muted)}
+.cd.bad small{color:var(--muted)}
+.cd.good{background:var(--ink);color:#fff}
+.cd.good small{color:var(--orange)}
+.cd.good b{color:var(--orange)}
+.cd.bad .chips span{background:#f4f1ef;color:var(--muted);border:2px solid #d9d0c7}
+.cd.bad .chips span i{color:var(--orangeText)}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.chips span{background:#2d2621;color:#fff;font:700 22px/1 var(--display);letter-spacing:.04em;padding:11px 16px;border-radius:999px}
+.chips span i{font-style:normal;color:var(--orange);margin-right:6px}
+.tag{display:inline-block;margin-top:24px;background:var(--orange);color:var(--ink);font:700 24px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border-radius:999px}
+</style>
+</head>
+<body>
+
+<!-- 1. Portada -->
+<section class="fig dark hero" data-f="portada">
+  <div class="glow"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow">Guía de Plogy · Redes sociales</div>
+  <h1>Antes de publicar,<br><span class="hl">pasa el filtro.</span></h1>
+  <div class="meta">Ocho preguntas para revisar un post escrito con IA · versión 2026-10-20 · borrador</div>
+</section>
+
+<!-- 2. Las cinco señales -->
+<section class="fig surface" data-f="senales">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Diagnóstico</div>
+  <h2>Cinco señales de un post <span class="hl">sin criterio</span></h2>
+  <table class="sn">
+    <tr><th></th><th>Señal</th><th>Prueba rápida</th><th>Arreglo</th></tr>
+    <tr><td>1</td><td>Podría ser de cualquier marca</td><td>Cambia el nombre de la marca: ¿sigue sirviendo?</td><td>Añade lo que solo tu negocio puede decir</td></tr>
+    <tr><td>2</td><td>No afirma nada discutible</td><td>¿Alguien podría llevarte la contraria?</td><td>Defiende una postura que se pueda rebatir</td></tr>
+    <tr><td>3</td><td>Ningún dato ni ejemplo propio</td><td>¿Hay un número, un caso o una escena tuyos?</td><td>Añade uno. Si no existe, mídelo o rotula la hipótesis</td></tr>
+    <tr><td>4</td><td>Abre con una frase de relleno</td><td>Borra la primera frase: ¿mejora el post?</td><td>Empieza por la postura, el dato o la consecuencia</td></tr>
+    <tr><td>5</td><td>Termina sin una acción clara</td><td>Tras leerlo, ¿se sabe qué hacer?</td><td>Elige una sola acción y ponla en la última línea</td></tr>
+  </table>
+  <div class="src">Criterio de Plogy. Sin fuente externa: no se afirma ninguna cifra de terceros.</div>
+</section>
+
+<!-- 3. El filtro de ocho preguntas -->
+<section class="fig light" data-f="filtro">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">El filtro</div>
+  <h2>Ocho preguntas, <span class="hl">un sí para cada una</span></h2>
+  <div class="q8">
+    <div class="q"><div class="bx"></div><div><b>¿Solo podría ser de nuestra marca?</b><small>Señal 1</small></div></div>
+    <div class="q"><div class="bx"></div><div><b>¿Alguien podría discutir lo que afirma?</b><small>Señal 2</small></div></div>
+    <div class="q"><div class="bx"></div><div><b>¿Trae un dato, caso o escena propios?</b><small>Señal 3</small></div></div>
+    <div class="q"><div class="bx"></div><div><b>¿La primera línea ya dice algo concreto?</b><small>Señal 4</small></div></div>
+    <div class="q"><div class="bx"></div><div><b>¿Pide una sola acción, al final?</b><small>Señal 5</small></div></div>
+    <div class="q ex"><div class="bx"></div><div><b>¿Cada cifra tiene fuente o es hipótesis rotulada?</b><small>Extra · Fuente</small></div></div>
+    <div class="q ex"><div class="bx"></div><div><b>¿Suena a como habla nuestra marca?</b><small>Extra · Voz</small></div></div>
+    <div class="q ex"><div class="bx"></div><div><b>¿Una persona lo leyó entero y lo firmaría?</b><small>Extra · Firma</small></div></div>
+  </div>
+  <div class="src">Criterio de Plogy. Las cinco primeras salen de las cinco señales; las tres últimas se añaden en la guía.</div>
+</section>
+
+<!-- 4. Cómo se usa -->
+<section class="fig surface" data-f="uso">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Cómo se usa</div>
+  <h2>El filtro va <span class="hl">antes de publicar</span></h2>
+  <div class="flow">
+    <div class="st"><b>1</b><span>Borrador</span><small>La IA, una persona o las dos lo escriben.</small></div>
+    <div class="arr">→</div>
+    <div class="st on"><b>2</b><span>Filtro</span><small>Se responden las ocho preguntas, una por una.</small></div>
+    <div class="arr">→</div>
+    <div class="st"><b>3</b><span>Corregir</span><small>Cada “no” se arregla o el post se descarta.</small></div>
+    <div class="arr">→</div>
+    <div class="st on"><b>4</b><span>Publicar</span><small>Solo con las ocho respuestas en sí.</small></div>
+  </div>
+  <div class="rule">Una respuesta <em>no</em> significa que el post todavía no sale.</div>
+  <div class="src">Criterio de Plogy.</div>
+</section>
+
+<!-- 5. Antes y después (hipotético) -->
+<section class="fig light" data-f="ejemplo">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Una tienda de plantas inventada</div>
+  <h2>El mismo tema, <span class="hl">con criterio</span></h2>
+  <div class="ex2">
+    <div class="cd bad"><small>Antes · genérico</small><p>Hoy en día las redes son clave para tu negocio. Publicar con constancia te ayudará a crecer. Esperamos que te sirva.</p>
+      <div class="chips"><span><i>1</i>De cualquiera</span><span><i>2</i>Nada discutible</span><span><i>3</i>Sin dato propio</span><span><i>4</i>Abre con relleno</span><span><i>5</i>Sin acción</span></div></div>
+    <div class="cd good"><small>Después · con criterio</small><p>La consulta que más repetimos en la tienda: “se me secó”. <b>Casi siempre se ahogó.</b> Antes de regar, mete el dedo en la tierra: si sale húmeda, espera. ¿Dudas? Mándanos una foto por DM.</p>
+      <div class="chips"><span><i>1</i>Propio</span><span><i>2</i>Discutible</span><span><i>3</i>Caso propio</span><span><i>4</i>Abre concreto</span><span><i>5</i>Una acción</span></div></div>
+  </div>
+  <span class="tag">Ejemplo hipotético · ningún dato es real</span>
+  <div class="src">Tienda y frases inventadas por Plogy para mostrar el método. No es de ningún cliente.</div>
+</section>
+
+<script>
+var q=new URLSearchParams(location.search).get('f');
+if(q){document.body.classList.add('single');document.querySelectorAll('.fig').forEach(function(e){if(e.dataset.f!==q)e.style.display='none';});}
+</script>
+</body>
+</html>

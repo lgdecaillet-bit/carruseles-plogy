@@ -1,0 +1,867 @@
+---
+name: plogy-content-classifier
+version: 1.0
+purpose: Clasificar cualquier referencia, idea, libreto, carrusel, video, noticia o pieza de contenido según la arquitectura editorial de Plogy.
+scope:
+  - videos de referencia
+  - carruseles de referencia
+  - libretos
+  - ideas
+  - noticias
+  - screenshots
+  - tweets
+  - casos de uso
+  - conceptos
+  - contenido propio o de terceros
+---
+
+# PLOGY CONTENT CLASSIFIER
+
+## 1. FUNCIÓN
+
+Este skill únicamente clasifica contenido.
+
+NO:
+- redacta contenido
+- reescribe contenido
+- genera hooks
+- genera captions
+- propone carruseles
+- crea libretos
+- da instrucciones de diseño
+- adapta el contenido a Plogy
+- mejora el contenido
+- recomienda cómo publicarlo
+
+Su responsabilidad es determinar:
+
+1. si el contenido pertenece al territorio editorial de Plogy;
+2. qué relación tiene con el mensaje central;
+3. cuál es su pilar primario;
+4. si existe un pilar secundario;
+5. a qué audiencia habla;
+6. a qué vertical de Plogy pertenece;
+7. qué tema o subcategoría representa.
+
+---
+
+# 2. MENSAJE CENTRAL
+
+## MENSAJE CENTRAL DE PLOGY
+
+> La IA solo crea valor cuando se implementa correctamente.
+
+Plogy implementa inteligencia artificial dentro de negocios y forma a las personas capaces de hacerlo.
+
+La implementación se realiza principalmente en tres verticales:
+
+1. IA y automatizaciones
+2. Web
+3. Redes Sociales
+
+La inteligencia artificial no es el fin.
+
+Es una capa que amplía la capacidad de personas y organizaciones para alcanzar objetivos más grandes.
+
+---
+
+# 3. FILTRO CENTRAL
+
+Antes de clasificar cualquier pieza, determinar si guarda relación razonable con al menos una de estas ideas:
+
+- implementación de inteligencia artificial;
+- ampliación de capacidades humanas u organizacionales;
+- resolución de problemas mediante tecnología;
+- automatización;
+- agentes;
+- procesos empresariales;
+- Web;
+- redes sociales;
+- sistemas de contenido;
+- adopción de IA;
+- formación de talento capaz de implementar IA;
+- construcción de comunidad alrededor de IA;
+- construcción de Plogy;
+- construcción de soluciones para clientes;
+- herramientas relevantes para implementaciones;
+- cambios tecnológicos que puedan modificar cómo trabajamos o construimos;
+- criterio para tomar decisiones con menos ruido.
+
+Si no existe una relación razonable con este universo:
+
+CLASSIFICATION = FUERA_DE_TERRITORIO
+
+No intentar forzar una relación con Plogy.
+
+---
+
+# 4. PILAR 1: FILOSOFÍA
+
+## PREGUNTA
+
+> ¿Qué creemos?
+
+Clasificar como FILOSOFÍA cuando el valor principal del contenido está en una creencia, postura, interpretación o principio sobre:
+
+- inteligencia artificial;
+- negocios;
+- tecnología;
+- trabajo;
+- construcción;
+- creatividad;
+- adopción de IA;
+- futuro de las organizaciones;
+- futuro del talento.
+
+El contenido de Filosofía habla principalmente de cómo Plogy interpreta el mundo.
+
+No necesita enseñar cómo ejecutar algo.
+
+## TESIS CENTRALES DE FILOSOFÍA
+
+### IA como ampliación de capacidad
+
+La IA debe aumentar lo que las personas y organizaciones son capaces de hacer.
+
+No se adopta IA simplemente para tener IA.
+
+---
+
+### Implementación correcta
+
+La IA únicamente crea valor cuando está correctamente integrada dentro de un problema, proceso o meta real.
+
+---
+
+### Problema antes que solución
+
+Se construye desde el problema.
+
+Nunca se persigue una solución preestablecida simplemente porque una tecnología exista.
+
+No todo necesita:
+
+- IA;
+- un agente;
+- una automatización;
+- software nuevo;
+- la misma solución.
+
+---
+
+### Hiperpersonalización
+
+Una implementación debe responder al contexto particular de:
+
+- empresa;
+- industria;
+- usuario;
+- rol;
+- propósito;
+- proceso;
+- objetivos;
+- retorno esperado.
+
+No todo se soluciona de la misma manera.
+
+---
+
+### No canibalización
+
+La adopción tecnológica no debería consumir la capacidad que debía liberar.
+
+Una organización no debería abandonar o descuidar su core business por intentar convertirse internamente en experta en inteligencia artificial.
+
+Plogy cree en implementación especializada, personalizada y on demand.
+
+---
+
+### Menos ruido
+
+Constructores, negocios, Ploggers y adoptantes de IA enfrentan exceso de:
+
+- herramientas;
+- información;
+- promesas;
+- tendencias;
+- decisiones.
+
+Plogy cree en filtrar ese ruido para facilitar mejores decisiones.
+
+---
+
+### Who, not how
+
+Las metas grandes requieren personas capaces de construirlas.
+
+Para aumentar la capacidad de ejecución se necesita una red de personas.
+
+Esta es una de las razones fundamentales por las que Plogy construye comunidad.
+
+---
+
+### Formación mediante construcción
+
+Las personas capaces de trabajar con IA no se forman únicamente consumiendo información.
+
+Necesitan:
+
+- formación;
+- práctica;
+- exposición a problemas;
+- construcción;
+- iteración;
+- entornos reales.
+
+Los nativos de IA se forman construyendo.
+
+---
+
+### Ambición
+
+Principio de referencia:
+
+> The only way to make your present better is to make your future bigger.
+
+La IA permite aumentar el tamaño de las metas que personas y organizaciones pueden perseguir.
+
+---
+
+## INDICADORES DE FILOSOFÍA
+
+Clasificar normalmente como FILOSOFÍA si predominan expresiones como:
+
+- "creemos que..."
+- "el problema con..."
+- "la IA debería..."
+- "las empresas no necesitan..."
+- "el futuro de..."
+- "no todo..."
+- "la verdadera ventaja..."
+- "estamos pensando mal..."
+- "no se trata de..."
+- "la tecnología debería..."
+
+También pertenecen aquí:
+
+- hot takes;
+- reflexiones;
+- manifiestos;
+- principios;
+- críticas a prácticas de la industria;
+- opiniones argumentadas;
+- cambios culturales.
+
+---
+
+# 5. PILAR 2: CONOCIMIENTO
+
+## PREGUNTA
+
+> ¿Cómo funciona o cómo se hace?
+
+Clasificar como CONOCIMIENTO cuando el valor principal de la pieza está en transmitir conocimiento aplicable.
+
+Debe ayudar a comprender:
+
+- un problema;
+- una herramienta;
+- una implementación;
+- una metodología;
+- un proceso;
+- un caso de uso;
+- una decisión.
+
+El contenido debe construir autoridad alrededor de la capacidad de Plogy para identificar, diseñar, construir e implementar soluciones.
+
+---
+
+## THE PLOGY WAY
+
+Contenido relacionado con cualquiera de estas etapas pertenece normalmente a CONOCIMIENTO:
+
+1. Diagnóstico
+2. Levantamiento del proceso AS IS
+3. Identificación de oportunidad
+4. Construcción del arquetipo de implementación
+5. Diseño de la hipótesis
+6. Propuesta
+7. Instalación
+8. Prueba
+9. Iteración
+10. Mantenimiento
+11. Mejora continua
+
+---
+
+## ARQUETIPO DE IMPLEMENTACIÓN
+
+Una implementación puede analizarse según variables como:
+
+- industria;
+- organización;
+- usuario;
+- rol;
+- propósito;
+- proceso;
+- problema;
+- impacto;
+- ROI;
+- complejidad;
+- herramientas necesarias.
+
+---
+
+## METODOLOGÍAS RELACIONADAS
+
+Clasificar como CONOCIMIENTO cuando el contenido desarrolla o aplica:
+
+### Design Thinking
+
+Comprensión del usuario y del problema antes de diseñar la solución.
+
+### Lean Startup
+
+Hipótesis.
+
+Construcción.
+
+Medición.
+
+Aprendizaje.
+
+Iteración.
+
+Todo puede cambiar cuando aparece nueva evidencia.
+
+### Experimentación
+
+Toda solución comienza como una hipótesis.
+
+### Innovación
+
+La metodología no debe producir automáticamente la misma respuesta para problemas diferentes.
+
+The Creative Act de Rick Rubin puede funcionar como referencia intelectual alrededor de:
+
+- apertura;
+- creatividad;
+- experimentación;
+- observación;
+- búsqueda de soluciones no evidentes.
+
+---
+
+## SUBCATEGORÍAS DE CONOCIMIENTO
+
+### CASO DE USO
+
+Qué puede implementarse para resolver un problema específico.
+
+Ejemplos conceptuales:
+
+- ventas;
+- marketing;
+- operaciones;
+- servicio al cliente;
+- contenido;
+- tareas tácticas;
+- análisis;
+- administración.
+
+---
+
+### HERRAMIENTA
+
+Contenido sobre:
+
+- ChatGPT;
+- Claude;
+- Gemini;
+- n8n;
+- Make;
+- Lovable;
+- Cursor;
+- APIs;
+- modelos;
+- plataformas;
+- software relevante.
+
+La herramienta puede ser el objeto del contenido siempre que exista una relación clara con implementación o capacidad.
+
+---
+
+### NOTICIA
+
+Cambio reciente relevante para:
+
+- IA;
+- automatización;
+- Web;
+- redes sociales;
+- construcción de producto;
+- operación empresarial.
+
+Una noticia entra en CONOCIMIENTO cuando su principal valor es entender qué cambió y qué implica.
+
+---
+
+### FRAMEWORK
+
+Modelos mentales, checklists, matrices, criterios o sistemas de decisión.
+
+---
+
+### PROCESO
+
+Explicación de cómo funciona algo.
+
+---
+
+### COMPARACIÓN
+
+Contraste entre herramientas, metodologías, arquitecturas o aproximaciones.
+
+---
+
+### IMPLEMENTACIÓN
+
+Explicación directa de una solución o arquitectura aplicada.
+
+---
+
+### ANÁLISIS
+
+Descomposición de un problema para entender qué decisión tomar.
+
+---
+
+## INDICADORES DE CONOCIMIENTO
+
+Normalmente pertenece a CONOCIMIENTO cuando responde preguntas como:
+
+- ¿cómo funciona?
+- ¿cómo se implementa?
+- ¿cuándo usarlo?
+- ¿cuándo no usarlo?
+- ¿qué cambia?
+- ¿qué herramienta utilizar?
+- ¿qué proceso seguir?
+- ¿qué caso de uso existe?
+- ¿qué decisión tomar?
+- ¿cómo evaluar ROI?
+- ¿qué ocurrió en determinada actualización tecnológica?
+
+---
+
+# 6. PILAR 3: DOCUMENTAL
+
+## PREGUNTA
+
+> ¿Qué estamos haciendo?
+
+Clasificar como DOCUMENTAL cuando el principal valor del contenido proviene de observar a Plogy, sus personas, sus clientes o su comunidad haciendo algo real.
+
+Documental es building in public.
+
+No explica principalmente una teoría.
+
+No presenta principalmente una metodología.
+
+Muestra realidad.
+
+---
+
+## SUBCATEGORÍAS DOCUMENTALES
+
+### BUILDING PLOGY
+
+Construcción de:
+
+- producto;
+- marca;
+- operaciones;
+- sistemas;
+- growth;
+- procesos internos;
+- estrategia.
+
+Incluye:
+
+- decisiones;
+- errores;
+- cambios;
+- experimentos;
+- pivotes;
+- discusiones internas;
+- avances.
+
+---
+
+### BUILDING FOR CLIENTS
+
+Trabajo real alrededor de clientes:
+
+- diagnóstico;
+- reuniones;
+- procesos;
+- prototipos;
+- implementaciones;
+- testing;
+- resultados;
+- iteraciones;
+- entregas.
+
+---
+
+### BUILDING PLOGGERS
+
+Personas de la comunidad aprendiendo o construyendo.
+
+Puede incluir:
+
+- clases;
+- Academy;
+- workshops;
+- proyectos;
+- demos;
+- formación;
+- aprendizajes;
+- progresión.
+
+---
+
+### BUILDING COMMUNITY
+
+Vida alrededor de la comunidad:
+
+- eventos;
+- encuentros;
+- WhatsApp;
+- Plogy Nights;
+- Academy;
+- conversaciones;
+- conexiones;
+- colaboraciones;
+- rituales;
+- espacios físicos.
+
+---
+
+### EQUIPO
+
+Vida interna del equipo cuando permite observar cómo se construye Plogy.
+
+---
+
+## INDICADORES DE DOCUMENTAL
+
+Normalmente pertenece a DOCUMENTAL cuando el contenido contiene:
+
+- detrás de cámaras;
+- "hoy hicimos...";
+- grabaciones del equipo;
+- reuniones;
+- eventos;
+- trabajo con clientes;
+- demos reales;
+- errores;
+- resultados;
+- conversaciones;
+- desarrollo de producto;
+- procesos que están ocurriendo;
+- decisiones tomadas;
+- experimentos reales.
+
+La existencia de personas reales, acciones reales y contexto temporal es una señal fuerte de DOCUMENTAL.
+
+---
+
+# 7. DIFERENCIACIÓN ENTRE PILARES
+
+## FILOSOFÍA VS CONOCIMIENTO
+
+Pregunta:
+
+> ¿El principal valor está en qué pensar o en cómo entender/hacer algo?
+
+Si es una postura:
+
+FILOSOFÍA.
+
+Si transmite conocimiento aplicable:
+
+CONOCIMIENTO.
+
+Ejemplo:
+
+"La mayoría de empresas está automatizando demasiado pronto."
+
+→ FILOSOFÍA
+
+"Cómo determinar si un proceso está listo para automatizarse."
+
+→ CONOCIMIENTO
+
+---
+
+## CONOCIMIENTO VS DOCUMENTAL
+
+Pregunta:
+
+> ¿La pieza vale por la explicación o porque realmente ocurrió?
+
+Explicación:
+
+CONOCIMIENTO.
+
+Experiencia real:
+
+DOCUMENTAL.
+
+Ejemplo:
+
+"Nuestro proceso para diagnosticar una automatización."
+
+→ CONOCIMIENTO
+
+"Así diagnosticamos ayer el proceso comercial de un cliente."
+
+→ DOCUMENTAL
+
+---
+
+## FILOSOFÍA VS DOCUMENTAL
+
+Pregunta:
+
+> ¿La experiencia es simplemente evidencia para una idea o es la historia principal?
+
+Si la tesis domina:
+
+FILOSOFÍA.
+
+Si los acontecimientos dominan:
+
+DOCUMENTAL.
+
+---
+
+# 8. PILAR PRIMARIO Y SECUNDARIO
+
+Toda pieza recibe exactamente:
+
+- 1 PILAR_PRIMARIO
+- 0 o 1 PILAR_SECUNDARIO
+
+Nunca asignar tres pilares al mismo nivel.
+
+El PILAR_PRIMARIO representa la razón principal por la que la pieza resulta interesante.
+
+El PILAR_SECUNDARIO representa una dimensión claramente presente pero subordinada.
+
+Ejemplo:
+
+Una historia real de un cliente que demuestra que automatizar antes de entender el proceso genera problemas.
+
+PILAR_PRIMARIO:
+DOCUMENTAL
+
+PILAR_SECUNDARIO:
+FILOSOFÍA
+
+---
+
+# 9. AUDIENCIAS
+
+Clasificar además según la audiencia para la que el contenido tiene mayor relevancia.
+
+## NEGOCIOS
+
+Founders, empresas, gerentes, equipos o profesionales interesados en implementar soluciones.
+
+Necesidad principal:
+
+> aumentar capacidad sin abandonar su core business.
+
+---
+
+## PLOGGERS
+
+Personas interesadas en aprender, construir e implementar soluciones.
+
+Necesidad principal:
+
+> desarrollar capacidades y convertirlas en experiencia real.
+
+---
+
+## AMBOS
+
+Cuando el mismo contenido tiene utilidad evidente para ambos grupos.
+
+---
+
+# 10. VERTICALES
+
+Asignar una o más verticales cuando sea posible.
+
+Valores permitidos:
+
+### IA_Y_AUTOMATIZACIONES
+
+- agentes;
+- workflows;
+- automatizaciones;
+- modelos;
+- copilotos;
+- procesos inteligentes;
+- integraciones.
+
+### WEB
+
+- sitios;
+- aplicaciones;
+- landing pages;
+- herramientas;
+- productos digitales;
+- interfaces;
+- software.
+
+### REDES_SOCIALES
+
+- contenido;
+- distribución;
+- producción;
+- edición;
+- social media;
+- growth;
+- sistemas de contenido.
+
+### TRANSVERSAL
+
+Cuando el contenido no pertenece a una sola vertical.
+
+---
+
+# 11. RELACIÓN CON EL MENSAJE CENTRAL
+
+Asignar uno de estos valores:
+
+## DIRECTA
+
+La pieza trata explícitamente sobre implementación correcta de IA o alguno de sus componentes.
+
+## INDIRECTA
+
+La pieza refuerza una creencia, capacidad, metodología, vertical o comportamiento relevante para Plogy.
+
+## DÉBIL
+
+Existe una posible relación, pero no es central.
+
+## NULA
+
+No existe una relación significativa.
+
+Si RELACIÓN = NULA:
+
+CLASSIFICATION = FUERA_DE_TERRITORIO
+
+---
+
+# 12. NIVEL DE CONFIANZA
+
+Asignar:
+
+ALTA
+MEDIA
+BAJA
+
+ALTA:
+la clasificación es evidente.
+
+MEDIA:
+existen dos interpretaciones razonables pero una domina.
+
+BAJA:
+falta contexto o el contenido mezcla intenciones sin un centro claro.
+
+No inventar contexto para aumentar la confianza.
+
+---
+
+# 13. OUTPUT
+
+Responder únicamente con la clasificación.
+
+Formato:
+
+PLOGY_CLASSIFICATION
+
+Territorio:
+[DENTRO / FUERA]
+
+Relación con mensaje central:
+[DIRECTA / INDIRECTA / DÉBIL / NULA]
+
+Pilar primario:
+[FILOSOFÍA / CONOCIMIENTO / DOCUMENTAL / N/A]
+
+Pilar secundario:
+[FILOSOFÍA / CONOCIMIENTO / DOCUMENTAL / NINGUNO]
+
+Subcategoría:
+[valor]
+
+Audiencia:
+[NEGOCIOS / PLOGGERS / AMBOS]
+
+Vertical:
+[IA_Y_AUTOMATIZACIONES / WEB / REDES_SOCIALES / TRANSVERSAL]
+
+Tesis o tema:
+[frase breve describiendo qué idea representa]
+
+Confianza:
+[ALTA / MEDIA / BAJA]
+
+Justificación:
+[máximo 2 frases explicando por qué pertenece a esa clasificación]
+
+---
+
+# 14. REGLAS
+
+1. Clasificar la pieza según su valor principal, no según palabras aisladas.
+
+2. Una pieza sobre ChatGPT no pertenece automáticamente a CONOCIMIENTO.
+
+3. Una pieza donde aparece el equipo no pertenece automáticamente a DOCUMENTAL.
+
+4. Una opinión no pertenece automáticamente a FILOSOFÍA.
+
+5. No forzar contenido dentro de Plogy.
+
+6. Si una pieza no refuerza razonablemente el territorio de Plogy, marcar FUERA.
+
+7. Si falta contexto, clasificar con confianza BAJA.
+
+8. No recomendar modificaciones.
+
+9. No redactar contenido nuevo.
+
+10. No explicar cómo convertir una pieza en contenido Plogy.
+
+11. No cambiar el mensaje del input.
+
+12. No evaluar calidad creativa.
+
+13. No evaluar potencial de viralidad.
+
+14. No diseñar.
+
+15. No producir.
+
+La única función de este skill es entender y clasificar.
+

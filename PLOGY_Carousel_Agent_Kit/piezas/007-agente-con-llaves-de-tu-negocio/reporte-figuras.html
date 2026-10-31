@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Figuras del reporte · pieza 007</title>
+<!-- Figuras 1600x900 para reporte.md. Se exportan a assets/reporte/ con render-slides.ps1 (-Param f -Width 1600 -Height 900).
+     Lo de Meta lleva su fuente dentro. Lo que es criterio de Plogy y el ejemplo hipotético lo dicen en la propia figura. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--orange:#ff5b00;--orangeText:#b43d00;--muted:#625951;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:#888;font-family:var(--body);color:var(--ink)}
+.fig{position:relative;width:1600px;height:900px;overflow:hidden;padding:72px 80px;display:none}
+body:not(.single) .fig{display:block;margin-bottom:20px;zoom:.5}
+body.single .fig{display:block}
+.light{background:#fff}.surface{background:var(--surface)}.dark{background:var(--ink);color:#fff}
+.logo{position:absolute;right:80px;top:64px;width:190px}
+.src{position:absolute;left:80px;bottom:44px;right:80px;font:500 22px/1.3 var(--body);color:var(--muted)}
+.dark .src{color:#bdb2a8}
+.eyebrow{font:700 24px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText)}
+.dark .eyebrow{color:var(--orange)}
+h2{font:700 62px/1.05 var(--display);letter-spacing:-.035em;margin-top:18px;max-width:1180px}
+.hl{color:var(--orange)}
+.tag{display:inline-block;background:var(--orange);color:var(--ink);font:700 24px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border-radius:999px}
+/* portada */
+.hero h1{font:700 112px/.98 var(--display);letter-spacing:-.045em;margin-top:34px;max-width:1250px;position:relative}
+.hero .glow{position:absolute;right:-620px;top:-260px;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ff5b00 0%,#d63a52 38%,#6a3dd1 68%,rgba(23,19,16,0) 72%);opacity:.9}
+.hero .meta{position:absolute;left:80px;bottom:56px;font:500 28px/1.3 var(--body);color:#d9cfc6}
+.hero .logo{left:80px;right:auto}
+.hero .eyebrow{margin-top:120px;position:relative}
+/* conectores */
+.chips{display:flex;flex-wrap:wrap;gap:16px;margin-top:44px;max-width:1440px}
+.chip{font:500 36px/1 var(--body);padding:20px 30px;border-radius:999px;border:2px solid var(--border);background:#fff}
+.chip.m{background:var(--orange);border-color:var(--orange);color:var(--ink);font-weight:700}
+.meta2{margin-top:36px;display:flex;gap:24px;align-items:stretch}
+.meta2 div{flex:1;border-radius:24px;padding:26px 30px;background:var(--ink);color:#fff;font:500 28px/1.35 var(--body)}
+.meta2 b{display:block;font:700 24px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.leg{margin-top:26px;font:500 27px/1.3 var(--body);color:var(--muted)}
+.leg i{display:inline-block;width:20px;height:20px;border-radius:50%;background:var(--orange);margin-right:10px;vertical-align:-2px}
+/* alcance */
+.scale{margin-top:40px;display:flex;flex-direction:column;gap:14px;max-width:1100px}
+.bar{height:80px;border-radius:22px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;font:700 38px/1 var(--display);background:#2a231e;border:2px solid #4a413a;color:#f3ece6}
+.bar span{font:500 25px/1 var(--body);color:#bdb2a8}
+.bar:nth-child(1){width:46%}.bar:nth-child(2){width:58%}.bar:nth-child(3){width:70%}.bar:nth-child(4){width:84%}
+.bar:nth-child(5){width:100%;background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.bar:nth-child(5) span{color:var(--ink)}
+.side{position:absolute;right:80px;top:250px;width:300px;font:500 27px/1.4 var(--body);color:#d8cfc6;border-left:4px solid var(--orange);padding-left:24px}
+.side b{display:block;font:700 26px/1.2 var(--display);color:#fff;margin-bottom:10px}
+/* cuatro preguntas */
+.four{display:flex;gap:22px;margin-top:50px}
+.qc{flex:1;border-radius:26px;padding:32px 28px;background:#fff;border:2px solid var(--border)}
+.qc i{display:block;font:700 76px/1 var(--display);font-style:normal;color:var(--orange)}
+.qc b{display:block;margin-top:14px;font:700 36px/1.1 var(--display);letter-spacing:-.02em}
+.qc span{display:block;margin-top:14px;font:500 26px/1.35 var(--body);color:var(--muted)}
+.qc em{display:block;margin-top:16px;font:700 24px/1.3 var(--body);font-style:normal;color:var(--orangeText)}
+/* tablas */
+table.t{border-collapse:separate;border-spacing:0;margin-top:34px;width:100%;font:500 27px/1.25 var(--body);background:#fff;border:2px solid var(--border);border-radius:24px;overflow:hidden}
+.t th,.t td{padding:16px 20px;text-align:left;border-bottom:2px solid #eee6df;border-right:2px solid #eee6df;vertical-align:middle}
+.t th{background:var(--ink);color:#fff;font:700 22px/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase}
+.t td:first-child{font:700 30px/1.1 var(--display);letter-spacing:-.02em}
+.t td.n{color:var(--orangeText);font-weight:700}
+.t tr:last-child td{border-bottom:0}
+.t th:last-child,.t td:last-child{border-right:0}
+.t.blank td{height:70px;color:#b4a99f}
+.t.blank td:first-child{color:var(--muted);font-weight:700;font-size:26px}
+/* checklist */
+.cl{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,auto);grid-auto-flow:column;gap:18px 30px;margin-top:38px}
+.it{display:flex;gap:20px;align-items:flex-start;border-radius:22px;background:#fff;border:2px solid var(--border);padding:18px 24px}
+.it i{flex:none;width:36px;height:36px;border:4px solid var(--orange);border-radius:9px;margin-top:4px}
+.it b{display:block;font:700 30px/1.1 var(--display);letter-spacing:-.02em}
+.it span{display:block;margin-top:6px;font:500 24px/1.3 var(--body);color:var(--muted)}
+</style>
+</head>
+<body>
+
+<!-- 1. Portada -->
+<section class="fig dark hero" data-f="portada">
+  <div class="glow"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow">Reporte de Plogy · Agentes de IA</div>
+  <h1>Un agente con las <span class="hl">llaves de tu negocio.</span></h1>
+  <div class="meta">Qué decidir antes de conectarlo a tus herramientas · versión 2026-10-20 · borrador</div>
+</section>
+
+<!-- 2. Conectores que nombra Meta -->
+<section class="fig surface" data-f="conectores">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Lo que dice Meta</div>
+  <h2>Quince herramientas con nombre, <span class="hl">más tus cuentas de Meta</span></h2>
+  <div class="chips">
+    <span class="chip">Asana</span><span class="chip">Box</span><span class="chip">Canva</span><span class="chip">Dropbox</span><span class="chip">Figma</span><span class="chip">Granola</span><span class="chip">HighLevel</span><span class="chip m">Intuit QuickBooks</span>
+    <span class="chip">Klaviyo</span><span class="chip">Lovable</span><span class="chip">Notion</span><span class="chip m">Shopify</span><span class="chip">Slack</span><span class="chip m">Stripe</span><span class="chip">Zoom</span>
+  </div>
+  <div class="leg"><i></i>Las que tocan ventas o dinero (agrupación de Plogy). Además, según Meta: cuentas de Facebook e Instagram, analítica profesional de Instagram, páginas de Facebook y cuentas de anuncios.</div>
+  <div class="src">Fuente: Meta, “The Future Is for Everyone: Muse for Small Business”, about.fb.com, 29 de septiembre de 2026. Meta añade que se puede conectar a “docenas” de herramientas y que hay conectores propios.</div>
+</section>
+
+<!-- 3. Alcance de la aprobación -->
+<section class="fig dark" data-f="alcance">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow">Lo que dice Meta</div>
+  <h2>Cinco alcances para una aprobación, <span class="hl">de una vez a permanente</span></h2>
+  <div class="scale">
+    <div class="bar">Una vez <span>una acción</span></div>
+    <div class="bar">Una sesión <span>mientras dura</span></div>
+    <div class="bar">Una tarea <span>hasta terminarla</span></div>
+    <div class="bar">Con plazo <span>hasta una fecha</span></div>
+    <div class="bar">Permanente <span>hasta que la quites</span></div>
+  </div>
+  <div class="side"><b>Sin preguntar</b>Meta dice que lo de solo lectura, lo ya permitido o de bajo riesgo puede seguir sin interrumpirte.</div>
+  <div class="src">Fuente: Meta, “How We Built Safety Into Muse”, research.meta.ai, 8 de septiembre de 2026. Los alcances son los que Meta enumera; las aclaraciones de cada barra son de Plogy.</div>
+</section>
+
+<!-- 4. Cuatro preguntas -->
+<section class="fig light" data-f="preguntas">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Criterio de Plogy</div>
+  <h2>Cuatro preguntas <span class="hl">por cada herramienta</span></h2>
+  <div class="four">
+    <div class="qc"><i>1</i><b>¿Qué puede leer?</b><span>Los datos que la tarea necesita y nada más.</span><em>Deja fuera lo que no hace falta.</em></div>
+    <div class="qc"><i>2</i><b>¿Qué puede escribir?</b><span>Qué puede crear o cambiar dentro de la herramienta.</span><em>Empieza con borradores.</em></div>
+    <div class="qc"><i>3</i><b>¿Qué puede pagar o enviar?</b><span>Lo que sale del negocio: dinero, mensajes, publicaciones.</span><em>Por defecto, nada sin una persona.</em></div>
+    <div class="qc"><i>4</i><b>¿Qué revisa una persona?</b><span>Quién aprueba, en cuánto tiempo y por cuánto alcance.</span><em>Con nombre y con plazo.</em></div>
+  </div>
+  <div class="src">Criterio de Plogy. No es una función de Muse ni de ninguna herramienta: es una forma de decidir antes de dar acceso.</div>
+</section>
+
+<!-- 5. Ejemplo hipotético -->
+<section class="fig surface" data-f="ejemplo">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Una tienda en línea imaginada</div>
+  <h2>Una tabla de permisos <span class="hl">completa</span></h2>
+  <table class="t">
+    <tr><th>Herramienta</th><th>Puede leer</th><th>Puede escribir</th><th>Puede pagar o enviar</th><th>Lo revisa una persona</th></tr>
+    <tr><td>Shopify</td><td>Pedidos y productos</td><td>Borradores de fichas</td><td class="n">Nada</td><td>Quien lleva la tienda, antes de publicar</td></tr>
+    <tr><td>Stripe</td><td>Pagos, solo ver</td><td>Nada</td><td class="n">Nada</td><td>Todo reembolso o cobro lo hace una persona</td></tr>
+    <tr><td>Slack</td><td>Canal de ventas</td><td>Borradores</td><td class="n">Mensajes, con aprobación</td><td>Quien atiende al cliente, antes de enviar</td></tr>
+    <tr><td>QuickBooks</td><td>Gastos, solo ver</td><td>Nada</td><td class="n">Nada</td><td>Contabilidad, cada semana</td></tr>
+  </table>
+  <span class="tag" style="margin-top:26px">Ejemplo hipotético</span>
+  <div class="src">Ejemplo de Plogy, inventado para mostrar el método. No es una configuración de Muse ni de ningún cliente.</div>
+</section>
+
+<!-- 6. Plantilla -->
+<section class="fig light" data-f="plantilla">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">La plantilla</div>
+  <h2>Una fila por herramienta, <span class="hl">una decisión por columna</span></h2>
+  <table class="t blank">
+    <tr><th>Herramienta</th><th>Tarea del agente</th><th>Puede leer</th><th>Puede escribir</th><th>Puede pagar o enviar</th><th>Quién aprueba</th><th>Alcance y vencimiento</th></tr>
+    <tr><td>1</td><td>una tarea</td><td>solo lo necesario</td><td>borradores</td><td>nada</td><td>nombre y plazo</td><td>una vez / sesión / tarea / fecha</td></tr>
+    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>…</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <div class="src">Criterio de Plogy. La primera fila trae valores de ejemplo para empezar; cámbialos por los de tu negocio.</div>
+</section>
+
+<!-- 7. Checklist -->
+<section class="fig surface" data-f="checklist">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Checklist de permisos</div>
+  <h2>Ocho comprobaciones <span class="hl">antes de conectar</span></h2>
+  <div class="cl">
+    <div class="it"><i></i><p><b>1. Una tarea, una conexión</b><span>Conecta solo lo que necesita una tarea concreta.</span></p></div>
+    <div class="it"><i></i><p><b>2. Leer</b><span>Define qué datos ve y deja fuera lo que no necesita.</span></p></div>
+    <div class="it"><i></i><p><b>3. Escribir</b><span>Empieza con borradores, no con cambios directos.</span></p></div>
+    <div class="it"><i></i><p><b>4. Pagar o enviar</b><span>Por defecto, nada sale sin una persona.</span></p></div>
+    <div class="it"><i></i><p><b>5. Quién aprueba</b><span>Nombre, plazo de respuesta y reemplazo si no está.</span></p></div>
+    <div class="it"><i></i><p><b>6. Alcance</b><span>Mejor una vez o por tarea. Si es permanente, con fecha de revisión.</span></p></div>
+    <div class="it"><i></i><p><b>7. Salida y registro</b><span>Sabe dónde se quitan los permisos y revisa el registro cada semana.</span></p></div>
+    <div class="it"><i></i><p><b>8. Datos y prueba</b><span>Lee qué hace el proveedor con tus datos y prueba con permisos mínimos.</span></p></div>
+  </div>
+  <div class="src">Criterio de Plogy. Marca cada casilla por herramienta antes de darle acceso al agente.</div>
+</section>
+
+<script>
+var q=new URLSearchParams(location.search).get('f');
+if(q){document.body.classList.add('single');document.querySelectorAll('.fig').forEach(function(e){if(e.dataset.f!==q)e.style.display='none';});}
+</script>
+</body>
+</html>

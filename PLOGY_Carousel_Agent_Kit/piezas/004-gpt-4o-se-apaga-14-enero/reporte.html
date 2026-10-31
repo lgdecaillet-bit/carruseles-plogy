@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GPT-4o y GPT-4.1 se apagan el 14 de enero: qué revisar para no romper tu automatización</title>
+<!-- Generado automáticamente desde el .md del mismo nombre con piezas/_visor/md_to_html.py. Edita el .md, no este archivo. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--muted:#625951;--orange:#ff5b00;--orangeText:#b43d00;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root{--ink:#f4efe9;--paper:#171310;--muted:#bdb2a8;--surface:#211b17;--border:#3a322c;--orangeText:#ff8a4d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 var(--body)}
+main{max-width:820px;margin:0 auto;padding:40px 24px 96px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.025em;line-height:1.15}
+h1{font-size:40px;margin:0 0 24px}
+h2{font-size:28px;margin:48px 0 12px;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:21px;margin:32px 0 8px}
+p,li{max-width:70ch}
+a{color:var(--orangeText);word-break:break-word}
+code{font:14px ui-monospace,Consolas,monospace;background:var(--surface);padding:2px 6px;border-radius:6px;word-break:break-word}
+pre{background:var(--surface);padding:16px;border-radius:12px;overflow:auto}
+pre code{background:none;padding:0}
+blockquote{margin:18px 0;padding:6px 0 6px 20px;border-left:6px solid var(--orange);color:var(--ink)}
+blockquote p{margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:18px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;min-width:120px}
+th{background:var(--surface);font-family:var(--display)}
+ul,ol{padding-left:24px}
+li{margin:6px 0}
+li.check{list-style:none;margin-left:-24px}
+li.check input{margin-right:10px}
+figure{margin:28px 0}
+figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border)}
+figcaption{margin-top:8px;font-size:14px;line-height:1.4;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--border);margin:32px 0}
+.tag{display:inline-block;background:var(--orange);color:#171310;font:700 13px var(--display);letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:18px}
+</style></head>
+<body><main>
+<h1>GPT-4o y GPT-4.1 se apagan el 14 de enero: qué revisar para no romper tu automatización</h1>
+<figure><img src="assets/reporte/fig-portada.png" alt="Portada del reporte: Tu automatización vence el 14 de enero" loading="lazy"><figcaption>Portada del reporte. Figura elaborada por Plogy.</figcaption></figure>
+<p>Reporte de Plogy · Pieza 004 · Palabra clave del carrusel: MIGRAR</p>
+<ul><li>Estado: BORRADOR para revisión humana. No publicado.</li><li>URL prevista: <code>/reportes/gpt-4o-gpt-4-1-se-apagan-14-enero</code> (por confirmar cuando se configure la web)</li><li>Fecha de la versión: 2026-10-19</li><li>Última actualización: 2026-10-19 (versión inicial)</li><li>Pilar: Conocimiento · Audiencia: Negocios · Vertical: IA y automatizaciones</li><li>Autor y revisor: pendiente de asignar</li></ul>
+<h2>Resumen</h2>
+<ol><li>OpenAI avisó el 14 de octubre de 2026 de que cinco versiones de GPT-4o y GPT-4.1 salen de su API el 14 de enero de 2027. Las versiones afinadas (fine-tunes) de esos modelos siguen el mismo calendario. El reemplazo que recomienda es <code>gpt-6-luna</code>.</li><li>El reemplazo no es un cambio de nombre. Según la ficha de OpenAI, <code>gpt-6-luna</code> razona por defecto, solo admite llamadas a funciones en Chat Completions con el razonamiento apagado y no admite fine-tuning.</li><li>Para un negocio, el riesgo es una automatización que deje de funcionar sin que nadie lo note. Lo primero es saber en qué lugares aparece el nombre del modelo. Al final hay una lista de revisión de seis comprobaciones.</li></ol>
+<h2>1. Qué pasó</h2>
+<p>Cada dato lleva su fuente. Las fechas, los identificadores y los datos de <code>gpt-6-luna</code>, GPT-4o y los otros modelos que se apagan vienen de páginas de OpenAI que leímos. Algunas lecturas vienen de terceros y se rotulan. Plogy no ha migrado ningún flujo con este modelo.</p>
+<h3>Calendario</h3>
+<ul><li><strong>Aviso.</strong> El 14 de octubre de 2026 OpenAI notificó a los desarrolladores que usan ciertos modelos de la serie GPT-4 que se eliminarán de la API el 14 de enero de 2027. (OpenAI, página de deprecaciones.)</li><li><strong>Plazo.</strong> Del aviso al apagado pasan 92 días. La página de OpenAI declara al menos seis meses de aviso para modelos de disponibilidad general, salvo razones de seguridad o cumplimiento, y no dice si estos modelos lo son. Mixed señala la diferencia. Nada de lo que leímos la explica.</li></ul>
+<figure><img src="assets/reporte/fig-calendario.png" alt="Línea de tiempo del 14 de octubre de 2026 al 14 de enero de 2027, 92 días" loading="lazy"><figcaption>Calendario. El punto discontinuo del 6 de enero lo reporta Digital Applied y no lo confirmamos en la página de OpenAI.</figcaption></figure>
+<h3>Qué se apaga</h3>
+<p>Todos salen de la API el 14 de enero de 2027, con <code>gpt-6-luna</code> como reemplazo recomendado. (OpenAI, página de deprecaciones.)</p>
+<ul><li><code>gpt-4o-2024-08-06</code> y <code>gpt-4o-2024-11-20</code></li><li><code>gpt-4o-mini-2024-07-18</code></li><li><code>gpt-4.1-2025-04-14</code></li><li><code>gpt-4.1-mini-2025-04-14</code></li></ul>
+<p>OpenAI dice que las versiones afinadas de estos modelos "siguen el mismo calendario de apagado que sus modelos base". La cita es una traducción nuestra de la frase original en inglés.</p>
+<figure><img src="assets/reporte/fig-modelos.png" alt="Los cinco identificadores de modelo que salen de la API y sus versiones afinadas" loading="lazy"><figcaption>Modelos que salen de la API el 14 de enero de 2027. Fuente: OpenAI.</figcaption></figure>
+<h3>Reemplazo y precio</h3>
+<p>La ficha de <code>gpt-6-luna</code> en OpenAI indica un precio de $0,10 de entrada, $0,01 de entrada en caché y $0,50 de salida por millón de tokens, un contexto de 1.050.000 tokens, una salida máxima de 128.000 tokens y conocimiento hasta el 18 de mayo de 2026. Admite salidas estructuradas y llamadas a funciones. No admite fine-tuning. Los precios cambian por encima de 272.000 tokens de entrada, con modo Batch o Flex y con procesamiento regional.</p>
+<p>Las fichas de OpenAI de GPT-4o dan $2,50 de entrada y $10 de salida, un contexto de 128.000 tokens, una salida máxima de 16.384 tokens y conocimiento hasta el 1 de octubre de 2023. La ficha de GPT-4o no muestra aviso de retiro el 2026-10-20, aunque la página de deprecaciones sí lo anuncia.</p>
+<figure><img src="assets/reporte/fig-comparacion.png" alt="Comparación entre GPT-4o y gpt-6-luna en precio, contexto, salida máxima, conocimiento y fine-tuning" loading="lazy"><figcaption>Comparación de modelos. Fuente: fichas de OpenAI.</figcaption></figure>
+<p>La rebaja por token depende del modelo que se apaga. Cuenta de Plogy sobre las fichas de OpenAI:</p>
+<table><thead><tr><th>Modelo que se apaga</th><th>Entrada</th><th>Salida</th><th>Luna es menos en entrada</th><th>Luna es menos en salida</th></tr></thead><tbody><tr><td>GPT-4o</td><td>$2,50</td><td>$10</td><td>25 veces</td><td>20 veces</td></tr><tr><td>GPT-4.1</td><td>$2</td><td>$8</td><td>20 veces</td><td>16 veces</td></tr><tr><td>GPT-4.1 mini</td><td>$0,40</td><td>$1,60</td><td>4 veces</td><td>3,2 veces</td></tr><tr><td>GPT-4o mini</td><td>$0,15</td><td>$0,60</td><td>1,5 veces</td><td>1,2 veces</td></tr></tbody></table>
+<p>Luna cuesta $0,10 de entrada y $0,50 de salida. Es una comparación de tarifa por token. Lo que cuesta una tarea no está en ninguna de estas páginas.</p>
+<h2>2. Qué se sabe y qué no</h2>
+<p><strong>Confirmado en páginas de OpenAI que leímos:</strong> el aviso del 14 de octubre, los cinco identificadores, la fecha del 14 de enero de 2027, el calendario de los fine-tunes, el reemplazo recomendado, los datos de <code>gpt-6-luna</code> (precio, contexto, llamadas a funciones, razonamiento, fine-tuning) y los precios y límites de GPT-4o, GPT-4o mini, GPT-4.1 y GPT-4.1 mini. También que el razonamiento se factura como tokens de salida y que <code>gpt-6-luna</code> usa esfuerzo medio por defecto.</p>
+<p><strong>Reportado por terceros, sin confirmar en OpenAI:</strong></p>
+<ul><li><strong>Que el 6 de enero de 2027 sea el fin de los fine-tunes nuevos de estos modelos.</strong> La página de OpenAI trae esa fecha como cierre general del ajuste fino de autoservicio para clientes activos, sin nombrar modelos. Que les afecte es la lectura de Digital Applied.</li><li><strong>Qué pasa con los alias.</strong> Digital Applied indica que los nombres sin fecha apuntan a estas versiones, y que la página de OpenAI no dice qué hacen después del apagado. No afirmamos nada sobre alias.</li></ul>
+<p><strong>Lo que no sabemos:</strong></p>
+<ul><li><strong>Si tu automatización funcionará igual con <code>gpt-6-luna</code>.</strong> Eso depende de tu caso y solo se sabe probando.</li><li><strong>El costo por tarea con el modelo nuevo.</strong> El precio por token es bajo, pero el razonamiento por defecto consume tokens de salida.</li><li><strong>Por qué el plazo es de 92 días, y si estos modelos son de disponibilidad general.</strong> OpenAI no lo explica en lo que leímos.</li><li><strong>Interés comercial de las fuentes.</strong> Digital Applied vende servicios de migración de API y termina sus artículos con ofertas propias. Sus recomendaciones se leen sabiendo eso. Mixed es una publicación de noticias sin oferta comercial evidente en lo que leímos.</li></ul>
+<h2>3. La lectura de Plogy</h2>
+<p>Un modelo es una dependencia de tu automatización, como lo es una API, un certificado o una versión de un programa. Las dependencias tienen fecha de vencimiento, y quien no sabe dónde están no puede renovarlas a tiempo.</p>
+<p>Ya pasa con los precios: la tarifa por token no es lo que paga un negocio. Aquí el mismo principio aparece de otra forma. El cambio de modelo mueve el precio, pero también el formato de la salida, las llamadas a funciones y el razonamiento. Cada uno puede romper un flujo que hoy funciona.</p>
+<figure><img src="assets/07-cta-clones.jpg" alt="Tres figuras idénticas escribiendo en computadores antiguos, con código binario en lugar de cara" loading="lazy"><figcaption>Imagen de la biblioteca de referencia de Plogy, recortada. Derechos por verificar antes de publicar.</figcaption></figure>
+<p>Esta es una lectura de Plogy sobre datos de OpenAI. No es una recomendación de modelo.</p>
+<h2>4. Qué significa para tu negocio</h2>
+<p><strong>Si tu flujo usa llamadas a funciones, cambiar el nombre puede no bastar.</strong> En Chat Completions, <code>gpt-6-luna</code> solo admite llamadas a funciones con <code>reasoning_effort</code> en <code>none</code>. Con razonamiento activado, OpenAI indica usar la Responses API. Eso puede significar tocar código, o pedirle a quien te vendió la automatización que lo haga.</p>
+<figure><img src="assets/reporte/fig-llamadas.png" alt="Diagrama de decisión sobre llamadas a funciones en gpt-6-luna" loading="lazy"><figcaption>Si tu flujo usa llamadas a funciones. Fuente: OpenAI, ficha de gpt-6-luna.</figcaption></figure>
+<p><strong>Si tienes un fine-tune, no tiene camino directo.</strong> Según la ficha, <code>gpt-6-luna</code> no admite fine-tuning, y el fine-tune del modelo viejo sigue el calendario de su modelo base. Habría que decidir si se reemplaza por instrucciones y ejemplos en el prompt u otra vía. Esa decisión se toma con pruebas.</p>
+<p><strong>Si dependes de un proveedor, pregúntale.</strong> Una herramienta que compraste puede llamar a GPT-4o por dentro sin que lo veas. La pregunta es qué modelo usa y qué fecha tiene su plan de cambio.</p>
+<p><strong>Si miras el costo, mide la tarea.</strong> El precio por token baja mucho. Como el razonamiento se factura como tokens de salida, una tarea puede usar más tokens que antes.</p>
+<p><strong>Ejemplo hipotético, sin ningún caso real.</strong> Una pyme imaginaria tiene un flujo de atención al cliente que llama a <code>gpt-4o-mini-2024-07-18</code> por Chat Completions y usa llamadas a funciones para consultar pedidos. Al migrar, tiene dos caminos: dejar el razonamiento en <code>none</code> y conservar el código casi igual, o pasar a la Responses API con razonamiento. En los dos casos hay que probar con conversaciones reales antes del 14 de enero. Es un caso inventado para mostrar la decisión.</p>
+<h2>5. Qué haría Plogy primero</h2>
+<p>Es criterio de Plogy, no un hecho de las fuentes, y todavía no lo hemos aplicado a una migración a <code>gpt-6-luna</code>. Esta es la lista de revisión:</p>
+<figure><img src="assets/reporte/fig-lista.png" alt="Lista de revisión de seis comprobaciones antes del 14 de enero" loading="lazy"><figcaption>Lista de revisión de Plogy. Criterio de Plogy sobre datos de OpenAI.</figcaption></figure>
+<ul><li class="check"><input type="checkbox" disabled> <strong>Inventario.</strong> Buscar dónde aparece gpt-4o o gpt-4.1: código, herramientas sin código, proveedores, variables de entorno y tareas programadas.</li><li class="check"><input type="checkbox" disabled> <strong>Ficha por uso.</strong> Para cada uso, anotar si llama funciones, si usa un fine-tune y quién es la persona responsable.</li><li class="check"><input type="checkbox" disabled> <strong>Ruta.</strong> Elegir entre Chat Completions sin razonamiento, la Responses API con razonamiento, o el reemplazo que ofrezca el proveedor.</li><li class="check"><input type="checkbox" disabled> <strong>Prueba.</strong> Correr casos reales y comparar formato de salida, llamadas a funciones, tiempos y costo por tarea.</li><li class="check"><input type="checkbox" disabled> <strong>Fine-tunes.</strong> Decidir qué se hace con cada uno, porque <code>gpt-6-luna</code> no admite ajuste fino.</li><li class="check"><input type="checkbox" disabled> <strong>Vuelta atrás.</strong> Dejar el modelo viejo en una rama hasta el último día y poner una fecha de revisión.</li></ul>
+<p><strong>Recomendaciones de Digital Applied</strong> (no son de Plogy): usar el campo <code>shutdown_date</code> del endpoint de modelos para auditar retiros, probar alrededor de 50 prompts registrados, cambiar las alertas de costo a dólares, no contar con prórroga y revisar otros retiros del mismo calendario (diciembre de 2026 a abril de 2027).</p>
+<h2>6. Fuentes</h2>
+<p>Leídas completas el 2026-10-19:</p>
+<ul><li>OpenAI, "Deprecations", entrada "GPT-4 series model deprecations" del 14 de octubre de 2026. <a href="https://developers.openai.com/api/docs/deprecations" target="_blank" rel="noopener">https://developers.openai.com/api/docs/deprecations</a></li><li>OpenAI, ficha del modelo <code>gpt-6-luna</code>. <a href="https://developers.openai.com/api/docs/models/gpt-6-luna" target="_blank" rel="noopener">https://developers.openai.com/api/docs/models/gpt-6-luna</a></li><li>OpenAI, guía de razonamiento (facturación como tokens de salida y esfuerzo por defecto). <a href="https://developers.openai.com/api/docs/guides/reasoning" target="_blank" rel="noopener">https://developers.openai.com/api/docs/guides/reasoning</a></li><li>Mixed, "OpenAI's own page still calls GPT-4o its flagship, and it leaves the API on January 14". <a href="https://mixed-news.com/en/openai-gpt-4o-gpt-4-1-shutdown-january-14-2027-92-days-notice/" target="_blank" rel="noopener">https://mixed-news.com/en/openai-gpt-4o-gpt-4-1-shutdown-january-14-2027-92-days-notice/</a></li><li>Digital Applied, "GPT-4o and GPT-4.1 Leave OpenAI's API on January 14, 2027". <a href="https://www.digitalapplied.com/blog/gpt-4o-gpt-4-1-api-shutdown-january-2027" target="_blank" rel="noopener">https://www.digitalapplied.com/blog/gpt-4o-gpt-4-1-api-shutdown-january-2027</a></li></ul>
+<p>Vistas en los resultados de búsqueda, no leídas completas:</p>
+<ul><li>FourWeekMBA, "OpenAI Retires GPT-4o and GPT-4.1, Points to $0.10 Luna". La lectura devolvió HTTP 403. <a href="https://fourweekmba.com/ai-openai-retires-gpt-4o-and-gpt-41-points-to-010-luna/" target="_blank" rel="noopener">https://fourweekmba.com/ai-openai-retires-gpt-4o-and-gpt-41-points-to-010-luna/</a></li><li>Daily.dev, sobre el aviso de tres meses. <a href="https://daily.dev/posts/openai-promised-developers-six-months-notice-gpt-4o-users-got-three--srbz67kxw" target="_blank" rel="noopener">https://daily.dev/posts/openai-promised-developers-six-months-notice-gpt-4o-users-got-three--srbz67kxw</a></li></ul>
+<p>Leídas el 2026-10-20 para contrastar: las fichas de OpenAI de GPT-4o, GPT-4o mini, GPT-4.1 y GPT-4.1 mini (precios y límites).</p>
+<h2>7. Siguiente paso</h2>
+<p>Sigue a Plogy para ver cómo se implementa la IA en negocios, con las dependencias controladas.</p>
+<h2>Historial de cambios</h2>
+<ul><li>2026-10-19: versión inicial en borrador, con portada, cinco figuras, una foto de la biblioteca y la lista de revisión. Las figuras se generan desde <code>reporte-figuras.html</code>.</li><li>2026-10-20: tras la revisión editorial independiente, se verificaron los datos de GPT-4o y de los otros tres modelos en OpenAI, se acotó el "25 veces" a GPT-4o (con la tabla por modelo), se corrigió la nota del 6 de enero y la atribución de la política de seis meses.</li></ul>
+</main></body></html>

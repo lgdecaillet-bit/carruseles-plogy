@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brief · pieza 025 · Claude Code de cero</title>
+<!-- Generado automáticamente desde el .md del mismo nombre con piezas/_visor/md_to_html.py. Edita el .md, no este archivo. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--muted:#625951;--orange:#ff5b00;--orangeText:#b43d00;--surface:#f4f1ef;--border:#d9d0c7;
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root{--ink:#f4efe9;--paper:#171310;--muted:#bdb2a8;--surface:#211b17;--border:#3a322c;--orangeText:#ff8a4d}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 var(--body)}
+main{max-width:820px;margin:0 auto;padding:40px 24px 96px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.025em;line-height:1.15}
+h1{font-size:40px;margin:0 0 24px}
+h2{font-size:28px;margin:48px 0 12px;padding-top:24px;border-top:1px solid var(--border)}
+h3{font-size:21px;margin:32px 0 8px}
+p,li{max-width:70ch}
+a{color:var(--orangeText);word-break:break-word}
+code{font:14px ui-monospace,Consolas,monospace;background:var(--surface);padding:2px 6px;border-radius:6px;word-break:break-word}
+pre{background:var(--surface);padding:16px;border-radius:12px;overflow:auto}
+pre code{background:none;padding:0}
+blockquote{margin:18px 0;padding:6px 0 6px 20px;border-left:6px solid var(--orange);color:var(--ink)}
+blockquote p{margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:18px 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:10px 12px;text-align:left;vertical-align:top;min-width:120px}
+th{background:var(--surface);font-family:var(--display)}
+ul,ol{padding-left:24px}
+li{margin:6px 0}
+li.check{list-style:none;margin-left:-24px}
+li.check input{margin-right:10px}
+figure{margin:28px 0}
+figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border)}
+figcaption{margin-top:8px;font-size:14px;line-height:1.4;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--border);margin:32px 0}
+.tag{display:inline-block;background:var(--orange);color:#171310;font:700 13px var(--display);letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:18px}
+</style></head>
+<body><main>
+<h1>Brief · pieza 025 · Claude Code de cero</h1>
+<p>Estado: BORRADOR para revisión humana. No publicar. Aprobación humana y fecha: PENDIENTE.</p>
+<h2>Qué es</h2>
+<p>Segunda de la tanda de tres adaptaciones. La referencia (otra cuenta, en inglés) es una guía "de principiante a pro" de Claude Code: qué es, flujo con plan mode, MCP, CLAUDE.md, skills, usos para fundadores, qué hacer y qué no. CTA de la referencia: un video propio.</p>
+<p><strong>Qué cambiamos:</strong></p>
+<ul><li>En español, para dueños de negocio que no programan, con estética Plogy.</li><li>Sin comparación con el logo de ChatGPT: el contraste es "un chat" contra Claude Code.</li><li>Corregimos dos datos de la referencia: recomienda "Opus 4.6" (el modelo actual es Opus 5.5; no recomendamos modelo) y dice "Shift+Tab dos veces" para el plan mode (depende del modo en que estés; la documentación dice pulsar hasta ver "plan mode on").</li><li>Sumamos lo que la referencia no tiene: dónde vive (terminal, escritorio, web, editor), permisos y frenos (modos y Mods), y el criterio de Plogy.</li><li>CTA: Comenta CLAUDE y te mandamos nuestra guía de primeros pasos (<code>guia.md</code>: instalar, primera sesión, primer encargo con plan, CLAUDE.md, skills, MCP, frenos y tres errores comunes). Tarjeta de vidrio sobre la foto 21 de la biblioteca.</li></ul>
+<p><strong>Criterio propio de Plogy (lámina 9):</strong> la herramienta se aprende en una tarde; saber qué encargarle, no. Lo que separa a quien la domina es escribir un buen encargo y revisar lo que vuelve, y eso se entrena. Conecta con la tesis de la pieza 022 (el talento se forma) y con las clases.</p>
+<h2>Fuentes primarias (documentación oficial de Claude Code)</h2>
+<table><thead><tr><th>Dato</th><th>Fuente</th></tr></thead><tbody><tr><td>Funciona en cualquier carpeta, no solo código ("notes vault, documentation folder")</td><td>code.claude.com/docs/en/common-workflows</td></tr><tr><td>Plan mode: lee y propone sin editar hasta aprobar; Shift+Tab hasta "plan mode on"</td><td>common-workflows y permission-modes</td></tr><tr><td>Modos: Manual (solo lee sin preguntar), acceptEdits (crea y edita archivos de la carpeta sin preguntar), plan; ciclo con Shift+Tab</td><td>code.claude.com/docs/en/permission-modes</td></tr><tr><td>CLAUDE.md: <code>./CLAUDE.md</code> (proyecto, equipo) y <code>~/.claude/CLAUDE.md</code> (personal); <code>/init</code> genera uno</td><td>code.claude.com/docs/en/memory</td></tr><tr><td>Skills: <code>.claude/skills/&lt;nombre&gt;/SKILL.md</code> y <code>~/.claude/skills/&lt;nombre&gt;/SKILL.md</code>; Claude las usa cuando son relevantes o con <code>/nombre</code></td><td>code.claude.com/docs/en/skills</td></tr><tr><td>MCP: "open source standard"; acceso a herramientas, bases de datos y APIs; <code>claude mcp add --transport http notion https://mcp.notion.com/mcp</code></td><td>code.claude.com/docs/en/mcp</td></tr><tr><td>Superficies: CLI, app de escritorio (Mac y Windows), web (claude.ai/code), extensiones de VS Code y JetBrains</td><td>Información de producto de Claude Code</td></tr><tr><td>blast-radius retiene <code>rm -rf</code> o un force push y pregunta</td><td>code.claude.com/docs/en/plugins/mods/overview (ver pieza 021)</td></tr></tbody></table>
+<h2>Ilustraciones</h2>
+<p>Las ventanas, terminales, el CLAUDE.md, la skill de ejemplo y la retención de blast-radius son maquetas propias rotuladas "Ilustración", no capturas. Los datos de ejemplo (reportes de octubre, tienda con 2 sedes) son inventados para ilustrar.</p>
+<h2>Autor y cuentas</h2>
+<p>Cada lámina lleva al pie una barra con la foto y el usuario de JuanFra Martínez (@juanframartz). La pieza se sube en Plogy y en la cuenta personal (por ejemplo como colaboración de Instagram), con la misma versión. La foto sale del perfil de Instagram (<code>assets/av-autor.png</code>).</p>
+<h2>Pendientes antes de publicar</h2>
+<ul><li>Publicar la guía en un enlace y configurar la respuesta automática a CLAUDE. Ojo: la pieza 018 también usa CLAUDE como palabra (allí lleva al link de la clase). Si se publican cerca, la respuesta automática tiene que distinguirlas o cambiar una de las dos.</li><li>Datos de instalación de la guía: code.claude.com/docs/en/setup (comandos, requisitos, planes que incluyen Claude Code). Revisarlos el día de publicar.</li><li>blast-radius es un Mod de ejemplo que se instala aparte (no viene incluido); la lámina 8 dice "por ejemplo". Revisar si se quiere aclarar.</li><li>Logos de la lámina 7 (Notion, Google Drive, Gmail, GitHub, PostgreSQL, Slack): Simple Icons, CC0, con el color de cada marca; uso nominativo, revisar guías de marca si se quiere.</li><li>Derechos de las fotos de la biblioteca usadas en las láminas 1, 9 y 10 (<code>01-ascii.jpg</code>, <code>09-manos.jpg</code>, <code>10-silueta.jpg</code>, variantes 16, 23 y 21): <code>unverified_reference_only</code>.</li><li>Licencias tipográficas, prueba en móvil, revisión editorial independiente y aprobación humana con fecha.</li></ul>
+</main></body></html>

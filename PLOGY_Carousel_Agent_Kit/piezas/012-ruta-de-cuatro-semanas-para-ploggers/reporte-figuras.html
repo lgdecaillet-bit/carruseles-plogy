@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Figuras de la guía · pieza 012</title>
+<!-- Figuras 1600x900 para reporte.md. Se exportan a assets/reporte/ con render-slides.ps1 (-Param f -Width 1600 -Height 900).
+     Pieza educativa: ninguna cifra viene de una fuente externa. La ruta es una propuesta de criterio de Plogy. El mapa de pasos es un ejemplo hipotético y la tabla comparada es una plantilla vacía. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171310;--paper:#fff;--orange:#ff5b00;--orangeText:#b43d00;--muted:#625951;--surface:#f4f1ef;--border:#d9d0c7;
+--gradient:linear-gradient(90deg,#f75946 0%,#e1556a 50%,#9c5aa7 100%);
+--display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:#888;font-family:var(--body);color:var(--ink)}
+.fig{position:relative;width:1600px;height:900px;overflow:hidden;padding:72px 80px;display:none}
+body:not(.single) .fig{display:block;margin-bottom:20px;zoom:.5}
+body.single .fig{display:block}
+.light{background:#fff}.surface{background:var(--surface)}.dark{background:var(--ink);color:#fff}
+.logo{position:absolute;right:80px;top:64px;width:190px}
+.src{position:absolute;left:80px;bottom:44px;right:80px;font:500 22px/1.3 var(--body);color:var(--muted)}
+.dark .src{color:#bdb2a8}
+.eyebrow{font:700 24px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText)}
+.dark .eyebrow{color:var(--orange)}
+h2{font:700 62px/1.05 var(--display);letter-spacing:-.035em;margin-top:18px;max-width:1180px}
+.hl{color:var(--orange)}
+.tag{display:inline-block;background:var(--orange);color:var(--ink);font:700 24px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border-radius:999px}
+/* portada */
+.hero h1{font:700 118px/.98 var(--display);letter-spacing:-.045em;margin-top:34px;max-width:1300px;position:relative}
+.hero .glow{position:absolute;right:-620px;top:-260px;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ff5b00 0%,#d63a52 38%,#6a3dd1 68%,rgba(23,19,16,0) 72%);opacity:.9}
+.hero .meta{position:absolute;left:80px;bottom:56px;font:500 28px/1.3 var(--body);color:#d9cfc6}
+.hero .logo{left:80px;right:auto}
+.hero .eyebrow{margin-top:120px;position:relative}
+/* ruta */
+.rail{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px}
+.rail::before{content:"";position:absolute;left:34px;right:34px;top:34px;height:6px;background:var(--gradient);border-radius:3px}
+.wk{position:relative}
+.wk i{position:relative;z-index:1;display:block;width:70px;height:70px;border-radius:50%;background:var(--orange);color:var(--ink);font:700 38px/70px var(--display);font-style:normal;text-align:center}
+.wk .card{margin-top:26px;border-radius:26px;padding:28px 26px 30px;background:#fff;border:2px solid var(--border);min-height:360px}
+.wk .card b{display:block;font:700 26px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--orangeText)}
+.wk .card strong{display:block;margin-top:14px;font:700 40px/1.08 var(--display);letter-spacing:-.025em}
+.wk .card small{display:block;margin-top:22px;font:700 22px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.wk .card span{display:block;margin-top:10px;font:500 28px/1.3 var(--body)}
+/* elegir */
+.two{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;margin-top:44px}
+.box{border-radius:28px;padding:34px 38px}
+.box.y{background:#fff;border:2px solid var(--border)}
+.box.n{background:var(--ink);color:#fff}
+.box h3{font:700 26px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px}
+.box.y h3{color:var(--orangeText)} .box.n h3{color:var(--orange)}
+.box p{position:relative;padding-left:52px;font:500 33px/1.3 var(--body);margin-bottom:20px}
+.box.y p::before{content:"";position:absolute;left:2px;top:5px;width:28px;height:28px;border-radius:8px;border:4px solid var(--orange)}
+.box.n p{color:#eee6df}
+.box.n p::before{content:"";position:absolute;left:4px;top:11px;width:24px;height:24px;border-radius:50%;background:#5a4f47}
+/* mapa */
+.map{margin-top:34px;display:grid;grid-template-columns:1.4fr 1fr;gap:34px;align-items:start}
+.steps{border-radius:26px;background:#fff;border:2px solid var(--border);overflow:hidden}
+.steps .r{display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:14px;padding:0 26px;height:84px;border-top:2px solid #eee6df;font:500 31px/1.1 var(--body)}
+.steps .r:first-child{border-top:0}
+.steps .r u{text-decoration:none;font:700 32px/1 var(--display);color:var(--orange)}
+.steps .r em{font:700 24px/1 var(--display);font-style:normal;padding:12px 18px;border-radius:999px}
+.t1{background:var(--orange);color:var(--ink)} .t2{background:#f3d9cb;color:var(--orangeText)} .t3{background:var(--ink);color:#fff}
+.rule{border-radius:26px;background:var(--ink);color:#fff;padding:34px 36px}
+.rule small{display:block;font:700 24px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.rule p{font:500 29px/1.35 var(--body);color:#eee6df;margin-bottom:18px}
+.rule p b{color:#fff;font-family:var(--display)}
+/* versión mínima */
+.flow{display:flex;align-items:stretch;gap:16px;margin-top:44px}
+.flow div{flex:1;border-radius:26px;padding:30px 24px;border:2px solid #4a413a;background:#221c18;text-align:center;text-wrap:balance;font:700 36px/1.12 var(--display);letter-spacing:-.02em;display:flex;align-items:center;justify-content:center;min-height:150px}
+.flow div.on{flex:1.5;background:var(--orange);color:var(--ink);border-color:var(--orange)}
+.flow span{align-self:center;font:700 56px/1 var(--display);color:var(--orange)}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:38px}
+.out .box{padding:30px 34px}
+.out .box.in{background:#221c18;border:2px solid #4a413a;color:#fff}
+.out .box.in h3{color:var(--orange)}
+.out .box.in p{color:#eee6df}
+.out .box.in p::before{content:"";position:absolute;left:2px;top:5px;width:28px;height:28px;border-radius:8px;border:4px solid var(--orange)}
+.out .box.no h3{color:#bdb2a8}
+.out .box.no{background:transparent;border:2px dashed #5a4f47}
+.out .box.no p{color:#d8cfc6}
+.out .box.no p::before{content:"";position:absolute;left:8px;top:15px;width:18px;height:4px;background:#bdb2a8;border-radius:2px}
+.out .box p{margin-bottom:14px;font-size:30px}
+/* comparar */
+.cmp{display:grid;grid-template-columns:1.4fr 1fr;gap:34px;margin-top:38px;align-items:stretch}
+table.t{border-collapse:separate;border-spacing:0;width:100%;font:500 30px/1.2 var(--body);background:#fff;border:2px solid var(--border);border-radius:26px;overflow:hidden}
+.t th,.t td{padding:20px 18px;text-align:left;border-bottom:2px solid #eee6df}
+.t th{white-space:nowrap;background:var(--ink);color:#fff;font:700 24px/1 var(--display);letter-spacing:.08em;text-transform:uppercase}
+.t th:last-child{color:var(--orange)}
+.t td:first-child{color:var(--muted)}
+.t td:not(:first-child){font:700 30px/1 var(--display);color:#9a8f85}
+.t tr:last-child td{border-bottom:0}
+.dec{display:flex;flex-direction:column;gap:14px}
+.dec div{border-radius:22px;padding:20px 26px;background:var(--ink);color:#fff;font:500 28px/1.3 var(--body)}
+.dec div b{display:block;font:700 34px/1.1 var(--display);letter-spacing:-.02em;color:var(--orange);margin-bottom:6px}
+.dec small{display:block;font:700 24px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText);margin-bottom:2px}
+/* lista */
+.lst{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:34px}
+.lst .col{border-radius:26px;background:#fff;border:2px solid var(--border);padding:26px 24px 20px}
+.lst .col h3{font:700 24px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--orangeText)}
+.lst .col h4{font:700 34px/1.05 var(--display);letter-spacing:-.025em;margin:10px 0 18px}
+.lst .col p{position:relative;padding-left:40px;font:500 24px/1.28 var(--body);margin-bottom:14px}
+.lst .col p::before{content:"";position:absolute;left:0;top:2px;width:24px;height:24px;border-radius:7px;border:3.5px solid var(--orange)}
+</style>
+</head>
+<body>
+
+<!-- 1. Portada -->
+<section class="fig dark hero" data-f="portada">
+  <div class="glow"></div>
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow">Guía de Plogy · Automatización</div>
+  <h1>Cuatro semanas.<br><span class="hl">Un proceso real.</span></h1>
+  <div class="meta">Ruta semana a semana y lista de comprobación · propuesta de Plogy · versión 2026-10-20 · borrador</div>
+</section>
+
+<!-- 2. La ruta -->
+<section class="fig surface" data-f="ruta">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">La ruta</div>
+  <h2>Cuatro semanas, <span class="hl">cuatro entregables</span></h2>
+  <div class="rail">
+    <div class="wk"><i>1</i><div class="card"><b>Semana 1</b><strong>Elegir y medir</strong><small>Entregable</small><span>Una hoja con el proceso y la medición de cómo se hace hoy.</span></div></div>
+    <div class="wk"><i>2</i><div class="card"><b>Semana 2</b><strong>Mapear</strong><small>Entregable</small><span>Un mapa de pasos con una decisión por paso.</span></div></div>
+    <div class="wk"><i>3</i><div class="card"><b>Semana 3</b><strong>Construir</strong><small>Entregable</small><span>Una versión mínima que procesa un caso real de punta a punta.</span></div></div>
+    <div class="wk"><i>4</i><div class="card"><b>Semana 4</b><strong>Probar y comparar</strong><small>Entregable</small><span>La tabla comparada con lo medido y una decisión escrita.</span></div></div>
+  </div>
+  <div class="src">Propuesta de criterio de Plogy. No es un programa, un curso ni una cohorte, y no se ha aplicado todavía con personas ni clientes.</div>
+</section>
+
+<!-- 3. Elegir el proceso -->
+<section class="fig light" data-f="elegir">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Semana 1</div>
+  <h2>Qué proceso <span class="hl">conviene elegir</span></h2>
+  <div class="two">
+    <div class="box y"><h3>Elígelo si</h3>
+      <p>Se repite varias veces por semana.</p>
+      <p>Empieza y termina de forma clara: sabes cuándo un caso está listo.</p>
+      <p>Tienes casos reales a mano para medir.</p>
+      <p>Si falla, el daño es pequeño y se corrige.</p>
+    </div>
+    <div class="box n"><h3>Déjalo para después si</h3>
+      <p>Cambia por completo cada vez.</p>
+      <p>Maneja datos personales o sensibles que no puedes compartir con una herramienta.</p>
+      <p>Nadie puede decir qué es “bien hecho”.</p>
+    </div>
+  </div>
+  <div class="src">Criterio de Plogy. Sin fuente externa. El tamaño de muestra de la medición (unos 10 casos) es una referencia práctica, no una regla estadística.</div>
+</section>
+
+<!-- 4. Mapa de pasos -->
+<section class="fig surface" data-f="mapa">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Semana 2</div>
+  <h2>Un paso, <span class="hl">una decisión</span></h2>
+  <div class="map">
+    <div class="steps">
+      <div class="r"><u>1</u><span>Llega la solicitud por correo</span><em class="t1">Automatizar</em></div>
+      <div class="r"><u>2</u><span>Copiar los datos a una hoja</span><em class="t1">Automatizar</em></div>
+      <div class="r"><u>3</u><span>Revisar si falta algo</span><em class="t2">IA + revisión</em></div>
+      <div class="r"><u>4</u><span>Redactar la respuesta</span><em class="t2">IA + revisión</em></div>
+      <div class="r"><u>5</u><span>Resolver un caso especial</span><em class="t3">Manual</em></div>
+    </div>
+    <div class="rule"><small>Regla propuesta</small>
+      <p><b>Automatizar:</b> pasos repetitivos con reglas claras.</p>
+      <p><b>IA + revisión:</b> pasos de texto donde una persona confirma el resultado.</p>
+      <p><b>Manual:</b> pasos que piden juicio o tienen un riesgo que no quieres delegar.</p>
+    </div>
+  </div>
+  <span class="tag" style="position:absolute;left:80px;bottom:90px">Ejemplo hipotético · proceso inventado</span>
+  <div class="src">Criterio de Plogy. El proceso y sus pasos son inventados para mostrar el método. No son de ningún cliente.</div>
+</section>
+
+<!-- 5. Versión mínima -->
+<section class="fig dark" data-f="minima">
+  <img class="logo" src="../../brandkit/assets/plogy-white.svg" alt="Plogy">
+  <div class="eyebrow">Semana 3</div>
+  <h2>La versión más pequeña <span class="hl">que funcione</span></h2>
+  <div class="flow">
+    <div>Un caso real</div><span>→</span><div class="on">Bajo código o asistente de IA</div><span>→</span><div>Resultado</div><span>→</span><div>Revisión de una persona</div>
+  </div>
+  <div class="out">
+    <div class="box in"><h3>Entra en la versión mínima</h3><p>Un solo tipo de caso.</p><p>El camino completo, de la entrada a la salida.</p></div>
+    <div class="box no"><h3>Se queda fuera por ahora</h3><p>Los casos raros.</p><p>El diseño bonito y las conexiones extra.</p></div>
+  </div>
+  <div class="src">Criterio de Plogy. “Bajo código” significa armar el flujo con bloques y reglas, sin programarlo todo.</div>
+</section>
+
+<!-- 6. Comparar -->
+<section class="fig light" data-f="comparar">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Semana 4</div>
+  <h2>Compara con lo medido <span class="hl">y decide</span></h2>
+  <div class="cmp">
+    <table class="t">
+      <tr><th></th><th>Semana 1</th><th>Semana 4</th></tr>
+      <tr><td>Minutos por caso (con revisión)</td><td>tu dato</td><td>tu dato</td></tr>
+      <tr><td>Casos que hubo que corregir</td><td>tu dato</td><td>tu dato</td></tr>
+      <tr><td>Casos probados</td><td>tu dato</td><td>tu dato</td></tr>
+    </table>
+    <div class="dec">
+      <div><b>Seguir</b>Mejora y el resultado se sostiene con casos nuevos.</div>
+      <div><b>Ajustar</b>Mejora poco o falla en casos concretos: vuelve al mapa.</div>
+      <div><b>Dejarlo</b>No mejora o empeora. También es un resultado útil.</div>
+    </div>
+  </div>
+  <span class="tag" style="position:absolute;left:80px;bottom:90px">Plantilla vacía · sin cifras</span>
+  <div class="src">Criterio de Plogy. Mide en la semana 4 igual que en la 1, con el mismo método y la misma definición de “bien hecho”.</div>
+</section>
+
+<!-- 7. Lista de comprobación semanal -->
+<section class="fig surface" data-f="lista">
+  <img class="logo" src="../../brandkit/assets/plogy-color.svg" alt="Plogy">
+  <div class="eyebrow">Lista de comprobación</div>
+  <h2>Qué debe estar hecho <span class="hl">cada semana</span></h2>
+  <div class="lst">
+    <div class="col"><h3>Semana 1</h3><h4>Medir</h4><p>Elegí un proceso con inicio y fin claros.</p><p>Escribí qué es “bien hecho”.</p><p>Medí unos 10 casos reales.</p><p>Guardé la hoja con fecha.</p></div>
+    <div class="col"><h3>Semana 2</h3><h4>Mapear</h4><p>Listé los pasos como ocurren hoy.</p><p>Marqué cada paso: automatizar, asistir o manual.</p><p>Anoté por qué dejé pasos manuales.</p><p>Elegí el tramo que construiré.</p></div>
+    <div class="col"><h3>Semana 3</h3><h4>Construir</h4><p>Elegí una herramienta.</p><p>Definí un solo tipo de caso.</p><p>Procesa un caso real de punta a punta.</p><p>Una persona revisó el resultado.</p></div>
+    <div class="col"><h3>Semana 4</h3><h4>Comparar</h4><p>Probé con casos reales nuevos.</p><p>Medí igual que en la semana 1.</p><p>Llené la tabla comparada.</p><p>Escribí la decisión: seguir, ajustar o dejarlo.</p></div>
+  </div>
+  <div class="src">Criterio de Plogy. Una casilla sin marcar al cierre de la semana es una señal para ajustar, no un fracaso.</div>
+</section>
+
+<script>
+var q=new URLSearchParams(location.search).get('f');
+if(q){document.body.classList.add('single');document.querySelectorAll('.fig').forEach(function(e){if(e.dataset.f!==q)e.style.display='none';});}
+</script>
+</body>
+</html>
